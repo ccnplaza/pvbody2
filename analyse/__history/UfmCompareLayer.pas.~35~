@@ -1,0 +1,570 @@
+unit UfmCompareLayer;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  cxContainer, cxEdit, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
+  dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxStyles, dxSkinscxPCPainter, cxCustomData, cxFilter,
+  cxData, cxDataStorage, cxNavigator, DB, cxDBData, cxTextEdit, StdCtrls,
+  Buttons, cxGridLevel, cxGridCustomTableView, cxGridTableView,
+  cxGridDBTableView, cxClasses, cxGridCustomView, cxGrid, cxGroupBox,
+  ExtCtrls, Menus, cxMaskEdit, cxSpinEdit, cxButtons, Uni,
+  MemDS, DBAccess, Registry,
+  imageenview, ievect, ieview, iemview, ieopensavedlg, hyieutils, imageenio, imageenproc,
+  VirtualTable, cxLabel, cxDBLabel, DBClient, Provider, UniProvider,
+  InterBaseUniProvider, ComCtrls, ImgList, ActnList, dxSkinOffice2013White,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, UfrmMemberSelect, iexBitmaps, hyiedefs, iesettings,
+  iexLayers, iexRulers, iexToolbars;
+
+type
+  TfmCompareLayer = class(TForm)
+    pnlMember: TPanel;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    cxGrid2: TcxGrid;
+    gridCompare: TcxGridDBTableView;
+    gridCompareID: TcxGridDBColumn;
+    gridCompareMEMBER_UID: TcxGridDBColumn;
+    gridCompareMAKE_DATE: TcxGridDBColumn;
+    gridCompareCOMPARE_NAME: TcxGridDBColumn;
+    cxL2: TcxGridLevel;
+    Panel3: TPanel;
+    GroupBox1: TGroupBox;
+    btnDeleteLayer: TBitBtn;
+    btnUp: TBitBtn;
+    btnDown: TBitBtn;
+    chkRotateLayer: TCheckBox;
+    GroupBox2: TGroupBox;
+    Label8: TLabel;
+    Label9: TLabel;
+    chkLayerVisible: TCheckBox;
+    cboLayerOperation: TComboBox;
+    chkLayerAutoFit: TCheckBox;
+    chkDrawBox: TCheckBox;
+    edtTransperency: TcxSpinEdit;
+    imgMThumbView: TImageEnMView;
+    ImageEnViewCompare: TImageEnView;
+    pnlProcess: TPanel;
+    lblCount: TLabel;
+    lblMessage: TLabel;
+    q_compare_layer: TUniQuery;
+    d_compare_layer: TDataSource;
+    btnSaveSetting: TBitBtn;
+    btnDeleteLayerAll: TBitBtn;
+    TrackBar1: TTrackBar;
+    ActionThumbnail: TActionList;
+    actThumbWindowMax: TAction;
+    actThumbWindowMin: TAction;
+    actThumbDelete: TAction;
+    actThumbSaveAs: TAction;
+    ImageListThumbnail: TImageList;
+    SaveImageEnDialog1: TSaveImageEnDialog;
+    ActAddLayerSet: TAction;
+    ActSaveLayerSet: TAction;
+    ActDeleteLayerSet: TAction;
+    PopupLayer: TPopupMenu;
+    N5: TMenuItem;
+    N6: TMenuItem;
+    N7: TMenuItem;
+    ActRotationMode: TAction;
+    ActDeleteSelect: TAction;
+    ActDeleteAll: TAction;
+    ActLayerToUp: TAction;
+    ActLayerToDown: TAction;
+    ActLayerAutofit: TAction;
+    ActLayerOutline: TAction;
+    ActEffectLayer: TAction;
+    ActSaveSetup: TAction;
+    PopupMenu1: TPopupMenu;
+    N8: TMenuItem;
+    N9: TMenuItem;
+    N10: TMenuItem;
+    N11: TMenuItem;
+    N12: TMenuItem;
+    N13: TMenuItem;
+    N14: TMenuItem;
+    N15: TMenuItem;
+    N16: TMenuItem;
+    N17: TMenuItem;
+    N18: TMenuItem;
+    q_compare_layer_image: TUniQuery;
+    d_compare_layer_image: TDataSource;
+    q_compare_layer_imageID: TStringField;
+    q_compare_layer_imageMEMBER_UID: TStringField;
+    q_compare_layer_imageLAYER_DATA: TBlobField;
+    q_compare_layerID: TStringField;
+    q_compare_layerMEMBER_UID: TStringField;
+    q_compare_layerMAKE_DATE: TDateField;
+    q_compare_layerCOMPARE_NAME: TStringField;
+    q_compare_layerCOMPANY_ID: TStringField;
+    Panel4: TPanel;
+    cxGroupBox3: TcxGroupBox;
+    ImageEnMView: TImageEnMView;
+    frmMemberSelect1: TfrmMemberSelect;
+    procedure cboLayerOperationChange(Sender: TObject);
+    procedure edtTransperencyPropertiesEditValueChanged(Sender: TObject);
+    procedure gridCompareCellDblClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
+    procedure imgMThumbViewImageSelect(Sender: TObject; idx: Integer);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
+    procedure ImageEnMViewDblClick(Sender: TObject);
+    procedure TrackBar1Change(Sender: TObject);
+    procedure actThumbSaveAsExecute(Sender: TObject);
+    procedure ActAddLayerSetExecute(Sender: TObject);
+    procedure ActSaveLayerSetExecute(Sender: TObject);
+    procedure ActDeleteLayerSetExecute(Sender: TObject);
+    procedure ActRotationModeExecute(Sender: TObject);
+    procedure ActDeleteSelectExecute(Sender: TObject);
+    procedure ActDeleteAllExecute(Sender: TObject);
+    procedure ActLayerToUpExecute(Sender: TObject);
+    procedure ActLayerToDownExecute(Sender: TObject);
+    procedure ActLayerAutofitExecute(Sender: TObject);
+    procedure ActLayerOutlineExecute(Sender: TObject);
+    procedure ActEffectLayerExecute(Sender: TObject);
+    procedure actThumbDeleteExecute(Sender: TObject);
+    procedure frmMemberSelect1gridCheckCellClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
+  private
+    procedure RefreshControls;
+    procedure RefreshLayerViewer;
+    procedure ShowProcessMsg(msg, cnt_str: string; onoff: integer);
+    procedure SaveLayerImage(layer_name : string; mem_stream : TMemoryStream);
+    procedure UpdateLayerImage(compare_id, layer_name: string; mem_stream: TMemoryStream);
+    procedure RetrieveMemberInfo;
+    procedure RetrieveCustomerPictures;
+    { Private declarations }
+  public
+    { Public declarations }
+    CheckOldID : string;
+  end;
+
+var
+  fmCompareLayer: TfmCompareLayer;
+
+implementation
+
+uses GlobalVar, uCommonLogic, UfmAnalyseRequestSelect, UdmDBCommon,
+  uMemberEditView, UfmMemberPicture;
+
+{$R *.dfm}
+
+procedure TfmCompareLayer.RetrieveMemberInfo;
+begin
+  dmDBCommon.q_compare_data.ParamByName('mem_id').Value := CustomerImages.CustID;
+  dmDBCommon.q_compare_data.Active := True;
+  dmDBCommon.d_compare_data.DataSet.Refresh;
+  dmDBCommon.RetrieveThumbnailList(ImageEnMView);
+
+//  q_compare_layer.ParamByName('MEMBER_UID').AsString := GLOVAL_MEMBER_UID;
+//  q_compare_layer.Active := True;
+//  d_compare_layer.DataSet.Refresh;
+end;
+
+procedure TfmCompareLayer.FormShow(Sender: TObject);
+begin
+  ImageEnViewCompare.AutoFit := True;
+  ImageEnViewCompare.AutoStretch := True;
+  ImageEnViewCompare.Fit;
+  ImageEnViewCompare.SetLayersGripStyle(clBlack,clLime,bsSolid,5,iegsCircle);
+  ImageEnViewCompare.ForceALTkey:=true; // aspect ratio
+  ImageEnViewCompare.Blank;
+//  ImageEnViewCompare.LayersSync := false;
+//  ImageEnViewCompare.MouseInteract := [miMoveLayers, miResizeLayers];
+  //ImageEnViewCompare.ZoomFilter := rfTriangle;
+  ImageEnViewCompare.EnableAlphaChannel := False;
+  ImageEnViewCompare.LayersDrawBox := True;
+  ImageEnViewCompare.Update;
+  if CustomerImages.CustName <> '' then
+    RetrieveCustomerPictures;
+end;
+
+procedure TfmCompareLayer.RetrieveCustomerPictures;
+begin
+  frmMemberSelect1.edtName.Text := CustomerImages.CustName;
+  frmMemberSelect1.pnlNo.Caption := CustomerImages.CustTel;
+  Screen.Cursor := crHourGlass;
+  LockControl(cxGroupBox3, True);
+  dmDBCommon.RetrieveThumbnailList(ImageEnMView);
+  LockControl(cxGroupBox3, False);
+  Screen.Cursor := crArrow;
+end;
+
+procedure TfmCompareLayer.frmMemberSelect1gridCheckCellClick(
+  Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
+  AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+begin
+  RetrieveCustomerPictures;
+end;
+
+procedure TfmCompareLayer.ShowProcessMsg(msg, cnt_str: string; onoff: integer);
+begin
+  if onoff = 1 then begin
+    lblMessage.Caption := msg;
+    lblCount.Caption := cnt_str;
+    pnlProcess.Visible := True;
+    pnlProcess.Update;
+  end else
+    pnlProcess.Visible := False;
+end;
+
+procedure TfmCompareLayer.TrackBar1Change(Sender: TObject);
+begin
+  with ImageEnViewCompare do begin
+    Layers[LayersCurrent].Transparency := TrackBar1.Position;
+    Update;
+    edtTransperency.Value := TrackBar1.Position;
+  end;
+end;
+
+procedure TfmCompareLayer.ActAddLayerSetExecute(Sender: TObject);
+var
+  sVal : string;
+  layer_stream : TMemoryStream;
+begin
+  if InputQuery('레이어 제목입력', '제목을 입력하세요.', sVal) = False then Exit;
+  layer_stream := TMemoryStream.Create;
+  try
+    if sVal <> '' then begin
+      ImageEnViewCompare.LayersSaveToStream(layer_stream, ioJPEG);
+      SaveLayerImage(sVal, layer_stream);
+      d_compare_layer.DataSet.Refresh;
+    end;
+  finally
+    layer_stream.Free;
+  end;
+end;
+
+procedure TfmCompareLayer.ActDeleteAllExecute(Sender: TObject);
+begin
+  ImageEnViewCompare.Clear;
+  ImageEnViewCompare.LayersClear;
+  RefreshLayerViewer;
+end;
+
+procedure TfmCompareLayer.ActDeleteLayerSetExecute(Sender: TObject);
+begin
+  if Application.MessageBox('선택한 자료를 삭제합니다.' + #13#10 + '삭제한 자료는 되살릴 수 없습니다.'
+    + #13#10 + '삭제 할까요?', '자료삭제', MB_YESNO + MB_ICONWARNING) = IDYES then
+  begin
+    d_compare_layer.DataSet.Delete;
+    ImageEnViewCompare.Proc.Clear;
+    ImageEnViewCompare.LayersClear;
+    RefreshLayerViewer;
+  end;
+end;
+
+procedure TfmCompareLayer.ActDeleteSelectExecute(Sender: TObject);
+begin
+  with ImageEnViewCompare do
+    LayersRemove(LayersCurrent);
+  RefreshControls;
+  RefreshLayerViewer;
+end;
+
+procedure TfmCompareLayer.ActEffectLayerExecute(Sender: TObject);
+begin
+  with ImageEnViewCompare do begin
+    Layers[LayersCurrent].Visible := (Sender as TAction).checked;
+    Update;
+  end;
+end;
+
+procedure TfmCompareLayer.ActLayerAutofitExecute(Sender: TObject);
+begin
+  if (Sender as TAction).Checked then begin
+    ImageEnViewCompare.AutoFit := True;
+    ImageEnViewCompare.AutoStretch := True;
+  end else begin
+    ImageEnViewCompare.AutoFit := False;
+    ImageEnViewCompare.AutoStretch := False;
+  end;
+  ImageEnViewCompare.Refresh;
+end;
+
+procedure TfmCompareLayer.ActLayerOutlineExecute(Sender: TObject);
+begin
+  if (Sender as TAction).Checked then
+    ImageEnViewCompare.LayersDrawBox := True
+  else
+    ImageEnViewCompare.LayersDrawBox := False;
+end;
+
+procedure TfmCompareLayer.ActLayerToDownExecute(Sender: TObject);
+begin
+  with ImageEnViewCompare do
+    LayersMove(LayersCurrent, LayersCurrent + 1);
+  RefreshControls;
+  RefreshLayerViewer;
+end;
+
+procedure TfmCompareLayer.ActLayerToUpExecute(Sender: TObject);
+begin
+  with ImageEnViewCompare do
+    LayersMove(LayersCurrent, LayersCurrent - 1);
+  RefreshControls;
+  RefreshLayerViewer;
+end;
+
+procedure TfmCompareLayer.ActRotationModeExecute(Sender: TObject);
+begin
+//  if (Sender as TAction).Checked then
+//    ImageEnViewCompare.MouseInteract := [miRotateLayers]
+//  else
+//    ImageEnViewCompare.MouseInteract := [miMoveLayers, miResizeLayers];
+end;
+
+procedure TfmCompareLayer.ActSaveLayerSetExecute(Sender: TObject);
+var
+  sVal, compare_id : string;
+  layer_stream : TMemoryStream;
+begin
+  sVal := q_compare_layerCOMPARE_NAME.AsString;
+  if InputQuery('레이어 제목입력', '제목을 입력하세요.', sVal) = False then Exit;
+  if not ImageEnViewCompare.IsEmpty then begin
+    layer_stream := TMemoryStream.Create;
+    try
+      compare_id := q_compare_layerID.AsString;
+      ImageEnViewCompare.LayersSaveToStream(layer_stream, ioJPEG);
+      layer_stream.Position := 0;
+      UpdateLayerImage(compare_id, sVal, layer_stream);
+      d_compare_layer.DataSet.Refresh;
+    finally
+      layer_stream.Free;
+    end;
+  end;
+end;
+
+procedure TfmCompareLayer.actThumbDeleteExecute(Sender: TObject);
+var
+  i, cnt : integer;
+  img_id : string;
+begin
+//  if ImageEnMView.ImageCount > 0 then begin
+//    i := ImageEnMView.SelectedImage;
+//    img_id := ImageEnMView.ImageFileName[i];
+//    dmDBCommon.dsCUSTOMER_IMAGE3_SEL.DataSet.Locate('id', img_id, []);
+//    if Application.MessageBox('선택한 자료를 삭제합니다.' + #13#10 + '삭제한 자료는 되살릴 수 없습니다.'
+//      + #13#10 + '삭제 할까요?', '자료삭제', MB_YESNO + MB_ICONWARNING) = IDYES then
+//    begin
+//      frmMemberSelect1.gridCheck.DataController.SaveBookmark;
+//      dmDBCommon.CUSTOMER_IMAGE3_DEL.ParamByName('id').Value := dmDBCommon.dsCUSTOMER_IMAGE3_SEL.DataSet.FieldByName('id').Value;
+//      dmDBCommon.CUSTOMER_IMAGE3_DEL.ExecProc;
+//      dmDBCommon.dsCUSTOMER_IMAGE3_SEL.DataSet.Refresh;
+//      cnt := dmDBCommon.dsCUSTOMER_IMAGE3_SEL.DataSet.RecordCount;
+//
+//      dmDBCommon.PICTURE_DATA_UPD_COUNT.ParamByName('UID').Value := CustomerImages.CheckID;
+//      dmDBCommon.PICTURE_DATA_UPD_COUNT.ParamByName('PIC_CNT').AsInteger := cnt;
+//      dmDBCommon.PICTURE_DATA_UPD_COUNT.ExecProc;
+//      dmDBCommon.d_picture_data.DataSet.Refresh;
+//      frmMemberSelect1.gridCheck.DataController.GotoBookmark;
+//
+//      dmDBCommon.RetrieveThumbnails(ImageEnMView);
+//    end;
+//  end;
+end;
+
+procedure TfmCompareLayer.actThumbSaveAsExecute(Sender: TObject);
+var
+  fname, img_id : string;
+  i : integer;
+  memStream : TMemoryStream;
+begin
+//  if SaveImageEnDialog1.Execute then begin
+//    fname := SaveImageEnDialog1.FileName;
+//    i := ImageEnMView.SelectedImage;
+//    img_id := ImageEnMView.ImageFileName[i];
+//    dmDBCommon.dsCUSTOMER_IMAGE3_SEL.DataSet.Locate('id', img_id, []);
+//    memStream := TMemoryStream.Create;
+//    TBlobField(dmDBCommon.dsCUSTOMER_IMAGE3_SEL.DataSet.FieldByName('IMAGE_DATA')).SaveToStream(memStream);
+//    memStream.Position := 0;
+//    memStream.SaveToFile(fname);
+//    memStream.Free;
+//  end;
+end;
+
+procedure TfmCompareLayer.SaveLayerImage(layer_name : string; mem_stream : TMemoryStream);
+var
+  qry : TUniQuery;
+  uid : string;
+begin
+  mem_stream.Position := 0;
+  uid := FormatDateTime('yyyymmddhhnnsszzz', now);
+  qry := TUniQuery.Create(nil);
+  with qry do begin
+    Connection := dmDBCommon.UniDBConnection;
+    SQL.Clear;
+    SQL.Add('insert into CUST_COMPARE_LAYER ');
+    SQL.Add('(ID, MEMBER_UID, MAKE_DATE, COMPARE_NAME, COMPANY_ID) ');
+    SQL.Add('VALUES (:ID, :MEMBER_UID, :MAKE_DATE, :COMPARE_NAME, :COMPANY_ID)');
+    Params.ParamByName('ID').AsString := uid;
+    Params.ParamByName('MEMBER_UID').AsString := GLOVAL_MEMBER_UID;
+    Params.ParamByName('MAKE_DATE').AsDateTime := Date;
+    Params.ParamByName('COMPARE_NAME').AsString := layer_name;
+    Params.ParamByName('COMPANY_ID').AsString := LoginUserCompID;
+    Execute;
+  end;
+  with qry do begin
+    Connection := dmDBCommon.UniDBConnection;
+    SQL.Clear;
+    SQL.Add('insert into CUST_COMPARE_LAYER_IMAGE ');
+    SQL.Add('(ID, MEMBER_UID, LAYER_DATA) ');
+    SQL.Add('VALUES (:ID, :MEMBER_UID, :LAYER_DATA)');
+    Params.ParamByName('ID').AsString := FormatDateTime('yyyymmddhhnnsszzz', now);
+    Params.ParamByName('MEMBER_UID').AsString := UID;
+    Params.ParamByName('LAYER_DATA').LoadFromStream(mem_stream, ftBlob);
+    Execute;
+  end;
+end;
+
+procedure TfmCompareLayer.UpdateLayerImage(compare_id, layer_name : string; mem_stream : TMemoryStream);
+var
+  qry : TUniQuery;
+begin
+  mem_stream.Position := 0;
+  qry := TUniQuery.Create(nil);
+  with qry do begin
+    Connection := dmDBCommon.UniDBConnection;
+    SQL.Clear;
+    SQL.Add('update CUST_COMPARE_LAYER ');
+    SQL.Add('set COMPARE_NAME = :COMPARE_NAME ');
+    SQL.Add('where ID = :id ');
+    Params.ParamByName('COMPARE_NAME').AsString := layer_name;
+    Params.ParamByName('ID').AsString := compare_id;
+    Execute;
+  end;
+  with qry do begin
+    Connection := dmDBCommon.UniDBConnection;
+    SQL.Clear;
+    SQL.Add('update CUST_COMPARE_LAYER_IMAGE ');
+    SQL.Add('set LAYER_DATA = :LAYER_DATA ');
+    SQL.Add('where MEMBER_UID = :id ');
+    Params.ParamByName('LAYER_DATA').LoadFromStream(mem_stream, ftBlob);
+    Params.ParamByName('ID').AsString := compare_id;
+    Execute;
+  end;
+end;
+
+procedure TfmCompareLayer.cboLayerOperationChange(Sender: TObject);
+begin
+  with ImageEnViewCompare do
+  begin
+    CurrentLayer.Operation := TIERenderOperation(cboLayerOperation.ItemIndex);
+    Update;
+  end;
+end;
+
+procedure TfmCompareLayer.edtTransperencyPropertiesEditValueChanged(
+  Sender: TObject);
+begin
+  with ImageEnViewCompare do begin
+    Layers[LayersCurrent].Transparency := edtTransperency.Value;
+    Update;
+    TrackBar1.Position := edtTransperency.Value;
+  end;
+end;
+
+procedure TfmCompareLayer.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := caFree;
+end;
+
+procedure TfmCompareLayer.gridCompareCellDblClick(
+  Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
+  AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+var
+  layer_stream : TMemoryStream;
+  compare_id : string;
+begin
+  compare_id := q_compare_layerID.AsString;
+  layer_stream := TMemoryStream.Create;
+  q_compare_layer_image.ParamByName('member_uid').AsString := compare_id;
+  q_compare_layer_image.Active := True;
+  d_compare_layer_image.DataSet.Refresh;
+  TBlobField(q_compare_layer_imageLAYER_DATA).SaveToStream(layer_stream);
+  if layer_stream.Size > 0 then begin
+    ImageEnViewCompare.Proc.Clear;
+    ImageEnViewCompare.LayersClear;
+    layer_stream.Position := 0;
+    ImageEnViewCompare.LayersLoadFromStream(layer_stream);
+    RefreshControls;
+    RefreshLayerViewer;
+  end;
+end;
+
+procedure TfmCompareLayer.ImageEnMViewDblClick(Sender: TObject);
+var
+  idx, l, tno : Integer;
+  img_name : string;
+begin
+  idx := ImageEnMView.SelectedImage;
+  tno := ImageEnMView.ImageTag[idx];
+  img_name := ImageEnMView.ImageFileName[idx];
+  ShowMessage(IntToStr(tno) + '/' + img_name);
+//  if not ImageEnViewCompare.IsEmpty then begin
+//    l := ImageEnViewCompare.LayersAdd;
+//    ImageEnViewCompare.layers[l].Bitmap.Assign(ImageEnMView.GetBitmap(idx));
+//    ImageEnViewCompare.Update;
+//  end else begin
+//    ImageEnViewCompare.Proc.Clear;
+//    ImageEnViewCompare.Assign(ImageEnMView.GetBitmap(idx));
+//    ImageEnViewCompare.Update;
+//  end;
+//  RefreshControls;
+//  RefreshLayerViewer
+end;
+
+procedure TfmCompareLayer.imgMThumbViewImageSelect(Sender: TObject;
+  idx: Integer);
+begin
+  with ImageEnViewCompare do
+  begin
+    LayersCurrent := idx;
+    RefreshControls;
+  end;
+end;
+
+procedure TfmCompareLayer.RefreshControls;
+begin
+  with ImageEnViewCompare do
+  begin
+    with CurrentLayer do
+    edtTransperency.EditValue := CurrentLayer.Transparency;
+    chkLayerVisible.Checked := CurrentLayer.Visible;
+    cboLayerOperation.ItemIndex := integer(CurrentLayer.Operation);
+  end;
+end;
+
+procedure TfmCompareLayer.RefreshLayerViewer;
+var
+  i, idx: integer;
+begin
+  imgMThumbView.Clear;
+  for i := 0 to ImageEnViewCompare.LayersCount - 1 do
+  begin
+    idx := imgMThumbView.AppendImage;
+    imgMThumbView.SetIEBitmap(idx, ImageEnViewCompare.Layers[i].Bitmap);
+//    imgMThumbView.ImageTopText[i].Caption := 'Layer ' + inttostr(i);
+    imgMThumbView.ImageTopText[i].Font.Color := clWhite;
+  end;
+  imgMThumbView.SelectedImage := ImageEnViewCompare.LayersCurrent;
+end;
+
+initialization RegisterClasses([TfmCompareLayer]);
+
+end.

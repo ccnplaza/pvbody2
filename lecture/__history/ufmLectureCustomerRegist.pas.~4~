@@ -1,0 +1,178 @@
+unit ufmLectureCustomerRegist;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ufmDialogParent, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore, dxSkinBlack,
+  dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom,
+  dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
+  dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxDBEdit, StdCtrls, cxSpinEdit, cxTextEdit, cxMaskEdit,
+  cxDropDownEdit, cxCalendar, Buttons, ExtCtrls, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, ComCtrls, dxCore, cxDateUtils,
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxImageComboBox,
+  Mask, DateUtils, cxCurrencyEdit;
+
+type
+  TfmLectureCustomerRegist = class(TfmDialogParent)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Panel7: TPanel;
+    Panel8: TPanel;
+    Panel10: TPanel;
+    Panel11: TPanel;
+    btnSave: TBitBtn;
+    btnCancel: TBitBtn;
+    lblCustName: TLabel;
+    s_date: TcxDateEdit;
+    Panel9: TPanel;
+    e_date: TcxDateEdit;
+    Panel12: TPanel;
+    Panel13: TPanel;
+    edtLectureName: TcxLookupComboBox;
+    btnSelectMember: TBitBtn;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    M_KIND: TcxImageComboBox;
+    Panel14: TPanel;
+    Panel15: TPanel;
+    LOCKER_NO: TEdit;
+    M_MONTH: TcxSpinEdit;
+    Label2: TLabel;
+    Panel17: TPanel;
+    Panel16: TPanel;
+    Panel18: TPanel;
+    NEW_OR_RENEW: TcxImageComboBox;
+    PAY_KIND: TcxImageComboBox;
+    Panel19: TPanel;
+    LabelMsg: TLabel;
+    btnLocker: TBitBtn;
+    Panel20: TPanel;
+    Panel21: TPanel;
+    REG_DATE: TcxDateEdit;
+    IS_DONE: TcxImageComboBox;
+    pnl2: TPanel;
+    mmoLEC_DESC: TMemo;
+    Panel22: TPanel;
+    Panel23: TPanel;
+    lcCenter: TcxLookupComboBox;
+    LEC_PRICE: TcxCurrencyEdit;
+    Edit1: TEdit;
+    Label1: TLabel;
+    procedure btnSaveClick(Sender: TObject);
+    procedure btnSelectMemberClick(Sender: TObject);
+    procedure btnLockerClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    memberUID, memberName, memberTel : string;
+    IsEditMode : Boolean;
+  end;
+
+var
+  fmLectureCustomerRegist: TfmLectureCustomerRegist;
+
+implementation
+
+uses GlobalVar, UdmDBCommon, uMemberSelect, UfmLockerSelect, UfmMemberConfirm;
+
+
+{$R *.dfm}
+
+function isDate ( const DateString: string ): boolean;
+begin
+  try
+    StrToDate ( DateString );
+    result := true;
+  except
+    result := false;
+  end;
+end;
+
+procedure TfmLectureCustomerRegist.btnSaveClick(Sender: TObject);
+begin
+  if IsEditMode = False then begin   //수정모드일때는 회원체크 안함.
+    if not (Length(memberUID) > 0) then begin
+      ShowMessage('회원을 선택하세요.');
+      Exit;
+    end;
+  end;
+  if isDate(DateToStr(s_date.Date)) = False then begin
+    ShowMessage('시작일자를 입력하세요.');
+    s_date.SetFocus;
+    Exit;
+  end;
+  if edtLectureName.ItemIndex < 0 then begin
+    ShowMessage('강좌명을 선택하세요.');
+    edtLectureName.SetFocus;
+    Exit;
+  end;
+  if lcCenter.EditValue < 1 then begin
+    ShowMessage('센터명을 선택하세요.');
+    lcCenter.SetFocus;
+    Exit;
+  end;
+  if M_KIND.EditValue <> 2 then begin
+    if isDate(DateToStr(e_date.Date)) = False then begin
+      ShowMessage('종료일자를 입력하세요.');
+      e_date.SetFocus;
+      Exit;
+    end;
+  end;
+  ModalResult := mrOk;
+end;
+
+procedure TfmLectureCustomerRegist.btnLockerClick(Sender: TObject);
+begin
+  fmLockerSelect := TfmLockerSelect.Create(Self);
+  try
+    fmLockerSelect.LockerNo := LOCKER_NO.Text;
+    fmLockerSelect.ShowModal;
+    if fmLockerSelect.ModalResult = mrOk then begin
+      LOCKER_NO.Text := VarToStr(fmLockerSelect.gridLockerLOCKER_NO.EditValue);
+    end;
+  finally
+    fmLockerSelect.Free;
+  end;
+end;
+
+procedure TfmLectureCustomerRegist.btnSelectMemberClick(Sender: TObject);
+var
+  center_id : integer;
+begin
+  fmMemberConfirm := TfmMemberConfirm.Create(Self);
+  try
+    fmMemberConfirm.ShowModal;
+    if fmMemberConfirm.ModalResult = mrOk then begin
+      memberUID := fmMemberConfirm.gridCustomerUID.EditValue;
+      memberName := fmMemberConfirm.gridCustomerCNAME.EditValue;
+      memberTel := fmMemberConfirm.gridCustomerCTEL.EditValue;
+      lcCenter.EditValue := fmMemberConfirm.gridCustomerIS_ACTIVE.EditValue;
+      lblCustName.Caption := memberName + '(' + memberTel + ')';
+    end;
+  finally
+    fmMemberConfirm.Free;
+  end;
+end;
+
+procedure TfmLectureCustomerRegist.FormShow(Sender: TObject);
+begin
+  dmDBCommon.LESSON_SEL_LOOK.Active := True;
+  dmDBCommon.d_LESSON_SEL_LOOK.DataSet.Refresh;
+end;
+
+end.

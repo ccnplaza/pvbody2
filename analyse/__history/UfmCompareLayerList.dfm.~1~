@@ -1,0 +1,18 @@
+object fmCompareLayerList: TfmCompareLayerList
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = #47112#51060#50612' '#48708#44368#48516#49437
+  ClientHeight = 486
+  ClientWidth = 267
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = #44404#47548
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+end

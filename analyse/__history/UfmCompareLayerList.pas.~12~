@@ -1,0 +1,81 @@
+unit UfmCompareLayerList;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  cxContainer, cxEdit, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
+  dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, cxStyles,
+  dxSkinscxPCPainter, cxCustomData, cxFilter, cxData, cxDataStorage,
+  cxNavigator, DB, cxDBData, cxGridLevel, cxGridCustomTableView,
+  cxGridTableView, cxGridDBTableView, cxClasses, cxGridCustomView, cxGrid,
+  StdCtrls, Buttons, ExtCtrls, cxGroupBox;
+
+type
+  TfmCompareLayerList = class(TForm)
+    cxGroupBox2: TcxGroupBox;
+    Panel7: TPanel;
+    btnView: TBitBtn;
+    btnSave: TBitBtn;
+    btnDel: TBitBtn;
+    cxGrid3: TcxGrid;
+    gridCompareWin: TcxGridDBTableView;
+    gridCompareWinID: TcxGridDBColumn;
+    gridCompareWinMEMBER_ID: TcxGridDBColumn;
+    gridCompareWinP_DATE: TcxGridDBColumn;
+    gridCompareWinC_NAME: TcxGridDBColumn;
+    gridCompareWinC_COMMENT: TcxGridDBColumn;
+    cxGrid3Level1: TcxGridLevel;
+    procedure FormShow(Sender: TObject);
+    procedure gridCompareWinCellDblClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
+    procedure btnViewClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fmCompareLayerList: TfmCompareLayerList;
+
+implementation
+uses
+  GlobalVar, UdmDBCommon, UfmCompareList2, UfmCompareComment;
+
+{$R *.dfm}
+
+procedure TfmCompareLayerList.btnViewClick(Sender: TObject);
+begin
+  fmCompareList2.RetrieveCompareLayers;
+
+end;
+
+procedure TfmCompareLayerList.FormShow(Sender: TObject);
+begin
+  dmDBCommon.IMAGE_LAYERS_SEL.ParamByName('M_ID').AsString := CustomerImages.CustID;
+  dmDBCommon.IMAGE_LAYERS_SEL.Active := True;
+  dmDBCommon.ds_IMAGE_LAYERS_SEL.DataSet.Refresh;
+end;
+
+procedure TfmCompareLayerList.gridCompareWinCellDblClick(
+  Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
+  AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+begin
+  btnView.Click;
+end;
+
+end.

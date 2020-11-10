@@ -1,0 +1,98 @@
+object fmPracticeEdit: TfmPracticeEdit
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = #50868#46041#52376#48169
+  ClientHeight = 253
+  ClientWidth = 412
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poOwnerFormCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object GroupBox1: TGroupBox
+    AlignWithMargins = True
+    Left = 3
+    Top = 3
+    Width = 406
+    Height = 247
+    Align = alClient
+    Caption = #50868#46041#52376#48169' '#46321#47197'/'#49688#51221
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = #44404#47548
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    ExplicitLeft = -2
+    ExplicitTop = -2
+    ExplicitWidth = 396
+    ExplicitHeight = 237
+    object Label1: TLabel
+      Left = 64
+      Top = 40
+      Width = 43
+      Height = 17
+      Caption = #50868#46041#47749':'
+    end
+    object Label2: TLabel
+      Left = 25
+      Top = 67
+      Width = 82
+      Height = 13
+      Caption = #51201#50857#49888#52404#48512#50948':'
+    end
+    object Label3: TLabel
+      Left = 51
+      Top = 114
+      Width = 56
+      Height = 13
+      Caption = #44288#47144#53685#51613':'
+    end
+    object edtPName: TEdit
+      Left = 113
+      Top = 37
+      Width = 224
+      Height = 21
+      TabOrder = 0
+    end
+    object edtBody: TMemo
+      Left = 113
+      Top = 64
+      Width = 224
+      Height = 41
+      TabOrder = 1
+    end
+    object edtPain: TMemo
+      Left = 113
+      Top = 111
+      Width = 224
+      Height = 41
+      TabOrder = 2
+    end
+    object BitBtn1: TBitBtn
+      Left = 113
+      Top = 184
+      Width = 75
+      Height = 25
+      Caption = #51200#51109
+      Kind = bkOK
+      TabOrder = 3
+    end
+    object BitBtn2: TBitBtn
+      Left = 194
+      Top = 184
+      Width = 75
+      Height = 25
+      Caption = #52712#49548
+      Kind = bkCancel
+      TabOrder = 4
+    end
+  end
+end

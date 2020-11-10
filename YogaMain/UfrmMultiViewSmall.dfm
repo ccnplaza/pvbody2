@@ -1,0 +1,44 @@
+object frmMultiViewSmall: TfrmMultiViewSmall
+  Left = 0
+  Top = 0
+  Width = 367
+  Height = 689
+  TabOrder = 0
+  object ImageEnMView1: TImageEnMView
+    Left = 0
+    Top = 0
+    Width = 367
+    Height = 689
+    Background = clWindowFrame
+    GridWidth = -1
+    StoreType = ietNormal
+    ThumbWidth = 130
+    ThumbHeight = 200
+    HorizBorder = 6
+    VertBorder = 5
+    BottomGap = 3
+    UpperGap = 5
+    LeftGap = 3
+    TextMargin = 4
+    ThumbnailOptionsEx = [ietxShowIconForUnknownFormat, ietxShowIconWhileLoading, ietxEnableInternalIcons, ietxStretchSmallImages, ietxAutoPadThumbnailColumns, ietxCenterSingleFrame]
+    PopupMenus = []
+    SelectionColor = clRed
+    Style = iemsFlat
+    AutoAdjustStyle = True
+    ThumbnailsBackground = clGray
+    ThumbnailsBackgroundSelected = clBlue
+    ThumbnailsBackgroundHover = clYellow
+    MultiSelectionOptions = []
+    DefaultTopText = iedtNone
+    DefaultInfoText = iedtNone
+    DefaultBottomText = iedtFilename
+    Align = alClient
+    ThumbnailResampleFilter = rfNone
+    SelectedFontColor = clWhite
+    TabOrder = 0
+    ExplicitLeft = 3
+    ExplicitTop = -51
+    ExplicitWidth = 303
+    ExplicitHeight = 740
+  end
+end

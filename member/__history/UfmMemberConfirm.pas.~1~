@@ -1,0 +1,24 @@
+unit UfmMemberConfirm;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs;
+
+type
+  TfmMemberConfirm = class(TForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fmMemberConfirm: TfmMemberConfirm;
+
+implementation
+
+{$R *.dfm}
+
+end.

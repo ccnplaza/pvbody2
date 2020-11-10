@@ -1,0 +1,300 @@
+unit UfmProductSale;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  cxContainer, cxEdit, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
+  dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, cxStyles,
+  dxSkinscxPCPainter, cxCustomData, cxFilter, cxData, cxDataStorage,
+  cxNavigator, DB, cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, cxTextEdit,
+  cxMaskEdit, cxSpinEdit, ComCtrls, StdCtrls, Buttons, ExtCtrls, DateUtils,
+  cxDBLookupComboBox, cxImageComboBox, MemDS, DBAccess, Uni, DAAlerter,
+  UniAlerter, cxDropDownEdit;
+
+type
+  TfmProductSale = class(TForm)
+    Panel8: TPanel;
+    Label1: TLabel;
+    btnView: TBitBtn;
+    btnAdd: TBitBtn;
+    btnEdit: TBitBtn;
+    btnDel: TBitBtn;
+    s_date: TDateTimePicker;
+    e_date: TDateTimePicker;
+    btnExcelActive: TBitBtn;
+    btnLecture: TBitBtn;
+    gridSale: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
+    gridSaleID: TcxGridDBColumn;
+    gridSaleS_DATE: TcxGridDBColumn;
+    gridSaleITEM_ID: TcxGridDBColumn;
+    gridSaleS_DESC: TcxGridDBColumn;
+    gridSaleS_QTY: TcxGridDBColumn;
+    gridSaleQ_PRICE: TcxGridDBColumn;
+    gridSaleT_PRICE: TcxGridDBColumn;
+    gridSalePAY_WAY: TcxGridDBColumn;
+    gridSalePAYED: TcxGridDBColumn;
+    GET_CASH_INOUT_SALEID: TUniStoredProc;
+    CASH_INOUT_DEL_BY_SALE: TUniStoredProc;
+    CASH_INOUT_UPD_BY_SALE: TUniStoredProc;
+    PRODUCT_SALE_DEL: TUniStoredProc;
+    UniAlerter1: TUniAlerter;
+    icbCenter: TcxImageComboBox;
+    gridSaleCENTER_ID: TcxGridDBColumn;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
+    procedure btnViewClick(Sender: TObject);
+    procedure s_dateChange(Sender: TObject);
+    procedure e_dateChange(Sender: TObject);
+    procedure btnAddClick(Sender: TObject);
+    procedure btnLectureClick(Sender: TObject);
+    procedure btnEditClick(Sender: TObject);
+    procedure btnDelClick(Sender: TObject);
+    procedure gridSaleCellDblClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
+    procedure UniAlerter1Event(Sender: TDAAlerter; const EventName,
+      Message: string);
+    procedure icbCenterPropertiesCloseUp(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    IsMyAction : Boolean;
+    S_CENTER, E_CENTER : Integer;
+  end;
+
+var
+  fmProductSale: TfmProductSale;
+
+implementation
+
+uses GlobalVar, UdmDBCommon, UfmProductSaleEdit, UfmProductsEdit;
+
+{$R *.dfm}
+
+
+procedure TfmProductSale.btnAddClick(Sender: TObject);
+var
+  UID : string;
+begin
+  fmProductSaleEdit := TfmProductSaleEdit.Create(Self);
+  try
+    fmProductSaleEdit.c_date.Date := Date;
+    fmProductSaleEdit.ShowModal;
+    if fmProductSaleEdit.ModalResult = mrOk then begin
+      IsMyAction := True;
+      UID := FormatDateTime('yyyymmddhhnnsszzz', now);
+      dmDBCommon.PRODUCT_SALE_INS.ParamByName('ID').Value := UID;
+      dmDBCommon.PRODUCT_SALE_INS.ParamByName('S_DATE').Value := fmProductSaleEdit.c_date.Date;
+      dmDBCommon.PRODUCT_SALE_INS.ParamByName('ITEM_ID').Value := fmProductSaleEdit.product_name.EditValue;
+      dmDBCommon.PRODUCT_SALE_INS.ParamByName('S_DESC').AsString := fmProductSaleEdit.BIGO.Text;
+      dmDBCommon.PRODUCT_SALE_INS.ParamByName('S_QTY').Value := fmProductSaleEdit.QTY.Value;
+      dmDBCommon.PRODUCT_SALE_INS.ParamByName('Q_PRICE').Value := fmProductSaleEdit.UPRICE.Value;
+      dmDBCommon.PRODUCT_SALE_INS.ParamByName('T_PRICE').Value := fmProductSaleEdit.TPRICE.Value;
+      dmDBCommon.PRODUCT_SALE_INS.ParamByName('PAY_WAY').Value := fmProductSaleEdit.PAY_KIND.EditValue;
+      dmDBCommon.PRODUCT_SALE_INS.ParamByName('PAYED').Value := fmProductSaleEdit.PAYED.Value;
+      dmDBCommon.PRODUCT_SALE_INS.ParamByName('CENTER_ID').Value := fmProductSaleEdit.cbCenter.EditValue;
+      dmDBCommon.PRODUCT_SALE_INS.ExecProc;
+      //현금출납장에 변경내용 반영하는 기능
+      if fmProductSaleEdit.PAY_KIND.EditValue = 0 then begin
+        dmDBCommon.CASH_INOUT_INS.ParamByName('ID').Value := FormatDateTime('yyyymmddhhnnsszzz', now);
+        dmDBCommon.CASH_INOUT_INS.ParamByName('C_DATE').Value := fmProductSaleEdit.c_date.Date;
+        dmDBCommon.CASH_INOUT_INS.ParamByName('K_CODE').Value := 3; //계정과목:수강료(고정값, 수정하면안됨)
+        dmDBCommon.CASH_INOUT_INS.ParamByName('C_DESC').Value := fmProductSaleEdit.BIGO.Text;
+        dmDBCommon.CASH_INOUT_INS.ParamByName('CASH_IN').Value := fmProductSaleEdit.PAYED.Value;
+        dmDBCommon.CASH_INOUT_INS.ParamByName('CASH_OUT').Value := 0;
+        dmDBCommon.CASH_INOUT_INS.ParamByName('LESSON_ID').Value := '';
+        dmDBCommon.CASH_INOUT_INS.ParamByName('PRODUCT_SALE_ID').Value := UID;
+        dmDBCommon.CASH_INOUT_INS.ParamByName('CENTER_ID').Value := fmProductSaleEdit.cbCenter.EditValue;
+        dmDBCommon.CASH_INOUT_INS.ExecProc;
+      end;
+
+      dmDBCommon.d_PRODUCT_SALE_SEL.DataSet.Refresh;
+    end;
+  finally
+    fmProductSaleEdit.Free;
+  end;
+end;
+
+procedure TfmProductSale.btnDelClick(Sender: TObject);
+begin
+  if Application.MessageBox('선택한 자료를 삭제합니다.' + #13#10 + '삭제한 자료는 되살릴 수 없습니다.' +
+    #13#10 + '삭제 할까요?', '자료삭제', MB_YESNO + MB_ICONWARNING) = IDYES then
+  begin
+    IsMyAction := True;
+    gridSale.DataController.SaveBookmark;
+    PRODUCT_SALE_DEL.ParamByName('ID').Value := gridSaleID.EditValue;
+    PRODUCT_SALE_DEL.ExecProc;
+
+    CASH_INOUT_DEL_BY_SALE.ParamByName('SALE_ID').Value := gridSaleID.EditValue;
+    CASH_INOUT_DEL_BY_SALE.ExecProc;
+
+    dmDBCommon.d_PRODUCT_SALE_SEL.DataSet.Refresh;
+    gridSale.DataController.GotoBookmark;
+  end;
+end;
+
+procedure TfmProductSale.btnEditClick(Sender: TObject);
+var
+  id, sale_id : string;
+begin
+  fmProductSaleEdit := TfmProductSaleEdit.Create(Self);
+  try
+    fmProductSaleEdit.c_date.Date := gridSaleS_DATE.EditValue;
+    fmProductSaleEdit.product_name.EditValue := gridSaleITEM_ID.EditValue;
+    fmProductSaleEdit.BIGO.Text := gridSaleS_DESC.EditValue;
+    fmProductSaleEdit.QTY.Value := gridSaleS_QTY.EditValue;
+    fmProductSaleEdit.UPRICE.Value := gridSaleQ_PRICE.EditValue;
+    fmProductSaleEdit.TPRICE.Value := gridSaleT_PRICE.EditValue;
+    fmProductSaleEdit.PAY_KIND.EditValue := gridSalePAY_WAY.EditValue;
+    fmProductSaleEdit.PAYED.Value := gridSalePAYED.EditValue;
+    fmProductSaleEdit.cbCenter.EditValue := gridSaleCENTER_ID.EditValue;
+
+    fmProductSaleEdit.ShowModal;
+    if fmProductSaleEdit.ModalResult = mrOk then begin
+      IsMyAction := True;
+      gridSale.DataController.SaveBookmark;
+      id := gridSaleID.EditValue;
+      dmDBCommon.PRODUCT_SALE_UPD.ParamByName('ID').Value := id;
+      dmDBCommon.PRODUCT_SALE_UPD.ParamByName('S_DATE').Value := fmProductSaleEdit.c_date.Date;
+      dmDBCommon.PRODUCT_SALE_UPD.ParamByName('ITEM_ID').Value := fmProductSaleEdit.product_name.EditValue;
+      dmDBCommon.PRODUCT_SALE_UPD.ParamByName('S_DESC').AsString := fmProductSaleEdit.BIGO.Text;
+      dmDBCommon.PRODUCT_SALE_UPD.ParamByName('S_QTY').Value := fmProductSaleEdit.QTY.Value;
+      dmDBCommon.PRODUCT_SALE_UPD.ParamByName('Q_PRICE').Value := fmProductSaleEdit.UPRICE.Value;
+      dmDBCommon.PRODUCT_SALE_UPD.ParamByName('T_PRICE').Value := fmProductSaleEdit.TPRICE.Value;
+      dmDBCommon.PRODUCT_SALE_UPD.ParamByName('PAY_WAY').Value := fmProductSaleEdit.PAY_KIND.EditValue;
+      dmDBCommon.PRODUCT_SALE_UPD.ParamByName('PAYED').Value := fmProductSaleEdit.PAYED.Value;
+      dmDBCommon.PRODUCT_SALE_UPD.ParamByName('CENTER_ID').Value := fmProductSaleEdit.cbCenter.EditValue;
+      dmDBCommon.PRODUCT_SALE_UPD.ExecProc;
+      //현금출납장에 변경내용 반영하는 기능
+      if fmProductSaleEdit.PAY_KIND.EditValue = 0 then begin
+        GET_CASH_INOUT_SALEID.ParamByName('SALE_ID').Value := id;
+        GET_CASH_INOUT_SALEID.ExecProc;
+        sale_id := GET_CASH_INOUT_SALEID.ParamByName('cash_inout_id').AsString;
+        if sale_id <> '' then begin
+          CASH_INOUT_UPD_BY_SALE.ParamByName('SALE_ID').Value := id;
+          CASH_INOUT_UPD_BY_SALE.ParamByName('C_DATE').Value := fmProductSaleEdit.c_date.Date;
+          CASH_INOUT_UPD_BY_SALE.ParamByName('CASH_IN').Value := fmProductSaleEdit.PAYED.Value;
+          CASH_INOUT_UPD_BY_SALE.ParamByName('CASH_OUT').Value := 0;
+          CASH_INOUT_UPD_BY_SALE.ParamByName('CENTER_ID').Value := fmProductSaleEdit.cbCenter.EditValue;
+          CASH_INOUT_UPD_BY_SALE.ExecProc;
+        end else begin
+          dmDBCommon.CASH_INOUT_INS.ParamByName('ID').Value := FormatDateTime('yyyymmddhhnnsszzz', now);
+          dmDBCommon.CASH_INOUT_INS.ParamByName('C_DATE').Value := fmProductSaleEdit.c_date.Date;
+          dmDBCommon.CASH_INOUT_INS.ParamByName('K_CODE').Value := 3; //계정과목:수강료(고정값, 수정하면안됨)
+          dmDBCommon.CASH_INOUT_INS.ParamByName('C_DESC').Value := fmProductSaleEdit.BIGO.Text;
+          dmDBCommon.CASH_INOUT_INS.ParamByName('CASH_IN').Value := fmProductSaleEdit.PAYED.Value;
+          dmDBCommon.CASH_INOUT_INS.ParamByName('CASH_OUT').Value := 0;
+          dmDBCommon.CASH_INOUT_INS.ParamByName('LESSON_ID').Value := '';
+          dmDBCommon.CASH_INOUT_INS.ParamByName('PRODUCT_SALE_ID').Value := id;
+          dmDBCommon.CASH_INOUT_INS.ParamByName('CENTER_ID').Value := fmProductSaleEdit.cbCenter.EditValue;
+          dmDBCommon.CASH_INOUT_INS.ExecProc;
+        end;
+      end else begin
+        CASH_INOUT_DEL_BY_SALE.ParamByName('SALE_ID').Value := id;
+        CASH_INOUT_DEL_BY_SALE.ExecProc;
+      end;
+
+      dmDBCommon.d_PRODUCT_SALE_SEL.DataSet.Refresh;
+      gridSale.DataController.SaveBookmark;
+    end;
+  finally
+    fmProductSaleEdit.Free;
+  end;
+end;
+
+procedure TfmProductSale.btnLectureClick(Sender: TObject);
+begin
+  fmProductsEdit := TfmProductsEdit.Create(Self);
+  try
+    fmProductsEdit.ShowModal;
+  finally
+    fmProductsEdit.Free;
+  end;
+end;
+
+procedure TfmProductSale.btnViewClick(Sender: TObject);
+begin
+  if icbCenter.EditValue > 0 then begin
+    S_CENTER := icbCenter.EditValue;
+    E_CENTER := icbCenter.EditValue;
+  end else begin
+    S_CENTER := 0;
+    E_CENTER := 99;
+  end;
+  dmDBCommon.PRODUCT_SALE_SEL.ParamByName('S_CENTER').Value := S_CENTER;
+  dmDBCommon.PRODUCT_SALE_SEL.ParamByName('E_CENTER').Value := E_CENTER;
+  dmDBCommon.PRODUCT_SALE_SEL.ParamByName('START_DATE').Value := s_date.Date;
+  dmDBCommon.PRODUCT_SALE_SEL.ParamByName('END_DATE').Value := e_date.Date;
+  dmDBCommon.PRODUCT_SALE_SEL.Active := True;
+  dmDBCommon.d_PRODUCT_SALE_SEL.DataSet.Refresh;
+end;
+
+procedure TfmProductSale.e_dateChange(Sender: TObject);
+begin
+  btnView.Click;
+end;
+
+procedure TfmProductSale.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := caFree;
+end;
+
+procedure TfmProductSale.FormShow(Sender: TObject);
+begin
+  dmDBCommon.PRODUCTS_SEL_LOOK.Active := True;
+  dmDBCommon.d_PRODUCTS_SEL_LOOK.DataSet.Refresh;
+
+  dmDBCommon.SetCenter(icbCenter);
+  icbCenter.Enabled := LoginUserKIND >= 2;
+
+  s_date.Date := StrToDate(Format('%.4d-%.2d-01', [YearOf(Date),MonthOf(Date)]));
+  e_date.Date := Date;
+  btnView.Click;
+end;
+
+procedure TfmProductSale.gridSaleCellDblClick(Sender: TcxCustomGridTableView;
+  ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+  AShift: TShiftState; var AHandled: Boolean);
+begin
+  btnEdit.Click;
+end;
+
+procedure TfmProductSale.icbCenterPropertiesCloseUp(Sender: TObject);
+begin
+  btnView.Click;
+end;
+
+procedure TfmProductSale.s_dateChange(Sender: TObject);
+begin
+  btnView.Click;
+end;
+
+procedure TfmProductSale.UniAlerter1Event(Sender: TDAAlerter; const EventName,
+  Message: string);
+begin
+  if IsMyAction = False then
+    btnView.Click
+  else
+    IsMyAction := False;
+end;
+
+initialization RegisterClasses([TfmProductSale]);
+
+end.

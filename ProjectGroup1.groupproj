@@ -1,0 +1,48 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{8CB6AEAF-6796-48A1-8741-8752F1872C79}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="YogaMain\PVBody.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="..\UserManager\UserManager.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="PVBody">
+			<MSBuild Projects="YogaMain\PVBody.dproj"/>
+		</Target>
+		<Target Name="PVBody:Clean">
+			<MSBuild Targets="Clean" Projects="YogaMain\PVBody.dproj"/>
+		</Target>
+		<Target Name="PVBody:Make">
+			<MSBuild Targets="Make" Projects="YogaMain\PVBody.dproj"/>
+		</Target>
+		<Target Name="UserManager">
+			<MSBuild Projects="..\UserManager\UserManager.dproj"/>
+		</Target>
+		<Target Name="UserManager:Clean">
+			<MSBuild Targets="Clean" Projects="..\UserManager\UserManager.dproj"/>
+		</Target>
+		<Target Name="UserManager:Make">
+			<MSBuild Targets="Make" Projects="..\UserManager\UserManager.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="PVBody;UserManager"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="PVBody:Clean;UserManager:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="PVBody:Make;UserManager:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>

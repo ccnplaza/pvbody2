@@ -1,0 +1,109 @@
+unit uCommonLogic;
+
+interface
+uses
+    Windows, Classes, DB, ADODB, SysUtils, Forms, Graphics, ExtCtrls,
+    Registry, Dialogs, Controls, DBCtrls, iemview, cxGridDBTableView,
+    DBClient, IdHashMessageDigest, idHash, ievect, Uni, InterBaseUniProvider,
+    DateUtils, Types, Messages, cxGridDBBandedTableView;
+
+procedure LockControl(c: TWinControl; lock: boolean);
+function GetFileVersion(szFullPath: pChar): String;
+function CreateUniqTimeString : string;
+procedure SavePosition(var DataGrid : TcxGridDBTableView); overload;
+procedure GotoPosition(var DataGrid : TcxGridDBTableView); overload;
+procedure SavePosition(var DataGrid : TcxGridDBBandedTableView); overload;
+procedure GotoPosition(var DataGrid : TcxGridDBBandedTableView); overload;
+procedure ShowLoadingMessage(var mdiForm : TForm; msg : string);
+
+
+implementation
+uses GlobalVar;
+
+procedure ShowLoadingMessage(var mdiForm : TForm; msg : string);
+var
+  pnlTest : TPanel;
+begin
+  pnlTest := TPanel.Create(mdiForm);
+  pnlTest.Parent := mdiForm;
+  pnlTest.Caption := msg;
+  pnlTest.Font.Color := clWhite;
+  pnlTest.Font.Size := 11;
+  pnlTest.Top := (mdiForm.Height div 2) - 25;
+  pnlTest.Left := (mdiForm.Width div 2) - 200;
+  pnlTest.Width := 400;
+  pnlTest.Height := 50;
+  pnlTest.ParentBackground := false;
+  pnlTest.Color := clRed;
+  pnlTest.Visible := True;
+end;
+
+procedure LockControl(c: TWinControl; lock: boolean);
+begin
+  if (c=nil) or (c.Handle=0) then exit;
+  if lock then SendMessage(c.Handle,WM_SETREDRAW,0,0)
+  else begin
+    SendMessage(c.Handle,WM_SETREDRAW,1,0);
+    RedrawWindow(c.Handle,nil,0,
+        RDW_ERASE or RDW_FRAME or RDW_INVALIDATE or RDW_ALLCHILDREN);
+  end;
+end;
+
+function GetFileVersion(szFullPath: pChar): String;
+var
+  Size, Size2: DWord;
+  Pt, Pt2: Pointer;
+begin
+  Result := '';
+  Size := GetFileVersionInfoSize(szFullPath, Size2);
+  if Size > 0 then begin
+    GetMem(Pt, Size);
+    try
+      GetFileVersionInfo(szFullPath, 0, Size, Pt);
+      VerQueryValue (Pt, '\', Pt2, Size2);
+      with TVSFixedFileInfo(Pt2^) do begin
+        Result := Format('%d.%d.%d.%d', [HiWord(dwFileVersionMS),
+                                         LoWord(dwFileVersionMS),
+                                         HiWord(dwFileVersionLS),
+                                         LoWord(dwFileVersionLS)]);
+      end;
+    finally
+      FreeMem(Pt);
+    end;
+  end;
+end;
+
+function CreateUniqTimeString : string;
+begin
+  result := FormatDateTime('yyyymmddhhnnsszzz', now);
+end;
+
+procedure SavePosition(var DataGrid : TcxGridDBTableView);
+begin
+  TopRowIndex := DataGrid.Controller.TopRowIndex;
+  DataGrid.DataController.SaveBookmark;
+end;
+
+procedure GotoPosition(var DataGrid : TcxGridDBTableView);
+begin
+  DataGrid.Controller.TopRowIndex := TopRowIndex;
+  if DataGrid.DataController.IsBookmarkAvailable then
+    DataGrid.DataController.GotoBookmark
+  else
+    DataGrid.DataController.GotoLast;
+end;
+
+procedure SavePosition(var DataGrid : TcxGridDBBandedTableView);
+begin
+  TopRowIndex := DataGrid.Controller.TopRowIndex;
+  DataGrid.DataController.SaveBookmark;
+end;
+
+procedure GotoPosition(var DataGrid : TcxGridDBBandedTableView);
+begin
+  DataGrid.Controller.TopRowIndex := TopRowIndex;
+  DataGrid.DataController.GotoBookmark;
+end;
+
+
+end.

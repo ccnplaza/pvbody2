@@ -1,0 +1,114 @@
+unit UfmMultiUploader;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ieopensavedlg, StdCtrls, Buttons, ieview, imageenview, hyieutils,
+  iexBitmaps, hyiedefs, iesettings, iexLayers, iexRulers, iexToolbars;
+
+type
+  TfmMultiUploader = class(TForm)
+    GroupBox1: TGroupBox;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    Edit5: TEdit;
+    Edit6: TEdit;
+    Edit7: TEdit;
+    btnPic1: TBitBtn;
+    btnPic2: TBitBtn;
+    btnPic3: TBitBtn;
+    btnPic4: TBitBtn;
+    btnPic5: TBitBtn;
+    btnPic6: TBitBtn;
+    btnSave: TBitBtn;
+    btnCancel: TBitBtn;
+    OpenImageEnDialog1: TOpenImageEnDialog;
+    Label8: TLabel;
+    ImageEnView1: TImageEnView;
+    ImageEnView2: TImageEnView;
+    ImageEnView3: TImageEnView;
+    ImageEnView4: TImageEnView;
+    ImageEnView5: TImageEnView;
+    ImageEnView6: TImageEnView;
+    ImageEnView7: TImageEnView;
+    procedure btnPic1Click(Sender: TObject);
+    procedure btnPic2Click(Sender: TObject);
+    procedure btnPic3Click(Sender: TObject);
+    procedure btnPic4Click(Sender: TObject);
+    procedure btnPic5Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fmMultiUploader: TfmMultiUploader;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfmMultiUploader.btnPic1Click(Sender: TObject);
+begin
+  if OpenImageEnDialog1.Execute then begin
+    Edit1.Text := OpenImageEnDialog1.FileName;
+    ImageEnView1.IO.LoadFromFile(Edit1.Text);
+  end;
+end;
+
+procedure TfmMultiUploader.btnPic2Click(Sender: TObject);
+begin
+  if OpenImageEnDialog1.Execute then begin
+    Edit2.Text := OpenImageEnDialog1.FileName;
+    ImageEnView2.IO.LoadFromFile(Edit2.Text);
+  end;
+end;
+
+procedure TfmMultiUploader.btnPic3Click(Sender: TObject);
+begin
+  if OpenImageEnDialog1.Execute then begin
+    Edit3.Text := OpenImageEnDialog1.FileName;
+    ImageEnView3.IO.LoadFromFile(Edit3.Text);
+  end;
+end;
+
+procedure TfmMultiUploader.btnPic4Click(Sender: TObject);
+begin
+  if OpenImageEnDialog1.Execute then begin
+    Edit4.Text := OpenImageEnDialog1.FileName;
+    ImageEnView4.IO.LoadFromFile(Edit4.Text);
+  end;
+end;
+
+procedure TfmMultiUploader.btnPic5Click(Sender: TObject);
+begin
+  if OpenImageEnDialog1.Execute then begin
+    Edit5.Text := OpenImageEnDialog1.FileName;
+    ImageEnView5.IO.LoadFromFile(Edit5.Text);
+  end;
+end;
+
+procedure TfmMultiUploader.FormShow(Sender: TObject);
+begin
+  ImageEnView1.Clear;
+  ImageEnView2.Clear;
+  ImageEnView3.Clear;
+  ImageEnView4.Clear;
+  ImageEnView5.Clear;
+  ImageEnView6.Clear;
+  ImageEnView7.Clear;
+end;
+
+end.

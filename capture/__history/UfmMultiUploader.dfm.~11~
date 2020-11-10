@@ -1,0 +1,351 @@
+object fmMultiUploader: TfmMultiUploader
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = #45796#51473#54028#51068' '#50629#47196#45908
+  ClientHeight = 459
+  ClientWidth = 1032
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = #44404#47548
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object GroupBox1: TGroupBox
+    AlignWithMargins = True
+    Left = 3
+    Top = 3
+    Width = 1026
+    Height = 453
+    Align = alClient
+    Caption = #54028#51068#49440#53469
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 9
+      Top = 34
+      Width = 141
+      Height = 24
+      Alignment = taCenter
+      AutoSize = False
+      Caption = #51204#47732#51088#49464
+      Color = clNavy
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = #44404#47548
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+      Layout = tlCenter
+    end
+    object Label2: TLabel
+      Left = 152
+      Top = 34
+      Width = 142
+      Height = 24
+      Alignment = taCenter
+      AutoSize = False
+      Caption = #51340#52769#51088#49464
+      Color = clNavy
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = #44404#47548
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+      Layout = tlCenter
+    end
+    object Label3: TLabel
+      Left = 296
+      Top = 34
+      Width = 142
+      Height = 24
+      Alignment = taCenter
+      AutoSize = False
+      Caption = #50864#52769#51088#49464
+      Color = clNavy
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = #44404#47548
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+      Layout = tlCenter
+    end
+    object Label4: TLabel
+      Left = 440
+      Top = 34
+      Width = 142
+      Height = 24
+      Alignment = taCenter
+      AutoSize = False
+      Caption = #54980#47732#51088#49464'1'
+      Color = clNavy
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = #44404#47548
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+      Layout = tlCenter
+    end
+    object Label5: TLabel
+      Left = 584
+      Top = 34
+      Width = 142
+      Height = 24
+      Alignment = taCenter
+      AutoSize = False
+      Caption = #54980#47732#51088#49464'2'
+      Color = clNavy
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = #44404#47548
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+      Layout = tlCenter
+    end
+    object Label6: TLabel
+      Left = 728
+      Top = 34
+      Width = 142
+      Height = 24
+      Alignment = taCenter
+      AutoSize = False
+      Caption = #51313#48512
+      Color = clNavy
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = #44404#47548
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+      Layout = tlCenter
+    end
+    object Label7: TLabel
+      Left = 872
+      Top = 34
+      Width = 142
+      Height = 24
+      Alignment = taCenter
+      AutoSize = False
+      Caption = #44592#53440
+      Color = clNavy
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = #44404#47548
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+      Layout = tlCenter
+    end
+    object Label8: TLabel
+      Left = 312
+      Top = 343
+      Width = 400
+      Height = 13
+      Caption = #54028#51068#47749#51060' '#51080#45716' '#51088#49464#47564' '#51200#51109#54633#45768#45796'. '#54596#50836#54620' '#51088#49464#47564' '#49440#53469#54616#49492#46020' '#46121#45768#45796'.'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clRed
+      Font.Height = -13
+      Font.Name = #44404#47548
+      Font.Style = []
+      ParentFont = False
+    end
+    object Edit1: TEdit
+      Left = 8
+      Top = 273
+      Width = 142
+      Height = 21
+      TabOrder = 0
+    end
+    object Edit2: TEdit
+      Left = 152
+      Top = 273
+      Width = 142
+      Height = 21
+      TabOrder = 1
+    end
+    object Edit3: TEdit
+      Left = 296
+      Top = 273
+      Width = 142
+      Height = 21
+      TabOrder = 2
+    end
+    object Edit4: TEdit
+      Left = 440
+      Top = 273
+      Width = 142
+      Height = 21
+      TabOrder = 3
+    end
+    object Edit5: TEdit
+      Left = 584
+      Top = 273
+      Width = 142
+      Height = 21
+      TabOrder = 4
+    end
+    object Edit6: TEdit
+      Left = 728
+      Top = 273
+      Width = 142
+      Height = 21
+      TabOrder = 5
+    end
+    object Edit7: TEdit
+      Left = 872
+      Top = 273
+      Width = 142
+      Height = 21
+      TabOrder = 6
+    end
+    object btnPic1: TBitBtn
+      Left = 8
+      Top = 296
+      Width = 142
+      Height = 25
+      Caption = #51204#47732#51088#49464' '#54028#51068'...'
+      Glyph.Data = {
+        F6000000424DF600000000000000760000002800000010000000100000000100
+        04000000000080000000120B0000120B00001000000000000000000000000000
+        8000008000000080800080000000800080008080000080808000C0C0C0000000
+        FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+        DADAA000000000000000D077770770770880A007707707708800D0F077777708
+        80F0A0BF077070880FB0D0FBF0770B00FBF0A0BFBF00BFBFBFB0D0FBFBFBFBFB
+        FBF0A0BFBFBFBF7007B0D0FBFBFBFB0330F0A0BFBFBFBF0330B0D0FBFBFBFB70
+        07F0A0BFBFBFBFBFBFB0D000000000000000ADADADADADADADAD}
+      TabOrder = 7
+      OnClick = btnPic1Click
+    end
+    object btnPic2: TBitBtn
+      Left = 152
+      Top = 296
+      Width = 142
+      Height = 25
+      Caption = #51340#52769#51088#49464' '#54028#51068'...'
+      Glyph.Data = {
+        F6000000424DF600000000000000760000002800000010000000100000000100
+        04000000000080000000120B0000120B00001000000000000000000000000000
+        8000008000000080800080000000800080008080000080808000C0C0C0000000
+        FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+        DADAA000000000000000D077770770770880A007707707708800D0F077777708
+        80F0A0BF077070880FB0D0FBF0770B00FBF0A0BFBF00BFBFBFB0D0FBFBFBFBFB
+        FBF0A0BFBFBFBF7007B0D0FBFBFBFB0330F0A0BFBFBFBF0330B0D0FBFBFBFB70
+        07F0A0BFBFBFBFBFBFB0D000000000000000ADADADADADADADAD}
+      TabOrder = 8
+    end
+    object btnSave: TBitBtn
+      Left = 432
+      Top = 386
+      Width = 75
+      Height = 29
+      Caption = #51200#51109
+      Kind = bkOK
+      TabOrder = 9
+    end
+    object btnCancel: TBitBtn
+      Left = 513
+      Top = 386
+      Width = 75
+      Height = 29
+      Caption = #52712#49548
+      Kind = bkCancel
+      TabOrder = 10
+    end
+    object ImageEnView1: TImageEnView
+      Left = 8
+      Top = 59
+      Width = 142
+      Height = 213
+      Background = clWindowFrame
+      AutoStretch = True
+      AutoShrink = True
+      TabOrder = 11
+    end
+    object ImageEnView2: TImageEnView
+      Left = 152
+      Top = 59
+      Width = 142
+      Height = 213
+      Background = clWindowFrame
+      AutoStretch = True
+      AutoShrink = True
+      TabOrder = 12
+    end
+    object ImageEnView3: TImageEnView
+      Left = 296
+      Top = 59
+      Width = 142
+      Height = 213
+      Background = clWindowFrame
+      AutoStretch = True
+      AutoShrink = True
+      TabOrder = 13
+    end
+    object ImageEnView4: TImageEnView
+      Left = 440
+      Top = 59
+      Width = 142
+      Height = 213
+      Background = clWindowFrame
+      AutoStretch = True
+      AutoShrink = True
+      TabOrder = 14
+    end
+    object ImageEnView5: TImageEnView
+      Left = 584
+      Top = 59
+      Width = 142
+      Height = 213
+      Background = clWindowFrame
+      AutoStretch = True
+      AutoShrink = True
+      TabOrder = 15
+    end
+    object ImageEnView6: TImageEnView
+      Left = 728
+      Top = 59
+      Width = 142
+      Height = 213
+      Background = clWindowFrame
+      AutoStretch = True
+      AutoShrink = True
+      TabOrder = 16
+    end
+    object ImageEnView7: TImageEnView
+      Left = 872
+      Top = 59
+      Width = 142
+      Height = 213
+      Background = clWindowFrame
+      AutoStretch = True
+      AutoShrink = True
+      TabOrder = 17
+    end
+  end
+  object OpenImageEnDialog1: TOpenImageEnDialog
+    Left = 120
+    Top = 376
+  end
+end

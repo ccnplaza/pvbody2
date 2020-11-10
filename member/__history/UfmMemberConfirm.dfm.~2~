@@ -1,0 +1,102 @@
+object fmMemberConfirm: TfmMemberConfirm
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = #54924#50896#49440#53469
+  ClientHeight = 211
+  ClientWidth = 542
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = #44404#47548
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 542
+    Height = 27
+    Align = alTop
+    Caption = #46041#51068#54924#50896' '#50668#48512#47484' '#54869#51064#54616#49884#44256' '#50500#45772' '#44221#50864#47564' '#51077#47141#54616#49464#50836'. '
+    TabOrder = 0
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 178
+    Width = 542
+    Height = 33
+    Align = alBottom
+    TabOrder = 1
+    ExplicitTop = 192
+  end
+  object cxGrid1: TcxGrid
+    Left = 0
+    Top = 27
+    Width = 542
+    Height = 151
+    Align = alClient
+    TabOrder = 2
+    ExplicitLeft = 104
+    ExplicitTop = 33
+    ExplicitWidth = 250
+    ExplicitHeight = 200
+    object gridCustomer: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
+      Navigator.Buttons.First.Visible = False
+      Navigator.Buttons.PriorPage.Visible = False
+      Navigator.Buttons.Prior.Visible = False
+      Navigator.Buttons.Next.Visible = False
+      Navigator.Buttons.NextPage.Visible = False
+      Navigator.Buttons.Last.Visible = False
+      Navigator.Buttons.Insert.Visible = False
+      Navigator.Buttons.Append.Visible = False
+      Navigator.Buttons.Delete.Visible = False
+      Navigator.Buttons.Edit.Visible = False
+      Navigator.Buttons.Post.Visible = False
+      Navigator.Buttons.Cancel.Visible = False
+      Navigator.Buttons.Refresh.Visible = False
+      Navigator.Buttons.SaveBookmark.Visible = False
+      Navigator.Buttons.GotoBookmark.Visible = False
+      Navigator.Buttons.Filter.Visible = False
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+      OptionsCustomize.ColumnsQuickCustomization = True
+      OptionsSelection.CellSelect = False
+      OptionsSelection.HideFocusRectOnExit = False
+      OptionsView.GroupByBox = False
+      OptionsView.Indicator = True
+    end
+    object cxGrid1Level1: TcxGridLevel
+      GridView = gridCustomer
+    end
+  end
+  object UniQuery1: TUniQuery
+    Connection = dmDBCommon.UniDBConnection
+    SQL.Strings = (
+      'select cname, sex, ctel from customer where cname = :c_name;')
+    Left = 56
+    Top = 56
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'c_name'
+        ParamType = ptInput
+      end>
+    object UniQuery1CNAME: TStringField
+      FieldName = 'CNAME'
+    end
+    object UniQuery1SEX: TStringField
+      FieldName = 'SEX'
+      Size = 2
+    end
+    object UniQuery1CTEL: TStringField
+      FieldName = 'CTEL'
+      Size = 50
+    end
+  end
+end

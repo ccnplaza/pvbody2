@@ -1,0 +1,18 @@
+object fmMemberConfirm: TfmMemberConfirm
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = #54924#50896#49440#53469
+  ClientHeight = 225
+  ClientWidth = 542
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = #44404#47548
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+end

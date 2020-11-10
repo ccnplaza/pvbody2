@@ -1,0 +1,788 @@
+unit uMember;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMoneyTwins, dxSkinOffice2007Black, dxSkinOffice2007Blue,
+  dxSkinOffice2007Green, dxSkinOffice2007Pink, dxSkinOffice2007Silver,
+  dxSkinOffice2010Black, dxSkinOffice2010Blue, dxSkinOffice2010Silver,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010,
+  dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxPCdxBarPopupMenu,
+  cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, DB, cxDBData,
+  cxGridLevel, cxClasses, cxGridCustomView, cxGridCustomTableView,
+  cxGridTableView, cxGridDBTableView, cxGrid, ExtCtrls, cxPC, StdCtrls, Buttons,
+  dxPSGlbl, dxPSUtl, dxPSEngn, dxPrnPg, dxBkgnd, dxWrap, dxPrnDev,
+  dxPSCompsProvider, dxPSFillPatterns, dxPSEdgePatterns, dxPSPDFExportCore,
+  dxPSPDFExport, cxDrawTextUtils, dxPSPrVwStd, dxPSPrVwAdv, dxPSPrVwRibbon,
+  dxPScxPageControlProducer, dxPScxGridLnk, dxPScxGridLayoutViewLnk,
+  dxPScxEditorProducers, dxPScxExtEditorProducers, dxSkinsdxBarPainter,
+  dxPSCore, dxPScxCommon, cxGridExportLink, cxContainer, cxTextEdit, cxMaskEdit,
+  cxSpinEdit, cxNavigator, dxSkinsdxRibbonPainter, DateUtils, cxMemo, cxDBEdit,
+  cxCalc, cxDropDownEdit, cxCalendar, ComCtrls, dxCore, cxDateUtils,
+  cxImageComboBox, cxImage, cxLabel, cxDBLabel, cxGroupBox, cxDBLookupComboBox,
+  cxGridCardView, cxGridDBCardView, cxGridCustomLayoutView,
+  cxGridBandedTableView, cxGridDBBandedTableView, cxCheckBox, ImgList, Uni,
+  MemDS, DBAccess, VirtualTable, FMTBcd, SqlExpr, DBClient, Provider,
+  cxFilterControl, ActnList, Menus, dxSkinOffice2013White, ieview, imageenview,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, cxGridCustomPopupMenu, cxGridPopupMenu, DAAlerter,
+  UniAlerter;
+
+type
+  TfmMember = class(TForm)
+    Panel1: TPanel;
+    gridMember: TcxGridDBTableView;
+    G1L1: TcxGridLevel;
+    cxGrid1: TcxGrid;
+    btnAdd: TBitBtn;
+    btnEdit: TBitBtn;
+    btnDel: TBitBtn;
+    btnSMSSending: TBitBtn;
+    chkFilter: TCheckBox;
+    chkGroup: TCheckBox;
+    btnReportActive: TBitBtn;
+    btnExcelActive: TBitBtn;
+    btnGridSave: TBitBtn;
+    dxComponentPrinter1: TdxComponentPrinter;
+    dxComponentPrinter1Link1: TdxGridReportLink;
+    gridMemberUID: TcxGridDBColumn;
+    gridMemberCNAME: TcxGridDBColumn;
+    gridMemberSEX: TcxGridDBColumn;
+    gridMemberCTEL: TcxGridDBColumn;
+    gridMemberCEMAIL: TcxGridDBColumn;
+    gridMemberCBIGO: TcxGridDBColumn;
+    gridMemberREG_DATE: TcxGridDBColumn;
+    gridMemberJOBKIND: TcxGridDBColumn;
+    gridMemberHOBBY: TcxGridDBColumn;
+    gridMemberHOW_TO_COME: TcxGridDBColumn;
+    gridMemberPURPOSE: TcxGridDBColumn;
+    gridMemberBLOOD: TcxGridDBColumn;
+    gridMemberBLOOD_PRESSURE: TcxGridDBColumn;
+    gridMemberBODY_STATUS: TcxGridDBColumn;
+    gridMemberFOOD_KIND: TcxGridDBColumn;
+    gridMemberFOOD_HOW_MUCH: TcxGridDBColumn;
+    gridMemberFOOD_HOW_OFTEN: TcxGridDBColumn;
+    Panel4: TPanel;
+    cxGroupBox3: TcxGroupBox;
+    cxLabel1: TcxLabel;
+    cxDBLabel1: TcxDBLabel;
+    cxLabel3: TcxLabel;
+    cxDBLabel3: TcxDBLabel;
+    cxLabel5: TcxLabel;
+    cxDBLabel5: TcxDBLabel;
+    cxLabel6: TcxLabel;
+    cxDBLabel6: TcxDBLabel;
+    cxLabel7: TcxLabel;
+    cxDBLabel7: TcxDBLabel;
+    cxLabel9: TcxLabel;
+    cxDBLabel9: TcxDBLabel;
+    cxGroupBox1: TcxGroupBox;
+    gridCLRegist: TcxGridDBTableView;
+    cxGrid4: TcxGrid;
+    gridCLRegistID: TcxGridDBColumn;
+    gridCLRegistREG_DATE: TcxGridDBColumn;
+    gridCLRegistLEC_CODE: TcxGridDBColumn;
+    gridCLRegistMEMBER_UID: TcxGridDBColumn;
+    gridCLRegistSTART_DATE: TcxGridDBColumn;
+    gridCLRegistEND_DATE: TcxGridDBColumn;
+    gridCLRegistLEC_MONTH: TcxGridDBColumn;
+    gridCLRegistLEC_PRICE: TcxGridDBColumn;
+    gridCLRegistLEC_DESC: TcxGridDBColumn;
+    ImageList1: TImageList;
+    cxStyleRepository1: TcxStyleRepository;
+    cxStyle1: TcxStyle;
+    d_LESSON_CUSTOMER_SEL_BYUSER: TDataSource;
+    G4L1: TcxGridLevel;
+    Panel2: TPanel;
+    btnEditCustLec: TBitBtn;
+    ActionList1: TActionList;
+    ActAdd: TAction;
+    ActEdit: TAction;
+    ActDel: TAction;
+    ActSMS: TAction;
+    ActPrint: TAction;
+    ActExcel: TAction;
+    ActColumnSet: TAction;
+    PopupMember: TPopupMenu;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    N4: TMenuItem;
+    N5: TMenuItem;
+    N6: TMenuItem;
+    N7: TMenuItem;
+    N8: TMenuItem;
+    ImageEnView1: TImageEnView;
+    cxGridPopupMenu1: TcxGridPopupMenu;
+    CUSTOMER_INS: TUniStoredProc;
+    CUSTOMER_DEL: TUniStoredProc;
+    CUSTOMER_UPD: TUniStoredProc;
+    UniAlerter: TUniAlerter;
+    LESSON_CUSTOMER_SEL_BYUSER: TUniStoredProc;
+    LESSON_CUSTOMER_SEL_BYUSERID: TStringField;
+    LESSON_CUSTOMER_SEL_BYUSERREG_DATE: TDateField;
+    LESSON_CUSTOMER_SEL_BYUSERLEC_CODE: TStringField;
+    LESSON_CUSTOMER_SEL_BYUSERMEMBER_UID: TStringField;
+    LESSON_CUSTOMER_SEL_BYUSERSTART_DATE: TDateField;
+    LESSON_CUSTOMER_SEL_BYUSEREND_DATE: TDateField;
+    LESSON_CUSTOMER_SEL_BYUSERLEC_MONTH: TSmallintField;
+    LESSON_CUSTOMER_SEL_BYUSERLEC_PRICE: TFloatField;
+    LESSON_CUSTOMER_SEL_BYUSERLEC_DESC: TStringField;
+    LESSON_CUSTOMER_SEL_BYUSERCOMPANY_ID: TStringField;
+    LESSON_CUSTOMER_SEL_BYUSERIS_DONE: TSmallintField;
+    LESSON_CUSTOMER_SEL_BYUSERM_KIND: TSmallintField;
+    LESSON_CUSTOMER_SEL_BYUSERLOCKER_NO: TStringField;
+    LESSON_CUSTOMER_SEL_BYUSERNEW_OR_RENEW: TSmallintField;
+    LESSON_CUSTOMER_SEL_BYUSERPAY_KIND: TSmallintField;
+    gridCLRegistCOMPANY_ID: TcxGridDBColumn;
+    gridCLRegistIS_DONE: TcxGridDBColumn;
+    gridCLRegistM_KIND: TcxGridDBColumn;
+    gridCLRegistLOCKER_NO: TcxGridDBColumn;
+    gridCLRegistNEW_OR_RENEW: TcxGridDBColumn;
+    gridCLRegistPAY_KIND: TcxGridDBColumn;
+    gridMemberCAGE: TcxGridDBColumn;
+    gridMemberHOW_TO_COME_ETC: TcxGridDBColumn;
+    gridMemberPURPOSE_ETC: TcxGridDBColumn;
+    gridMemberPURPOSE_DESC: TcxGridDBColumn;
+    ImageList2: TImageList;
+    lbl1: TLabel;
+    edtSYear: TcxSpinEdit;
+    edtEYear: TcxSpinEdit;
+    lbl2: TLabel;
+    btnView: TBitBtn;
+    gridMemberIS_ACTIVE: TcxGridDBColumn;
+    btnCenter: TBitBtn;
+    LESSON_ATTENDANCE_SELID: TUniStoredProc;
+    d_LESSON_ATTENDANCE_SELID: TDataSource;
+    LESSON_ATTENDANCE_SELIDID: TStringField;
+    LESSON_ATTENDANCE_SELIDATT_DATE: TDateField;
+    LESSON_ATTENDANCE_SELIDLEC_CODE: TStringField;
+    LESSON_ATTENDANCE_SELIDIN_TIME: TStringField;
+    LESSON_ATTENDANCE_SELIDL_NAME: TStringField;
+    LESSON_ATTENDANCE_SELIDCNAME: TStringField;
+    LESSON_ATTENDANCE_SELIDIS_ACTIVE: TIntegerField;
+    btnHistory: TBitBtn;
+    btnAddFavorite: TBitBtn;
+    btnCustKind: TBitBtn;
+    gridMemberC_KIND: TcxGridDBColumn;
+    gridMemberSMS_YESNO: TcxGridDBColumn;
+    btnNoSMS: TBitBtn;
+    procedure gridMemberCellDblClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
+    procedure chkFilterClick(Sender: TObject);
+    procedure chkGroupClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
+    procedure btnEditCustLecClick(Sender: TObject);
+    procedure ActAddExecute(Sender: TObject);
+    procedure ActEditExecute(Sender: TObject);
+    procedure ActDelExecute(Sender: TObject);
+    procedure ActSMSExecute(Sender: TObject);
+    procedure ActPrintExecute(Sender: TObject);
+    procedure ActExcelExecute(Sender: TObject);
+    procedure ActColumnSetExecute(Sender: TObject);
+    procedure gridMemberFocusedRecordChanged(Sender: TcxCustomGridTableView;
+      APrevFocusedRecord, AFocusedRecord: TcxCustomGridRecord;
+      ANewItemRecordFocusingChanged: Boolean);
+    procedure UniAlerterEvent(Sender: TDAAlerter; const EventName,
+      Message: string);
+    procedure gridCLRegistCellDblClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
+    procedure btnViewClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure edtSYearClick(Sender: TObject);
+    procedure edtEYearClick(Sender: TObject);
+    procedure btnCenterClick(Sender: TObject);
+    procedure icbCenterPropertiesCloseUp(Sender: TObject);
+    procedure btnHistoryClick(Sender: TObject);
+    procedure btnAddFavoriteClick(Sender: TObject);
+    procedure btnCustKindClick(Sender: TObject);
+    procedure btnNoSMSClick(Sender: TObject);
+  private
+    procedure LoadData;
+    procedure LoadUserPicture(uid : string);
+    procedure SaveUserPicture(uid: string; memPic: TMemoryStream);
+    { Private declarations }
+  public
+    { Public declarations }
+    CurrentCustID : string;
+    OldCustID : string;
+    S_CENTER, E_CENTER : Integer;
+    IsMyAction : Boolean;
+  end;
+
+var
+  fmMember: TfmMember;
+
+implementation
+
+uses UdmDBCommon, uCommonLogic, uMemberEdit, uSendingSMS, GlobalVar, ufmLectureCustomerRegist,
+  UfmCenter, UfmCustomerHistory, UfmCustomerKind;
+
+
+{$R *.dfm}
+
+function CreateUniqTimeString : string;
+begin
+  result := FormatDateTime('yyyymmddhhnnsszzz', now);
+end;
+
+function ConvertDateToStrField(Check_Date : TDateTime) : string;
+var
+  new_date : TDateTime;
+begin
+  if TryStrToDate(DateTimeToStr(Check_Date), new_date) = True then
+    Result := DateTimeToStr(new_date)
+  else
+    Result := '';
+end;
+
+procedure ConvertStrToDateField(Check_Date : string; var DateField : TcxDateEdit);
+var
+  new_date : TDateTime;
+begin
+  if TryStrToDate(Check_Date, new_date) = True then
+    DateField.Date := new_date
+  else
+    DateField.Clear;
+end;
+
+procedure TfmMember.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := caFree;
+end;
+
+procedure TfmMember.FormCreate(Sender: TObject);
+begin
+  IsMyAction := False;
+  //if month is less then 4, set start year - 1(last year)
+  if MonthOf(Date) < 4 then
+    edtSYear.Value := YearOf(Date) - 1
+  else
+    edtSYear.Value := YearOf(Date);
+  edtEYear.Value := YearOf(Date);
+end;
+
+procedure TfmMember.FormShow(Sender: TObject);
+var
+  fname : string;
+begin
+  fname := gsDefaultFolder + '기간별수강자현황.ini';
+  if FileExists(fname) then
+    gridMember.RestoreFromIniFile(fname, True, True, [gsoUseSummary], '');
+
+  dmDBCommon.LESSON_SEL_LOOK.Active := True;
+  dmDBCommon.d_LESSON_SEL_LOOK.DataSet.Refresh;
+  btnView.Click;
+end;
+
+procedure TfmMember.LoadData;
+begin
+  CurrentCustID := gridMemberUID.EditValue;
+  LESSON_CUSTOMER_SEL_BYUSER.ParamByName('USER_UID').AsString := CurrentCustID;
+  LESSON_CUSTOMER_SEL_BYUSER.Active := True;
+  d_LESSON_CUSTOMER_SEL_BYUSER.DataSet.Refresh;
+end;
+
+procedure TfmMember.LoadUserPicture(uid : string);
+var
+  Query : TUniQuery;
+  memPic : TMemoryStream;
+begin
+  Query := TUniQuery.Create(self);
+  memPic := TMemoryStream.Create;
+  try
+    with Query do begin
+      Connection := dmDBCommon.UniDBConnection;
+      SQL.Clear;
+      SQL.Add('select photo from customer where uid = :uid');
+      ParamByName('uid').AsString := uid;
+      Active := True;
+    end;
+    memPic.LoadFromStream(Query.CreateBlobStream(Query.FieldByName('photo'), bmRead));
+    if memPic.Size > 0 then begin
+      memPic.Position := 0;
+      ImageEnView1.IO.LoadFromStreamJpeg(memPic);
+    end else
+      ImageEnView1.Blank;
+  finally
+    memPic.Free;
+    Query.Free;
+  end;
+end;
+
+procedure TfmMember.SaveUserPicture(uid : string; memPic :TMemoryStream);
+var
+  Query : TUniQuery;
+begin
+  Query := TUniQuery.Create(self);
+  try
+    memPic.Position := 0;
+    with Query do begin
+      Connection := dmDBCommon.UniDBConnection;
+      SQL.Clear;
+      SQL.Add('update customer set photo = :nphoto where uid = :uid');
+      ParamByName('uid').AsString := uid;
+      ParamByName('nphoto').LoadFromStream(memPic, ftBlob);
+      Execute;
+    end;
+  finally
+    Query.Free;
+  end;
+end;
+
+procedure TfmMember.UniAlerterEvent(Sender: TDAAlerter; const EventName,
+  Message: string);
+begin
+  if IsMyAction = False then begin
+    dmDBCommon.CUSTOMER_SEL.Active := True;
+    dmDBCommon.d_CUSTOMER_SEL.DataSet.Refresh;
+  end else begin
+    IsMyAction := False;
+  end;
+end;
+
+procedure TfmMember.ActAddExecute(Sender: TObject);
+var
+  uid : string;
+  memPic : TMemoryStream;
+  checkItem : array[0..9] of TCheckBox;
+  i : Integer;
+  sel_item, sel_item_desc : string;
+begin
+  Screen.Cursor := crHourGlass;
+  fmMemberEdit := TfmMemberEdit.Create(Self);
+  try
+    checkItem[0] := fmMemberEdit.chkItem1;
+    checkItem[1] := fmMemberEdit.chkItem2;
+    checkItem[2] := fmMemberEdit.chkItem3;
+    checkItem[3] := fmMemberEdit.chkItem4;
+    checkItem[4] := fmMemberEdit.chkItem5;
+    checkItem[5] := fmMemberEdit.chkItem6;
+    checkItem[6] := fmMemberEdit.chkItem7;
+    checkItem[7] := fmMemberEdit.chkItem8;
+    checkItem[8] := fmMemberEdit.chkItem9;
+    checkItem[9] := fmMemberEdit.chkItem10;
+    fmMemberEdit.EDIT_MODE := 0;
+    fmMemberEdit.cbCenter.EditValue := 1;
+    fmMemberEdit.cbKind.EditValue := 1;
+    fmMemberEdit.REG_DATE.Date := Date;
+    fmMemberEdit.ShowModal;
+    if fmMemberEdit.ModalResult = mrOk then begin
+      IsMyAction := True;
+      sel_item := '';
+      sel_item_desc := '';
+      for i := 0 to 9 do begin
+        if checkItem[i].Checked then begin
+          sel_item := sel_item + IntToStr(i) + ',';
+          sel_item_desc := sel_item_desc + checkItem[i].Caption + ', ';
+        end;
+      end;
+      sel_item := Copy(sel_item, 1, Length(sel_item) - 1);
+      sel_item_desc := Copy(sel_item_desc, 1, Length(sel_item_desc) - 2);
+      uid := CreateUniqTimeString;
+      CUSTOMER_INS.ParamByName('UID').AsString := uid;
+      CUSTOMER_INS.ParamByName('CNAME').AsString           := fmMemberEdit.CNAME.Text;
+      CUSTOMER_INS.ParamByName('SEX').AsString             := fmMemberEdit.SEX.EditValue;
+      CUSTOMER_INS.ParamByName('CAGE').AsString            := fmMemberEdit.edtAge.Text;
+      CUSTOMER_INS.ParamByName('CTEL').AsString            := fmMemberEdit.CTEL.Text;
+      CUSTOMER_INS.ParamByName('CEMAIL').AsString          := fmMemberEdit.CEMAIL.Text;
+      CUSTOMER_INS.ParamByName('CBIGO').AsString           := fmMemberEdit.CBIGO.Text;
+      CUSTOMER_INS.ParamByName('REG_DATE').AsDate          := fmMemberEdit.REG_DATE.Date;
+      CUSTOMER_INS.ParamByName('JOBKIND').AsString         := fmMemberEdit.JOBKIND.Text;
+      CUSTOMER_INS.ParamByName('HOBBY').AsString           := fmMemberEdit.HOBBY.Text;
+      CUSTOMER_INS.ParamByName('HOW_TO_COME').AsString     := VarToStr(fmMemberEdit.HOW_TO_COME.EditValue);
+      CUSTOMER_INS.ParamByName('HOW_TO_COME_ETC').AsString := fmMemberEdit.edtEtcComming.Text;
+      CUSTOMER_INS.ParamByName('PURPOSE').AsString         := sel_item;
+      CUSTOMER_INS.ParamByName('PURPOSE_DESC').AsString    := sel_item_desc;
+      CUSTOMER_INS.ParamByName('PURPOSE_ETC').AsString     := fmMemberEdit.edtEtcPurpose.Text;
+      CUSTOMER_INS.ParamByName('BLOOD').AsString           := fmMemberEdit.BLOOD.Text;
+      CUSTOMER_INS.ParamByName('BLOOD_PRESSURE').AsString  := VarToStr(fmMemberEdit.BLOOD_PRESSURE.EditValue);
+      CUSTOMER_INS.ParamByName('BODY_STATUS').AsString     := fmMemberEdit.BODY_STATUS.Text;
+      CUSTOMER_INS.ParamByName('FOOD_KIND').AsString       := VarToStr(fmMemberEdit.FOOD_KIND.EditValue);
+      CUSTOMER_INS.ParamByName('FOOD_HOW_MUCH').AsString   := VarToStr(fmMemberEdit.FOOD_HOW_MUCH.EditValue);
+      CUSTOMER_INS.ParamByName('FOOD_HOW_OFTEN').AsString  := VarToStr(fmMemberEdit.FOOD_HOW_OFTEN.EditValue);
+      CUSTOMER_INS.ParamByName('COMPANY_ID').AsString      := LoginUserCompID;
+      CUSTOMER_INS.ParamByName('IS_ACTIVE').AsInteger      := fmMemberEdit.cbCenter.EditValue;
+      CUSTOMER_INS.ParamByName('SMS_YESNO').AsInteger      := fmMemberEdit.cbSMS.EditValue;
+      CUSTOMER_INS.ExecProc;
+      dmDBCommon.d_CUSTOMER_SEL.DataSet.Refresh;
+
+      memPic := TMemoryStream.Create;
+      fmMemberEdit.ImageEnView1.IO.SaveToStreamJpeg(memPic);
+      memPic.Position := 0;
+      SaveUserPicture(uid, memPic);
+      ImageEnView1.Assign(fmMemberEdit.ImageEnView1);
+    end;
+  finally
+    memPic.Free;
+    fmMemberEdit.Free;
+    Screen.Cursor := crDefault;
+  end;
+end;
+
+procedure TfmMember.ActEditExecute(Sender: TObject);
+var
+  uid : string;
+  memPic : TMemoryStream;
+  checkItem : array[0..9] of TCheckBox;
+  i, itemVal : Integer;
+  sel_item, sel_item_desc : string;
+  stlist : TStringList;
+  focusedindex : Integer;
+begin
+  fmMemberEdit := TfmMemberEdit.Create(Self);
+  Screen.Cursor := crHourGlass;
+  try
+    checkItem[0] := fmMemberEdit.chkItem1;
+    checkItem[1] := fmMemberEdit.chkItem2;
+    checkItem[2] := fmMemberEdit.chkItem3;
+    checkItem[3] := fmMemberEdit.chkItem4;
+    checkItem[4] := fmMemberEdit.chkItem5;
+    checkItem[5] := fmMemberEdit.chkItem6;
+    checkItem[6] := fmMemberEdit.chkItem7;
+    checkItem[7] := fmMemberEdit.chkItem8;
+    checkItem[8] := fmMemberEdit.chkItem9;
+    checkItem[9] := fmMemberEdit.chkItem10;
+
+    fmMemberEdit.EDIT_MODE := 1;
+    uid := gridMemberUID.EditValue;
+    fmMemberEdit.ImageEnView1.Assign(ImageEnView1);
+
+    stlist := TStringList.Create;
+    sel_item := VarToStr(gridMemberPURPOSE.EditValue);
+    ExtractStrings([','],[], Pchar(sel_item), stlist);
+    //컴마로 분리하여 해당 체크박스 체크
+    for i := 0 to stlist.Count - 1 do begin
+      itemVal := StrToInt(stlist[i]);
+      checkItem[itemVal].Checked := True;
+    end;
+
+    fmMemberEdit.CNAME.Text              := gridMemberCNAME.EditValue;
+    fmMemberEdit.SEX.EditValue           := VarToStr(gridMemberSEX.EditValue);
+    fmMemberEdit.edtAge.Text             := VarToStr(gridMemberCAGE.EditValue);
+    fmMemberEdit.CTEL.Text               := VarToStr(gridMemberCTEL.EditValue);
+    fmMemberEdit.CEMAIL.Text             := VarToStr(gridMemberCEMAIL.EditValue);
+    fmMemberEdit.CBIGO.Text              := VarToStr(gridMemberCBIGO.EditValue);
+    fmMemberEdit.REG_DATE.Date           := gridMemberREG_DATE.EditValue;
+    fmMemberEdit.JOBKIND.Text            := VarToStr(gridMemberJOBKIND.EditValue);
+    fmMemberEdit.HOBBY.Text              := VarToStr(gridMemberHOBBY.EditValue);
+    fmMemberEdit.HOW_TO_COME.EditValue    := VarToStr(gridMemberHOW_TO_COME.EditValue);
+    fmMemberEdit.BLOOD.Text              := VarToStr(gridMemberBLOOD.EditValue);
+    fmMemberEdit.BLOOD_PRESSURE.EditValue := VarToStr(gridMemberBLOOD_PRESSURE.EditValue);
+    fmMemberEdit.BODY_STATUS.Text        := VarToStr(gridMemberBODY_STATUS.EditValue);
+    fmMemberEdit.FOOD_KIND.EditValue      := VarToStr(gridMemberFOOD_KIND.EditValue);
+    fmMemberEdit.FOOD_HOW_MUCH.EditValue  := VarToStr(gridMemberFOOD_HOW_MUCH.EditValue);
+    fmMemberEdit.FOOD_HOW_OFTEN.EditValue := VarToStr(gridMemberFOOD_HOW_OFTEN.EditValue);
+    fmMemberEdit.edtEtcComming.Text       := VarToStr(gridMemberHOW_TO_COME_ETC.EditValue);
+    fmMemberEdit.edtEtcPurpose.Text       := VarToStr(gridMemberPURPOSE_ETC.EditValue);
+    fmMemberEdit.cbCenter.EditValue       := gridMemberIS_ACTIVE.EditValue;
+    fmMemberEdit.cbKind.EditValue         := gridMemberC_KIND.EditValue;
+    fmMemberEdit.cbSMS.EditValue         := gridMemberSMS_YESNO.EditValue;
+
+    fmMemberEdit.ShowModal;
+    if fmMemberEdit.ModalResult = mrOk then begin
+      gridMember.DataController.SaveBookmark;
+      dmDBCommon.d_CUSTOMER_SEL.DataSet.DisableControls;
+      IsMyAction := True;
+      sel_item := '';
+      sel_item_desc := '';
+      for i := 0 to 9 do begin
+        if checkItem[i].Checked then begin
+          sel_item := sel_item + IntToStr(i) + ',';
+          if i = 9 then
+            sel_item_desc := sel_item_desc + fmMemberEdit.edtEtcPurpose.Text + ', '
+          else
+            sel_item_desc := sel_item_desc + checkItem[i].Caption + ', ';
+        end;
+      end;
+      sel_item := Copy(sel_item, 1, Length(sel_item) - 1);
+      sel_item_desc := Copy(sel_item_desc, 1, Length(sel_item_desc) - 2);
+
+      CUSTOMER_UPD.ParamByName('UID').Value := uid;
+      CUSTOMER_UPD.ParamByName('CNAME').Value           := fmMemberEdit.CNAME.Text;
+      CUSTOMER_UPD.ParamByName('SEX').Value             := fmMemberEdit.SEX.EditValue;
+      CUSTOMER_UPD.ParamByName('CAGE').Value            := fmMemberEdit.edtAge.Text;
+      CUSTOMER_UPD.ParamByName('CTEL').Value            := fmMemberEdit.CTEL.Text;
+      CUSTOMER_UPD.ParamByName('CEMAIL').Value          := fmMemberEdit.CEMAIL.Text;
+      CUSTOMER_UPD.ParamByName('CBIGO').Value           := fmMemberEdit.CBIGO.Text;
+      CUSTOMER_UPD.ParamByName('REG_DATE').Value        := fmMemberEdit.REG_DATE.Date;
+      CUSTOMER_UPD.ParamByName('JOBKIND').Value         := fmMemberEdit.JOBKIND.Text;
+      CUSTOMER_UPD.ParamByName('HOBBY').Value           := fmMemberEdit.HOBBY.Text;
+      CUSTOMER_UPD.ParamByName('HOW_TO_COME').Value     := fmMemberEdit.HOW_TO_COME.EditText;
+      CUSTOMER_UPD.ParamByName('PURPOSE').AsString      := sel_item;
+      CUSTOMER_UPD.ParamByName('PURPOSE_DESC').AsString := sel_item_desc;
+      CUSTOMER_UPD.ParamByName('BLOOD').Value           := fmMemberEdit.BLOOD.Text;
+      CUSTOMER_UPD.ParamByName('BLOOD_PRESSURE').Value  := fmMemberEdit.BLOOD_PRESSURE.EditText;
+      CUSTOMER_UPD.ParamByName('BODY_STATUS').Value     := fmMemberEdit.BODY_STATUS.Text;
+      CUSTOMER_UPD.ParamByName('FOOD_KIND').Value       := fmMemberEdit.FOOD_KIND.EditText;
+      CUSTOMER_UPD.ParamByName('FOOD_HOW_MUCH').Value   := fmMemberEdit.FOOD_HOW_MUCH.EditText;
+      CUSTOMER_UPD.ParamByName('FOOD_HOW_OFTEN').Value  := fmMemberEdit.FOOD_HOW_OFTEN.EditText;
+      CUSTOMER_UPD.ParamByName('COMPANY_ID').Value      := LoginUserCompID;
+      CUSTOMER_UPD.ParamByName('HOW_TO_COME_ETC').Value := fmMemberEdit.edtEtcComming.Text;
+      CUSTOMER_UPD.ParamByName('PURPOSE_ETC').Value     := fmMemberEdit.edtEtcPurpose.Text;
+      CUSTOMER_UPD.ParamByName('IS_ACTIVE').Value       := fmMemberEdit.cbCenter.EditValue;
+      CUSTOMER_UPD.ParamByName('C_KIND').Value          := fmMemberEdit.cbKind.EditValue;
+      CUSTOMER_UPD.ParamByName('SMS_YESNO').Value       := fmMemberEdit.cbSMS.EditValue;
+      CUSTOMER_UPD.Execute;
+      dmDBCommon.d_CUSTOMER_SEL.DataSet.Refresh;
+
+      memPic := TMemoryStream.Create;
+      fmMemberEdit.ImageEnView1.IO.SaveToStreamJpeg(memPic);
+      memPic.Position := 0;
+      SaveUserPicture(uid, memPic);
+      ImageEnView1.Assign(fmMemberEdit.ImageEnView1);
+
+      gridMember.DataController.GotoBookmark;
+      dmDBCommon.d_CUSTOMER_SEL.DataSet.EnableControls;
+      dmDBCommon.d_CUSTOMER_SEL.DataSet.Locate('UID', uid, []);
+    end;
+  finally
+    memPic.Free;
+    fmMemberEdit.Free;
+    Screen.Cursor := crDefault;
+  end;
+end;
+
+procedure TfmMember.ActColumnSetExecute(Sender: TObject);
+begin
+  gridMember.StoreToIniFile(gsDefaultFolder + 'Member.ini', True, [gsoUseSummary], '');
+  ShowMessage('컬럼설정파일 ' + gsDefaultFolder + 'Member.ini 이 저장되었습니다.');
+end;
+
+procedure TfmMember.ActDelExecute(Sender: TObject);
+begin
+  if MessageDlg('선택한 자료를 삭제합니다.' + #13#10 + '삭제한 자료는 되살릴 수 없습니다.' + #13#10 +
+    '삭제 할까요?',  mtWarning, [mbYes, mbNo], 0) = mrYes then
+  begin
+    IsMyAction := True;
+    gridMember.DataController.SaveBookmark;
+    CUSTOMER_DEL.ParamByName('UID').Value := gridMemberUID.EditValue;
+    CUSTOMER_DEL.ExecProc;
+    dmDBCommon.d_CUSTOMER_SEL.DataSet.Refresh;
+    gridMember.DataController.GotoBookmark;
+  end;
+end;
+
+procedure TfmMember.ActExcelExecute(Sender: TObject);
+var
+  filename : string;
+  saveDialog : TSaveDialog;
+begin
+  try
+    saveDialog := TSaveDialog.Create(nil);
+    if saveDialog.Execute then begin
+      filename := saveDialog.FileName;
+      ExportGridToExcel(filename, cxGrid1, True, True, False);
+      ShowMessage('파일:' + filename + '이(가) 저장되었습니다.');
+    end;
+  finally
+    saveDialog.Free;
+  end;
+end;
+
+procedure TfmMember.ActPrintExecute(Sender: TObject);
+begin
+  dxComponentPrinter1.PrintTitle := '회원 등록현황';
+  dxComponentPrinter1.Preview(True, dxComponentPrinter1Link1);
+end;
+
+procedure TfmMember.ActSMSExecute(Sender: TObject);
+var
+  cnt, i, sel_id, sms_yesno : integer;
+  cname, cTel, csex, cjob : string;
+  SMS_List : TStringList;
+begin
+  SMS_List := TStringList.Create;
+  if gridMember.DataController.RecordCount < 1 then begin
+    ShowMessage('전송대상 리스트가 없습니다. 명단을 먼저 선택하세요.');
+    Exit;
+  end;
+  fmSendingSMS := TfmSendingSMS.Create(Self);
+  try
+    fmSendingSMS.mdSMS.Active := False;
+    fmSendingSMS.mdSMS.Active := True;
+    cnt := gridMember.Controller.SelectedRecordCount;
+    for I := 0 to cnt - 1 do begin
+      with gridMember do begin
+        sel_id := Controller.SelectedRecords[i].RecordIndex;
+        cname := DataController.GetValue(sel_id, GetColumnByFieldName('cname').Index);
+        cjob := VarToStrDef(DataController.GetValue(sel_id, GetColumnByFieldName('jobkind').Index), '');
+        csex := DataController.GetValue(sel_id, GetColumnByFieldName('sex').Index);
+        ctel := VarToStrDef(DataController.GetValue(sel_id, GetColumnByFieldName('ctel').Index), '');
+        sms_yesno := DataController.GetValue(sel_id, GetColumnByFieldName('sms_yesno').Index);
+      end;
+      if (ctel <> '') and (sms_yesno = 0) then begin
+        fmSendingSMS.mdSMS.Append;
+        fmSendingSMS.mdSMS.FieldByName('cname').AsString := cname;
+        fmSendingSMS.mdSMS.FieldByName('ctel').AsString := ctel;
+        fmSendingSMS.mdSMS.FieldByName('sex').AsString := csex;
+        fmSendingSMS.mdSMS.FieldByName('job').AsString := '';
+        fmSendingSMS.mdSMS.FieldByName('check_send').AsBoolean := True;
+        fmSendingSMS.mdSMS.Post;
+      end;
+    end;
+    fmSendingSMS.ShowModal;
+  finally
+    fmSendingSMS.Free;
+  end;
+end;
+
+procedure TfmMember.btnViewClick(Sender: TObject);
+begin
+  dmDBCommon.CUSTOMER_SEL.ParamByName('COMP_ID').Value := LoginUserCompID;
+  dmDBCommon.CUSTOMER_SEL.ParamByName('START_YEAR').Value := edtSYear.Value;
+  dmDBCommon.CUSTOMER_SEL.ParamByName('END_YEAR').Value := edtEYear.Value;
+  dmDBCommon.CUSTOMER_SEL.Active := True;
+  dmDBCommon.d_CUSTOMER_SEL.DataSet.Refresh;
+  LoadData;
+end;
+
+procedure TfmMember.btnAddFavoriteClick(Sender: TObject);
+begin
+  dmDBCommon.AddCustomerFavorite(gridMemberUID.EditValue);
+  ShowMessage('회원 즐겨찾기에 추가하였습니다.');
+end;
+
+procedure TfmMember.btnCenterClick(Sender: TObject);
+begin
+  fmCenter := TfmCenter.Create(Self);
+  try
+    fmCenter.ShowModal;
+  finally
+    fmCenter.Free;
+  end;
+end;
+
+procedure TfmMember.btnCustKindClick(Sender: TObject);
+begin
+  fmCustomerKind := TfmCustomerKind.Create(Self);
+  try
+    fmCustomerKind.ShowModal;
+  finally
+    fmCustomerKind.Free;
+  end;
+end;
+
+procedure TfmMember.btnEditCustLecClick(Sender: TObject);
+begin
+  fmLectureCustomerRegist := TfmLectureCustomerRegist.Create(Self);
+  try
+    fmLectureCustomerRegist.btnSelectMember.Enabled := False;
+    fmLectureCustomerRegist.IsEditMode := True;
+    fmLectureCustomerRegist.btnSave.Enabled := False;
+    fmLectureCustomerRegist.LabelMsg.Caption := '이곳에서는 조회 만 됩니다!';
+
+    fmLectureCustomerRegist.lblCustName.Caption := gridMemberCNAME.EditValue + '(' + gridMemberCTEL.EditValue + ')';
+    fmLectureCustomerRegist.edtLectureName.EditValue := gridCLRegistLEC_CODE.EditValue;
+    fmLectureCustomerRegist.s_date.Date := gridCLRegistSTART_DATE.EditValue;
+    fmLectureCustomerRegist.e_date.Date := gridCLRegistEND_DATE.EditValue;
+    fmLectureCustomerRegist.M_KIND.EditValue := gridCLRegistM_KIND.EditValue;
+    fmLectureCustomerRegist.LOCKER_NO.Text := gridCLRegistLOCKER_NO.EditValue;
+    fmLectureCustomerRegist.PAY_KIND.EditValue := gridCLRegistPAY_KIND.EditValue;
+    fmLectureCustomerRegist.LEC_PRICE.Value := gridCLRegistLEC_PRICE.EditValue;
+    fmLectureCustomerRegist.NEW_OR_RENEW.EditValue := gridCLRegistNEW_OR_RENEW.EditValue;
+    fmLectureCustomerRegist.mmoLEC_DESC.Text := gridCLRegistLEC_DESC.EditValue;
+
+    fmLectureCustomerRegist.ShowModal;
+  finally
+    fmLectureCustomerRegist.Free;
+  end;
+end;
+
+procedure TfmMember.btnHistoryClick(Sender: TObject);
+begin
+  fmCustomerHistory := TfmCustomerHistory.Create(Self);
+  try
+    fmCustomerHistory.CustomerID := gridMemberUID.EditValue;
+    fmCustomerHistory.ShowModal;
+  finally
+    fmCustomerHistory.Free;
+  end;
+end;
+
+procedure TfmMember.btnNoSMSClick(Sender: TObject);
+var
+  yesno, toprow, rowidx : Integer;
+begin
+  yesno := gridMemberSMS_YESNO.EditValue;
+  if yesno = 0 then
+    yesno := 1
+  else
+    yesno := 0;
+  dmDBCommon.CUSTOMER_UPD_SMS.ParamByName('UID').Value := gridMemberUID.EditValue;
+  dmDBCommon.CUSTOMER_UPD_SMS.ParamByName('SMS_YESNO').Value := yesno;
+  dmDBCommon.CUSTOMER_UPD_SMS.ExecProc;
+
+  toprow := gridMember.Controller.TopRowIndex;
+  rowidx := gridMember.Controller.FocusedRowIndex;
+  dmDBCommon.d_CUSTOMER_SEL.DataSet.Refresh;
+  gridMember.Controller.TopRowIndex := toprow;
+  gridMember.DataController.FocusedRowIndex := rowidx;
+end;
+
+procedure TfmMember.chkFilterClick(Sender: TObject);
+begin
+  gridMember.FilterRow.Visible := chkFilter.Checked;
+end;
+
+procedure TfmMember.chkGroupClick(Sender: TObject);
+begin
+  gridMember.OptionsView.GroupByBox := chkGroup.Checked;
+end;
+
+procedure TfmMember.edtEYearClick(Sender: TObject);
+begin
+  btnView.Click;
+end;
+
+procedure TfmMember.edtSYearClick(Sender: TObject);
+begin
+  btnView.Click;
+end;
+
+procedure TfmMember.gridCLRegistCellDblClick(Sender: TcxCustomGridTableView;
+  ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+  AShift: TShiftState; var AHandled: Boolean);
+begin
+  btnEditCustLec.Click;
+end;
+
+procedure TfmMember.gridMemberCellDblClick(Sender: TcxCustomGridTableView;
+  ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+  AShift: TShiftState; var AHandled: Boolean);
+begin
+  btnEdit.Click;
+end;
+
+procedure TfmMember.gridMemberFocusedRecordChanged(
+  Sender: TcxCustomGridTableView; APrevFocusedRecord,
+  AFocusedRecord: TcxCustomGridRecord; ANewItemRecordFocusingChanged: Boolean);
+begin
+  if OldCustID <> gridMemberUID.EditValue then begin
+    LockControl(Panel4, True);
+    LoadUserPicture(gridMemberUID.EditValue);
+    LoadData;
+    OldCustID := gridMemberUID.EditValue;
+    LockControl(Panel4, False);
+  end;
+end;
+
+procedure TfmMember.icbCenterPropertiesCloseUp(Sender: TObject);
+begin
+  btnView.Click;
+end;
+
+initialization RegisterClasses([TfmMember]);
+
+end.

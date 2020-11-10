@@ -1,0 +1,97 @@
+unit UfmCompareLayerList;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  cxContainer, cxEdit, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
+  dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, cxStyles,
+  dxSkinscxPCPainter, cxCustomData, cxFilter, cxData, cxDataStorage,
+  cxNavigator, DB, cxDBData, cxGridLevel, cxGridCustomTableView,
+  cxGridTableView, cxGridDBTableView, cxClasses, cxGridCustomView, cxGrid,
+  StdCtrls, Buttons, ExtCtrls, cxGroupBox;
+
+type
+  TfmCompareLayerList = class(TForm)
+    cxGroupBox2: TcxGroupBox;
+    Panel7: TPanel;
+    btnAdd: TBitBtn;
+    btnSave: TBitBtn;
+    btnDel: TBitBtn;
+    cxGrid3: TcxGrid;
+    gridCompareWin: TcxGridDBTableView;
+    gridCompareWinID: TcxGridDBColumn;
+    gridCompareWinMEMBER_ID: TcxGridDBColumn;
+    gridCompareWinP_DATE: TcxGridDBColumn;
+    gridCompareWinC_NAME: TcxGridDBColumn;
+    gridCompareWinC_COMMENT: TcxGridDBColumn;
+    cxGrid3Level1: TcxGridLevel;
+    procedure btnAddClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fmCompareLayerList: TfmCompareLayerList;
+
+implementation
+uses
+  GlobalVar, UdmDBCommon, UfmCompareComment;
+
+{$R *.dfm}
+
+procedure TfmCompareLayerList.btnAddClick(Sender: TObject);
+var
+  sVal : string;
+  compare_id : string;
+  mStream : TMemoryStream;
+begin
+  fmCompareComment := TfmCompareComment.Create(self);
+  mStream := TMemoryStream.Create;
+  try
+    fmCompareComment.ShowModal;
+    if fmCompareComment.ModalResult = mrOk then begin
+      Screen.Cursor := crHourGlass;
+
+      if not ImageEnVect1.IsEmpty then begin
+        ImageEnVect1.SaveToStreamAll(mStream);
+        mStream.Position := 0;
+        dmDBCommon.IMAGE_LAYERS_INS.ParamByName('MEMBER_ID').Value := CustomerImages.CustID;
+        dmDBCommon.IMAGE_LAYERS_INS.ParamByName('P_DATE').Value := Date;
+        dmDBCommon.IMAGE_LAYERS_INS.ParamByName('C_NAME').Value := fmCompareComment.Edit1.Text;
+        dmDBCommon.IMAGE_LAYERS_INS.ParamByName('C_COMMENT').Value := fmCompareComment.Memo1.Text;
+        dmDBCommon.IMAGE_LAYERS_INS.ParamByName('C_IMAGE').LoadFromStream(mStream, ftBlob);
+        dmDBCommon.IMAGE_LAYERS_INS.ExecProc;
+        dmDBCommon.ds_IMAGE_LAYERS_SEL.DataSet.Refresh;
+      end;
+    end;
+  finally
+    mStream.Free;
+    fmCompareComment.Free;
+    Screen.Cursor := crArrow;
+  end;
+end;
+
+procedure TfmCompareLayerList.FormShow(Sender: TObject);
+begin
+  dmDBCommon.IMAGE_LAYERS_SEL.ParamByName('M_ID').AsString := CustomerImages.CustID;
+  dmDBCommon.IMAGE_LAYERS_SEL.Active := True;
+  dmDBCommon.ds_IMAGE_LAYERS_SEL.DataSet.Refresh;
+end;
+
+end.

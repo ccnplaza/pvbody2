@@ -1,0 +1,159 @@
+object fmMemberLastSelect: TfmMemberLastSelect
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = #52572#44540#49440#53469#54924#50896
+  ClientHeight = 522
+  ClientWidth = 290
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = #44404#47548
+  Font.Style = []
+  OldCreateOrder = False
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 290
+    Height = 33
+    Align = alTop
+    TabOrder = 0
+  end
+  object cxGrid1: TcxGrid
+    Left = 0
+    Top = 33
+    Width = 290
+    Height = 489
+    Align = alClient
+    TabOrder = 1
+    LookAndFeel.SkinName = 'Black'
+    ExplicitLeft = 32
+    ExplicitTop = 112
+    ExplicitWidth = 250
+    ExplicitHeight = 200
+    object gridMember: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
+      Navigator.Buttons.First.Visible = False
+      Navigator.Buttons.PriorPage.Visible = False
+      Navigator.Buttons.Prior.Visible = False
+      Navigator.Buttons.Next.Visible = False
+      Navigator.Buttons.NextPage.Visible = False
+      Navigator.Buttons.Last.Visible = False
+      Navigator.Buttons.Insert.Visible = False
+      Navigator.Buttons.Append.Visible = False
+      Navigator.Buttons.Delete.Visible = False
+      Navigator.Buttons.Edit.Visible = False
+      Navigator.Buttons.Post.Visible = False
+      Navigator.Buttons.Cancel.Visible = False
+      Navigator.Buttons.Refresh.Visible = False
+      Navigator.Buttons.SaveBookmark.Visible = False
+      Navigator.Buttons.GotoBookmark.Visible = False
+      Navigator.Buttons.Filter.Visible = False
+      DataController.DataSource = ds_LATEST_CUSTOMER_SEL
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+      OptionsCustomize.ColumnsQuickCustomization = True
+      OptionsSelection.CellSelect = False
+      OptionsSelection.HideFocusRectOnExit = False
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.GroupByBox = False
+      OptionsView.Indicator = True
+      object gridMemberID: TcxGridDBColumn
+        DataBinding.FieldName = 'ID'
+        Visible = False
+      end
+      object gridMemberCUST_ID: TcxGridDBColumn
+        DataBinding.FieldName = 'CUST_ID'
+        Visible = False
+      end
+      object gridMemberCUST_NAME: TcxGridDBColumn
+        Caption = #54924#50896#47749
+        DataBinding.FieldName = 'CUST_NAME'
+        Width = 121
+      end
+      object gridMemberCUST_TEL: TcxGridDBColumn
+        Caption = #51204#54868#48264#54840
+        DataBinding.FieldName = 'CUST_TEL'
+      end
+      object gridMemberUSER_ID: TcxGridDBColumn
+        DataBinding.FieldName = 'USER_ID'
+        Visible = False
+      end
+    end
+    object cxGrid1Level1: TcxGridLevel
+      GridView = gridMember
+    end
+  end
+  object LATEST_CUSTOMER_SEL: TUniStoredProc
+    StoredProcName = 'LATEST_CUSTOMER_SEL'
+    Connection = dmDBCommon.UniDBConnection
+    Left = 128
+    Top = 192
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'LOGIN_USER'
+        ParamType = ptInput
+        Size = 17
+      end
+      item
+        DataType = ftInteger
+        Name = 'ID'
+        ParamType = ptOutput
+      end
+      item
+        DataType = ftString
+        Name = 'CUST_ID'
+        ParamType = ptOutput
+        Size = 17
+      end
+      item
+        DataType = ftString
+        Name = 'CUST_NAME'
+        ParamType = ptOutput
+        Size = 30
+      end
+      item
+        DataType = ftString
+        Name = 'CUST_TEL'
+        ParamType = ptOutput
+        Size = 30
+      end
+      item
+        DataType = ftString
+        Name = 'USER_ID'
+        ParamType = ptOutput
+        Size = 17
+      end>
+    CommandStoredProcName = 'LATEST_CUSTOMER_SEL'
+    object LATEST_CUSTOMER_SELID: TIntegerField
+      FieldName = 'ID'
+    end
+    object LATEST_CUSTOMER_SELCUST_ID: TStringField
+      FieldName = 'CUST_ID'
+      Size = 17
+    end
+    object LATEST_CUSTOMER_SELCUST_NAME: TStringField
+      FieldName = 'CUST_NAME'
+      Size = 30
+    end
+    object LATEST_CUSTOMER_SELCUST_TEL: TStringField
+      FieldName = 'CUST_TEL'
+      Size = 30
+    end
+    object LATEST_CUSTOMER_SELUSER_ID: TStringField
+      FieldName = 'USER_ID'
+      Size = 17
+    end
+  end
+  object ds_LATEST_CUSTOMER_SEL: TDataSource
+    DataSet = LATEST_CUSTOMER_SEL
+    Left = 128
+    Top = 240
+  end
+end

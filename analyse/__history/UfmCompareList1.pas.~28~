@@ -1,0 +1,116 @@
+unit UfmCompareList1;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  cxContainer, cxEdit, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, IniFiles,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
+  dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxStyles, dxSkinscxPCPainter, cxCustomData, cxFilter,
+  cxData, cxDataStorage, cxNavigator, DB, cxDBData, cxTextEdit, Menus,
+  imageenview, ievect, cxButtons, StdCtrls, ExtCtrls, Buttons, cxGridLevel,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
+  cxGridCustomView, cxGrid, cxGroupBox, ieview, iemview, Uni, MemDS, DBAccess,
+  VirtualTable, cxLabel, cxDBLabel, DBClient, Provider, UniProvider,
+  InterBaseUniProvider, Registry, dxmdaset, frxClass, frxDBSet, ieopensavedlg,
+  ImgList, ActnList, ComCtrls, hyiedefs, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White, hyieutils,
+  cxTrackBar, dxZoomTrackBar, cxMaskEdit, cxSpinEdit, imageenio, iexActionsMulti,
+  UfrmMemberSelect, cxCalendar, UfrmImageEnVect, WebImage, iexHelperFunctions,
+  BMDThread, UfrmImages, cxImageComboBox, UfrmImageMultiView, iexBitmaps,
+  iesettings, iexLayers, iexRulers, iexToolbars, iexLayerMView,
+  UfrmMemberPicSelect;
+
+type
+  TfmCompareList1 = class(TForm)
+    pnlMember: TPanel;
+    pgcCompareFrame: TPanel;
+    pnlRoot: TPanel;
+    cxGroupBox1: TcxGroupBox;
+    cxGroupBox2: TcxGroupBox;
+    ImageEnView1: TImageEnView;
+    ImageEnLayerMView1: TImageEnLayerMView;
+    cxGroupBox3: TcxGroupBox;
+    Panel1: TPanel;
+    OpenImageEnDialog1: TOpenImageEnDialog;
+    frmMemberPicSelect1: TfrmMemberPicSelect;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
+    procedure frmMemberSelect1btnLatelySelectClick(Sender: TObject);
+    procedure btnAddClick(Sender: TObject);
+    procedure frmMemberPicSelect1BitBtn1Click(Sender: TObject);
+  private
+    procedure RetrieveCustomerPictures;
+    { Private declarations }
+  public
+    { Public declarations }
+    CheckOldID : string;
+
+end;
+
+var
+  fmCompareList1: TfmCompareList1;
+
+implementation
+
+uses GlobalVar, uCommonLogic, UfmAnalyseRequestSelect, UdmDBCommon, UfmCompareMulti;
+
+{$R *.dfm}
+
+procedure TfmCompareList1.btnAddClick(Sender: TObject);
+var
+  idx : integer;
+begin
+//  if OpenImageEnDialog1.Execute then begin
+//    idx := ImageEnMView1.AppendImage;
+//    ImageEnMView1.ImageFileName[idx] := OpenImageEnDialog1.FileName;
+//  end;
+
+end;
+
+procedure TfmCompareList1.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := caFree;
+end;
+
+procedure TfmCompareList1.FormShow(Sender: TObject);
+begin
+  //ImageEnMView1.AnnotationsVisible := True;
+  ImageEnView1.MouseInteractLayers := [ mlMoveLayers, mlResizeLayers ];
+  ImageEnView1.IO.Params.PSD_LoadLayers := true;
+  if CustomerImages.CustName <> '' then begin
+    frmMemberPicSelect1.RetrieveMemberInfo;
+  end;
+end;
+
+procedure TfmCompareList1.frmMemberPicSelect1BitBtn1Click(Sender: TObject);
+begin
+  frmMemberPicSelect1.btnAddClick(Sender);
+
+end;
+
+procedure TfmCompareList1.frmMemberSelect1btnLatelySelectClick(Sender: TObject);
+begin
+  frmMemberPicSelect1.btnLatelySelectClick(Sender);
+
+end;
+
+procedure TfmCompareList1.RetrieveCustomerPictures;
+begin
+    frmMemberPicSelect1.edtName.Text := CustomerImages.CustName;
+    frmMemberPicSelect1.pnlNo.Caption := CustomerImages.CustTel;
+end;
+
+initialization RegisterClasses([TfmCompareList1]);
+
+end.

@@ -1,0 +1,182 @@
+unit uMemberEdit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  cxContainer, cxEdit, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
+  dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxMaskEdit, cxDropDownEdit, cxCalendar, cxDBEdit,
+  StdCtrls, Buttons, cxTextEdit, ExtCtrls, cxImage, imageenio, DB, cxMemo,
+  cxImageComboBox, MemDS, VirtualTable, dxSkinOffice2013White, ieview,
+  imageenview, ComCtrls, dxCore, cxDateUtils, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, DBAccess, Uni;
+
+type
+  TfmMemberEdit = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    Panel7: TPanel;
+    Panel8: TPanel;
+    Panel9: TPanel;
+    Panel10: TPanel;
+    Panel17: TPanel;
+    Panel18: TPanel;
+    Panel21: TPanel;
+    Panel22: TPanel;
+    Panel23: TPanel;
+    Panel24: TPanel;
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
+    Panel25: TPanel;
+    Panel27: TPanel;
+    Panel11: TPanel;
+    btnAdd: TBitBtn;
+    Panel12: TPanel;
+    Panel26: TPanel;
+    Panel28: TPanel;
+    Panel29: TPanel;
+    Panel30: TPanel;
+    Panel31: TPanel;
+    Panel32: TPanel;
+    Panel33: TPanel;
+    Panel34: TPanel;
+    Panel43: TPanel;
+    Panel44: TPanel;
+    Panel45: TPanel;
+    Panel46: TPanel;
+    Panel47: TPanel;
+    Panel48: TPanel;
+    Panel49: TPanel;
+    Panel50: TPanel;
+    Label5: TLabel;
+    Label6: TLabel;
+    ImageEnView1: TImageEnView;
+    SEX: TcxImageComboBox;
+    CTEL: TEdit;
+    CEMAIL: TEdit;
+    CBIGO: TEdit;
+    HOW_TO_COME: TcxImageComboBox;
+    FOOD_KIND: TcxImageComboBox;
+    FOOD_HOW_MUCH: TcxImageComboBox;
+    FOOD_HOW_OFTEN: TcxImageComboBox;
+    BODY_STATUS: TMemo;
+    REG_DATE: TcxDateEdit;
+    CNAME: TEdit;
+    edtAge: TEdit;
+    Label3: TLabel;
+    JOBKIND: TEdit;
+    HOBBY: TEdit;
+    BLOOD_PRESSURE: TcxImageComboBox;
+    BLOOD: TEdit;
+    edtEtcComming: TEdit;
+    Label1: TLabel;
+    chkItem1: TCheckBox;
+    chkItem8: TCheckBox;
+    chkItem9: TCheckBox;
+    chkItem4: TCheckBox;
+    chkItem5: TCheckBox;
+    chkItem2: TCheckBox;
+    chkItem7: TCheckBox;
+    chkItem6: TCheckBox;
+    chkItem3: TCheckBox;
+    chkItem10: TCheckBox;
+    edtEtcPurpose: TEdit;
+    Label4: TLabel;
+    Label7: TLabel;
+    Panel13: TPanel;
+    Panel14: TPanel;
+    cbCenter: TcxLookupComboBox;
+    Panel15: TPanel;
+    Panel16: TPanel;
+    cbKind: TcxLookupComboBox;
+    Panel19: TPanel;
+    Panel20: TPanel;
+    cbSMS: TcxImageComboBox;
+    UniQuery1: TUniQuery;
+    UniQuery1CNAME: TStringField;
+    UniQuery1SEX: TStringField;
+    UniQuery1CTEL: TStringField;
+    procedure btnAddClick(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    EDIT_MODE : Integer;  //0=insert, 1=edit
+  end;
+
+var
+  fmMemberEdit: TfmMemberEdit;
+
+implementation
+
+uses uPictureGenerator, uMember, UdmDBCommon;
+
+{$R *.dfm}
+
+procedure TfmMemberEdit.BitBtn1Click(Sender: TObject);
+var
+  c_name, c_tel : string;
+begin
+  c_name := CNAME.Text;
+  c_tel := CTEL.Text;
+  if c_name = '' then begin
+    ShowMessage('이름은 필수로 입력해야 합니다.');
+    CNAME.SetFocus;
+    Exit;
+  end;
+  if c_tel = '' then begin
+    ShowMessage('전화번호는 필수로 입력해야 합니다.');
+    CTEL.SetFocus;
+    Exit;
+  end;
+  if EDIT_MODE = 0 then begin
+    if dmDBCommon.CheckCustomerExists(c_name, c_tel) > 0 then begin
+      ShowMessage('동일한 회원이 이미 등록되었습니다. 확인하세요.');
+      Exit;
+    end else begin
+      ModalResult := mrOk;
+    end;
+  end else begin
+    ModalResult := mrOk;
+  end;
+end;
+
+procedure TfmMemberEdit.btnAddClick(Sender: TObject);
+//var
+//  mPic : TMemoryStream;
+begin
+//  mPic := TMemoryStream.Create;
+  try
+    fmPictureGenerator := TfmPictureGenerator.Create(self);
+    fmPictureGenerator.ShowModal;
+    if fmPictureGenerator.ModalResult = mrOk then begin
+      ImageEnView1.Assign(fmPictureGenerator.ImageEnVect3);
+//      fmPictureGenerator.ImageEnVect3.IO.SaveToStream(mPic, ioJPEG);
+//      mPic.Position := 0;
+//      TBlobField(cxDBImage1.DataBinding.DataSource.DataSet.FieldByName('photo')).LoadFromStream(mPic);
+//      cxDBImage1.SetFocus;
+    end;
+  finally
+//    mPic.Free;
+    fmPictureGenerator.Free;
+  end;
+end;
+
+end.
