@@ -117,6 +117,8 @@ type
     N20: TMenuItem;
     N2: TMenuItem;
     N3: TMenuItem;
+    N4: TMenuItem;
+    N5: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure actAnalyseExecute(Sender: TObject);
     procedure actSMSManagerExecute(Sender: TObject);
@@ -168,6 +170,7 @@ type
     procedure ActTelDictionaryExecute(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N3Click(Sender: TObject);
+    procedure N5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -323,6 +326,11 @@ end;
 procedure TfmMain.N3Click(Sender: TObject);
 begin
   //CreateChild('TfmCompareList1');
+end;
+
+procedure TfmMain.N5Click(Sender: TObject);
+begin
+  CreateChild('TfmMuscleEditor');
 end;
 
 procedure TfmMain.SMS1Click(Sender: TObject);

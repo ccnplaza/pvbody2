@@ -657,7 +657,7 @@ begin
       fmPostureEditor2.ShowModal;
       if fmPostureEditor2.ModalResult = mrOk then begin
         if fmPostureEditor2.frmImageEditor21.IMAGE_CHANGED = True then begin
-          ImageEnMView1 .SetIEBitmap(IMAGE_IDX, fmPostureEditor2.frmImageEditor21.ImageEnVect1.IEBitmap);
+          ImageEnMView1.SetIEBitmap(IMAGE_IDX, fmPostureEditor2.frmImageEditor21.ImageEnVect1.IEBitmap);
           ImageEnMView1.Update;
         end;
       end;

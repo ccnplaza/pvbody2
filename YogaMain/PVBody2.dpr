@@ -123,7 +123,11 @@ uses
   UfmSearchResults in 'UfmSearchResults.pas' {fmSearchResults},
   uLineProps in '..\LayerEditor\uLineProps.pas' {LineProps},
   uShapeProps in '..\LayerEditor\uShapeProps.pas' {ShapeProps},
-  uTextProps in '..\LayerEditor\uTextProps.pas' {TextProps};
+  uTextProps in '..\LayerEditor\uTextProps.pas' {TextProps},
+  UfmMuscleImage in '..\analyse\UfmMuscleImage.pas' {fmMuscleImage},
+  UfmMuscleDetail in '..\analyse\UfmMuscleDetail.pas' {fmMuscleDetail},
+  UfmMuscleEditor in '..\analyse\UfmMuscleEditor.pas' {fmMuscleEditor},
+  UfmMuscleInsert in '..\analyse\UfmMuscleInsert.pas' {fmMuscleInsert};
 
 {$R *.res}
 

@@ -436,6 +436,20 @@ type
     ds_CUST_COMPARE_WIN_SEL: TDataSource;
     q_NSTATIC_CHECK_RESULTIMAGE_ID: TIntegerField;
     NSTATIC_CHECK_RESULT_INS: TUniStoredProc;
+    MUSCLE_MAIN_SEL: TUniStoredProc;
+    ds_MUSCLE_MAIN_SEL: TDataSource;
+    MUSCLE_MAIN_SELID: TIntegerField;
+    MUSCLE_MAIN_SELM_NAME: TStringField;
+    MUSCLE_IMAGES_SEL: TUniStoredProc;
+    MUSCLE_IMAGES_SELID: TIntegerField;
+    MUSCLE_IMAGES_SELM_NAME: TStringField;
+    MUSCLE_IMAGES_SELM_IMAGE: TBlobField;
+    MUSCLE_IMAGES_SELM_KIND: TIntegerField;
+    MUSCLE_IMAGES_SELM_DESC: TMemoField;
+    MUSCLE_IMAGES_SELM_IDX: TIntegerField;
+    MUSCLE_IMAGES_SELM_POINT: TIntegerField;
+    MUSCLE_IMAGES_SELM_SEX: TIntegerField;
+    ds_MUSCLE_IMAGES_SEL: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
   private
     procedure DownloadImage(imgName: string);

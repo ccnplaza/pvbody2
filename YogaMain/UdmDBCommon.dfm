@@ -2771,8 +2771,8 @@ object dmDBCommon: TdmDBCommon
   end
   object d_compare_data: TDataSource
     DataSet = q_compare_data
-    Left = 768
-    Top = 592
+    Left = 800
+    Top = 512
   end
   object q_compare_data: TUniQuery
     SQLInsert.Strings = (
@@ -2813,8 +2813,8 @@ object dmDBCommon: TdmDBCommon
       'select * from cust_compare_multi_data'
       'where member_id = :mem_id'
       'order by id;')
-    Left = 768
-    Top = 544
+    Left = 800
+    Top = 464
     ParamData = <
       item
         DataType = ftString
@@ -2841,8 +2841,8 @@ object dmDBCommon: TdmDBCommon
   object CUST_COMPARE_MULTI_SEL: TUniStoredProc
     StoredProcName = 'CUST_COMPARE_MULTI_SEL'
     Connection = UniDBConnection
-    Left = 768
-    Top = 640
+    Left = 800
+    Top = 560
     ParamData = <
       item
         DataType = ftInteger
@@ -3039,8 +3039,8 @@ object dmDBCommon: TdmDBCommon
   object CUSTOMER_UPD_SMS: TUniStoredProc
     StoredProcName = 'CUSTOMER_UPD_SMS'
     Connection = UniDBConnection
-    Left = 408
-    Top = 640
+    Left = 352
+    Top = 600
     ParamData = <
       item
         DataType = ftString
@@ -3832,14 +3832,14 @@ object dmDBCommon: TdmDBCommon
   end
   object ds_CUSTOMER_SEL_LOOK_TEL: TDataSource
     DataSet = CUSTOMER_SEL_LOOK_TEL
-    Left = 392
-    Top = 744
+    Left = 352
+    Top = 696
   end
   object CUSTOMER_SEL_LOOK_TEL: TUniStoredProc
     StoredProcName = 'CUSTOMER_SEL_LOOK_TEL'
     Connection = UniDBConnection
-    Left = 392
-    Top = 696
+    Left = 352
+    Top = 648
     ParamData = <
       item
         DataType = ftString
@@ -4924,5 +4924,129 @@ object dmDBCommon: TdmDBCommon
         ParamType = ptInput
       end>
     CommandStoredProcName = 'NSTATIC_CHECK_RESULT_INS'
+  end
+  object MUSCLE_MAIN_SEL: TUniStoredProc
+    StoredProcName = 'MUSCLE_MAIN_SEL'
+    Connection = UniDBConnection
+    Left = 800
+    Top = 632
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'ID'
+        ParamType = ptOutput
+      end
+      item
+        DataType = ftString
+        Name = 'M_NAME'
+        ParamType = ptOutput
+        Size = 30
+      end>
+    CommandStoredProcName = 'MUSCLE_MAIN_SEL'
+    object MUSCLE_MAIN_SELID: TIntegerField
+      Alignment = taCenter
+      FieldName = 'ID'
+    end
+    object MUSCLE_MAIN_SELM_NAME: TStringField
+      FieldName = 'M_NAME'
+      Size = 30
+    end
+  end
+  object ds_MUSCLE_MAIN_SEL: TDataSource
+    DataSet = MUSCLE_MAIN_SEL
+    Left = 800
+    Top = 680
+  end
+  object MUSCLE_IMAGES_SEL: TUniStoredProc
+    StoredProcName = 'MUSCLE_IMAGES_SEL'
+    Connection = UniDBConnection
+    Left = 800
+    Top = 728
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'MKIND'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'MPOINT'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'ID'
+        ParamType = ptOutput
+      end
+      item
+        DataType = ftString
+        Name = 'M_NAME'
+        ParamType = ptOutput
+        Size = 50
+      end
+      item
+        DataType = ftBlob
+        Name = 'M_IMAGE'
+        ParamType = ptOutput
+        Value = ''
+      end
+      item
+        DataType = ftInteger
+        Name = 'M_KIND'
+        ParamType = ptOutput
+      end
+      item
+        DataType = ftMemo
+        Name = 'M_DESC'
+        ParamType = ptOutput
+        Value = ''
+      end
+      item
+        DataType = ftInteger
+        Name = 'M_IDX'
+        ParamType = ptOutput
+      end
+      item
+        DataType = ftInteger
+        Name = 'M_POINT'
+        ParamType = ptOutput
+      end
+      item
+        DataType = ftInteger
+        Name = 'M_SEX'
+        ParamType = ptOutput
+      end>
+    CommandStoredProcName = 'MUSCLE_IMAGES_SEL'
+    object MUSCLE_IMAGES_SELID: TIntegerField
+      FieldName = 'ID'
+    end
+    object MUSCLE_IMAGES_SELM_NAME: TStringField
+      FieldName = 'M_NAME'
+      Size = 50
+    end
+    object MUSCLE_IMAGES_SELM_IMAGE: TBlobField
+      FieldName = 'M_IMAGE'
+    end
+    object MUSCLE_IMAGES_SELM_KIND: TIntegerField
+      FieldName = 'M_KIND'
+    end
+    object MUSCLE_IMAGES_SELM_DESC: TMemoField
+      FieldName = 'M_DESC'
+      BlobType = ftMemo
+    end
+    object MUSCLE_IMAGES_SELM_IDX: TIntegerField
+      FieldName = 'M_IDX'
+    end
+    object MUSCLE_IMAGES_SELM_POINT: TIntegerField
+      FieldName = 'M_POINT'
+    end
+    object MUSCLE_IMAGES_SELM_SEX: TIntegerField
+      FieldName = 'M_SEX'
+    end
+  end
+  object ds_MUSCLE_IMAGES_SEL: TDataSource
+    DataSet = MUSCLE_IMAGES_SEL
+    Left = 800
+    Top = 776
   end
 end

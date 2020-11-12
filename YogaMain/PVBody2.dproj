@@ -396,6 +396,18 @@
 			<DCCReference Include="..\LayerEditor\uTextProps.pas">
 				<Form>TextProps</Form>
 			</DCCReference>
+			<DCCReference Include="..\analyse\UfmMuscleImage.pas">
+				<Form>fmMuscleImage</Form>
+			</DCCReference>
+			<DCCReference Include="..\analyse\UfmMuscleDetail.pas">
+				<Form>fmMuscleDetail</Form>
+			</DCCReference>
+			<DCCReference Include="..\analyse\UfmMuscleEditor.pas">
+				<Form>fmMuscleEditor</Form>
+			</DCCReference>
+			<DCCReference Include="..\analyse\UfmMuscleInsert.pas">
+				<Form>fmMuscleInsert</Form>
+			</DCCReference>
 			<None Include="PVBody2.todo"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
@@ -429,7 +441,7 @@
 						<VersionInfo Name="MajorVer">2</VersionInfo>
 						<VersionInfo Name="MinorVer">1</VersionInfo>
 						<VersionInfo Name="Release">1</VersionInfo>
-						<VersionInfo Name="Build">20</VersionInfo>
+						<VersionInfo Name="Build">22</VersionInfo>
 						<VersionInfo Name="Debug">False</VersionInfo>
 						<VersionInfo Name="PreRelease">False</VersionInfo>
 						<VersionInfo Name="Special">False</VersionInfo>
@@ -441,7 +453,7 @@
 					<VersionInfoKeys>
 						<VersionInfoKeys Name="CompanyName"/>
 						<VersionInfoKeys Name="FileDescription"/>
-						<VersionInfoKeys Name="FileVersion">2.1.1.20</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">2.1.1.22</VersionInfoKeys>
 						<VersionInfoKeys Name="InternalName"/>
 						<VersionInfoKeys Name="LegalCopyright"/>
 						<VersionInfoKeys Name="LegalTrademarks"/>

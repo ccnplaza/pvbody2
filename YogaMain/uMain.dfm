@@ -4444,6 +4444,13 @@ object fmMain: TfmMain
       object NStaticCheckItemSet: TMenuItem
         Action = ActStaticCheckItemSet
       end
+      object N4: TMenuItem
+        Caption = '-'
+      end
+      object N5: TMenuItem
+        Caption = #44540#50977'/'#44264#44201' '#49444#51221
+        OnClick = N5Click
+      end
     end
     object N17: TMenuItem
       Caption = #44592#53440#44288#47532

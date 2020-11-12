@@ -1,0 +1,53 @@
+object fmMuscleImage: TfmMuscleImage
+  Left = 0
+  Top = 0
+  Caption = #51060#48120#51648' '#47532#49828#53944
+  ClientHeight = 415
+  ClientWidth = 635
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = #44404#47548
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object ImageEnMView1: TImageEnMView
+    Left = 0
+    Top = 0
+    Width = 635
+    Height = 415
+    Background = clWindow
+    GridWidth = -1
+    StoreType = ietNormal
+    ThumbWidth = 200
+    ThumbHeight = 200
+    BottomGap = 0
+    UpperGap = 5
+    LeftGap = 0
+    TextMargin = 5
+    ThumbnailOptionsEx = [ietxShowIconForUnknownFormat, ietxShowIconWhileLoading, ietxEnableInternalIcons, ietxStretchSmallImages, ietxAutoPadThumbnailColumns, ietxCenterSingleFrame]
+    PopupMenus = []
+    Style = iemsFlat
+    AutoAdjustStyle = False
+    MultiSelectionOptions = []
+    DefaultTopText = iedtNone
+    DefaultInfoText = iedtNone
+    DefaultBottomText = iedtNone
+    Align = alClient
+    TopTextFont.Charset = DEFAULT_CHARSET
+    TopTextFont.Color = clWindowText
+    TopTextFont.Height = -13
+    TopTextFont.Name = #44404#47548
+    TopTextFont.Style = [fsBold]
+    TabOrder = 0
+    OnDblClick = ImageEnMView1DblClick
+    ExplicitLeft = 208
+    ExplicitTop = 64
+    ExplicitWidth = 180
+    ExplicitHeight = 90
+  end
+end

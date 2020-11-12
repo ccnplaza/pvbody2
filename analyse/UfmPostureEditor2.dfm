@@ -48,9 +48,6 @@ object fmPostureEditor2: TfmPostureEditor2
           ExplicitHeight = 723
           ClientRectBottom = 718
           inherited cxTabSheet1: TcxTabSheet
-            ExplicitLeft = 2
-            ExplicitTop = 25
-            ExplicitWidth = 175
             ExplicitHeight = 693
             inherited pnl2: TPanel
               Height = 693
@@ -58,38 +55,29 @@ object fmPostureEditor2: TfmPostureEditor2
               inherited cxGroupBox1: TcxGroupBox
                 inherited colorLine: TdxColorEdit
                   Style.IsFontAssigned = True
-                  ExplicitHeight = 24
                 end
                 inherited cbbPenStyle: TcxImageComboBox
                   Style.IsFontAssigned = True
-                  ExplicitHeight = 24
                 end
                 inherited colorBrush: TdxColorEdit
                   Style.IsFontAssigned = True
-                  ExplicitHeight = 24
                 end
                 inherited cbbBrushStyle: TcxImageComboBox
                   Style.IsFontAssigned = True
-                  ExplicitHeight = 24
                 end
                 inherited efontColor: TdxColorEdit
                   Style.IsFontAssigned = True
-                  ExplicitHeight = 24
                 end
               end
             end
           end
           inherited cxTabSheet2: TcxTabSheet
-            ExplicitLeft = 2
-            ExplicitTop = 25
-            ExplicitWidth = 175
-            ExplicitHeight = 655
-          end
-          inherited cxTabSheet3: TcxTabSheet
-            ExplicitLeft = 2
-            ExplicitTop = 25
-            ExplicitWidth = 175
-            ExplicitHeight = 655
+            inherited pnl3: TPanel
+              Height = 655
+              inherited ImageEnMView1: TImageEnMView
+                Height = 610
+              end
+            end
           end
         end
       end
@@ -110,31 +98,98 @@ object fmPostureEditor2: TfmPostureEditor2
           Height = 697
           ExplicitWidth = 1166
           ExplicitHeight = 697
-          inherited Splitter1: TSplitter
-            Left = 986
-            Height = 695
-            ExplicitLeft = 986
-            ExplicitHeight = 695
-          end
-          inherited Splitter2: TSplitter
-            Height = 695
-            ExplicitHeight = 695
-          end
           inherited ImageEnVect1: TImageEnVect
-            Width = 806
+            Width = 564
             Height = 695
-            ExplicitWidth = 806
+            ExplicitLeft = 251
+            ExplicitWidth = 664
             ExplicitHeight = 695
           end
-          inherited ImageEnView1: TImageEnView
+          inherited cxPageControl2: TcxPageControl
             Height = 695
+            LookAndFeel.SkinName = ''
             ExplicitHeight = 695
+            ClientRectBottom = 695
+            inherited cxTabSheet4: TcxTabSheet
+              ExplicitLeft = 0
+              ExplicitTop = 20
+              ExplicitWidth = 250
+              ExplicitHeight = 675
+              inherited HotSpotImage1: THotSpotImage
+                Height = 675
+              end
+            end
+            inherited cxTabSheet5: TcxTabSheet
+              ExplicitLeft = 0
+              ExplicitTop = 20
+              ExplicitWidth = 250
+              ExplicitHeight = 637
+              inherited HotSpotImage2: THotSpotImage
+                Height = 675
+              end
+            end
+            inherited cxTabSheet6: TcxTabSheet
+              ExplicitLeft = 0
+              ExplicitTop = 20
+              ExplicitWidth = 250
+              ExplicitHeight = 637
+              inherited HotSpotImage3: THotSpotImage
+                Height = 675
+              end
+            end
+            inherited cxTabSheet7: TcxTabSheet
+              ExplicitLeft = 0
+              ExplicitTop = 20
+              ExplicitWidth = 250
+              ExplicitHeight = 637
+              inherited HotSpotImage4: THotSpotImage
+                Height = 675
+              end
+            end
           end
-          inherited ImageEnView2: TImageEnView
-            Left = 989
+          inherited cxPageControl3: TcxPageControl
+            Left = 865
             Height = 695
-            ExplicitLeft = 989
+            LookAndFeel.SkinName = ''
+            ExplicitLeft = 865
             ExplicitHeight = 695
+            ClientRectBottom = 695
+            inherited cxTabSheet8: TcxTabSheet
+              ExplicitLeft = 0
+              ExplicitTop = 20
+              ExplicitWidth = 250
+              ExplicitHeight = 675
+              inherited HotSpotImage5: THotSpotImage
+                Height = 675
+              end
+            end
+            inherited cxTabSheet9: TcxTabSheet
+              ExplicitLeft = 0
+              ExplicitTop = 20
+              ExplicitWidth = 250
+              ExplicitHeight = 637
+              inherited HotSpotImage6: THotSpotImage
+                Height = 675
+              end
+            end
+            inherited cxTabSheet10: TcxTabSheet
+              ExplicitLeft = 0
+              ExplicitTop = 20
+              ExplicitWidth = 250
+              ExplicitHeight = 637
+              inherited HotSpotImage7: THotSpotImage
+                Height = 675
+              end
+            end
+            inherited cxTabSheet11: TcxTabSheet
+              ExplicitLeft = 0
+              ExplicitTop = 20
+              ExplicitWidth = 250
+              ExplicitHeight = 637
+              inherited HotSpotImage8: THotSpotImage
+                Height = 675
+              end
+            end
           end
         end
       end

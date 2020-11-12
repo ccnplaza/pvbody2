@@ -23,7 +23,7 @@ uses
   cxGroupBox, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
   dxSkinOffice2013LightGray, dxBarBuiltInMenu, ActnList, iexActions,
   ieopensavedlg, dxGDIPlusClasses, WebImage, iexBitmaps, iesettings, iexLayers,
-  iexRulers, iexToolbars;
+  iexRulers, iexToolbars, HotSpotImage;
 
 type
   TfrmImageEditor2 = class(TFrame)
@@ -152,10 +152,6 @@ type
     btnImage: TSpeedButton;
     dlgOpenImage: TOpenImageEnDialog;
     Panel1: TPanel;
-    ImageEnView1: TImageEnView;
-    ImageEnView2: TImageEnView;
-    Splitter1: TSplitter;
-    Splitter2: TSplitter;
     btnImportFile: TSpeedButton;
     chkGrid: TCheckBox;
     cxGroupBox6: TcxGroupBox;
@@ -173,6 +169,24 @@ type
     Label17: TLabel;
     lblSelSize: TLabel;
     chkGuidLine: TCheckBox;
+    cxPageControl2: TcxPageControl;
+    cxTabSheet4: TcxTabSheet;
+    cxTabSheet5: TcxTabSheet;
+    cxTabSheet6: TcxTabSheet;
+    cxTabSheet7: TcxTabSheet;
+    cxPageControl3: TcxPageControl;
+    cxTabSheet8: TcxTabSheet;
+    cxTabSheet9: TcxTabSheet;
+    cxTabSheet10: TcxTabSheet;
+    cxTabSheet11: TcxTabSheet;
+    HotSpotImage1: THotSpotImage;
+    HotSpotImage2: THotSpotImage;
+    HotSpotImage3: THotSpotImage;
+    HotSpotImage4: THotSpotImage;
+    HotSpotImage5: THotSpotImage;
+    HotSpotImage6: THotSpotImage;
+    HotSpotImage7: THotSpotImage;
+    HotSpotImage8: THotSpotImage;
     procedure ImageEnVect1NewObject(Sender: TObject; hobj: Integer);
     procedure ImageEnVect1SelectObject(Sender: TObject);
     procedure cbbAngleChange(Sender: TObject);
@@ -245,6 +259,8 @@ type
     procedure btnFitClick(Sender: TObject);
     procedure ImageEnVect1SelectionChanging(Sender: TObject);
     procedure chkGuidLineClick(Sender: TObject);
+    procedure HotSpotImage1HotSpotClick(Sender: TObject; HotSpot: THotSpot);
+    procedure HotSpotImage4HotSpotClick(Sender: TObject; HotSpot: THotSpot);
   private
     procedure SetThumbnail;
     procedure SetArrowSelection;
@@ -284,7 +300,7 @@ const
 
 implementation
 
-uses GlobalVar, UdmDBCommon;
+uses GlobalVar, UdmDBCommon, UfmMuscleImage;
 
 {$R *.dfm}
 
@@ -350,6 +366,46 @@ begin
     ImageEnVect1.SaveToStreamIEV(dStream);
     mStream.Position := 0;
     dStream.Position := 0;
+  end;
+end;
+
+procedure TfrmImageEditor2.HotSpotImage1HotSpotClick(Sender: TObject;
+  HotSpot: THotSpot);
+var
+  spot_id : Integer;
+begin
+  fmMuscleImage := TfmMuscleImage.Create(Self);
+  try
+    if (HotSpot.ID = 3) or ((HotSpot.ID = 4)) then
+      spot_id := 3
+    else
+      spot_id := HotSpot.ID;
+
+    fmMuscleImage.BODY_SIDE := 1;
+    fmMuscleImage.BODY_POINT := spot_id;
+    fmMuscleImage.ShowModal;
+  finally
+    fmMuscleImage.Free;
+  end;
+end;
+
+procedure TfrmImageEditor2.HotSpotImage4HotSpotClick(Sender: TObject;
+  HotSpot: THotSpot);
+var
+  spot_id : Integer;
+begin
+  fmMuscleImage := TfmMuscleImage.Create(Self);
+  try
+    if (HotSpot.ID = 3) or ((HotSpot.ID = 4)) then
+      spot_id := 3
+    else
+      spot_id := HotSpot.ID;
+
+    fmMuscleImage.BODY_SIDE := 4;
+    fmMuscleImage.BODY_POINT := spot_id;
+    fmMuscleImage.ShowModal;
+  finally
+    fmMuscleImage.Free;
   end;
 end;
 

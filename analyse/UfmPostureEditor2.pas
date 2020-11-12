@@ -110,8 +110,8 @@ end;
 
 procedure TfmPostureEditor2.FormResize(Sender: TObject);
 begin
-  frmImageEditor21.ImageEnView1.Width := 250;
-  frmImageEditor21.ImageEnView2.Width := 250;
+//  frmImageEditor21.ImageEnView1.Width := 250;
+//  frmImageEditor21.ImageEnView2.Width := 250;
 end;
 
 procedure TfmPostureEditor2.FormShow(Sender: TObject);
@@ -126,51 +126,51 @@ begin
 //  LockControl(frmImageEditor21, True);
   Caption := '자세분석' + ' - ' +
     IMAGE_FILE_NAME + IntToStr(IMAGE_ID);
-  if SEX_KIND = 0 then begin
-    case POS_KIND of
-      1: begin
-        muscle_name := 'male_front.jpg';
-        bone_name := 'bone_front.jpg';
-      end;
-      2: begin
-        muscle_name := 'male_side.jpg';
-        bone_name := 'bone_side.jpg';
-      end;
-      3: begin
-        muscle_name := 'male_side.jpg';
-        bone_name := 'bone_side.jpg';
-      end;
-      4, 5: begin
-        muscle_name := 'male_back.jpg';
-        bone_name := 'bone_back.jpg';
-      end;
-    end;
-  end else begin
-    case POS_KIND of
-      1: begin
-        muscle_name := 'female_front.jpg';
-        bone_name := 'bone_front.jpg';
-      end;
-      2: begin
-        muscle_name := 'female_side.jpg';
-        bone_name := 'bone_side.jpg';
-      end;
-      3: begin
-        muscle_name := 'female_side.jpg';
-        bone_name := 'bone_side.jpg';
-      end;
-      4, 5: begin
-        muscle_name := 'female_back.jpg';
-        bone_name := 'bone_back.jpg';
-      end;
-    end;
-  end;
-  frmImageEditor21.ImageEnView1.IO.LoadFromURL('http://bodycheck.co.kr/images/' + muscle_name);
-  frmImageEditor21.ImageEnView2.IO.LoadFromURL('http://bodycheck.co.kr/images/' + bone_name);
-  frmImageEditor21.ImageEnVect1.AutoFit := True;
-  frmImageEditor21.ImageEnVect1.AutoStretch := True;
-  frmImageEditor21.ImageEnVect1.AutoShrink := True;
-  frmImageEditor21.ImageEnVect1.Update;
+//  if SEX_KIND = 0 then begin
+//    case POS_KIND of
+//      1: begin
+//        muscle_name := 'male_front.jpg';
+//        bone_name := 'bone_front.jpg';
+//      end;
+//      2: begin
+//        muscle_name := 'male_side.jpg';
+//        bone_name := 'bone_side.jpg';
+//      end;
+//      3: begin
+//        muscle_name := 'male_side.jpg';
+//        bone_name := 'bone_side.jpg';
+//      end;
+//      4, 5: begin
+//        muscle_name := 'male_back.jpg';
+//        bone_name := 'bone_back.jpg';
+//      end;
+//    end;
+//  end else begin
+//    case POS_KIND of
+//      1: begin
+//        muscle_name := 'female_front.jpg';
+//        bone_name := 'bone_front.jpg';
+//      end;
+//      2: begin
+//        muscle_name := 'female_side.jpg';
+//        bone_name := 'bone_side.jpg';
+//      end;
+//      3: begin
+//        muscle_name := 'female_side.jpg';
+//        bone_name := 'bone_side.jpg';
+//      end;
+//      4, 5: begin
+//        muscle_name := 'female_back.jpg';
+//        bone_name := 'bone_back.jpg';
+//      end;
+//    end;
+//  end;
+//  frmImageEditor21.ImageEnView1.IO.LoadFromURL('http://bodycheck.co.kr/images/' + muscle_name);
+//  frmImageEditor21.ImageEnView2.IO.LoadFromURL('http://bodycheck.co.kr/images/' + bone_name);
+//  frmImageEditor21.ImageEnVect1.AutoFit := True;
+//  frmImageEditor21.ImageEnVect1.AutoStretch := True;
+//  frmImageEditor21.ImageEnVect1.AutoShrink := True;
+//  frmImageEditor21.ImageEnVect1.Update;
 //  LockControl(frmImageEditor21,False);
 end;
 
