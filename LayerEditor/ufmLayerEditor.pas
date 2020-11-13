@@ -138,6 +138,7 @@ type
     lblSweepAngle: TLabel;
     edtSweepAngle: TEdit;
     updSweepAngle: TUpDown;
+    Button1: TButton;
 
     procedure FormCreate(Sender: TObject);
     procedure btnActivateTextEditorClick(Sender: TObject);
@@ -193,6 +194,7 @@ type
     procedure LayerPropertiesClick(Sender: TObject);
     procedure Undo1Click(Sender: TObject);
     procedure Redo1Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -203,7 +205,7 @@ type
     procedure AssignControlValues(SaveUndo: Boolean = True);
   public
     { Public declarations }
-    IMAGE_STREAM : TMemoryStream;
+    IMAGE_STREAM, DRAW_STREAM : TMemoryStream;
     IMAGE_FILE : string;
   end;
 
@@ -292,8 +294,9 @@ begin
   ImageEnView1.LayerOptions := ImageEnView1.LayerOptions + [ loPropsOnDblClick ];
 
   fUpdating := False;
-  //ImageEnView1.IO.LoadFromStreamIEN(IMAGE_STREAM);
-  ImageEnView1.IO.LoadFromFileIEN(IMAGE_FILE);
+  ImageEnView1.IO.LoadFromStream(IMAGE_STREAM);
+  ImageEnView1.IO.LoadFromStreamIEN(DRAW_STREAM);
+//  ImageEnView1.IO.LoadFromFileIEN(IMAGE_FILE);
   MouseActionCtrlClick(nil);
   RefreshControls();
   fLastLayerKind := TIELayerKind( -1 );
@@ -1017,6 +1020,11 @@ begin
   RefreshControls();
 end;
 
+
+procedure TfmLayerEditor.Button1Click(Sender: TObject);
+begin
+  ModalResult := mrOk;
+end;
 
 procedure TfmLayerEditor.SavetoSVG1Click(Sender: TObject);
 var

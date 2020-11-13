@@ -370,9 +370,9 @@ object fmCompareList2: TfmCompareList2
     end
   end
   object PanelRight: TPanel
-    Left = 576
+    Left = 912
     Top = 0
-    Width = 781
+    Width = 445
     Height = 724
     Align = alRight
     BevelOuter = bvNone
@@ -381,7 +381,7 @@ object fmCompareList2: TfmCompareList2
     object cxPageControl1: TcxPageControl
       Left = 0
       Top = 0
-      Width = 781
+      Width = 445
       Height = 724
       Align = alClient
       TabOrder = 0
@@ -389,12 +389,14 @@ object fmCompareList2: TfmCompareList2
       Properties.CustomButtons.Buttons = <>
       LookAndFeel.SkinName = ''
       OnResize = cxPageControl1Resize
+      ExplicitWidth = 781
       ClientRectBottom = 724
-      ClientRectRight = 781
+      ClientRectRight = 445
       ClientRectTop = 24
       object cxTabSheet1: TcxTabSheet
         Caption = 'cxTabSheet1'
         ImageIndex = 0
+        ExplicitWidth = 781
         object cxGroupBox1: TcxGroupBox
           Tag = 1
           AlignWithMargins = True
@@ -413,16 +415,18 @@ object fmCompareList2: TfmCompareList2
           StyleFocused.LookAndFeel.SkinName = 'Black'
           StyleHot.LookAndFeel.SkinName = 'Black'
           TabOrder = 0
+          ExplicitWidth = 779
           Height = 698
-          Width = 779
+          Width = 443
           object Panel2: TPanel
             Left = 3
             Top = 15
-            Width = 773
+            Width = 437
             Height = 27
             Align = alTop
             BevelOuter = bvNone
             TabOrder = 0
+            ExplicitWidth = 773
             object Label3: TLabel
               AlignWithMargins = True
               Left = 202
@@ -464,7 +468,7 @@ object fmCompareList2: TfmCompareList2
             end
             object btnReport: TBitBtn
               AlignWithMargins = True
-              Left = 728
+              Left = 392
               Top = 1
               Width = 44
               Height = 25
@@ -487,6 +491,7 @@ object fmCompareList2: TfmCompareList2
               ShowHint = True
               TabOrder = 1
               OnClick = btnReportClick
+              ExplicitLeft = 728
             end
             object TrackBar1: TTrackBar
               AlignWithMargins = True
@@ -918,7 +923,7 @@ object fmCompareList2: TfmCompareList2
           object LayerWindow: TImageEnView
             Left = 3
             Top = 42
-            Width = 773
+            Width = 437
             Height = 646
             Background = clBtnFace
             BackgroundStyle = iebsChessboard
@@ -930,6 +935,7 @@ object fmCompareList2: TfmCompareList2
             TabOrder = 2
             OnDragDrop = LayerWindowDragDrop
             OnDragOver = LayerWindowDragOver
+            ExplicitWidth = 773
           end
           object ImageEnVect1Print: TImageEnVect
             Tag = 1
@@ -948,6 +954,7 @@ object fmCompareList2: TfmCompareList2
       object cxTabSheet2: TcxTabSheet
         Caption = 'cxTabSheet2'
         ImageIndex = 1
+        ExplicitWidth = 781
         object cxGroupBox3: TcxGroupBox
           AlignWithMargins = True
           Left = 1
@@ -960,19 +967,21 @@ object fmCompareList2: TfmCompareList2
           Caption = #48708#44368#48516#49437'('#50952#46020#50864')'
           Style.TextStyle = [fsBold]
           TabOrder = 0
+          ExplicitWidth = 779
           Height = 698
-          Width = 779
+          Width = 443
           object Panel3: TPanel
             Left = 3
             Top = 15
-            Width = 773
+            Width = 437
             Height = 25
             Align = alTop
             BevelOuter = bvNone
             TabOrder = 0
+            ExplicitWidth = 773
             object BitBtn1: TBitBtn
               AlignWithMargins = True
-              Left = 728
+              Left = 392
               Top = 1
               Width = 44
               Height = 23
@@ -995,6 +1004,7 @@ object fmCompareList2: TfmCompareList2
               ShowHint = True
               TabOrder = 0
               OnClick = BitBtn1Click
+              ExplicitLeft = 728
             end
             object btnWindowList: TcxButton
               AlignWithMargins = True
@@ -1155,11 +1165,12 @@ object fmCompareList2: TfmCompareList2
           object pgcCompareFrame: TPanel
             Left = 3
             Top = 40
-            Width = 773
+            Width = 437
             Height = 648
             Align = alClient
             BevelOuter = bvNone
             TabOrder = 1
+            ExplicitWidth = 773
             object pnlCompareFrameLeft: TPanel
               Left = 0
               Top = 0
@@ -1231,11 +1242,12 @@ object fmCompareList2: TfmCompareList2
             object pnlCompareFrameRight: TPanel
               Left = 321
               Top = 0
-              Width = 452
+              Width = 116
               Height = 648
               Align = alClient
               BevelOuter = bvNone
               TabOrder = 1
+              ExplicitWidth = 452
               object compareGroupRightTop: TcxGroupBox
                 Tag = 3
                 Left = 0
@@ -1248,13 +1260,14 @@ object fmCompareList2: TfmCompareList2
                 StyleFocused.LookAndFeel.SkinName = 'Black'
                 StyleHot.LookAndFeel.SkinName = 'Black'
                 TabOrder = 0
+                ExplicitWidth = 452
                 Height = 307
-                Width = 452
+                Width = 116
                 object ImageEnVectComp3: TImageEnVect
                   Tag = 3
                   Left = 3
                   Top = 15
-                  Width = 446
+                  Width = 110
                   Height = 282
                   Background = clInactiveCaptionText
                   AutoStretch = True
@@ -1263,6 +1276,7 @@ object fmCompareList2: TfmCompareList2
                   TabOrder = 0
                   OnDragDrop = ImageEnVectComp1DragDrop
                   OnDragOver = ImageEnVectComp3DragOver
+                  ExplicitWidth = 446
                 end
               end
               object compareGroupRightBottom: TcxGroupBox
@@ -1277,13 +1291,14 @@ object fmCompareList2: TfmCompareList2
                 StyleFocused.LookAndFeel.SkinName = 'Black'
                 StyleHot.LookAndFeel.SkinName = 'Black'
                 TabOrder = 1
+                ExplicitWidth = 452
                 Height = 341
-                Width = 452
+                Width = 116
                 object ImageEnVectComp4: TImageEnVect
                   Tag = 4
                   Left = 3
                   Top = 15
-                  Width = 446
+                  Width = 110
                   Height = 316
                   Background = clInactiveCaptionText
                   AutoStretch = True
@@ -1292,6 +1307,7 @@ object fmCompareList2: TfmCompareList2
                   TabOrder = 0
                   OnDragDrop = ImageEnVectComp1DragDrop
                   OnDragOver = ImageEnVectComp4DragOver
+                  ExplicitWidth = 446
                 end
               end
             end
@@ -1334,7 +1350,7 @@ object fmCompareList2: TfmCompareList2
     end
   end
   object cxSplitter1: TcxSplitter
-    Left = 570
+    Left = 906
     Top = 0
     Width = 6
     Height = 724
@@ -1343,6 +1359,8 @@ object fmCompareList2: TfmCompareList2
     Control = PanelRight
     Color = clGray
     ParentColor = False
+    ExplicitLeft = 874
+    ExplicitTop = 23
   end
   object compareGroupLeftTop: TcxGroupBox
     Tag = 1
@@ -1362,24 +1380,27 @@ object fmCompareList2: TfmCompareList2
     StyleFocused.LookAndFeel.SkinName = 'Black'
     StyleHot.LookAndFeel.SkinName = 'Black'
     TabOrder = 3
+    ExplicitWidth = 356
     Height = 722
-    Width = 356
+    Width = 692
     object Panel1: TPanel
       Left = 3
       Top = 15
-      Width = 350
+      Width = 686
       Height = 697
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 1
+      ExplicitWidth = 350
       object PanelButtons: TPanel
         Left = 0
         Top = 0
-        Width = 350
+        Width = 686
         Height = 25
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitWidth = 350
         object Label1: TLabel
           AlignWithMargins = True
           Left = 3
@@ -1740,11 +1761,29 @@ object fmCompareList2: TfmCompareList2
           TabOrder = 6
           OnClick = btnStaticCheckClick
         end
+        object cxButton1: TcxButton
+          AlignWithMargins = True
+          Left = 479
+          Top = 1
+          Width = 75
+          Height = 23
+          Margins.Left = 1
+          Margins.Top = 1
+          Margins.Right = 1
+          Margins.Bottom = 1
+          Align = alLeft
+          Caption = #44540#50977'/'#44264#44201
+          TabOrder = 7
+          OnClick = cxButton1Click
+          ExplicitLeft = 512
+          ExplicitTop = 0
+          ExplicitHeight = 25
+        end
       end
       object ImageEnMView1: TImageEnMView
         Left = 0
         Top = 25
-        Width = 350
+        Width = 686
         Height = 672
         Background = clWindowFrame
         GridWidth = -1
@@ -1779,6 +1818,7 @@ object fmCompareList2: TfmCompareList2
         OnEndDrag = ImageEnMView1EndDrag
         OnMouseMove = ImageEnMView1MouseMove
         ThreadPoolSize = 100
+        ExplicitWidth = 350
       end
       object PanelMessage: TPanel
         Left = 278

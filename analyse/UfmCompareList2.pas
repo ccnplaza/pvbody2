@@ -178,6 +178,7 @@ type
     btnSelRect: TBitBtn;
     btnSelCopy: TBitBtn;
     BitBtn2: TBitBtn;
+    cxButton1: TcxButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure frmImageMultiView1ImageEnMView1DblClick(Sender: TObject);
     procedure btnFindMemberClick(Sender: TObject);
@@ -258,6 +259,7 @@ type
     procedure btnSelRectClick(Sender: TObject);
     procedure btnSelCopyClick(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
+    procedure cxButton1Click(Sender: TObject);
   private
     fShapeProps: TShapeProps;
     fLineProps : TLineProps;
@@ -303,7 +305,7 @@ uses GlobalVar, uCommonLogic, UfmAnalyseRequestSelect, UdmDBCommon,
   UfmCustomerHistory, UfmPostureEditor2, uCapture,
   UfmDateSelector, UfmCheckCommennts, uPlayer, UfmPracticeMethodSingle,
   ufmStaticResultView, UfmCheckImageViewer, UfmHowToSingle, UfmCompareLayerList,
-  UfmCompareComment, UfmCompareWindowList, UfmImportImages, UfmStaticCheck, UfmSearchResults;
+  UfmCompareComment, UfmCompareWindowList, UfmImportImages, UfmStaticCheck, UfmSearchResults, UfmMuscleView;
 
 {$R *.dfm}
 
@@ -1090,6 +1092,12 @@ begin
   dmDBCommon.CUST_COMPARE_WIN_SEL.Open;
   dmDBCommon.ds_CUST_COMPARE_WIN_SEL.DataSet.Refresh;
 
+end;
+
+procedure TfmCompareList2.cxButton1Click(Sender: TObject);
+begin
+  fmMuscleView := TfmMuscleView.Create(self);
+  fmMuscleView.Show;
 end;
 
 procedure TfmCompareList2.cxButton7Click(Sender: TObject);

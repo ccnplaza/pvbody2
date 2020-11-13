@@ -24,12 +24,28 @@ object fmMuscleEditor: TfmMuscleEditor
     Height = 30
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 1130
+    object Label1: TLabel
+      AlignWithMargins = True
+      Left = 4
+      Top = 4
+      Width = 30
+      Height = 22
+      Align = alLeft
+      Caption = #54637#47785':'
+      Layout = tlCenter
+      ExplicitHeight = 13
+    end
     object btnAdd: TcxButton
-      Left = 200
+      AlignWithMargins = True
+      Left = 218
       Top = 2
       Width = 75
-      Height = 25
+      Height = 26
+      Margins.Left = 20
+      Margins.Top = 1
+      Margins.Right = 1
+      Margins.Bottom = 1
+      Align = alLeft
       Caption = #46321#47197
       OptionsImage.Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
@@ -68,12 +84,20 @@ object fmMuscleEditor: TfmMuscleEditor
         60CD6C543F8B16110D2200000003000000010000000000000000}
       TabOrder = 0
       OnClick = btnAddClick
+      ExplicitLeft = 200
+      ExplicitHeight = 25
     end
     object btnEdit: TcxButton
-      Left = 281
+      AlignWithMargins = True
+      Left = 295
       Top = 2
       Width = 75
-      Height = 25
+      Height = 26
+      Margins.Left = 1
+      Margins.Top = 1
+      Margins.Right = 1
+      Margins.Bottom = 1
+      Align = alLeft
       Caption = #49688#51221
       OptionsImage.Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
@@ -112,13 +136,21 @@ object fmMuscleEditor: TfmMuscleEditor
         A2FFD9B2A2FFD8B2A2FFA08377C2000000060000000000000000}
       TabOrder = 1
       OnClick = btnEditClick
+      ExplicitLeft = 281
+      ExplicitHeight = 25
     end
     object cxButton3: TcxButton
-      Left = 362
+      AlignWithMargins = True
+      Left = 372
       Top = 2
       Width = 75
-      Height = 25
-      Caption = #46321#47197
+      Height = 26
+      Margins.Left = 1
+      Margins.Top = 1
+      Margins.Right = 1
+      Margins.Bottom = 1
+      Align = alLeft
+      Caption = #49325#51228
       OptionsImage.Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
         2000000000000004000000000000000000000000000000000000000000000000
@@ -155,74 +187,113 @@ object fmMuscleEditor: TfmMuscleEditor
         0000000000000000000000000000000000000000000000000000000000000000
         0000000000000000000000000000000000000000000000000000}
       TabOrder = 2
+      OnClick = cxButton3Click
+      ExplicitLeft = 362
+      ExplicitHeight = 25
     end
-  end
-  object cxGrid1: TcxGrid
-    Left = 0
-    Top = 30
-    Width = 177
-    Height = 663
-    Align = alLeft
-    TabOrder = 1
-    LookAndFeel.SkinName = 'Black'
-    ExplicitTop = 33
-    ExplicitHeight = 660
-    object gridMuscleMain: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      Navigator.Buttons.First.Visible = False
-      Navigator.Buttons.PriorPage.Visible = False
-      Navigator.Buttons.Prior.Visible = False
-      Navigator.Buttons.Next.Visible = False
-      Navigator.Buttons.NextPage.Visible = False
-      Navigator.Buttons.Last.Visible = False
-      Navigator.Buttons.Insert.Visible = False
-      Navigator.Buttons.Append.Visible = False
-      Navigator.Buttons.Delete.Visible = False
-      Navigator.Buttons.Edit.Visible = False
-      Navigator.Buttons.Post.Visible = False
-      Navigator.Buttons.Cancel.Visible = False
-      Navigator.Buttons.Refresh.Visible = False
-      Navigator.Buttons.SaveBookmark.Visible = False
-      Navigator.Buttons.GotoBookmark.Visible = False
-      Navigator.Buttons.Filter.Visible = False
-      OnFocusedRecordChanged = gridMuscleMainFocusedRecordChanged
-      DataController.DataSource = dmDBCommon.ds_MUSCLE_MAIN_SEL
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-      OptionsCustomize.ColumnsQuickCustomization = True
-      OptionsSelection.CellSelect = False
-      OptionsSelection.HideFocusRectOnExit = False
-      OptionsView.ColumnAutoWidth = True
-      OptionsView.GroupByBox = False
-      OptionsView.Indicator = True
-      object gridMuscleMainID: TcxGridDBColumn
-        Caption = 'No'
-        DataBinding.FieldName = 'ID'
-        HeaderAlignmentHorz = taCenter
-        Width = 45
-      end
-      object gridMuscleMainM_NAME: TcxGridDBColumn
-        Caption = #49888#52404' '#44396#48516
-        DataBinding.FieldName = 'M_NAME'
-        HeaderAlignmentHorz = taCenter
-        Width = 118
-      end
+    object lcMain: TcxLookupComboBox
+      AlignWithMargins = True
+      Left = 38
+      Top = 2
+      Margins.Left = 1
+      Margins.Top = 1
+      Margins.Right = 1
+      Margins.Bottom = 1
+      Align = alLeft
+      Properties.DropDownListStyle = lsFixedList
+      Properties.ImmediatePost = True
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'M_NAME'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = dmDBCommon.ds_MUSCLE_MAIN_SEL
+      Properties.OnCloseUp = lcMainPropertiesCloseUp
+      TabOrder = 3
+      ExplicitLeft = 52
+      ExplicitTop = 3
+      ExplicitHeight = 21
+      Width = 101
     end
-    object cxGrid1Level1: TcxGridLevel
-      GridView = gridMuscleMain
+    object btnView: TcxButton
+      AlignWithMargins = True
+      Left = 141
+      Top = 2
+      Width = 56
+      Height = 26
+      Margins.Left = 1
+      Margins.Top = 1
+      Margins.Right = 1
+      Margins.Bottom = 1
+      Align = alLeft
+      Caption = #54869#51064
+      TabOrder = 4
+      OnClick = btnViewClick
+      ExplicitLeft = 349
+      ExplicitHeight = 23
+    end
+    object btnImageEdit: TcxButton
+      AlignWithMargins = True
+      Left = 468
+      Top = 2
+      Width = 120
+      Height = 26
+      Margins.Left = 20
+      Margins.Top = 1
+      Margins.Right = 1
+      Margins.Bottom = 1
+      Align = alLeft
+      Caption = #51060#48120#51648#49688#51221
+      OptionsImage.Glyph.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000000000000000000000000000000000000000000000000
+        00000000000000000000000000000000001F421C11FF30140DEC190A06B30304
+        075F0000001B0000000500000000000000000000000000000000000000000000
+        00000000000000000000000000000000001E663C2BE7B9C7D2FF7889A2FF2441
+        82FF051033AF0000002100000005000000000000000000000000000000000000
+        0002000000090000000E0000000F0000002041261BAE879AB2FFC8E3F5FF1F66
+        B6FF2B6BA8FF051236AD0000001F000000040000000000000000000000000000
+        00088C6657C0C38C7AFFC38C79FFCBA395FFA89894FF488BC3FFDEFEFDFF51B4
+        E3FF1F68B7FF3173AEFF061538AA0000001C0000000400000000000000000000
+        000CC5917EFFFDFBFAFFFCF8F6FFFAF7F5FFECEAE9FF7CA3BFFF479FD2FFDEFE
+        FDFF59BFE9FF216BB9FF367BB3FF07173AA70000001A00000004000000000000
+        000CC79481FFFEFBFAFFF9F0EAFFF8F0EAFFF7F0EBFFE8E4E1FF7EA4BFFF4BA5
+        D5FFDEFEFDFF61CAEFFF246FBCFF3B83B9FF081A3DA300000018000000000000
+        000BC99786FFFEFCFBFFF9F2EDFFF9F2EDFFF9F0EBFFF8F2EDFFEBE7E5FF82A7
+        C2FF4EAAD7FFDEFEFDFF68D4F4FF2875BEFF3F8BBEFF091B3F9E000000000000
+        000ACB9C8BFFFEFDFCFFFAF3EFFFFAF4EEFFFAF3EEFFFAF1ECFFF8F2EEFFEDE9
+        E7FF85ABC7FF51AEDAFFDEFEFDFF6EDDF8FF2C7BC2FF18448BFF000000000000
+        0009CFA08DFFFEFEFDFFFBF5F1FFFBF5F0FFFBF4F0FFFAF3EFFFFAF3EFFFF8F4
+        EFFFEFECE9FF89AECAFF54B1DCFFDEFEFDFF4FA6D4FF102C4E93000000000000
+        0009D0A393FFFEFEFDFFFAF5F3FFFBF6F2FFFBF5F1FFFBF5F0FFFBF5F0FFFAF4
+        EFFFFAF6F1FFF3EFEDFF83A0B8FF357FBCFF173A598F0000000C000000000000
+        0008D3A897FFFEFEFEFFFBF6F4FFFBF6F4FFFCF6F3FFFCF6F3FFFCF4F2FFFBF5
+        F1FFFBF5F0FFFAF6F3FFE2CCC4FF000000160000000600000001000000000000
+        0007D3AB9AFFFFFEFEFFFCF8F6FFFCF7F5FFFCF7F5FFFBF6F4FFFBF6F4FFFCF6
+        F3FFFCF6F2FFFBF6F1FFD1A494FF0000000C0000000000000000000000000000
+        0006D8AE9DFFFFFFFEFFFDF9F7FFFDF9F7FFFCF8F7FFFCF8F6FFFCF7F5FFFBF7
+        F5FFFBF7F4FFFCF7F3FFD3A897FF0000000B0000000000000000000000000000
+        0006D8B0A0FFFFFFFFFFFDFAF9FFFDFAF8FFFDFAF8FFFDF9F7FFFCF8F7FFFBF8
+        F6FFFBF7F6FFFCF7F5FFD4AC9BFF0000000A0000000000000000000000000000
+        0005D9B3A3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFEFEFFFEFEFEFFFFFE
+        FEFFFEFEFEFFFEFEFEFFD7AE9EFF000000090000000000000000000000000000
+        0003A3867AC0DBB5A5FFDAB5A4FFDAB5A4FFDAB4A4FFD9B3A3FFD9B3A3FFD9B3
+        A2FFD9B2A2FFD8B2A2FFA08377C2000000060000000000000000}
+      TabOrder = 5
+      OnClick = btnImageEditClick
+      ExplicitLeft = 449
     end
   end
   object cxGrid2: TcxGrid
-    Left = 177
+    Left = 0
     Top = 30
     Width = 312
     Height = 663
     Align = alLeft
-    TabOrder = 2
+    TabOrder = 1
     LookAndFeel.SkinName = 'Black'
-    ExplicitTop = 33
-    ExplicitHeight = 660
+    ExplicitLeft = 177
     object gridMuscleImage: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = False
@@ -241,8 +312,8 @@ object fmMuscleEditor: TfmMuscleEditor
       Navigator.Buttons.SaveBookmark.Visible = False
       Navigator.Buttons.GotoBookmark.Visible = False
       Navigator.Buttons.Filter.Visible = False
-      OnCellClick = gridMuscleImageCellClick
       OnCellDblClick = gridMuscleImageCellDblClick
+      OnFocusedRecordChanged = gridMuscleImageFocusedRecordChanged
       DataController.DataSource = ds_MUSCLE_IMAGES_SEL_ALL
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>
@@ -330,23 +401,25 @@ object fmMuscleEditor: TfmMuscleEditor
     end
   end
   object Panel2: TPanel
-    Left = 489
+    Left = 312
     Top = 30
     Width = 584
     Height = 663
     Align = alLeft
-    TabOrder = 3
+    TabOrder = 2
+    ExplicitLeft = 489
     object ImageEnView1: TImageEnView
       Left = 1
       Top = 1
       Width = 582
       Height = 408
+      Cursor = crHandPoint
       Background = clBtnFace
       AutoStretch = True
       AutoShrink = True
       Align = alTop
       TabOrder = 0
-      ExplicitWidth = 624
+      OnDblClick = ImageEnView1DblClick
     end
     object IERichEdit1: TIERichEdit
       Left = 1
@@ -354,21 +427,17 @@ object fmMuscleEditor: TfmMuscleEditor
       Width = 582
       Height = 191
       RTFText = 
-        '{\rtf1\ansi\ansicpg949\deff0\deflang1033\deflangfe1042{\fonttbl{' +
-        '\f0\fnil\fcharset129 \'#39'b1\'#39'bc\'#39'b8\'#39'b2;}}'#13#10'\viewkind4\uc1\pard\la' +
-        'ng1042\f0\fs20\par'#13#10'}'#13#10#0
+        '{\rtf1\ansi\deff0{\fonttbl{\f0\fnil\fcharset129 \'#39'b3\'#39'aa\'#39'b4\'#39'ae' +
+        '\'#39'b8\'#39'ed\'#39'c1\'#39'b6;}}'#13#10'\viewkind4\uc1\pard\lang1042\f0\fs24\par'#13#10'}' +
+        #13#10#0
       Align = alClient
       Font.Charset = HANGEUL_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = #44404#47548
+      Font.Height = -16
+      Font.Name = #45208#45588#47749#51312
       Font.Style = []
       ParentFont = False
       TabOrder = 1
-      ExplicitLeft = 72
-      ExplicitTop = 456
-      ExplicitWidth = 185
-      ExplicitHeight = 89
     end
     object IERichEditToolbar1: TIERichEditToolbar
       Left = 1
@@ -379,9 +448,6 @@ object fmMuscleEditor: TfmMuscleEditor
       ButtonWidth = 31
       Caption = 'IERichEditToolbar1'
       TabOrder = 2
-      ExplicitLeft = 368
-      ExplicitTop = 552
-      ExplicitWidth = 150
     end
     object Panel3: TPanel
       Left = 1
@@ -390,9 +456,6 @@ object fmMuscleEditor: TfmMuscleEditor
       Height = 33
       Align = alBottom
       TabOrder = 3
-      ExplicitLeft = 224
-      ExplicitTop = 312
-      ExplicitWidth = 185
       object btnSave: TcxButton
         Left = 219
         Top = 3
@@ -484,7 +547,7 @@ object fmMuscleEditor: TfmMuscleEditor
     end
   end
   object cxImage1: TcxImage
-    Left = 1073
+    Left = 896
     Top = 30
     Align = alLeft
     Picture.Data = {
@@ -3501,8 +3564,8 @@ object fmMuscleEditor: TfmMuscleEditor
       A84DAEE9D737315846C238E28248833E199880123C9C9EBF502BF5D68A2BEAF8
       7A52A94AAD59BBCA52BB3F9CBC63853C2E6382C1508A8D3A54928A5D15DA4BD1
       24AC1451457D59FCFA14514500145145007FFFD9}
-    TabOrder = 4
-    ExplicitLeft = 993
+    TabOrder = 3
+    ExplicitLeft = 1073
     Height = 663
     Width = 272
   end
@@ -3607,6 +3670,7 @@ object fmMuscleEditor: TfmMuscleEditor
         ParamType = ptOutput
       end>
     CommandStoredProcName = 'MUSCLE_IMAGES_SEL_ALL'
+    StoredProcIsQuery = True
     object MUSCLE_IMAGES_SEL_ALLID: TIntegerField
       Alignment = taCenter
       FieldName = 'ID'
@@ -3640,6 +3704,9 @@ object fmMuscleEditor: TfmMuscleEditor
     object MUSCLE_IMAGES_SEL_ALLM_SEX: TIntegerField
       Alignment = taCenter
       FieldName = 'M_SEX'
+    end
+    object MUSCLE_IMAGES_SEL_ALLM_DRAW: TBlobField
+      FieldName = 'M_DRAW'
     end
   end
   object ds_MUSCLE_IMAGES_SEL_ALL: TDataSource
@@ -3716,5 +3783,37 @@ object fmMuscleEditor: TfmMuscleEditor
         ParamType = ptInput
       end>
     CommandStoredProcName = 'MUSCLE_IMAGES_UPD'
+  end
+  object MUSCLE_IMAGES_DEL: TUniStoredProc
+    StoredProcName = 'MUSCLE_IMAGES_DEL'
+    Connection = dmDBCommon.UniDBConnection
+    Left = 320
+    Top = 144
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'ID'
+        ParamType = ptInput
+      end>
+    CommandStoredProcName = 'MUSCLE_IMAGES_DEL'
+  end
+  object MUSCLE_IMAGES_UPD_DRAW: TUniStoredProc
+    StoredProcName = 'MUSCLE_IMAGES_UPD_DRAW'
+    Connection = dmDBCommon.UniDBConnection
+    Left = 320
+    Top = 96
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'ID'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftMemo
+        Name = 'M_DRAW'
+        ParamType = ptInput
+        Value = ''
+      end>
+    CommandStoredProcName = 'MUSCLE_IMAGES_UPD_DRAW'
   end
 end

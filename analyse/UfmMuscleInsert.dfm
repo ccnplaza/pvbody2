@@ -13,6 +13,7 @@ object fmMuscleInsert: TfmMuscleInsert
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object cxGroupBox2: TcxGroupBox
@@ -22,10 +23,6 @@ object fmMuscleInsert: TfmMuscleInsert
     Align = alClient
     Caption = #51060#48120#51648
     TabOrder = 0
-    ExplicitLeft = 320
-    ExplicitTop = 48
-    ExplicitWidth = 185
-    ExplicitHeight = 105
     Height = 559
     Width = 592
     object ImageEnView1: TImageEnView
@@ -33,15 +30,12 @@ object fmMuscleInsert: TfmMuscleInsert
       Top = 15
       Width = 586
       Height = 534
+      Cursor = crHandPoint
       Background = clBtnFace
       AutoStretch = True
       AutoShrink = True
       Align = alClient
       TabOrder = 0
-      ExplicitLeft = 117
-      ExplicitTop = 144
-      ExplicitWidth = 105
-      ExplicitHeight = 105
     end
   end
   object Panel1: TPanel
@@ -52,7 +46,6 @@ object fmMuscleInsert: TfmMuscleInsert
     Align = alLeft
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitHeight = 399
     object cxGroupBox1: TcxGroupBox
       AlignWithMargins = True
       Left = 3
@@ -214,7 +207,6 @@ object fmMuscleInsert: TfmMuscleInsert
       Align = alClient
       Caption = #49345#49464#49444#47749
       TabOrder = 1
-      ExplicitHeight = 335
       Height = 418
       Width = 361
       object edtDesc: TIERichEdit
@@ -223,20 +215,17 @@ object fmMuscleInsert: TfmMuscleInsert
         Width = 355
         Height = 294
         RTFText = 
-          '{\rtf1\ansi\ansicpg949\deff0{\fonttbl{\f0\fnil\fcharset129 \'#39'b1\' +
-          #39'bc\'#39'b8\'#39'b2;}}'#13#10'\viewkind4\uc1\pard\lang1042\f0\fs20\par'#13#10'}'#13#10#0
+          '{\rtf1\ansi\deff0{\fonttbl{\f0\fnil\fcharset129 \'#39'b3\'#39'aa\'#39'b4\'#39'ae' +
+          '\'#39'b8\'#39'ed\'#39'c1\'#39'b6;}}'#13#10'\viewkind4\uc1\pard\lang1042\f0\fs24\par'#13#10'}' +
+          #13#10#0
         Align = alClient
         Font.Charset = HANGEUL_CHARSET
         Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = #44404#47548
+        Font.Height = -16
+        Font.Name = #45208#45588#47749#51312
         Font.Style = []
         ParentFont = False
         TabOrder = 0
-        ExplicitLeft = -20
-        ExplicitTop = -71
-        ExplicitWidth = 369
-        ExplicitHeight = 169
       end
       object IERichEditToolbar1: TIERichEditToolbar
         Left = 3
@@ -248,7 +237,6 @@ object fmMuscleInsert: TfmMuscleInsert
         ButtonWidth = 31
         Caption = 'IERichEditToolbar1'
         TabOrder = 1
-        ExplicitWidth = 343
       end
       object Panel2: TPanel
         Left = 3
@@ -257,9 +245,6 @@ object fmMuscleInsert: TfmMuscleInsert
         Height = 33
         Align = alBottom
         TabOrder = 2
-        ExplicitLeft = 88
-        ExplicitTop = 136
-        ExplicitWidth = 185
         object btnSave: TcxButton
           Left = 91
           Top = 3

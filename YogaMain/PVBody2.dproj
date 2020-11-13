@@ -408,6 +408,9 @@
 			<DCCReference Include="..\analyse\UfmMuscleInsert.pas">
 				<Form>fmMuscleInsert</Form>
 			</DCCReference>
+			<DCCReference Include="..\analyse\UfmMuscleView.pas">
+				<Form>fmMuscleView</Form>
+			</DCCReference>
 			<None Include="PVBody2.todo"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
@@ -441,7 +444,7 @@
 						<VersionInfo Name="MajorVer">2</VersionInfo>
 						<VersionInfo Name="MinorVer">1</VersionInfo>
 						<VersionInfo Name="Release">1</VersionInfo>
-						<VersionInfo Name="Build">22</VersionInfo>
+						<VersionInfo Name="Build">23</VersionInfo>
 						<VersionInfo Name="Debug">False</VersionInfo>
 						<VersionInfo Name="PreRelease">False</VersionInfo>
 						<VersionInfo Name="Special">False</VersionInfo>
@@ -453,7 +456,7 @@
 					<VersionInfoKeys>
 						<VersionInfoKeys Name="CompanyName"/>
 						<VersionInfoKeys Name="FileDescription"/>
-						<VersionInfoKeys Name="FileVersion">2.1.1.22</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">2.1.1.23</VersionInfoKeys>
 						<VersionInfoKeys Name="InternalName"/>
 						<VersionInfoKeys Name="LegalCopyright"/>
 						<VersionInfoKeys Name="LegalTrademarks"/>

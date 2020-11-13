@@ -48,10 +48,12 @@ type
     cxButton3: TcxButton;
     OpenImageEnDialog1: TOpenImageEnDialog;
     procedure cxButton3Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    IMAGE_CHANGED : Boolean;
   end;
 
 var
@@ -66,7 +68,13 @@ begin
   if OpenImageEnDialog1.Execute then begin
     edtImage.Text := OpenImageEnDialog1.FileName;
     ImageEnView1.IO.LoadFromFileJpeg(OpenImageEnDialog1.FileName);
+    IMAGE_CHANGED := True;
   end;
+end;
+
+procedure TfmMuscleInsert.FormShow(Sender: TObject);
+begin
+  IMAGE_CHANGED := False;
 end;
 
 end.

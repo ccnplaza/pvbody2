@@ -127,7 +127,8 @@ uses
   UfmMuscleImage in '..\analyse\UfmMuscleImage.pas' {fmMuscleImage},
   UfmMuscleDetail in '..\analyse\UfmMuscleDetail.pas' {fmMuscleDetail},
   UfmMuscleEditor in '..\analyse\UfmMuscleEditor.pas' {fmMuscleEditor},
-  UfmMuscleInsert in '..\analyse\UfmMuscleInsert.pas' {fmMuscleInsert};
+  UfmMuscleInsert in '..\analyse\UfmMuscleInsert.pas' {fmMuscleInsert},
+  UfmMuscleView in '..\analyse\UfmMuscleView.pas' {fmMuscleView};
 
 {$R *.res}
 

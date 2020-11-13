@@ -5049,4 +5049,24 @@ object dmDBCommon: TdmDBCommon
     Left = 800
     Top = 776
   end
+  object IMAGES_UPD_DRAWONLY: TUniStoredProc
+    StoredProcName = 'IMAGES_UPD_DRAWONLY'
+    Connection = UniConnImageDB
+    Left = 144
+    Top = 456
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'ID'
+        ParamType = ptInput
+        Size = 17
+      end
+      item
+        DataType = ftBlob
+        Name = 'DRAW_DATA'
+        ParamType = ptInput
+        Value = ''
+      end>
+    CommandStoredProcName = 'IMAGES_UPD_DRAWONLY'
+  end
 end

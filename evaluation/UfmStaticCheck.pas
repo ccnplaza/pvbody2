@@ -211,6 +211,7 @@ type
     IMAGE_ANALYSE_SELID: TIntegerField;
     IMAGE_ANALYSE_SELDRAW_IMAGE: TBlobField;
     btnSaveResultImage: TcxButton;
+    btnMuscle: TBitBtn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ShowProcessMsg(msg, cnt_str: string; onoff: integer);
     procedure gridResultColumn1GetDisplayText(Sender: TcxCustomGridTableItem;
@@ -269,6 +270,8 @@ type
       ARecord: TcxCustomGridRecord; var AText: string);
     procedure btnSaveResultImageClick(Sender: TObject);
     procedure cxPageControl1Change(Sender: TObject);
+    procedure ImageEnView1DblClick(Sender: TObject);
+    procedure btnMuscleClick(Sender: TObject);
   private
     function GetImageFilename(image_id: integer): string;
     procedure RetrieveSubitem(tno : Integer);
@@ -295,6 +298,7 @@ type
     LIST_LOADED : Boolean;
     PICTURE_CNT : Integer;
     PICTURE_DATE : TDate;
+    PAGE_IDX : Integer;
   end;
 
 var
@@ -307,7 +311,7 @@ uses GlobalVar, uCommonLogic, ufmStaticResultView, uViewPractice,
   UfmStaticResultReport, UfmHowToSingle, UPlayer,
   UfmPracticeMethodSingle, UfmCheckImageViewer, UfmCheckCommennts,
   UfmMemberPicture, UfmDateSelector, UfmMemberLastSelect, uMemberEditView,
-  uMemberFavorite, uMemberSelect, UfmCustomerHistory;
+  uMemberFavorite, uMemberSelect, UfmCustomerHistory, ufmLayerEditor, UfmMuscleView;
 
 {$R *.dfm}
 
@@ -429,7 +433,7 @@ var
   mStream : TMemoryStream;
   img_id, r_id : Integer;
 begin
-  img_id := IMAGE_IDX[cxPageControl1.ActivePageIndex];
+  img_id := IMAGE_IDX[PAGE_IDX];
   IMAGE_ANALYSE_SEL.ParamByName('RESULT_ID').Value := gridCheckID.EditValue;
   IMAGE_ANALYSE_SEL.ParamByName('IMAGE_ID').Value := img_id;
   IMAGE_ANALYSE_SEL.Open;
@@ -439,14 +443,14 @@ begin
     try
       IMAGE_ANALYSE_SELDRAW_IMAGE.SaveToStream(mStream);
       mStream.Position := 0;
-      imageenview[cxPageControl1.ActivePageIndex].LayersClear(False);
-      imageenview[cxPageControl1.ActivePageIndex].LayersLoadFromStream(mStream, False, nil); //IO.LoadFromStreamIEN(mStream);
-      imageenview[cxPageControl1.ActivePageIndex].Update;
+      imageenview[PAGE_IDX].LayersClear(False);
+      imageenview[PAGE_IDX].LayersLoadFromStream(mStream, False, nil); //IO.LoadFromStreamIEN(mStream);
+      imageenview[PAGE_IDX].Update;
     finally
       mStream.Free;
     end;
   end else begin
-    imageenview[cxPageControl1.ActivePageIndex].LayersClear(False);
+    imageenview[PAGE_IDX].LayersClear(False);
   end;
 end;
 
@@ -600,6 +604,16 @@ begin
   dmDBCommon.d_NSTATIC_CHECK_RESULT.DataSet.Refresh;
   dmDBCommon.d_NSTATIC_CHECK_RESULT.DataSet.Locate('id', id, []);
   InsertPracticeData;
+end;
+
+procedure TfmStaticCheck.btnMuscleClick(Sender: TObject);
+begin
+  fmMuscleView := TfmMuscleView.Create(Self);
+  try
+    fmMuscleView.ShowModal;
+  finally
+    fmMuscleView.Free;
+  end;
 end;
 
 procedure TfmStaticCheck.btnRightClick(Sender: TObject);
@@ -874,6 +888,31 @@ begin
         InsertPracticeData;
       end;
     end;
+  end;
+end;
+
+procedure TfmStaticCheck.ImageEnView1DblClick(Sender: TObject);
+var
+  dStream : TMemoryStream;
+  img_id : Integer;
+begin
+  fmLayerEditor := TfmLayerEditor.Create(Self);
+  try
+    fmLayerEditor.IMAGE_STREAM := TMemoryStream.Create;
+    imageenview[PAGE_IDX].IO.SaveToStreamJpeg(fmLayerEditor.IMAGE_STREAM);
+    fmLayerEditor.IMAGE_STREAM.Position := 0;
+    fmLayerEditor.ShowModal;
+    if fmLayerEditor.ModalResult = mrOk then begin
+      imageenview[PAGE_IDX].Assign(fmLayerEditor.ImageEnView1);
+      imageenview[PAGE_IDX].Update;
+      img_id := IMAGE_IDX[PAGE_IDX];
+      dStream := TMemoryStream.Create;
+      imageenview[PAGE_IDX].IO.SaveToStreamIEN(dStream);
+      dStream.Position := 0;
+      dmDBCommon.UpdateImageDraw(img_id, dStream);
+    end;
+  finally
+    fmLayerEditor.Free;
   end;
 end;
 
@@ -1210,8 +1249,9 @@ procedure TfmStaticCheck.cxPageControl1Change(Sender: TObject);
 var
   pid : Integer;
 begin
+  PAGE_IDX := cxPageControl1.ActivePageIndex;
   RetrieveResultImage;
-  pid := IMAGE_IDX[cxPageControl1.ActivePageIndex];
+  pid := IMAGE_IDX[PAGE_IDX];
   cxGroupBox2.Caption := '자세사진:' + IntToStr(pid);
 end;
 

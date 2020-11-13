@@ -450,6 +450,7 @@ type
     MUSCLE_IMAGES_SELM_POINT: TIntegerField;
     MUSCLE_IMAGES_SELM_SEX: TIntegerField;
     ds_MUSCLE_IMAGES_SEL: TDataSource;
+    IMAGES_UPD_DRAWONLY: TUniStoredProc;
     procedure DataModuleCreate(Sender: TObject);
   private
     procedure DownloadImage(imgName: string);
@@ -473,7 +474,7 @@ type
     procedure RetrievePictureByDate;
     procedure SelectMember(search_str : string);
     procedure RetrieveMemberInfo;
-    procedure UpdateImageDraw(id: Integer; drw_name: string);
+    procedure UpdateImageDraw(id: Integer; dStream: TMemoryStream);
 
   end;
 
@@ -657,9 +658,11 @@ begin
 end;
 
 
-procedure TdmDBCommon.UpdateImageDraw(id: Integer; drw_name: string);
+procedure TdmDBCommon.UpdateImageDraw(id: Integer; dStream: TMemoryStream);
 begin
-
+  IMAGES_UPD_DRAWONLY.ParamByName('ID').Value := id;
+  IMAGES_UPD_DRAWONLY.ParamByName('DRAW_DATA').LoadFromStream(dStream, ftBlob);
+  IMAGES_UPD_DRAWONLY.ExecProc;
 end;
 
 procedure TdmDBCommon.UpdateMemberImage(image_name: string; ImageEnVect : TImageEnVect);

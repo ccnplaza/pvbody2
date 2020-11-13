@@ -494,6 +494,19 @@ object fmStaticCheck: TfmStaticCheck
             TabOrder = 3
             OnClick = btnResultSelectClick
           end
+          object btnMuscle: TBitBtn
+            Left = 62
+            Top = 0
+            Width = 75
+            Height = 27
+            Align = alLeft
+            Caption = #44540#50977'/'#44264#44201
+            TabOrder = 4
+            OnClick = btnMuscleClick
+            ExplicitLeft = 68
+            ExplicitTop = 1
+            ExplicitHeight = 25
+          end
         end
         object ItemTreeView: TdxDBTreeView
           Left = 3
@@ -1517,6 +1530,7 @@ object fmStaticCheck: TfmStaticCheck
               AutoShrink = True
               Align = alClient
               TabOrder = 0
+              OnDblClick = ImageEnView1DblClick
             end
           end
           object cxTabSheet2: TcxTabSheet
@@ -1535,6 +1549,7 @@ object fmStaticCheck: TfmStaticCheck
               AutoShrink = True
               Align = alClient
               TabOrder = 0
+              OnDblClick = ImageEnView1DblClick
             end
           end
           object cxTabSheet3: TcxTabSheet
@@ -1553,6 +1568,7 @@ object fmStaticCheck: TfmStaticCheck
               AutoShrink = True
               Align = alClient
               TabOrder = 0
+              OnDblClick = ImageEnView1DblClick
             end
           end
           object cxTabSheet4: TcxTabSheet
@@ -1571,6 +1587,7 @@ object fmStaticCheck: TfmStaticCheck
               AutoShrink = True
               Align = alClient
               TabOrder = 0
+              OnDblClick = ImageEnView1DblClick
             end
           end
           object cxTabSheet5: TcxTabSheet
@@ -1589,6 +1606,7 @@ object fmStaticCheck: TfmStaticCheck
               AutoShrink = True
               Align = alClient
               TabOrder = 0
+              OnDblClick = ImageEnView1DblClick
             end
           end
           object cxTabSheet6: TcxTabSheet
@@ -1607,6 +1625,7 @@ object fmStaticCheck: TfmStaticCheck
               AutoShrink = True
               Align = alClient
               TabOrder = 0
+              OnDblClick = ImageEnView1DblClick
             end
           end
           object cxTabSheet7: TcxTabSheet
@@ -1625,6 +1644,7 @@ object fmStaticCheck: TfmStaticCheck
               AutoShrink = True
               Align = alClient
               TabOrder = 0
+              OnDblClick = ImageEnView1DblClick
             end
           end
         end
