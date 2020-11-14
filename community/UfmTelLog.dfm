@@ -8,7 +8,7 @@ object fmTelLog: TfmTelLog
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   FormStyle = fsMDIChild
   OldCreateOrder = False
@@ -16,7 +16,7 @@ object fmTelLog: TfmTelLog
   OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object pnl1: TPanel
     Left = 0
     Top = 0
@@ -27,36 +27,36 @@ object fmTelLog: TfmTelLog
     object lbl3: TLabel
       Left = 13
       Top = 8
-      Width = 30
-      Height = 13
+      Width = 28
+      Height = 15
       Caption = #44592#44036':'
     end
     object lbl1: TLabel
       Left = 440
       Top = 8
-      Width = 30
-      Height = 13
+      Width = 28
+      Height = 15
       Caption = #44396#48516':'
     end
     object lbl2: TLabel
       Left = 560
       Top = 8
-      Width = 62
-      Height = 13
+      Width = 57
+      Height = 15
       Caption = #54924#49888'/'#52376#47532':'
     end
     object Label1: TLabel
       Left = 323
       Top = 7
-      Width = 30
-      Height = 13
+      Width = 28
+      Height = 15
       Caption = #49468#53552':'
     end
     object dtp_sdate: TDateTimePicker
       Left = 48
       Top = 4
       Width = 99
-      Height = 21
+      Height = 23
       Date = 41963.425637268520000000
       Time = 41963.425637268520000000
       ImeName = 'Microsoft IME 2010'
@@ -67,7 +67,7 @@ object fmTelLog: TfmTelLog
       Left = 148
       Top = 4
       Width = 98
-      Height = 21
+      Height = 23
       Date = 41963.425637268520000000
       Time = 41963.425637268520000000
       ImeName = 'Microsoft IME 2010'
@@ -532,7 +532,6 @@ object fmTelLog: TfmTelLog
           item
             FieldName = 'C_NAME'
           end>
-        Properties.ListSource = dmDBCommon.d_center
         HeaderAlignmentHorz = taCenter
         Width = 57
       end

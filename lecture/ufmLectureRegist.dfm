@@ -2,10 +2,11 @@ inherited fmLectureRegist: TfmLectureRegist
   Caption = #44053#51032#46321#47197'/'#49688#51221
   ClientHeight = 168
   ClientWidth = 343
+  Font.Name = #45208#45588#44256#46357
   ExplicitWidth = 349
-  ExplicitHeight = 196
+  ExplicitHeight = 197
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel1: TPanel
     AlignWithMargins = True
     Left = 3
@@ -15,8 +16,6 @@ inherited fmLectureRegist: TfmLectureRegist
     Align = alClient
     BevelOuter = bvLowered
     TabOrder = 0
-    ExplicitLeft = 2
-    ExplicitHeight = 233
     object Panel5: TPanel
       Left = 8
       Top = 30
@@ -36,9 +35,9 @@ inherited fmLectureRegist: TfmLectureRegist
       TabOrder = 0
       object edtName: TEdit
         Left = 6
-        Top = 4
+        Top = 3
         Width = 147
-        Height = 21
+        Height = 23
         ImeName = 'Microsoft IME 2010'
         TabOrder = 0
       end
@@ -62,9 +61,9 @@ inherited fmLectureRegist: TfmLectureRegist
       TabOrder = 1
       object edtBigo: TEdit
         Left = 6
-        Top = 4
+        Top = 2
         Width = 211
-        Height = 21
+        Height = 23
         ImeName = 'Microsoft IME 2010'
         TabOrder = 0
       end

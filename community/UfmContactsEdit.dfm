@@ -9,13 +9,13 @@ object fmContactsEdit: TfmContactsEdit
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object cxGroupBox1: TcxGroupBox
     AlignWithMargins = True
     Left = 5
@@ -31,7 +31,7 @@ object fmContactsEdit: TfmContactsEdit
     Style.Font.Charset = DEFAULT_CHARSET
     Style.Font.Color = clWindowText
     Style.Font.Height = -13
-    Style.Font.Name = #44404#47548
+    Style.Font.Name = #45208#45588#44256#46357
     Style.Font.Style = []
     Style.LookAndFeel.SkinName = 'Black'
     Style.IsFontAssigned = True
@@ -66,7 +66,7 @@ object fmContactsEdit: TfmContactsEdit
         Align = alClient
         ImeMode = imSHanguel
         TabOrder = 0
-        ExplicitHeight = 21
+        ExplicitHeight = 23
       end
     end
     object pnl10: TPanel
@@ -94,7 +94,7 @@ object fmContactsEdit: TfmContactsEdit
         Align = alClient
         ImeMode = imSHanguel
         TabOrder = 0
-        ExplicitHeight = 21
+        ExplicitHeight = 23
       end
     end
     object pnl19: TPanel
@@ -240,7 +240,7 @@ object fmContactsEdit: TfmContactsEdit
         Align = alClient
         ImeMode = imSHanguel
         TabOrder = 0
-        ExplicitHeight = 21
+        ExplicitHeight = 23
       end
     end
     object pnl3: TPanel
@@ -267,7 +267,7 @@ object fmContactsEdit: TfmContactsEdit
         Height = 20
         Align = alClient
         TabOrder = 0
-        ExplicitHeight = 21
+        ExplicitHeight = 23
       end
     end
     object pnl7: TPanel
@@ -294,7 +294,7 @@ object fmContactsEdit: TfmContactsEdit
         Height = 20
         Align = alClient
         TabOrder = 0
-        ExplicitHeight = 21
+        ExplicitHeight = 23
       end
     end
     object pnl9: TPanel
@@ -322,7 +322,7 @@ object fmContactsEdit: TfmContactsEdit
         Align = alClient
         ImeMode = imSAlpha
         TabOrder = 0
-        ExplicitHeight = 21
+        ExplicitHeight = 23
       end
     end
     object pnl13: TPanel
@@ -350,7 +350,7 @@ object fmContactsEdit: TfmContactsEdit
         Align = alClient
         ImeMode = imSHanguel
         TabOrder = 0
-        ExplicitHeight = 21
+        ExplicitHeight = 23
       end
     end
   end

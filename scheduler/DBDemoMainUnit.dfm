@@ -3,33 +3,37 @@ inherited DBDemoMainForm: TDBDemoMainForm
   ClientHeight = 676
   ClientWidth = 1094
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   FormStyle = fsMDIChild
   OldCreateOrder = True
   Position = poDefault
   Visible = True
   OnClose = FormClose
   ExplicitWidth = 1110
-  ExplicitHeight = 714
+  ExplicitHeight = 715
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   inherited Scheduler: TcxScheduler
     Top = 29
     Width = 1094
     Height = 628
     DateNavigator.RowCount = 4
+    Font.Name = #45208#45588#44256#46357
     OptionsView.ViewPosition = vpRight
     Storage = SchedulerDBStorage
     ExplicitTop = 29
     ExplicitWidth = 1094
     ExplicitHeight = 628
+    Selection = 1
     Splitters = {
-      01000000F501000090000000FA01000090000000010000009500000073020000}
+      01000000F5010000A9000000FA010000A900000001000000AE00000073020000}
     StoredClientBounds = {01000000010000004504000073020000}
     inherited pnlControls: TPanel
+      Width = 168
       Height = 121
       ExplicitHeight = 121
       inherited Memo1: TMemo
+        Width = 168
         Height = 121
         TabOrder = 1
         Visible = False
@@ -44,8 +48,9 @@ inherited DBDemoMainForm: TDBDemoMainForm
         ParentColor = False
         Style.BorderStyle = ebsNone
         TabOrder = 0
+        ExplicitWidth = 143
         Height = 121
-        Width = 143
+        Width = 168
         object cxCheckBox1: TcxCheckBox
           Left = 19
           Top = 3
@@ -75,15 +80,15 @@ inherited DBDemoMainForm: TDBDemoMainForm
     object Label1: TLabel
       Left = 16
       Top = 7
-      Width = 56
-      Height = 13
+      Width = 52
+      Height = 15
       Caption = #45236#48372#45236#44592':'
     end
     object Label2: TLabel
       Left = 252
       Top = 7
-      Width = 56
-      Height = 13
+      Width = 52
+      Height = 15
       Caption = #45804#47141#47784#46300':'
     end
     object ComboBox1: TComboBox
@@ -127,8 +132,6 @@ inherited DBDemoMainForm: TDBDemoMainForm
       Width = 75
       Height = 25
       Caption = #45236#48372#45236#44592
-      DoubleBuffered = True
-      ParentDoubleBuffered = False
       TabOrder = 2
       OnClick = BitBtn1Click
     end
@@ -138,7 +141,6 @@ inherited DBDemoMainForm: TDBDemoMainForm
       Width = 105
       Height = 25
       Caption = #51068#51221#51200#51109
-      DoubleBuffered = True
       Glyph.Data = {
         F6000000424DF600000000000000760000002800000010000000100000000100
         04000000000080000000120B0000120B00001000000010000000000000000000
@@ -148,7 +150,6 @@ inherited DBDemoMainForm: TDBDemoMainForm
         030AA03300000000030DD03333333333330AA03300000000330DD03088888888
         030AA03088888888030DD03088888888030AA03088888888030DD03088888888
         000AA03088888888080DD00000000000000AADADADADADADADAD}
-      ParentDoubleBuffered = False
       TabOrder = 3
       Visible = False
       OnClick = btnSaveScheduleClick

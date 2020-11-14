@@ -128,7 +128,8 @@ uses
   UfmMuscleDetail in '..\analyse\UfmMuscleDetail.pas' {fmMuscleDetail},
   UfmMuscleEditor in '..\analyse\UfmMuscleEditor.pas' {fmMuscleEditor},
   UfmMuscleInsert in '..\analyse\UfmMuscleInsert.pas' {fmMuscleInsert},
-  UfmMuscleView in '..\analyse\UfmMuscleView.pas' {fmMuscleView};
+  UfmMuscleView in '..\analyse\UfmMuscleView.pas' {fmMuscleView},
+  UfmCustomerRecent in '..\member\UfmCustomerRecent.pas' {fmCustomerRecent};
 
 {$R *.res}
 

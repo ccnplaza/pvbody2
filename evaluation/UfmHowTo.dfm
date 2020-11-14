@@ -9,13 +9,13 @@ object fmHowTo: TfmHowTo
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel1: TPanel
     Left = 0
     Top = 0
@@ -146,40 +146,11 @@ object fmHowTo: TfmHowTo
     end
   end
   object OpenImageEnDialog1: TOpenImageEnDialog
-    Filter = 
-      #48372#53685' '#51060#48120#51648' '#54028#51068'|*.tif;*.tiff;*.fax;*.g3n;*.g3f;*.xif;*.gif;*.jpg;*.jpe' +
-      'g;*.jpe;*.jif;*.pcx;*.bmp;*.dib;*.rle;*.ico;*.cur;*.png;*.dcm;*.' +
-      'dic;*.dicom;*.v2;*.wmf;*.emf;*.tga;*.targa;*.vda;*.icb;*.vst;*.p' +
-      'ix;*.pxm;*.ppm;*.pgm;*.pbm;*.wbmp;*.jp2;*.j2k;*.jpc;*.j2c;*.dcx;' +
-      '*.crw;*.cr2;*.nef;*.raw;*.pef;*.raf;*.x3f;*.bay;*.orf;*.srf;*.mr' +
-      'w;*.dcr;*.sr2;*.psd;*.psb;*.iev;*.lyr;*.all;*.wdp;*.hdp;*.jxr;*.' +
-      'avi;*.mpeg;*.mpg;*.wmv|'#47784#46304' '#54028#51068' (*.*)|*.*|JPEG Bitmap (*.jpg;*.jpeg' +
-      ';*.jpe;*.jif)|*.jpg;*.jpeg;*.jpe;*.jif|TIFF Bitmap (*.tif;*.tiff' +
-      ';*.fax;*.g3n;*.g3f;*.xif)|*.tif;*.tiff;*.fax;*.g3n;*.g3f;*.xif|C' +
-      'ompuServe Bitmap (*.gif)|*.gif|PaintBrush (*.pcx)|*.pcx|Windows ' +
-      'Bitmap (*.bmp;*.dib;*.rle)|*.bmp;*.dib;*.rle|Windows Icon (*.ico' +
-      ')|*.ico|Windows Cursor (*.cur)|*.cur|Portable Network Graphics (' +
-      '*.png)|*.png|DICOM Bitmap (*.dcm;*.dic;*.dicom;*.v2)|*.dcm;*.dic' +
-      ';*.dicom;*.v2|Windows Metafile (*.wmf)|*.wmf|Enhanced Windows Me' +
-      'tafile (*.emf)|*.emf|Targa Bitmap (*.tga;*.targa;*.vda;*.icb;*.v' +
-      'st;*.pix)|*.tga;*.targa;*.vda;*.icb;*.vst;*.pix|Portable Pixmap,' +
-      ' GrayMap, BitMap (*.pxm;*.ppm;*.pgm;*.pbm)|*.pxm;*.ppm;*.pgm;*.p' +
-      'bm|Wireless Bitmap (*.wbmp)|*.wbmp|JPEG2000 (*.jp2)|*.jp2|JPEG20' +
-      '00 Code Stream (*.j2k;*.jpc;*.j2c)|*.j2k;*.jpc;*.j2c|Multipage P' +
-      'CX (*.dcx)|*.dcx|Camera RAW (*.crw;*.cr2;*.nef;*.raw;*.pef;*.raf' +
-      ';*.x3f;*.bay;*.orf;*.srf;*.mrw;*.dcr;*.sr2)|*.crw;*.cr2;*.nef;*.' +
-      'raw;*.pef;*.raf;*.x3f;*.bay;*.orf;*.srf;*.mrw;*.dcr;*.sr2|Photos' +
-      'hop PSD (*.psd;*.psb)|*.psd;*.psb|Vectorial objects (*.iev)|*.ie' +
-      'v|Layers (*.lyr)|*.lyr|Layers and objects (*.all)|*.all|Microsof' +
-      't HD Photo (*.wdp;*.hdp;*.jxr)|*.wdp;*.hdp;*.jxr|'#50952#46020#50857' '#48708#46356#50724' (*.avi)' +
-      '|*.avi|MPEG (*.mpeg;*.mpg)|*.mpeg;*.mpg|Windows Media Video (*.w' +
-      'mv)|*.wmv'
     Left = 304
     Top = 72
   end
   object CHECK_HOWTO_INS: TUniStoredProc
     StoredProcName = 'CHECK_HOWTO_INS'
-    Connection = dmDBCommon.UniConnCommon
     Left = 448
     Top = 248
     ParamData = <
@@ -204,7 +175,6 @@ object fmHowTo: TfmHowTo
   end
   object CHECK_HOWTO_SEL: TUniStoredProc
     StoredProcName = 'CHECK_HOWTO_SEL'
-    Connection = dmDBCommon.UniConnCommon
     Left = 72
     Top = 312
     ParamData = <
@@ -236,7 +206,6 @@ object fmHowTo: TfmHowTo
   end
   object CHECK_HOWTO_SEL_IMAGE: TUniStoredProc
     StoredProcName = 'CHECK_HOWTO_SEL_IMAGE'
-    Connection = dmDBCommon.UniConnCommon
     Left = 440
     Top = 320
     ParamData = <
@@ -263,7 +232,6 @@ object fmHowTo: TfmHowTo
   end
   object CHECK_HOWTO_UPD_IMAGE: TUniStoredProc
     StoredProcName = 'CHECK_HOWTO_UPD_IMAGE'
-    Connection = dmDBCommon.UniConnCommon
     Left = 448
     Top = 192
     ParamData = <
@@ -282,7 +250,6 @@ object fmHowTo: TfmHowTo
   end
   object CHECK_HOWTO_UPD_TITLE: TUniStoredProc
     StoredProcName = 'CHECK_HOWTO_UPD_TITLE'
-    Connection = dmDBCommon.UniConnCommon
     Left = 448
     Top = 144
     ParamData = <

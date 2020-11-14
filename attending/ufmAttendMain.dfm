@@ -11,7 +11,7 @@ object fmAttendMain: TfmAttendMain
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poScreenCenter
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -423,7 +423,6 @@ object fmAttendMain: TfmAttendMain
         item
           FieldName = 'C_NAME'
         end>
-      Properties.ListSource = dmDBCommon.d_center
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -19
@@ -488,6 +487,12 @@ object fmAttendMain: TfmAttendMain
       item
         DataType = ftString
         Name = 'COMPANY_ID'
+        ParamType = ptInput
+        Size = 17
+      end
+      item
+        DataType = ftString
+        Name = 'LEC_ID'
         ParamType = ptInput
         Size = 17
       end>

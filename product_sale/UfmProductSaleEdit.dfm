@@ -9,13 +9,13 @@ object fmProductSaleEdit: TfmProductSaleEdit
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel1: TPanel
     AlignWithMargins = True
     Left = 3
@@ -74,7 +74,7 @@ object fmProductSaleEdit: TfmProductSaleEdit
       TabOrder = 2
       object product_name: TcxLookupComboBox
         Left = 6
-        Top = 4
+        Top = 3
         Properties.DropDownListStyle = lsFixedList
         Properties.KeyFieldNames = 'ID'
         Properties.ListColumns = <
@@ -140,7 +140,7 @@ object fmProductSaleEdit: TfmProductSaleEdit
       TabOrder = 1
       object c_date: TcxDateEdit
         Left = 6
-        Top = 4
+        Top = 3
         TabOrder = 0
         Width = 120
       end
@@ -154,7 +154,7 @@ object fmProductSaleEdit: TfmProductSaleEdit
       TabOrder = 3
       object QTY: TcxCurrencyEdit
         Left = 6
-        Top = 4
+        Top = 3
         TabOrder = 0
         Width = 98
       end
@@ -178,7 +178,7 @@ object fmProductSaleEdit: TfmProductSaleEdit
       TabOrder = 4
       object UPRICE: TcxCurrencyEdit
         Left = 6
-        Top = 4
+        Top = 3
         TabOrder = 0
         Width = 98
       end
@@ -194,7 +194,7 @@ object fmProductSaleEdit: TfmProductSaleEdit
         Left = 6
         Top = 3
         Width = 288
-        Height = 21
+        Height = 23
         ImeName = 'Microsoft IME 2010'
         TabOrder = 0
       end
@@ -254,7 +254,7 @@ object fmProductSaleEdit: TfmProductSaleEdit
       TabOrder = 6
       object PAYED: TcxCurrencyEdit
         Left = 6
-        Top = 4
+        Top = 3
         TabOrder = 0
         Width = 98
       end
@@ -284,7 +284,7 @@ object fmProductSaleEdit: TfmProductSaleEdit
       end
       object TPRICE: TcxCurrencyEdit
         Left = 6
-        Top = 4
+        Top = 3
         TabOrder = 1
         Width = 98
       end
@@ -308,7 +308,7 @@ object fmProductSaleEdit: TfmProductSaleEdit
       TabOrder = 7
       object PAY_KIND: TcxImageComboBox
         Left = 6
-        Top = 4
+        Top = 3
         EditValue = 1
         Properties.Items = <
           item
@@ -355,7 +355,7 @@ object fmProductSaleEdit: TfmProductSaleEdit
       TabOrder = 0
       object cbCenter: TcxLookupComboBox
         Left = 6
-        Top = 4
+        Top = 3
         Properties.DropDownListStyle = lsFixedList
         Properties.KeyFieldNames = 'ID'
         Properties.ListColumns = <

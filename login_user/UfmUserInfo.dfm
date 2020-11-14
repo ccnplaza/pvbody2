@@ -9,13 +9,13 @@ object fmUserInfo: TfmUserInfo
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel1: TPanel
     AlignWithMargins = True
     Left = 3
@@ -25,8 +25,6 @@ object fmUserInfo: TfmUserInfo
     Align = alClient
     BevelOuter = bvLowered
     TabOrder = 0
-    ExplicitWidth = 407
-    ExplicitHeight = 358
     object Panel2: TPanel
       Left = 79
       Top = 5
@@ -37,7 +35,7 @@ object fmUserInfo: TfmUserInfo
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
-      Font.Name = #44404#47548
+      Font.Name = #45208#45588#44256#46357
       Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
@@ -52,50 +50,50 @@ object fmUserInfo: TfmUserInfo
       object Label1: TLabel
         Left = 11
         Top = 12
-        Width = 226
-        Height = 13
+        Width = 210
+        Height = 15
         Caption = #44144#47000#52376#47749'('#49548#49549' '#44144#47000#52376#47749#51012' '#51077#47141#54616#49464#50836')'
       end
       object Label10: TLabel
         Left = 138
         Top = 94
-        Width = 82
-        Height = 13
+        Width = 76
+        Height = 15
         Caption = #54056#49828#50892#46300' '#54869#51064
       end
       object Label2: TLabel
         Left = 11
         Top = 174
-        Width = 75
-        Height = 13
+        Width = 70
+        Height = 15
         Caption = #51452#49548'('#51648#50669#47749')'
       end
       object Label5: TLabel
         Left = 11
         Top = 133
-        Width = 39
-        Height = 13
+        Width = 36
+        Height = 15
         Caption = #51060#47700#51068
       end
       object Label7: TLabel
         Left = 11
         Top = 53
-        Width = 52
-        Height = 13
+        Width = 48
+        Height = 15
         Caption = #49324#50857#51088#47749
       end
       object Label8: TLabel
         Left = 138
         Top = 53
-        Width = 92
-        Height = 13
+        Width = 90
+        Height = 15
         Caption = #47196#44536#51064' ID(10'#51088')'
       end
       object Label9: TLabel
         Left = 11
         Top = 94
-        Width = 89
-        Height = 13
+        Width = 86
+        Height = 15
         Caption = #54056#49828#50892#46300'(10'#51088')'
       end
       object BitBtn2: TBitBtn
@@ -148,7 +146,7 @@ object fmUserInfo: TfmUserInfo
         Left = 11
         Top = 190
         Width = 248
-        Height = 21
+        Height = 23
         ImeName = 'Microsoft IME 2010'
         TabOrder = 7
       end
@@ -171,7 +169,7 @@ object fmUserInfo: TfmUserInfo
         Left = 11
         Top = 149
         Width = 248
-        Height = 21
+        Height = 23
         ImeName = 'Microsoft IME 2010'
         TabOrder = 6
       end
@@ -179,7 +177,7 @@ object fmUserInfo: TfmUserInfo
         Left = 138
         Top = 69
         Width = 121
-        Height = 21
+        Height = 23
         ImeName = 'Microsoft IME 2010'
         MaxLength = 10
         TabOrder = 2
@@ -189,7 +187,7 @@ object fmUserInfo: TfmUserInfo
         Left = 11
         Top = 108
         Width = 121
-        Height = 21
+        Height = 23
         ImeName = 'Microsoft IME 2010'
         MaxLength = 10
         PasswordChar = '*'
@@ -199,7 +197,7 @@ object fmUserInfo: TfmUserInfo
         Left = 138
         Top = 108
         Width = 121
-        Height = 21
+        Height = 23
         ImeName = 'Microsoft IME 2010'
         MaxLength = 10
         PasswordChar = '*'
@@ -209,7 +207,7 @@ object fmUserInfo: TfmUserInfo
         Left = 11
         Top = 69
         Width = 121
-        Height = 21
+        Height = 23
         ImeName = 'Microsoft IME 2010'
         TabOrder = 1
       end

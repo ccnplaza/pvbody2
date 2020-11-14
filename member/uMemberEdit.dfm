@@ -9,12 +9,12 @@ object fmMemberEdit: TfmMemberEdit
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel4: TPanel
     Left = 282
     Top = 40
@@ -23,9 +23,9 @@ object fmMemberEdit: TfmMemberEdit
     TabOrder = 1
     object CNAME: TEdit
       Left = 4
-      Top = 4
+      Top = 2
       Width = 112
-      Height = 21
+      Height = 23
       ImeMode = imSHanguel
       ImeName = 'Microsoft IME 2010'
       TabOrder = 0
@@ -40,7 +40,7 @@ object fmMemberEdit: TfmMemberEdit
     TabOrder = 0
     object REG_DATE: TcxDateEdit
       Left = 4
-      Top = 4
+      Top = 2
       Properties.DateOnError = deNull
       Properties.SaveTime = False
       Properties.ShowTime = False
@@ -87,16 +87,16 @@ object fmMemberEdit: TfmMemberEdit
     TabOrder = 2
     object Label3: TLabel
       Left = 52
-      Top = 7
-      Width = 13
-      Height = 13
+      Top = 5
+      Width = 12
+      Height = 15
       Caption = #49464
     end
     object edtAge: TEdit
       Left = 4
-      Top = 4
+      Top = 2
       Width = 44
-      Height = 21
+      Height = 23
       ImeName = 'Microsoft IME 2010'
       TabOrder = 0
     end
@@ -119,7 +119,7 @@ object fmMemberEdit: TfmMemberEdit
     TabOrder = 3
     object SEX: TcxImageComboBox
       Left = 4
-      Top = 4
+      Top = 2
       EditValue = '1'
       Properties.Items = <
         item
@@ -153,7 +153,7 @@ object fmMemberEdit: TfmMemberEdit
     TabOrder = 8
     object BLOOD_PRESSURE: TcxImageComboBox
       Left = 4
-      Top = 4
+      Top = 2
       EditValue = ''
       Properties.Items = <
         item
@@ -191,9 +191,9 @@ object fmMemberEdit: TfmMemberEdit
     TabOrder = 6
     object CTEL: TEdit
       Left = 4
-      Top = 4
+      Top = 2
       Width = 310
-      Height = 21
+      Height = 23
       ImeName = 'Microsoft IME 2010'
       TabOrder = 0
     end
@@ -216,9 +216,9 @@ object fmMemberEdit: TfmMemberEdit
     TabOrder = 7
     object CEMAIL: TEdit
       Left = 4
-      Top = 4
+      Top = 2
       Width = 310
-      Height = 21
+      Height = 23
       ImeMode = imSAlpha
       ImeName = 'Microsoft IME 2010'
       TabOrder = 0
@@ -232,9 +232,9 @@ object fmMemberEdit: TfmMemberEdit
     TabOrder = 10
     object CBIGO: TEdit
       Left = 4
-      Top = 4
+      Top = 2
       Width = 310
-      Height = 21
+      Height = 23
       ImeMode = imSHanguel
       ImeName = 'Microsoft IME 2010'
       TabOrder = 0
@@ -304,9 +304,9 @@ object fmMemberEdit: TfmMemberEdit
     TabOrder = 4
     object JOBKIND: TEdit
       Left = 4
-      Top = 4
+      Top = 2
       Width = 112
-      Height = 21
+      Height = 23
       ImeMode = imSHanguel
       ImeName = 'Microsoft IME 2010'
       TabOrder = 0
@@ -376,9 +376,9 @@ object fmMemberEdit: TfmMemberEdit
     TabOrder = 5
     object HOBBY: TEdit
       Left = 4
-      Top = 4
+      Top = 2
       Width = 112
-      Height = 21
+      Height = 23
       ImeMode = imSHanguel
       ImeName = 'Microsoft IME 2010'
       TabOrder = 0
@@ -402,9 +402,9 @@ object fmMemberEdit: TfmMemberEdit
     TabOrder = 9
     object BLOOD: TEdit
       Left = 4
-      Top = 4
+      Top = 2
       Width = 44
-      Height = 21
+      Height = 23
       ImeName = 'Microsoft IME 2010'
       TabOrder = 0
     end
@@ -427,21 +427,21 @@ object fmMemberEdit: TfmMemberEdit
     TabOrder = 12
     object Label1: TLabel
       Left = 121
-      Top = 8
-      Width = 56
-      Height = 13
+      Top = 5
+      Width = 52
+      Height = 15
       Caption = #44592#53440#54637#47785':'
     end
     object Label4: TLabel
       Left = 351
-      Top = 9
-      Width = 63
-      Height = 13
+      Top = 6
+      Width = 62
+      Height = 15
       Caption = '('#54620#44544'15'#51088')'
     end
     object HOW_TO_COME: TcxImageComboBox
       Left = 4
-      Top = 4
+      Top = 2
       EditValue = ''
       Properties.Items = <
         item
@@ -474,9 +474,9 @@ object fmMemberEdit: TfmMemberEdit
     end
     object edtEtcComming: TEdit
       Left = 181
-      Top = 4
+      Top = 2
       Width = 164
-      Height = 21
+      Height = 23
       ImeMode = imSHanguel
       ImeName = 'Microsoft IME 2010'
       MaxLength = 30
@@ -502,8 +502,8 @@ object fmMemberEdit: TfmMemberEdit
     object Label7: TLabel
       Left = 320
       Top = 52
-      Width = 63
-      Height = 13
+      Width = 62
+      Height = 15
       Caption = '('#54620#44544'15'#51088')'
     end
     object chkItem1: TCheckBox
@@ -590,7 +590,7 @@ object fmMemberEdit: TfmMemberEdit
       Left = 168
       Top = 49
       Width = 147
-      Height = 21
+      Height = 23
       ImeMode = imSHanguel
       ImeName = 'Microsoft IME 2010'
       MaxLength = 30
@@ -615,7 +615,7 @@ object fmMemberEdit: TfmMemberEdit
     TabOrder = 16
     object FOOD_HOW_OFTEN: TcxImageComboBox
       Left = 4
-      Top = 4
+      Top = 2
       EditValue = ''
       Properties.Items = <
         item
@@ -642,15 +642,15 @@ object fmMemberEdit: TfmMemberEdit
     object Label5: TLabel
       Left = 13
       Top = 7
-      Width = 52
-      Height = 13
+      Width = 48
+      Height = 15
       Caption = #49464#48512#49324#54637
     end
     object Label6: TLabel
       Left = 7
       Top = 23
-      Width = 62
-      Height = 13
+      Width = 58
+      Height = 15
       Caption = '('#49888#52404#49345#53468')'
     end
   end
@@ -691,7 +691,7 @@ object fmMemberEdit: TfmMemberEdit
     TabOrder = 14
     object FOOD_KIND: TcxImageComboBox
       Left = 4
-      Top = 4
+      Top = 2
       EditValue = ''
       Properties.Items = <
         item
@@ -729,7 +729,7 @@ object fmMemberEdit: TfmMemberEdit
     TabOrder = 15
     object FOOD_HOW_MUCH: TcxImageComboBox
       Left = 6
-      Top = 3
+      Top = 2
       EditValue = ''
       Properties.Items = <
         item
@@ -767,7 +767,7 @@ object fmMemberEdit: TfmMemberEdit
     TabOrder = 39
     object cbCenter: TcxLookupComboBox
       Left = 4
-      Top = 4
+      Top = 3
       Properties.DropDownListStyle = lsFixedList
       Properties.KeyFieldNames = 'ID'
       Properties.ListColumns = <
@@ -798,7 +798,7 @@ object fmMemberEdit: TfmMemberEdit
     TabOrder = 41
     object cbKind: TcxLookupComboBox
       Left = 4
-      Top = 4
+      Top = 3
       Properties.DropDownListStyle = lsFixedList
       Properties.KeyFieldNames = 'ID'
       Properties.ListColumns = <
@@ -829,7 +829,7 @@ object fmMemberEdit: TfmMemberEdit
     TabOrder = 11
     object cbSMS: TcxImageComboBox
       Left = 4
-      Top = 3
+      Top = 2
       EditValue = 0
       Properties.Items = <
         item

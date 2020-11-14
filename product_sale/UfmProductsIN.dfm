@@ -9,12 +9,12 @@ object fmProductsIN: TfmProductsIN
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel1: TPanel
     AlignWithMargins = True
     Left = 3
@@ -24,10 +24,6 @@ object fmProductsIN: TfmProductsIN
     Align = alClient
     BevelOuter = bvLowered
     TabOrder = 0
-    ExplicitLeft = -103
-    ExplicitTop = -87
-    ExplicitWidth = 490
-    ExplicitHeight = 281
     object Panel12: TPanel
       Left = 53
       Top = 37
@@ -59,7 +55,7 @@ object fmProductsIN: TfmProductsIN
         Left = 6
         Top = 3
         Width = 229
-        Height = 21
+        Height = 23
         TabOrder = 0
       end
     end
@@ -74,7 +70,7 @@ object fmProductsIN: TfmProductsIN
         Left = 6
         Top = 3
         Width = 229
-        Height = 21
+        Height = 23
         TabOrder = 0
       end
     end

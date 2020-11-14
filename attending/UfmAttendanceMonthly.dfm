@@ -8,7 +8,7 @@ object fmAttendanceMonthly: TfmAttendanceMonthly
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   FormStyle = fsMDIChild
   OldCreateOrder = False
@@ -16,7 +16,7 @@ object fmAttendanceMonthly: TfmAttendanceMonthly
   OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object cxGrid10: TcxGrid
     Left = 0
     Top = 28
@@ -69,7 +69,6 @@ object fmAttendanceMonthly: TfmAttendanceMonthly
           item
             FieldName = 'C_NAME'
           end>
-        Properties.ListSource = dmDBCommon.d_center
         HeaderAlignmentHorz = taCenter
         Width = 59
       end
@@ -1383,15 +1382,15 @@ object fmAttendanceMonthly: TfmAttendanceMonthly
     object Label8: TLabel
       Left = 24
       Top = 7
-      Width = 52
-      Height = 13
+      Width = 48
+      Height = 15
       Caption = #51312#54924#45380#46020
     end
     object Label1: TLabel
       Left = 374
       Top = 7
-      Width = 56
-      Height = 13
+      Width = 52
+      Height = 15
       Caption = #51312#54924#51068#51088':'
     end
     object Label2: TLabel

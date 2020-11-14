@@ -145,6 +145,7 @@ begin
     LESSON_ATTENDANCE_INS.ParamByName('MEMBER_ID').Value := MemberUID;
     LESSON_ATTENDANCE_INS.ParamByName('IN_TIME').Value := FormatDateTime('hh:nn',Now);
     LESSON_ATTENDANCE_INS.ParamByName('COMPANY_ID').Value := LoginUserCompID;
+    LESSON_ATTENDANCE_INS.ParamByName('LEC_ID').Value := LessonID;
     LESSON_ATTENDANCE_INS.ExecProc;
 
     if MemberKind = 3 then begin

@@ -8,7 +8,7 @@ object fmMuscleEditor: TfmMuscleEditor
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   FormStyle = fsMDIChild
   OldCreateOrder = False
@@ -16,7 +16,7 @@ object fmMuscleEditor: TfmMuscleEditor
   OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel1: TPanel
     Left = 0
     Top = 0
@@ -28,16 +28,16 @@ object fmMuscleEditor: TfmMuscleEditor
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 30
+      Width = 28
       Height = 22
       Align = alLeft
       Caption = #54637#47785':'
       Layout = tlCenter
-      ExplicitHeight = 13
+      ExplicitHeight = 15
     end
     object btnAdd: TcxButton
       AlignWithMargins = True
-      Left = 218
+      Left = 216
       Top = 2
       Width = 75
       Height = 26
@@ -84,12 +84,11 @@ object fmMuscleEditor: TfmMuscleEditor
         60CD6C543F8B16110D2200000003000000010000000000000000}
       TabOrder = 0
       OnClick = btnAddClick
-      ExplicitLeft = 200
-      ExplicitHeight = 25
+      ExplicitLeft = 218
     end
     object btnEdit: TcxButton
       AlignWithMargins = True
-      Left = 295
+      Left = 293
       Top = 2
       Width = 75
       Height = 26
@@ -136,12 +135,11 @@ object fmMuscleEditor: TfmMuscleEditor
         A2FFD9B2A2FFD8B2A2FFA08377C2000000060000000000000000}
       TabOrder = 1
       OnClick = btnEditClick
-      ExplicitLeft = 281
-      ExplicitHeight = 25
+      ExplicitLeft = 295
     end
     object cxButton3: TcxButton
       AlignWithMargins = True
-      Left = 372
+      Left = 370
       Top = 2
       Width = 75
       Height = 26
@@ -188,12 +186,11 @@ object fmMuscleEditor: TfmMuscleEditor
         0000000000000000000000000000000000000000000000000000}
       TabOrder = 2
       OnClick = cxButton3Click
-      ExplicitLeft = 362
-      ExplicitHeight = 25
+      ExplicitLeft = 372
     end
     object lcMain: TcxLookupComboBox
       AlignWithMargins = True
-      Left = 38
+      Left = 36
       Top = 2
       Margins.Left = 1
       Margins.Top = 1
@@ -211,14 +208,12 @@ object fmMuscleEditor: TfmMuscleEditor
       Properties.ListSource = dmDBCommon.ds_MUSCLE_MAIN_SEL
       Properties.OnCloseUp = lcMainPropertiesCloseUp
       TabOrder = 3
-      ExplicitLeft = 52
-      ExplicitTop = 3
-      ExplicitHeight = 21
+      ExplicitLeft = 38
       Width = 101
     end
     object btnView: TcxButton
       AlignWithMargins = True
-      Left = 141
+      Left = 139
       Top = 2
       Width = 56
       Height = 26
@@ -230,12 +225,11 @@ object fmMuscleEditor: TfmMuscleEditor
       Caption = #54869#51064
       TabOrder = 4
       OnClick = btnViewClick
-      ExplicitLeft = 349
-      ExplicitHeight = 23
+      ExplicitLeft = 141
     end
     object btnImageEdit: TcxButton
       AlignWithMargins = True
-      Left = 468
+      Left = 466
       Top = 2
       Width = 120
       Height = 26
@@ -282,7 +276,7 @@ object fmMuscleEditor: TfmMuscleEditor
         A2FFD9B2A2FFD8B2A2FFA08377C2000000060000000000000000}
       TabOrder = 5
       OnClick = btnImageEditClick
-      ExplicitLeft = 449
+      ExplicitLeft = 468
     end
   end
   object cxGrid2: TcxGrid
@@ -293,7 +287,6 @@ object fmMuscleEditor: TfmMuscleEditor
     Align = alLeft
     TabOrder = 1
     LookAndFeel.SkinName = 'Black'
-    ExplicitLeft = 177
     object gridMuscleImage: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = False
@@ -407,7 +400,6 @@ object fmMuscleEditor: TfmMuscleEditor
     Height = 663
     Align = alLeft
     TabOrder = 2
-    ExplicitLeft = 489
     object ImageEnView1: TImageEnView
       Left = 1
       Top = 1
@@ -3565,7 +3557,6 @@ object fmMuscleEditor: TfmMuscleEditor
       7A52A94AAD59BBCA52BB3F9CBC63853C2E6382C1508A8D3A54928A5D15DA4BD1
       24AC1451457D59FCFA14514500145145007FFFD9}
     TabOrder = 3
-    ExplicitLeft = 1073
     Height = 663
     Width = 272
   end

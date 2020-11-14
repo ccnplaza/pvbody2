@@ -451,6 +451,38 @@ type
     MUSCLE_IMAGES_SELM_SEX: TIntegerField;
     ds_MUSCLE_IMAGES_SEL: TDataSource;
     IMAGES_UPD_DRAWONLY: TUniStoredProc;
+    CUSTOMER_SEL_BYID: TUniStoredProc;
+    ds_CUSTOMER_SEL_BYID: TDataSource;
+    CUSTOMER_SEL_BYIDUID: TStringField;
+    CUSTOMER_SEL_BYIDCNAME: TStringField;
+    CUSTOMER_SEL_BYIDSEX: TStringField;
+    CUSTOMER_SEL_BYIDCAGE: TStringField;
+    CUSTOMER_SEL_BYIDCTEL: TStringField;
+    CUSTOMER_SEL_BYIDCEMAIL: TStringField;
+    CUSTOMER_SEL_BYIDCBIGO: TStringField;
+    CUSTOMER_SEL_BYIDREG_DATE: TDateField;
+    CUSTOMER_SEL_BYIDJOBKIND: TStringField;
+    CUSTOMER_SEL_BYIDHOBBY: TStringField;
+    CUSTOMER_SEL_BYIDHOW_TO_COME: TStringField;
+    CUSTOMER_SEL_BYIDPURPOSE: TStringField;
+    CUSTOMER_SEL_BYIDBLOOD: TStringField;
+    CUSTOMER_SEL_BYIDBLOOD_PRESSURE: TStringField;
+    CUSTOMER_SEL_BYIDBODY_STATUS: TStringField;
+    CUSTOMER_SEL_BYIDFOOD_KIND: TStringField;
+    CUSTOMER_SEL_BYIDFOOD_HOW_MUCH: TStringField;
+    CUSTOMER_SEL_BYIDFOOD_HOW_OFTEN: TStringField;
+    CUSTOMER_SEL_BYIDHOW_TO_COME_ETC: TStringField;
+    CUSTOMER_SEL_BYIDPURPOSE_ETC: TStringField;
+    CUSTOMER_SEL_BYIDPURPOSE_DESC: TStringField;
+    CUSTOMER_SEL_BYIDIS_ACTIVE: TIntegerField;
+    CUSTOMER_SEL_BYIDPHOTO: TBlobField;
+    CUSTOMER_SEL_RECENT_REG: TUniStoredProc;
+    ds_CUSTOMER_SEL_RECENT_REG: TDataSource;
+    CUSTOMER_SEL_RECENT_REGUID: TStringField;
+    CUSTOMER_SEL_RECENT_REGCNAME: TStringField;
+    CUSTOMER_SEL_RECENT_REGSEX: TStringField;
+    CUSTOMER_SEL_RECENT_REGCTEL: TStringField;
+    CUSTOMER_SEL_RECENT_REGREG_DATE: TDateField;
     procedure DataModuleCreate(Sender: TObject);
   private
     procedure DownloadImage(imgName: string);
@@ -475,6 +507,7 @@ type
     procedure SelectMember(search_str : string);
     procedure RetrieveMemberInfo;
     procedure UpdateImageDraw(id: Integer; dStream: TMemoryStream);
+    procedure SelectCustomerByID(cust_id : string);
 
   end;
 
@@ -613,6 +646,13 @@ begin
 //    mem_stream.Free;
 //    CUST_COMPARE_MULTI_SEL.Next;
 //  end;
+end;
+
+procedure TdmDBCommon.SelectCustomerByID(cust_id: string);
+begin
+  CUSTOMER_SEL_BYID.ParamByName('CUSTOMER_ID').Value := cust_id;
+  CUSTOMER_SEL_BYID.Open;
+  ds_CUSTOMER_SEL_BYID.DataSet.Refresh;
 end;
 
 procedure TdmDBCommon.SelectLocalPictureByID(check_id : string);
@@ -807,10 +847,9 @@ end;
 
 procedure TdmDBCommon.InsertLatestCustomer;
 begin
-  LATEST_CUSTOMER_SEL.ParamByName('LOGIN_USER').Value := LoginUserID;
-  LATEST_CUSTOMER_SEL.Open;
-  ds_LATEST_CUSTOMER_SEL.DataSet.Refresh;
-
+//  LATEST_CUSTOMER_SEL.ParamByName('LOGIN_USER').Value := LoginUserID;
+//  LATEST_CUSTOMER_SEL.Open;
+//  ds_LATEST_CUSTOMER_SEL.DataSet.Refresh;
   LATEST_CUSTOMER_INS.ParamByName('CUST_ID').Value := CustomerImages.CustID;
   LATEST_CUSTOMER_INS.ParamByName('CUST_NAME').Value := CustomerImages.CustName;
   LATEST_CUSTOMER_INS.ParamByName('CUST_TEL').Value := CustomerImages.CustTel;

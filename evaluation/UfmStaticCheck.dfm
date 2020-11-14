@@ -8,7 +8,7 @@ object fmStaticCheck: TfmStaticCheck
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
@@ -17,7 +17,7 @@ object fmStaticCheck: TfmStaticCheck
   OnResize = FormResize
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object pnlProcess: TPanel
     Left = 280
     Top = 204
@@ -111,9 +111,9 @@ object fmStaticCheck: TfmStaticCheck
       Width = 183
       object cxGrid3: TcxGrid
         Left = 3
-        Top = 42
+        Top = 44
         Width = 177
-        Height = 725
+        Height = 723
         Margins.Left = 1
         Margins.Top = 1
         Margins.Right = 1
@@ -183,7 +183,7 @@ object fmStaticCheck: TfmStaticCheck
       end
       object Panel13: TPanel
         Left = 3
-        Top = 15
+        Top = 17
         Width = 177
         Height = 27
         Align = alTop
@@ -191,9 +191,9 @@ object fmStaticCheck: TfmStaticCheck
         TabOrder = 1
         object Label1: TLabel
           AlignWithMargins = True
-          Left = 108
+          Left = 110
           Top = 3
-          Width = 66
+          Width = 64
           Height = 21
           Align = alRight
           Alignment = taRightJustify
@@ -201,11 +201,11 @@ object fmStaticCheck: TfmStaticCheck
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlue
           Font.Height = -13
-          Font.Name = #44404#47548
+          Font.Name = #45208#45588#44256#46357
           Font.Style = []
           ParentFont = False
           Layout = tlCenter
-          ExplicitHeight = 13
+          ExplicitHeight = 15
         end
         object btnAddData: TcxButton
           AlignWithMargins = True
@@ -336,9 +336,9 @@ object fmStaticCheck: TfmStaticCheck
       Width = 183
       object LabelPictureDate: TLabel
         Left = 3
-        Top = 15
+        Top = 17
         Width = 177
-        Height = 24
+        Height = 22
         Align = alClient
         Alignment = taCenter
         Caption = '2020-11-10'
@@ -346,14 +346,14 @@ object fmStaticCheck: TfmStaticCheck
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
-        Font.Name = #44404#47548
+        Font.Name = #45208#45588#44256#46357
         Font.Style = [fsBold]
         ParentColor = False
         ParentFont = False
         Transparent = False
         Layout = tlCenter
-        ExplicitWidth = 80
-        ExplicitHeight = 13
+        ExplicitWidth = 74
+        ExplicitHeight = 15
       end
     end
   end
@@ -394,7 +394,7 @@ object fmStaticCheck: TfmStaticCheck
         Width = 271
         object Panel7: TPanel
           Left = 3
-          Top = 15
+          Top = 17
           Width = 265
           Height = 27
           Align = alTop
@@ -417,6 +417,11 @@ object fmStaticCheck: TfmStaticCheck
             Hint = #52769#51221#48169#48277
             Align = alLeft
             Caption = #46020#50880
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = #45208#45588#44256#46357
+            Font.Style = [fsBold]
             Glyph.Data = {
               F6000000424DF600000000000000760000002800000010000000100000000100
               04000000000080000000120B0000120B00001000000000000000000000000000
@@ -426,6 +431,7 @@ object fmStaticCheck: TfmStaticCheck
               FF0A0F0787701088FF0D0078E7F70FFFFF0A008E878F08888F0D00EFE7E80FFF
               FF0A007FF78708888F0D0F07E770FFFFFF0A0F8000088888FF0D0FFFF0FFFFFF
               FF0A444444444444444D444444444444444A444444444444444D}
+            ParentFont = False
             TabOrder = 0
             OnClick = btnViewPosClick
           end
@@ -448,6 +454,12 @@ object fmStaticCheck: TfmStaticCheck
             ParentShowHint = False
             ShowHint = True
             TabOrder = 1
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = #45208#45588#44256#46357
+            Font.Style = [fsBold]
+            ParentFont = False
             OnClick = btnResultSelectClick
           end
           object cxButton1: TcxButton
@@ -470,6 +482,12 @@ object fmStaticCheck: TfmStaticCheck
             ParentShowHint = False
             ShowHint = True
             TabOrder = 2
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = #45208#45588#44256#46357
+            Font.Style = [fsBold]
+            ParentFont = False
             OnClick = btnResultSelectClick
           end
           object cxButton2: TcxButton
@@ -492,6 +510,12 @@ object fmStaticCheck: TfmStaticCheck
             ParentShowHint = False
             ShowHint = True
             TabOrder = 3
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = #45208#45588#44256#46357
+            Font.Style = [fsBold]
+            ParentFont = False
             OnClick = btnResultSelectClick
           end
           object btnMuscle: TBitBtn
@@ -501,18 +525,21 @@ object fmStaticCheck: TfmStaticCheck
             Height = 27
             Align = alLeft
             Caption = #44540#50977'/'#44264#44201
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = #45208#45588#44256#46357
+            Font.Style = [fsBold]
+            ParentFont = False
             TabOrder = 4
             OnClick = btnMuscleClick
-            ExplicitLeft = 68
-            ExplicitTop = 1
-            ExplicitHeight = 25
           end
         end
         object ItemTreeView: TdxDBTreeView
           Left = 3
-          Top = 42
+          Top = 44
           Width = 265
-          Height = 776
+          Height = 774
           Cursor = crHandPoint
           ImeName = 'Microsoft IME 2010'
           ShowNodeHint = True
@@ -534,7 +561,7 @@ object fmStaticCheck: TfmStaticCheck
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
-          Font.Name = #44404#47548#52404
+          Font.Name = #45208#45588#44256#46357
           Font.Style = [fsBold]
           Color = 16776176
           ParentColor = False
@@ -576,7 +603,7 @@ object fmStaticCheck: TfmStaticCheck
         Width = 384
         object Panel5: TPanel
           Left = 3
-          Top = 15
+          Top = 17
           Width = 378
           Height = 369
           Align = alTop
@@ -1180,9 +1207,9 @@ object fmStaticCheck: TfmStaticCheck
         end
         object Panel8: TPanel
           Left = 3
-          Top = 384
+          Top = 386
           Width = 378
-          Height = 434
+          Height = 432
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 1
@@ -1206,9 +1233,15 @@ object fmStaticCheck: TfmStaticCheck
             object lbl1: TLabel
               Left = 66
               Top = 6
-              Width = 61
-              Height = 13
+              Width = 52
+              Height = 15
               Caption = #50868#46041#52376#48169':'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = #45208#45588#44256#46357
+              Font.Style = [fsBold]
+              ParentFont = False
             end
             object btnSelect: TcxButton
               Tag = 1
@@ -1368,6 +1401,12 @@ object fmStaticCheck: TfmStaticCheck
               Hint = #52404#53356#46108' '#50868#46041#47564'...'
               Caption = #49440#53469
               Checked = True
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = #45208#45588#44256#46357
+              Font.Style = [fsBold]
+              ParentFont = False
               ParentShowHint = False
               ShowHint = True
               TabOrder = 3
@@ -1381,6 +1420,12 @@ object fmStaticCheck: TfmStaticCheck
               Height = 17
               Hint = #51204#52404#51088#47308
               Caption = #51204#52404
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = #45208#45588#44256#46357
+              Font.Style = [fsBold]
+              ParentFont = False
               ParentShowHint = False
               ShowHint = True
               TabOrder = 4
@@ -1391,7 +1436,7 @@ object fmStaticCheck: TfmStaticCheck
             Left = 0
             Top = 26
             Width = 378
-            Height = 408
+            Height = 406
             Align = alClient
             BevelKind = bkFlat
             TabOrder = 1
@@ -1494,9 +1539,9 @@ object fmStaticCheck: TfmStaticCheck
       Width = 437
       object Panel10: TPanel
         Left = 3
-        Top = 15
+        Top = 17
         Width = 431
-        Height = 803
+        Height = 801
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
@@ -1504,7 +1549,7 @@ object fmStaticCheck: TfmStaticCheck
           Left = 0
           Top = 0
           Width = 431
-          Height = 803
+          Height = 801
           Align = alClient
           TabOrder = 0
           Properties.ActivePage = cxTabSheet1
@@ -1512,7 +1557,7 @@ object fmStaticCheck: TfmStaticCheck
           Properties.Style = 9
           Properties.TabHeight = 24
           OnChange = cxPageControl1Change
-          ClientRectBottom = 803
+          ClientRectBottom = 801
           ClientRectRight = 431
           ClientRectTop = 25
           object cxTabSheet1: TcxTabSheet
@@ -1522,7 +1567,7 @@ object fmStaticCheck: TfmStaticCheck
               Left = 0
               Top = 0
               Width = 431
-              Height = 778
+              Height = 776
               Background = clWindowFrame
               PopupMenus = [ievViewing, ievEditing, ievLayerEditing, ievSelection, ievLayerSelection]
               MouseInteractLayers = [mlMoveLayers, mlResizeLayers, mlRotateLayers]
@@ -1540,7 +1585,7 @@ object fmStaticCheck: TfmStaticCheck
               Left = 0
               Top = 0
               Width = 431
-              Height = 778
+              Height = 776
               Background = clWindowFrame
               ZoomFilter = rfFastLinear
               PopupMenus = [ievViewing, ievEditing, ievLayerEditing, ievSelection, ievLayerSelection]
@@ -1559,7 +1604,7 @@ object fmStaticCheck: TfmStaticCheck
               Left = 0
               Top = 0
               Width = 431
-              Height = 778
+              Height = 776
               Background = clWindowFrame
               ZoomFilter = rfFastLinear
               PopupMenus = [ievViewing, ievEditing, ievLayerEditing, ievSelection, ievLayerSelection]
@@ -1578,7 +1623,7 @@ object fmStaticCheck: TfmStaticCheck
               Left = 0
               Top = 0
               Width = 431
-              Height = 778
+              Height = 776
               Background = clWindowFrame
               ZoomFilter = rfFastLinear
               PopupMenus = [ievViewing, ievEditing, ievLayerEditing, ievSelection, ievLayerSelection]
@@ -1597,7 +1642,7 @@ object fmStaticCheck: TfmStaticCheck
               Left = 0
               Top = 0
               Width = 431
-              Height = 778
+              Height = 776
               Background = clWindowFrame
               ZoomFilter = rfFastLinear
               PopupMenus = [ievViewing, ievEditing, ievLayerEditing, ievSelection, ievLayerSelection]
@@ -1616,7 +1661,7 @@ object fmStaticCheck: TfmStaticCheck
               Left = 0
               Top = 0
               Width = 431
-              Height = 778
+              Height = 776
               Background = clWindowFrame
               ZoomFilter = rfFastLinear
               PopupMenus = [ievViewing, ievEditing, ievLayerEditing, ievSelection, ievLayerSelection]
@@ -1635,7 +1680,7 @@ object fmStaticCheck: TfmStaticCheck
               Left = 0
               Top = 0
               Width = 431
-              Height = 778
+              Height = 776
               Background = clWindowFrame
               ZoomFilter = rfFastLinear
               PopupMenus = [ievViewing, ievEditing, ievLayerEditing, ievSelection, ievLayerSelection]

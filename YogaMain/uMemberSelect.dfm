@@ -9,13 +9,13 @@ object fmMemberSelect: TfmMemberSelect
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel1: TPanel
     Left = 0
     Top = 0
@@ -26,15 +26,15 @@ object fmMemberSelect: TfmMemberSelect
     object Label1: TLabel
       Left = 119
       Top = 8
-      Width = 43
-      Height = 13
+      Width = 40
+      Height = 15
       Caption = #54924#50896#47749':'
     end
     object Label2: TLabel
       Left = 9
       Top = 8
-      Width = 30
-      Height = 13
+      Width = 28
+      Height = 15
       Caption = #49468#53552':'
     end
     object btnSelect: TBitBtn
@@ -77,7 +77,7 @@ object fmMemberSelect: TfmMemberSelect
       Left = 166
       Top = 4
       Width = 79
-      Height = 21
+      Height = 23
       ImeMode = imSHanguel
       ImeName = 'Microsoft IME 2010'
       TabOrder = 0

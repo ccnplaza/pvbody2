@@ -3749,12 +3749,13 @@ object dmDBCommon: TdmDBCommon
     Top = 624
     ParamData = <
       item
-        DataType = ftInteger
+        DataType = ftString
         Name = 'CUST_ID'
         ParamType = ptInput
+        Size = 17
       end
       item
-        DataType = ftInteger
+        DataType = ftDate
         Name = 'P_DATE'
         ParamType = ptInput
       end>
@@ -5068,5 +5069,319 @@ object dmDBCommon: TdmDBCommon
         Value = ''
       end>
     CommandStoredProcName = 'IMAGES_UPD_DRAWONLY'
+  end
+  object CUSTOMER_SEL_BYID: TUniStoredProc
+    StoredProcName = 'CUSTOMER_SEL_BYID'
+    Connection = UniDBConnection
+    Left = 160
+    Top = 136
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'CUSTOMER_ID'
+        ParamType = ptInput
+        Size = 17
+      end
+      item
+        DataType = ftString
+        Name = 'UID'
+        ParamType = ptOutput
+        Size = 40
+      end
+      item
+        DataType = ftString
+        Name = 'CNAME'
+        ParamType = ptOutput
+        Size = 20
+      end
+      item
+        DataType = ftString
+        Name = 'SEX'
+        ParamType = ptOutput
+        Size = 2
+      end
+      item
+        DataType = ftString
+        Name = 'CAGE'
+        ParamType = ptOutput
+        Size = 3
+      end
+      item
+        DataType = ftString
+        Name = 'CTEL'
+        ParamType = ptOutput
+        Size = 50
+      end
+      item
+        DataType = ftString
+        Name = 'CEMAIL'
+        ParamType = ptOutput
+        Size = 50
+      end
+      item
+        DataType = ftString
+        Name = 'CBIGO'
+        ParamType = ptOutput
+        Size = 255
+      end
+      item
+        DataType = ftDate
+        Name = 'REG_DATE'
+        ParamType = ptOutput
+      end
+      item
+        DataType = ftString
+        Name = 'JOBKIND'
+        ParamType = ptOutput
+        Size = 30
+      end
+      item
+        DataType = ftString
+        Name = 'HOBBY'
+        ParamType = ptOutput
+        Size = 30
+      end
+      item
+        DataType = ftString
+        Name = 'HOW_TO_COME'
+        ParamType = ptOutput
+        Size = 30
+      end
+      item
+        DataType = ftString
+        Name = 'PURPOSE'
+        ParamType = ptOutput
+        Size = 30
+      end
+      item
+        DataType = ftString
+        Name = 'BLOOD'
+        ParamType = ptOutput
+        Size = 10
+      end
+      item
+        DataType = ftString
+        Name = 'BLOOD_PRESSURE'
+        ParamType = ptOutput
+        Size = 10
+      end
+      item
+        DataType = ftString
+        Name = 'BODY_STATUS'
+        ParamType = ptOutput
+        Size = 255
+      end
+      item
+        DataType = ftString
+        Name = 'FOOD_KIND'
+        ParamType = ptOutput
+        Size = 12
+      end
+      item
+        DataType = ftString
+        Name = 'FOOD_HOW_MUCH'
+        ParamType = ptOutput
+        Size = 10
+      end
+      item
+        DataType = ftString
+        Name = 'FOOD_HOW_OFTEN'
+        ParamType = ptOutput
+        Size = 10
+      end
+      item
+        DataType = ftString
+        Name = 'HOW_TO_COME_ETC'
+        ParamType = ptOutput
+        Size = 30
+      end
+      item
+        DataType = ftString
+        Name = 'PURPOSE_ETC'
+        ParamType = ptOutput
+        Size = 30
+      end
+      item
+        DataType = ftString
+        Name = 'PURPOSE_DESC'
+        ParamType = ptOutput
+        Size = 255
+      end
+      item
+        DataType = ftInteger
+        Name = 'IS_ACTIVE'
+        ParamType = ptOutput
+      end
+      item
+        DataType = ftBlob
+        Name = 'PHOTO'
+        ParamType = ptOutput
+        Value = ''
+      end>
+    CommandStoredProcName = 'CUSTOMER_SEL_BYID'
+    object CUSTOMER_SEL_BYIDUID: TStringField
+      FieldName = 'UID'
+      Size = 40
+    end
+    object CUSTOMER_SEL_BYIDCNAME: TStringField
+      FieldName = 'CNAME'
+    end
+    object CUSTOMER_SEL_BYIDSEX: TStringField
+      FieldName = 'SEX'
+      Size = 2
+    end
+    object CUSTOMER_SEL_BYIDCAGE: TStringField
+      FieldName = 'CAGE'
+      Size = 3
+    end
+    object CUSTOMER_SEL_BYIDCTEL: TStringField
+      FieldName = 'CTEL'
+      Size = 50
+    end
+    object CUSTOMER_SEL_BYIDCEMAIL: TStringField
+      FieldName = 'CEMAIL'
+      Size = 50
+    end
+    object CUSTOMER_SEL_BYIDCBIGO: TStringField
+      FieldName = 'CBIGO'
+      Size = 255
+    end
+    object CUSTOMER_SEL_BYIDREG_DATE: TDateField
+      FieldName = 'REG_DATE'
+    end
+    object CUSTOMER_SEL_BYIDJOBKIND: TStringField
+      FieldName = 'JOBKIND'
+      Size = 30
+    end
+    object CUSTOMER_SEL_BYIDHOBBY: TStringField
+      FieldName = 'HOBBY'
+      Size = 30
+    end
+    object CUSTOMER_SEL_BYIDHOW_TO_COME: TStringField
+      FieldName = 'HOW_TO_COME'
+      Size = 30
+    end
+    object CUSTOMER_SEL_BYIDPURPOSE: TStringField
+      FieldName = 'PURPOSE'
+      Size = 30
+    end
+    object CUSTOMER_SEL_BYIDBLOOD: TStringField
+      FieldName = 'BLOOD'
+      Size = 10
+    end
+    object CUSTOMER_SEL_BYIDBLOOD_PRESSURE: TStringField
+      FieldName = 'BLOOD_PRESSURE'
+      Size = 10
+    end
+    object CUSTOMER_SEL_BYIDBODY_STATUS: TStringField
+      FieldName = 'BODY_STATUS'
+      Size = 255
+    end
+    object CUSTOMER_SEL_BYIDFOOD_KIND: TStringField
+      FieldName = 'FOOD_KIND'
+      Size = 12
+    end
+    object CUSTOMER_SEL_BYIDFOOD_HOW_MUCH: TStringField
+      FieldName = 'FOOD_HOW_MUCH'
+      Size = 10
+    end
+    object CUSTOMER_SEL_BYIDFOOD_HOW_OFTEN: TStringField
+      FieldName = 'FOOD_HOW_OFTEN'
+      Size = 10
+    end
+    object CUSTOMER_SEL_BYIDHOW_TO_COME_ETC: TStringField
+      FieldName = 'HOW_TO_COME_ETC'
+      Size = 30
+    end
+    object CUSTOMER_SEL_BYIDPURPOSE_ETC: TStringField
+      FieldName = 'PURPOSE_ETC'
+      Size = 30
+    end
+    object CUSTOMER_SEL_BYIDPURPOSE_DESC: TStringField
+      FieldName = 'PURPOSE_DESC'
+      Size = 255
+    end
+    object CUSTOMER_SEL_BYIDIS_ACTIVE: TIntegerField
+      FieldName = 'IS_ACTIVE'
+    end
+    object CUSTOMER_SEL_BYIDPHOTO: TBlobField
+      FieldName = 'PHOTO'
+    end
+  end
+  object ds_CUSTOMER_SEL_BYID: TDataSource
+    DataSet = CUSTOMER_SEL_BYID
+    Left = 160
+    Top = 184
+  end
+  object CUSTOMER_SEL_RECENT_REG: TUniStoredProc
+    StoredProcName = 'CUSTOMER_SEL_RECENT_REG'
+    Connection = UniDBConnection
+    Left = 200
+    Top = 736
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'COMP_ID'
+        ParamType = ptInput
+        Size = 17
+      end
+      item
+        DataType = ftDate
+        Name = 'SUB_DATE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'UID'
+        ParamType = ptOutput
+        Size = 40
+      end
+      item
+        DataType = ftString
+        Name = 'CNAME'
+        ParamType = ptOutput
+        Size = 20
+      end
+      item
+        DataType = ftString
+        Name = 'SEX'
+        ParamType = ptOutput
+        Size = 2
+      end
+      item
+        DataType = ftString
+        Name = 'CTEL'
+        ParamType = ptOutput
+        Size = 50
+      end
+      item
+        DataType = ftDate
+        Name = 'REG_DATE'
+        ParamType = ptOutput
+      end>
+    CommandStoredProcName = 'CUSTOMER_SEL_RECENT_REG'
+    object CUSTOMER_SEL_RECENT_REGUID: TStringField
+      FieldName = 'UID'
+      Size = 40
+    end
+    object CUSTOMER_SEL_RECENT_REGCNAME: TStringField
+      FieldName = 'CNAME'
+    end
+    object CUSTOMER_SEL_RECENT_REGSEX: TStringField
+      FieldName = 'SEX'
+      Size = 2
+    end
+    object CUSTOMER_SEL_RECENT_REGCTEL: TStringField
+      FieldName = 'CTEL'
+      Size = 50
+    end
+    object CUSTOMER_SEL_RECENT_REGREG_DATE: TDateField
+      FieldName = 'REG_DATE'
+    end
+  end
+  object ds_CUSTOMER_SEL_RECENT_REG: TDataSource
+    DataSet = CUSTOMER_SEL_RECENT_REG
+    Left = 200
+    Top = 784
   end
 end

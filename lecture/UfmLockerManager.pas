@@ -54,10 +54,15 @@ type
     Label6: TLabel;
     Button1: TButton;
     LOCKER_DATA_UPD: TUniStoredProc;
+    GroupBox3: TGroupBox;
+    btnDel: TBitBtn;
+    Label7: TLabel;
+    LOCKER_DATA_DEL: TUniStoredProc;
     procedure FormShow(Sender: TObject);
     procedure btnAddNoClick(Sender: TObject);
     procedure btnEditStatusClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure btnDelClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -92,6 +97,27 @@ begin
     LOCKER_DATA_INS.ExecProc;
   end;
   dmDBCommon.d_LOCKER_DATA_SEL.DataSet.Refresh;
+end;
+
+procedure TfmLockerManager.btnDelClick(Sender: TObject);
+var
+  i, cnt, l_id, s : Integer;
+begin
+  if Application.MessageBox('선택한 자료를 삭제합니다. ' + #13#10 + '삭제한 후에는 되돌릴 수 없습니다.'
+    + #13#10 + '정말 삭제할까요?', 'Application.Title', MB_YESNO + MB_ICONWARNING) =
+    IDYES then
+  begin
+    with gridLocker do begin
+      cnt := Controller.SelectedRecordCount;
+      for i := 0 to cnt - 1 do begin
+        s := Controller.SelectedRecords[i].RecordIndex;
+        l_id := DataController.GetValue(s, gridLockerID.Index);
+        LOCKER_DATA_DEL.ParamByName('ID').Value := l_id;
+        LOCKER_DATA_DEL.ExecProc;
+      end;
+      dmDBCommon.d_LOCKER_DATA_SEL.DataSet.Refresh;
+    end;
+  end;
 end;
 
 procedure TfmLockerManager.btnEditStatusClick(Sender: TObject);

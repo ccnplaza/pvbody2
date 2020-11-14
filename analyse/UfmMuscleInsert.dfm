@@ -9,13 +9,13 @@ object fmMuscleInsert: TfmMuscleInsert
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object cxGroupBox2: TcxGroupBox
     AlignWithMargins = True
     Left = 364
@@ -27,15 +27,17 @@ object fmMuscleInsert: TfmMuscleInsert
     Width = 592
     object ImageEnView1: TImageEnView
       Left = 3
-      Top = 15
+      Top = 17
       Width = 586
-      Height = 534
+      Height = 532
       Cursor = crHandPoint
       Background = clBtnFace
       AutoStretch = True
       AutoShrink = True
       Align = alClient
       TabOrder = 0
+      ExplicitTop = 15
+      ExplicitHeight = 534
     end
   end
   object Panel1: TPanel
@@ -58,41 +60,41 @@ object fmMuscleInsert: TfmMuscleInsert
       object Label1: TLabel
         Left = 24
         Top = 41
-        Width = 30
-        Height = 13
+        Width = 28
+        Height = 15
         Caption = #51228#47785':'
       end
       object Label2: TLabel
         Left = 24
         Top = 64
-        Width = 30
-        Height = 13
+        Width = 28
+        Height = 15
         Caption = #51088#49464':'
       end
       object Label3: TLabel
         Left = 24
         Top = 19
-        Width = 30
-        Height = 13
+        Width = 28
+        Height = 15
         Caption = #49692#49436':'
       end
       object Label4: TLabel
         Left = 133
         Top = 64
-        Width = 30
-        Height = 13
+        Width = 28
+        Height = 15
         Caption = #44396#48516':'
       end
       object Label5: TLabel
         Left = 11
         Top = 87
-        Width = 43
-        Height = 13
+        Width = 40
+        Height = 15
         Caption = #51060#48120#51648':'
       end
       object edtName: TEdit
         Left = 60
-        Top = 38
+        Top = 39
         Width = 174
         Height = 21
         TabOrder = 0
@@ -151,7 +153,7 @@ object fmMuscleInsert: TfmMuscleInsert
       end
       object edtImage: TEdit
         Left = 60
-        Top = 82
+        Top = 83
         Width = 277
         Height = 21
         TabOrder = 4
@@ -211,9 +213,9 @@ object fmMuscleInsert: TfmMuscleInsert
       Width = 361
       object edtDesc: TIERichEdit
         Left = 3
-        Top = 81
+        Top = 83
         Width = 355
-        Height = 294
+        Height = 292
         RTFText = 
           '{\rtf1\ansi\deff0{\fonttbl{\f0\fnil\fcharset129 \'#39'b3\'#39'aa\'#39'b4\'#39'ae' +
           '\'#39'b8\'#39'ed\'#39'c1\'#39'b6;}}'#13#10'\viewkind4\uc1\pard\lang1042\f0\fs24\par'#13#10'}' +
@@ -226,10 +228,12 @@ object fmMuscleInsert: TfmMuscleInsert
         Font.Style = []
         ParentFont = False
         TabOrder = 0
+        ExplicitTop = 81
+        ExplicitHeight = 294
       end
       object IERichEditToolbar1: TIERichEditToolbar
         Left = 3
-        Top = 15
+        Top = 17
         Width = 355
         Height = 66
         AutoSize = True
@@ -237,6 +241,7 @@ object fmMuscleInsert: TfmMuscleInsert
         ButtonWidth = 31
         Caption = 'IERichEditToolbar1'
         TabOrder = 1
+        ExplicitTop = 15
       end
       object Panel2: TPanel
         Left = 3

@@ -8,7 +8,7 @@ object fmToday: TfmToday
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   FormStyle = fsMDIChild
   OldCreateOrder = False
@@ -16,7 +16,7 @@ object fmToday: TfmToday
   OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel1: TPanel
     Left = 0
     Top = 0
@@ -27,8 +27,8 @@ object fmToday: TfmToday
     object lbl1: TLabel
       Left = 8
       Top = 7
-      Width = 30
-      Height = 13
+      Width = 28
+      Height = 15
       Caption = #45216#51676':'
     end
     object btnView: TBitBtn
@@ -86,12 +86,14 @@ object fmToday: TfmToday
       Width = 521
       object cxGrid1: TcxGrid
         Left = 3
-        Top = 15
+        Top = 17
         Width = 515
-        Height = 573
+        Height = 571
         Align = alClient
         TabOrder = 0
         LookAndFeel.SkinName = 'Black'
+        ExplicitTop = 15
+        ExplicitHeight = 573
         object gridLesson: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.First.Visible = False
@@ -301,12 +303,14 @@ object fmToday: TfmToday
       Width = 238
       object cxGrid2: TcxGrid
         Left = 3
-        Top = 15
+        Top = 17
         Width = 232
-        Height = 573
+        Height = 571
         Align = alClient
         TabOrder = 0
         LookAndFeel.SkinName = 'Black'
+        ExplicitTop = 15
+        ExplicitHeight = 573
         object gridAttend: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.First.Visible = False
@@ -414,12 +418,14 @@ object fmToday: TfmToday
       Width = 560
       object cxGrid3: TcxGrid
         Left = 3
-        Top = 15
+        Top = 17
         Width = 554
-        Height = 241
+        Height = 239
         Align = alClient
         TabOrder = 0
         LookAndFeel.SkinName = 'Black'
+        ExplicitTop = 15
+        ExplicitHeight = 241
         object gridSale: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.First.Visible = True
@@ -558,7 +564,6 @@ object fmToday: TfmToday
               item
                 FieldName = 'C_NAME'
               end>
-            Properties.ListSource = dmDBCommon.d_center
             Width = 53
           end
         end
@@ -581,13 +586,15 @@ object fmToday: TfmToday
       Width = 560
       object cxGrid4: TcxGrid
         Left = 3
-        Top = 15
+        Top = 17
         Width = 554
-        Height = 307
+        Height = 305
         Align = alClient
         BorderWidth = 1
         TabOrder = 0
         LookAndFeel.SkinName = 'Black'
+        ExplicitTop = 15
+        ExplicitHeight = 307
         object gridCash: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.First.Visible = True
@@ -762,7 +769,6 @@ object fmToday: TfmToday
               item
                 FieldName = 'C_NAME'
               end>
-            Properties.ListSource = dmDBCommon.d_center
             Width = 47
           end
         end

@@ -9,13 +9,13 @@ object fmTelLogEdit: TfmTelLogEdit
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object cxGroupBox1: TcxGroupBox
     AlignWithMargins = True
     Left = 5
@@ -31,7 +31,7 @@ object fmTelLogEdit: TfmTelLogEdit
     Style.Font.Charset = DEFAULT_CHARSET
     Style.Font.Color = clWindowText
     Style.Font.Height = -13
-    Style.Font.Name = #44404#47548
+    Style.Font.Name = #45208#45588#44256#46357
     Style.Font.Style = []
     Style.LookAndFeel.SkinName = 'Black'
     Style.IsFontAssigned = True
@@ -59,23 +59,38 @@ object fmTelLogEdit: TfmTelLogEdit
       TabOrder = 0
       object cxDBDateEdit1: TcxDBDateEdit
         AlignWithMargins = True
-        Left = 4
-        Top = 4
+        Left = 2
+        Top = 2
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 1
+        Margins.Bottom = 1
         Align = alLeft
         DataBinding.DataField = 'in_date'
         DataBinding.DataSource = ds1
         TabOrder = 0
+        ExplicitLeft = 4
+        ExplicitTop = 4
+        ExplicitHeight = 20
         Width = 114
       end
       object cxDBTextEdit1: TcxDBTextEdit
         AlignWithMargins = True
-        Left = 124
-        Top = 4
+        Left = 118
+        Top = 2
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 1
+        Margins.Bottom = 1
         Align = alClient
         DataBinding.DataField = 'in_time'
         DataBinding.DataSource = ds1
         TabOrder = 1
-        Width = 49
+        ExplicitLeft = 124
+        ExplicitTop = 4
+        ExplicitWidth = 49
+        ExplicitHeight = 20
+        Width = 57
       end
     end
     object pnl10: TPanel
@@ -96,8 +111,12 @@ object fmTelLogEdit: TfmTelLogEdit
       TabOrder = 1
       object cxDBImageComboBox1: TcxDBImageComboBox
         AlignWithMargins = True
-        Left = 4
-        Top = 4
+        Left = 2
+        Top = 2
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 1
+        Margins.Bottom = 1
         Align = alClient
         DataBinding.DataField = 'in_kind'
         DataBinding.DataSource = ds1
@@ -120,7 +139,11 @@ object fmTelLogEdit: TfmTelLogEdit
             Value = 4
           end>
         TabOrder = 0
-        Width = 105
+        ExplicitLeft = 4
+        ExplicitTop = 4
+        ExplicitWidth = 105
+        ExplicitHeight = 20
+        Width = 109
       end
     end
     object pnl19: TPanel
@@ -171,8 +194,12 @@ object fmTelLogEdit: TfmTelLogEdit
       TabOrder = 7
       object cxDBImageComboBox2: TcxDBImageComboBox
         AlignWithMargins = True
-        Left = 4
-        Top = 4
+        Left = 2
+        Top = 2
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 1
+        Margins.Bottom = 1
         Align = alClient
         DataBinding.DataField = 'is_done'
         DataBinding.DataSource = ds1
@@ -195,7 +222,11 @@ object fmTelLogEdit: TfmTelLogEdit
             Value = 4
           end>
         TabOrder = 0
-        Width = 102
+        ExplicitLeft = 4
+        ExplicitTop = 4
+        ExplicitWidth = 102
+        ExplicitHeight = 20
+        Width = 106
       end
     end
     object pnl33: TPanel
@@ -216,8 +247,12 @@ object fmTelLogEdit: TfmTelLogEdit
       TabOrder = 2
       object cxDBTextEdit2: TcxDBTextEdit
         AlignWithMargins = True
-        Left = 4
-        Top = 4
+        Left = 2
+        Top = 2
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 1
+        Margins.Bottom = 1
         Align = alClient
         DataBinding.DataField = 'receiver'
         DataBinding.DataSource = ds1
@@ -225,7 +260,11 @@ object fmTelLogEdit: TfmTelLogEdit
         Properties.ImeMode = imSHanguel
         TabOrder = 0
         OnExit = cxDBTextEdit2Exit
-        Width = 134
+        ExplicitLeft = 4
+        ExplicitTop = 4
+        ExplicitWidth = 134
+        ExplicitHeight = 20
+        Width = 138
       end
     end
     object btnSave: TcxButton
@@ -367,8 +406,12 @@ object fmTelLogEdit: TfmTelLogEdit
       TabOrder = 3
       object cxDBTextEdit3: TcxDBTextEdit
         AlignWithMargins = True
-        Left = 4
-        Top = 4
+        Left = 2
+        Top = 2
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 1
+        Margins.Bottom = 1
         Align = alClient
         DataBinding.DataField = 'damdang'
         DataBinding.DataSource = ds1
@@ -376,7 +419,11 @@ object fmTelLogEdit: TfmTelLogEdit
         Properties.ImeMode = imSHanguel
         TabOrder = 0
         OnExit = cxDBTextEdit2Exit
-        Width = 134
+        ExplicitLeft = 4
+        ExplicitTop = 4
+        ExplicitWidth = 134
+        ExplicitHeight = 20
+        Width = 138
       end
     end
     object pnl7: TPanel
@@ -397,8 +444,12 @@ object fmTelLogEdit: TfmTelLogEdit
       TabOrder = 4
       object cxDBTextEdit4: TcxDBTextEdit
         AlignWithMargins = True
-        Left = 4
-        Top = 4
+        Left = 2
+        Top = 2
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 1
+        Margins.Bottom = 1
         Align = alClient
         DataBinding.DataField = 'caller'
         DataBinding.DataSource = ds1
@@ -406,7 +457,11 @@ object fmTelLogEdit: TfmTelLogEdit
         Properties.ImeMode = imSHanguel
         TabOrder = 0
         OnExit = cxDBTextEdit2Exit
-        Width = 134
+        ExplicitLeft = 4
+        ExplicitTop = 4
+        ExplicitWidth = 134
+        ExplicitHeight = 20
+        Width = 138
       end
     end
     object Panel1: TPanel
@@ -428,6 +483,10 @@ object fmTelLogEdit: TfmTelLogEdit
       object icbCenter: TcxImageComboBox
         Left = 4
         Top = 3
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 1
+        Margins.Bottom = 1
         Properties.Items = <>
         TabOrder = 0
         Width = 114

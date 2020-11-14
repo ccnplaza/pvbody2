@@ -4,18 +4,18 @@ object fmLockerManager: TfmLockerManager
   BorderStyle = bsDialog
   Caption = #46973#52964#44288#47532
   ClientHeight = 499
-  ClientWidth = 716
+  ClientWidth = 702
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object cxGrid1: TcxGrid
     Left = 0
     Top = 0
@@ -53,6 +53,7 @@ object fmLockerManager: TfmLockerManager
       OptionsData.Editing = False
       OptionsData.Inserting = False
       OptionsSelection.CellSelect = False
+      OptionsSelection.MultiSelect = True
       OptionsView.ColumnAutoWidth = True
       OptionsView.FooterAutoHeight = True
       OptionsView.GroupByBox = False
@@ -126,36 +127,36 @@ object fmLockerManager: TfmLockerManager
     object Label1: TLabel
       Left = 32
       Top = 57
-      Width = 56
-      Height = 13
+      Width = 52
+      Height = 15
       Caption = #49884#51089#48264#54840':'
     end
     object Label2: TLabel
       Left = 32
       Top = 79
-      Width = 56
-      Height = 13
+      Width = 52
+      Height = 15
       Caption = #51333#47308#48264#54840':'
     end
     object Label5: TLabel
       Left = 32
       Top = 35
-      Width = 56
-      Height = 13
+      Width = 52
+      Height = 15
       Caption = #46973#52964#44536#47353':'
     end
     object Label6: TLabel
       Left = 153
       Top = 35
-      Width = 73
-      Height = 13
+      Width = 70
+      Height = 15
       Caption = '('#50508#54028#48307' 2'#51088')'
     end
     object edtStart: TEdit
       Left = 94
       Top = 54
       Width = 53
-      Height = 21
+      Height = 23
       Alignment = taCenter
       NumbersOnly = True
       TabOrder = 1
@@ -165,7 +166,7 @@ object fmLockerManager: TfmLockerManager
       Left = 94
       Top = 76
       Width = 53
-      Height = 21
+      Height = 23
       Alignment = taCenter
       NumbersOnly = True
       TabOrder = 2
@@ -173,7 +174,7 @@ object fmLockerManager: TfmLockerManager
     end
     object btnAddNo: TBitBtn
       Left = 183
-      Top = 74
+      Top = 75
       Width = 65
       Height = 25
       Caption = #49373#49457
@@ -193,7 +194,7 @@ object fmLockerManager: TfmLockerManager
       Left = 94
       Top = 32
       Width = 53
-      Height = 21
+      Height = 23
       Alignment = taCenter
       MaxLength = 2
       TabOrder = 0
@@ -210,15 +211,15 @@ object fmLockerManager: TfmLockerManager
     object Label3: TLabel
       Left = 32
       Top = 32
-      Width = 56
-      Height = 13
+      Width = 52
+      Height = 15
       Caption = #48320#44221#49345#53468':'
     end
     object Label4: TLabel
       Left = 32
       Top = 54
-      Width = 56
-      Height = 13
+      Width = 52
+      Height = 15
       Caption = #48708#44256#49324#54637':'
     end
     object edtStatus: TcxImageComboBox
@@ -267,19 +268,52 @@ object fmLockerManager: TfmLockerManager
       Left = 94
       Top = 51
       Width = 171
-      Height = 21
+      Height = 23
       TabOrder = 2
     end
   end
   object Button1: TButton
     Left = 591
-    Top = 248
+    Top = 432
     Width = 75
     Height = 25
     Caption = 'Button1'
     TabOrder = 3
     Visible = False
     OnClick = Button1Click
+  end
+  object GroupBox3: TGroupBox
+    Left = 407
+    Top = 226
+    Width = 282
+    Height = 56
+    Caption = #49440#53469#49325#51228
+    TabOrder = 4
+    object Label7: TLabel
+      Left = 18
+      Top = 24
+      Width = 144
+      Height = 15
+      Caption = #49325#51228#54624' '#46973#52964#47484' '#49440#53469#54616#49464#50836'.'
+    end
+    object btnDel: TBitBtn
+      Left = 183
+      Top = 19
+      Width = 65
+      Height = 25
+      Caption = #49325#51228
+      Glyph.Data = {
+        F6000000424DF600000000000000760000002800000010000000100000000100
+        04000000000080000000120B0000120B00001000000000000000000000000000
+        8000008000000080800080000000800080008080000080808000C0C0C0000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00888888888888
+        8888888888888888898888898888888888888899988888889888889998888889
+        8888888999888899888888889998899888888888899999888888888888999888
+        8888888889999988888888889998898888888899998888998888899998888889
+        9888899888888888998888888888888888888888888888888888}
+      TabOrder = 0
+      OnClick = btnDelClick
+    end
   end
   object LOCKER_DATA_INS: TUniStoredProc
     StoredProcName = 'LOCKER_DATA_INS'
@@ -349,8 +383,8 @@ object fmLockerManager: TfmLockerManager
     CommandStoredProcName = 'LOCKER_DATA_STATUS_UPD'
   end
   object ImageList1: TImageList
-    Left = 464
-    Top = 328
+    Left = 72
+    Top = 112
     Bitmap = {
       494C010105000900040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
@@ -658,5 +692,18 @@ object fmLockerManager: TfmLockerManager
         Size = 20
       end>
     CommandStoredProcName = 'LOCKER_DATA_UPD'
+  end
+  object LOCKER_DATA_DEL: TUniStoredProc
+    StoredProcName = 'LOCKER_DATA_DEL'
+    Connection = dmDBCommon.UniDBConnection
+    Left = 456
+    Top = 304
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'ID'
+        ParamType = ptInput
+      end>
+    CommandStoredProcName = 'LOCKER_DATA_DEL'
   end
 end

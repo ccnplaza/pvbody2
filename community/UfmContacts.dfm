@@ -8,7 +8,7 @@ object fmContacts: TfmContacts
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   FormStyle = fsMDIChild
   OldCreateOrder = False
@@ -16,7 +16,7 @@ object fmContacts: TfmContacts
   OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object pnl1: TPanel
     Left = 0
     Top = 0
@@ -27,8 +27,8 @@ object fmContacts: TfmContacts
     object lbl2: TLabel
       Left = 25
       Top = 8
-      Width = 30
-      Height = 13
+      Width = 28
+      Height = 15
       Caption = #44160#49353':'
     end
     object btnView: TcxButton
@@ -215,7 +215,7 @@ object fmContacts: TfmContacts
       Left = 58
       Top = 4
       Width = 121
-      Height = 21
+      Height = 23
       ImeMode = imSHanguel
       ImeName = 'Microsoft IME 2010'
       TabOrder = 4

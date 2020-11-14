@@ -21,7 +21,8 @@ uses
   cxImageComboBox, MemDS, VirtualTable, dxSkinOffice2013White, ieview,
   imageenview, ComCtrls, dxCore, cxDateUtils, dxSkinMetropolis,
   dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, DBAccess, Uni;
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, DBAccess, Uni, hyieutils,
+  iexBitmaps, hyiedefs, iesettings, iexLayers, iexRulers, iexToolbars;
 
 type
   TfmMemberEditView = class(TForm)

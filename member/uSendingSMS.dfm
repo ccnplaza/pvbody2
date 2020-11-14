@@ -9,13 +9,13 @@ object fmSendingSMS: TfmSendingSMS
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel2: TPanel
     Left = 0
     Top = 0
@@ -34,24 +34,24 @@ object fmSendingSMS: TfmSendingSMS
       object Label5: TLabel
         Left = 16
         Top = 11
-        Width = 52
-        Height = 13
+        Width = 48
+        Height = 15
         Caption = #51204#49569#45236#50857
       end
       object Label4: TLabel
-        Left = 8
+        Left = 6
         Top = 40
         Width = 68
-        Height = 13
+        Height = 16
         Alignment = taCenter
         AutoSize = False
         Caption = 'SMS('#45800#47928')'
       end
       object Label6: TLabel
         Left = 13
-        Top = 56
+        Top = 58
         Width = 55
-        Height = 13
+        Height = 15
         Alignment = taCenter
         AutoSize = False
         Caption = '90 '#48148#51060#53944
@@ -68,22 +68,22 @@ object fmSendingSMS: TfmSendingSMS
       object Label11: TLabel
         Left = 16
         Top = 163
-        Width = 52
-        Height = 13
+        Width = 48
+        Height = 15
         Caption = #49569#49888#48264#54840
       end
       object Label2: TLabel
         Left = 33
         Top = 185
-        Width = 211
-        Height = 78
+        Width = 201
+        Height = 75
         Caption = 
           'SMS('#45800#47928') : 90'#48148#51060#53944' '#44620#51648' '#51077#45768#45796'. '#13#10'90'#48148#51060#53944#44032' '#45336#50612#44032#47732' '#51088#46041#51004#47196' '#13#10'LMS('#51109#47928')'#51004#47196' '#51204#49569' '#46121#45768#45796'. '#13 +
-          #10#44033' '#49436#48708#49828' '#51333#47448#50640' '#46384#46972' '#48708#50857#51060' '#13#10#45796#47476#44172' '#52293#51221#46120#51012' '#51452#51032#54616#49464#50836'. '#13#10' '
+          #10#44033' '#49436#48708#49828' '#51333#47448#50640' '#46384#46972' '#48708#50857#51060' '#13#10#45796#47476#44172' '#52293#51221#46120#51012' '#51452#51032#54616#49464#50836'. '
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clRed
         Font.Height = -13
-        Font.Name = #44404#47548
+        Font.Name = #45208#45588#44256#46357
         Font.Style = []
         ParentFont = False
       end
@@ -117,104 +117,104 @@ object fmSendingSMS: TfmSendingSMS
         object Label3: TLabel
           Left = 39
           Top = 21
-          Width = 47
-          Height = 13
+          Width = 40
+          Height = 15
           Caption = #54924#49324#47749':'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlue
           Font.Height = -13
-          Font.Name = #44404#47548
+          Font.Name = #45208#45588#44256#46357
           Font.Style = [fsBold]
           ParentFont = False
         end
         object lblCorpName: TLabel
           Left = 92
           Top = 21
-          Width = 42
-          Height = 13
+          Width = 36
+          Height = 15
           Caption = #54924#49324#47749
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlue
           Font.Height = -13
-          Font.Name = #44404#47548
+          Font.Name = #45208#45588#44256#46357
           Font.Style = [fsBold]
           ParentFont = False
         end
         object Label9: TLabel
           Left = 11
           Top = 40
-          Width = 75
-          Height = 13
+          Width = 64
+          Height = 15
           Caption = #49324#50629#51088#48264#54840':'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlue
           Font.Height = -13
-          Font.Name = #44404#47548
+          Font.Name = #45208#45588#44256#46357
           Font.Style = [fsBold]
           ParentFont = False
         end
         object lblCorpID: TLabel
           Left = 92
           Top = 40
-          Width = 70
-          Height = 13
+          Width = 60
+          Height = 15
           Caption = #49324#50629#51088#48264#54840
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlue
           Font.Height = -13
-          Font.Name = #44404#47548
+          Font.Name = #45208#45588#44256#46357
           Font.Style = [fsBold]
           ParentFont = False
         end
         object Label12: TLabel
           Left = 25
           Top = 59
-          Width = 61
-          Height = 13
+          Width = 52
+          Height = 15
           Caption = #45812#45817#51088#47749':'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlue
           Font.Height = -13
-          Font.Name = #44404#47548
+          Font.Name = #45208#45588#44256#46357
           Font.Style = [fsBold]
           ParentFont = False
         end
         object lblUserName: TLabel
           Left = 92
           Top = 59
-          Width = 56
-          Height = 13
+          Width = 48
+          Height = 15
           Caption = #45812#45817#51088#47749
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlue
           Font.Height = -13
-          Font.Name = #44404#47548
+          Font.Name = #45208#45588#44256#46357
           Font.Style = [fsBold]
           ParentFont = False
         end
         object Label1: TLabel
           Left = 11
           Top = 87
-          Width = 75
-          Height = 13
+          Width = 64
+          Height = 15
           Caption = #51092#50668#54252#51064#53944':'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlue
           Font.Height = -13
-          Font.Name = #44404#47548
+          Font.Name = #45208#45588#44256#46357
           Font.Style = [fsBold]
           ParentFont = False
         end
         object lblRestPoint: TLabel
           Left = 92
           Top = 87
-          Width = 42
-          Height = 13
+          Width = 36
+          Height = 15
           Caption = #54252#51064#53944
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clRed
           Font.Height = -13
-          Font.Name = #44404#47548
+          Font.Name = #45208#45588#44256#46357
           Font.Style = [fsBold]
           ParentFont = False
         end
@@ -435,13 +435,13 @@ object fmSendingSMS: TfmSendingSMS
       object Label8: TLabel
         Left = 422
         Top = 7
-        Width = 182
-        Height = 13
+        Width = 176
+        Height = 15
         Caption = '1'#54924' '#52572#45824' 999'#44148' '#44620#51648#47564' '#51204#49569' '#46120'.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clRed
         Font.Height = -13
-        Font.Name = #44404#47548
+        Font.Name = #45208#45588#44256#46357
         Font.Style = []
         ParentFont = False
       end

@@ -8,7 +8,7 @@ object fmUserAssign: TfmUserAssign
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   FormStyle = fsMDIChild
   OldCreateOrder = False
@@ -16,7 +16,7 @@ object fmUserAssign: TfmUserAssign
   OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel7: TPanel
     Left = 0
     Top = 0
@@ -28,13 +28,13 @@ object fmUserAssign: TfmUserAssign
     object Label1: TLabel
       Left = 576
       Top = 8
-      Width = 237
-      Height = 13
+      Width = 220
+      Height = 15
       Caption = #49888#44508#49324#50857#51088' '#46321#47197#51008' '#47196#44536#51064#52285#50640#49436' '#54616#49464#50836'.'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clRed
       Font.Height = -13
-      Font.Name = #44404#47548
+      Font.Name = #45208#45588#44256#46357
       Font.Style = []
       ParentFont = False
     end
@@ -209,7 +209,6 @@ object fmUserAssign: TfmUserAssign
           item
             FieldName = 'C_NAME'
           end>
-        Properties.ListSource = dmDBCommon.d_center
         HeaderAlignmentHorz = taCenter
         Width = 62
       end

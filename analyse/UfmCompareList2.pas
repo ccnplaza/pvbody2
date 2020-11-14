@@ -100,19 +100,6 @@ type
     BitBtn1: TBitBtn;
     btnStaticCheck: TcxButton;
     cxGroupBox3: TcxGroupBox;
-    ActionResult: TActionList;
-    ActNormal: TAction;
-    ActSmall: TAction;
-    ActMiddle: TAction;
-    ActBig: TAction;
-    ActResultView: TAction;
-    ActPracticeList: TAction;
-    ActResultReport: TAction;
-    ActionThumbnail: TActionList;
-    actThumbWindowMax: TAction;
-    actThumbWindowMin: TAction;
-    actThumbDelete: TAction;
-    actThumbSaveAs: TAction;
     cxImageList1: TcxImageList;
     cxStyleRepository1: TcxStyleRepository;
     cxStyleNormal: TcxStyle;
@@ -120,30 +107,6 @@ type
     cxStyleRed: TcxStyle;
     ImageList1: TImageList;
     ImageListThumbnail: TImageList;
-    PopupResult: TPopupMenu;
-    N5: TMenuItem;
-    N6: TMenuItem;
-    N7: TMenuItem;
-    N8: TMenuItem;
-    N9: TMenuItem;
-    N10: TMenuItem;
-    N11: TMenuItem;
-    PopupThumb: TPopupMenu;
-    N1: TMenuItem;
-    N2: TMenuItem;
-    N4: TMenuItem;
-    q_check_picture: TUniQuery;
-    q_check_pictureID: TIntegerField;
-    q_delete_result_practice: TUniSQL;
-    q_result_value: TUniQuery;
-    q_result_valueID: TStringField;
-    q_result_valueSTATIC_RESULT_ID: TStringField;
-    q_result_valueCHECK_POINT_ID: TStringField;
-    q_result_valueCHECK_VALUE: TIntegerField;
-    q_result_valueCUSTOMER_ID: TStringField;
-    q_result_valueCOMPANY_ID: TStringField;
-    q_result_valueCHECK_BODY_ID: TStringField;
-    q_result_valuePRACTICE_ID: TStringField;
     SaveImageEnDialog1: TSaveImageEnDialog;
     btnLayerList: TcxButton;
     btnWindowList: TcxButton;
@@ -179,6 +142,7 @@ type
     btnSelCopy: TBitBtn;
     BitBtn2: TBitBtn;
     cxButton1: TcxButton;
+    btnLatlist: TBitBtn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure frmImageMultiView1ImageEnMView1DblClick(Sender: TObject);
     procedure btnFindMemberClick(Sender: TObject);
@@ -260,6 +224,7 @@ type
     procedure btnSelCopyClick(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
     procedure cxButton1Click(Sender: TObject);
+    procedure btnLatlistClick(Sender: TObject);
   private
     fShapeProps: TShapeProps;
     fLineProps : TLineProps;
@@ -269,7 +234,6 @@ type
     procedure RetrieveMemberInfo;
     procedure RetrieveThumbnailList;
     procedure ResizeCompareWindows;
-    procedure RetrieveCheckResult;
     procedure RetrieveCompareWindows;
     procedure RetrieveCompareWindowThumbnail;
     procedure RetrieveCompareImage(image_id: string; ImageEnVect: TImageEnVect);
@@ -305,7 +269,7 @@ uses GlobalVar, uCommonLogic, UfmAnalyseRequestSelect, UdmDBCommon,
   UfmCustomerHistory, UfmPostureEditor2, uCapture,
   UfmDateSelector, UfmCheckCommennts, uPlayer, UfmPracticeMethodSingle,
   ufmStaticResultView, UfmCheckImageViewer, UfmHowToSingle, UfmCompareLayerList,
-  UfmCompareComment, UfmCompareWindowList, UfmImportImages, UfmStaticCheck, UfmSearchResults, UfmMuscleView;
+  UfmCompareComment, UfmCompareWindowList, UfmImportImages, UfmStaticCheck, UfmSearchResults, UfmMuscleView, UfmCustomerRecent;
 
 {$R *.dfm}
 
@@ -480,10 +444,11 @@ begin
         dmDBCommon.IMAGES_INS.ExecProc;
         mStream.Free;
       end;
-      dmDBCommon.RetrievePictureByDate;
-      dmDBCommon.IMAGES_SEL.Last;
+      RetrieveMemberInfo;
+      //dmDBCommon.IMAGES_SEL.Last;
       //RetrieveThumbnailList;
-      BMDThread1.Start;
+      //BMDThread1.Start;
+      gridCheck.DataController.GotoLast;
       Screen.Cursor := crArrow;
       PanelMessage.Visible := False;
     end;
@@ -683,7 +648,6 @@ begin
     fmMemberFavorite.ShowModal;
     if fmMemberFavorite.ModalResult = mrOk then begin
       RetrieveMemberInfo;
-      RetrieveCheckResult;
       ResetButtonEnable;
       if gridCheck.DataController.RecordCount > 0 then LIST_LOADED := True;
     end;
@@ -706,7 +670,6 @@ begin
       fmMemberSelect.ShowModal;
       if fmMemberSelect.ModalResult = mrOk then begin
         RetrieveMemberInfo;
-        RetrieveCheckResult;
         ResetButtonEnable;
         if gridCheck.DataController.RecordCount > 0 then LIST_LOADED := True;
       end;
@@ -728,7 +691,6 @@ begin
       CustomerImages.CustTel := dmDBCommon.CUSTOMER_SEARCHCTEL.Value;
       CustomerImages.CustSex := StrToInt(dmDBCommon.CUSTOMER_SEARCHSEX.Value);
       RetrieveMemberInfo;
-      RetrieveCheckResult;
       ResetButtonEnable;
       if gridCheck.DataController.RecordCount > 0 then
         LIST_LOADED := True;
@@ -749,7 +711,6 @@ begin
           CustomerImages.CustTel := dmDBCommon.CUSTOMER_SEARCHCTEL.Value;
           CustomerImages.CustSex := StrToInt(dmDBCommon.CUSTOMER_SEARCHSEX.Value);
           RetrieveMemberInfo;
-          RetrieveCheckResult;
           ResetButtonEnable;
           if gridCheck.DataController.RecordCount > 0 then LIST_LOADED := True;
         end;
@@ -785,14 +746,13 @@ begin
   dmDBCommon.IMAGES_SEL_BYDATE.ParamByName('C_ID').Value := CustomerImages.CustID;
   dmDBCommon.IMAGES_SEL_BYDATE.Open;
   dmDBCommon.ds_IMAGES_SEL_BYDATE.DataSet.Refresh;
+  dmDBCommon.IMAGES_SEL_BYDATE.Locate('P_DATE', CustomerImages.PDate, []);
   //retrieve selected list...
   dmDBCommon.RetrievePictureByDate;
-  //retrieve thumbnails
-  //RetrieveThumbnailList;
-  BMDThread1.Start;
+  RetrieveThumbnailList;
   //insert last customer...
   dmDBCommon.InsertLatestCustomer;
-  RetrieveCheckResult;
+//  RetrieveCheckResult;
 end;
 
 procedure TfmCompareList2.RetrieveThumbnailList;
@@ -853,12 +813,37 @@ begin
       CustomerImages.CustTel := dmDBCommon.LATEST_CUSTOMER_SELCUST_TEL.Value;
       CustomerImages.CustSex := dmDBCommon.LATEST_CUSTOMER_SELCUST_SEX.Value;
       RetrieveMemberInfo;
-      RetrieveCheckResult;
       ResetButtonEnable;
       if gridCheck.DataController.RecordCount > 0 then LIST_LOADED := True;
     end;
   finally
     fmMemberLastSelect.Free;
+  end;
+end;
+
+procedure TfmCompareList2.btnLatlistClick(Sender: TObject);
+var
+  pt : TPoint;
+begin
+  fmCustomerRecent := TfmCustomerRecent.Create(Self);
+  try
+    LIST_LOADED := False;
+    pt.x := 10;
+    pt.y := (Sender as TBitBtn).Top + (Sender as TBitBtn).Height + 10;
+    pt := Self.ClientToScreen(pt);
+    fmCustomerRecent.Top := pt.Y;
+    fmCustomerRecent.Left := pt.X;
+    fmCustomerRecent.ShowModal;
+    if fmCustomerRecent.ModalResult = mrOk then begin
+      CustomerImages.CustID := dmDBCommon.CUSTOMER_SEL_RECENT_REGUID.Value;
+      CustomerImages.CustName := dmDBCommon.CUSTOMER_SEL_RECENT_REGCNAME.Value;
+      CustomerImages.CustTel := dmDBCommon.CUSTOMER_SEL_RECENT_REGCTEL.Value;
+      CustomerImages.CustSex := StrToIntDef(dmDBCommon.CUSTOMER_SEL_RECENT_REGSEX.Value, 0);
+      RetrieveMemberInfo;
+      ResetButtonEnable;
+    end;
+  finally
+    fmCustomerRecent.Free;
   end;
 end;
 
@@ -1152,6 +1137,32 @@ end;
 
 procedure TfmCompareList2.FormCreate(Sender: TObject);
 begin
+  //compare window init...
+  ImageEnMView1.EnableAdjustOrientation := True;
+  ImageEnMView1.WicFastLoading := True;
+  ImageEnMView1.Zoom := edtTrackBar.EditValue;
+  ImageEnVect[0] := ImageEnVectComp1;
+  ImageEnVect[1] := ImageEnVectComp2;
+  ImageEnVect[2] := ImageEnVectComp3;
+  ImageEnVect[3] := ImageEnVectComp4;
+  ImageEnVectComp1.Blank;
+  ImageEnVectComp1.AutoFit := True;
+  ImageEnVectComp1.AutoStretch := True;
+  ImageEnVectComp2.Blank;
+  ImageEnVectComp2.AutoFit := True;
+  ImageEnVectComp2.AutoStretch := True;
+  ImageEnVectComp3.Blank;
+  ImageEnVectComp3.AutoFit := True;
+  ImageEnVectComp3.AutoStretch := True;
+  ImageEnVectComp4.Blank;
+  ImageEnVectComp4.AutoFit := True;
+  ImageEnVectComp4.AutoStretch := True;
+
+  CompareFile1 := '';
+  CompareFile2 := '';
+  CompareFile3 := '';
+  CompareFile4 := '';
+
   fShapeProps   := nil;
   fLineProps    := nil;
   fTextProps    := nil;
@@ -1202,48 +1213,11 @@ end;
 procedure TfmCompareList2.FormShow(Sender: TObject);
 begin
   PanelRight.Width := 1;
-  if CustomerImages.CustID <> '' then begin
+  if Length(CustomerImages.CustID) > 10 then begin
     RetrieveMemberInfo;
     ResetButtonEnable;
     LIST_LOADED := True;
   end;
-  //compare window init...
-  ImageEnMView1.EnableAdjustOrientation := True;
-  ImageEnMView1.WicFastLoading := True;
-  ImageEnMView1.Zoom := edtTrackBar.EditValue;
-  ImageEnVect[0] := ImageEnVectComp1;
-  ImageEnVect[1] := ImageEnVectComp2;
-  ImageEnVect[2] := ImageEnVectComp3;
-  ImageEnVect[3] := ImageEnVectComp4;
-  ImageEnVectComp1.Blank;
-  ImageEnVectComp1.AutoFit := True;
-  ImageEnVectComp1.AutoStretch := True;
-  ImageEnVectComp2.Blank;
-  ImageEnVectComp2.AutoFit := True;
-  ImageEnVectComp2.AutoStretch := True;
-  ImageEnVectComp3.Blank;
-  ImageEnVectComp3.AutoFit := True;
-  ImageEnVectComp3.AutoStretch := True;
-  ImageEnVectComp4.Blank;
-  ImageEnVectComp4.AutoFit := True;
-  ImageEnVectComp4.AutoStretch := True;
-
-  CompareFile1 := '';
-  CompareFile2 := '';
-  CompareFile3 := '';
-  CompareFile4 := '';
-
-end;
-
-procedure TfmCompareList2.RetrieveCheckResult;
-begin
-  dmDBCommon.q_NSTATIC_CHECK_DATA.ParamByName('customer_uid').Value := CustomerImages.CustID;
-  dmDBCommon.q_NSTATIC_CHECK_DATA.Active := True;
-  dmDBCommon.d_NSTATIC_CHECK_DATA.DataSet.Refresh;
-
-  dmDBCommon.q_NSTATIC_CHECK_RESULT.ParamByName('DATA_ID').Value := dmDBCommon.d_NSTATIC_CHECK_DATA.DataSet.FieldByName('id').Value;
-  dmDBCommon.q_NSTATIC_CHECK_RESULT.Active := True;
-  dmDBCommon.d_NSTATIC_CHECK_RESULT.DataSet.Refresh;
 end;
 
 procedure TfmCompareList2.frmImageMultiView1ImageEnMView1DblClick(
@@ -1265,12 +1239,43 @@ procedure TfmCompareList2.gridCheckFocusedRecordChanged(
 begin
   if LIST_LOADED then begin
     dmDBCommon.RetrievePictureByDate;
-    //RetrieveThumbnailList;
-    BMDThread1.Start;
+    RetrieveThumbnailList;
   end;
 end;
 
-
+{
+procedure TfmCompareList2.RetrieveThumbnailLIst;
+var
+  i, cnt, idx, thumb_id : integer;
+  img_name, drw_name : string;
+  mStream, dStream : TMemoryStream;
+begin
+  ImageEnMView1.LockPaint;
+  ImageEnMView1.Clear;
+  ImageEnMView1.TextTruncSide := iemtsLeft;
+  with dmDBCommon do begin
+    cnt := IMAGES_SEL.RecordCount;
+    IMAGES_SEL.First;
+    for i := 0 to cnt - 1 do begin
+      mStream := TMemoryStream.Create;
+      IMAGES_SELIMAGE_DATA.SaveToStream(mStream);
+      if mStream.Size > 10 then begin
+        mStream.Position := 0;
+        idx := ImageEnMView1.AppendImage;
+        ImageEnMView1.SetImageFromStream(idx, mStream);
+        ImageEnMView1.ImageID[idx] := IMAGES_SELID.Value;
+        ImageEnMView1.ImageTopText[idx] := IntToStr(IMAGES_SELID.Value);
+        //ImageEnMView1.Update();
+      end;
+      mStream.Free;
+      IMAGES_SEL.Next;
+    end;
+  end;
+  //ImageEnMView1.Sort(iesb);
+  ImageEnMView1.UnlockPaint;
+  ImageEnMView1.SelectedImage := 0;
+end;
+}
 procedure TfmCompareList2.ImageEnMView1AfterEvent(Sender: TObject;
   Event: TIEAfterEvent);
 var

@@ -9,13 +9,13 @@ object fmSMSSetting: TfmSMSSetting
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object GroupBox1: TGroupBox
     AlignWithMargins = True
     Left = 154
@@ -28,29 +28,29 @@ object fmSMSSetting: TfmSMSSetting
     object Label2: TLabel
       Left = 42
       Top = 247
-      Width = 59
-      Height = 13
+      Width = 56
+      Height = 15
       Caption = #47196#44536#51064' ID:'
     end
     object Label3: TLabel
       Left = 45
       Top = 271
-      Width = 56
-      Height = 13
+      Width = 52
+      Height = 15
       Caption = #48708#48128#48264#54840':'
     end
     object Label1: TLabel
       Left = 19
       Top = 343
-      Width = 82
-      Height = 13
+      Width = 76
+      Height = 15
       Caption = #45824#54364#48156#49888#48264#54840':'
     end
     object Label5: TLabel
       Left = 32
       Top = 31
-      Width = 69
-      Height = 13
+      Width = 64
+      Height = 15
       Caption = #49324#50629#51088#48264#54840':'
     end
     object Label6: TLabel
@@ -69,71 +69,71 @@ object fmSMSSetting: TfmSMSSetting
     object Label7: TLabel
       Left = 58
       Top = 55
-      Width = 43
-      Height = 13
+      Width = 40
+      Height = 15
       Caption = #54924#49324#47749':'
     end
     object Label8: TLabel
       Left = 45
       Top = 79
-      Width = 56
-      Height = 13
+      Width = 52
+      Height = 15
       Caption = #45824#54364#51088#47749':'
     end
     object Label9: TLabel
       Left = 71
       Top = 103
-      Width = 30
-      Height = 13
+      Width = 28
+      Height = 15
       Caption = #50629#53468':'
     end
     object Label10: TLabel
       Left = 71
       Top = 127
-      Width = 30
-      Height = 13
+      Width = 28
+      Height = 15
       Caption = #50629#51333':'
     end
     object Label11: TLabel
       Left = 45
       Top = 151
-      Width = 56
-      Height = 13
+      Width = 52
+      Height = 15
       Caption = #50864#54200#48264#54840':'
     end
     object Label12: TLabel
       Left = 71
       Top = 175
-      Width = 30
-      Height = 13
+      Width = 28
+      Height = 15
       Caption = #51452#49548':'
     end
     object Label13: TLabel
       Left = 45
       Top = 199
-      Width = 56
-      Height = 13
+      Width = 52
+      Height = 15
       Caption = #49345#49464#51452#49548':'
     end
     object Label14: TLabel
       Left = 45
       Top = 223
-      Width = 56
-      Height = 13
+      Width = 52
+      Height = 15
       Caption = #45812#45817#51088#47749':'
     end
     object Label15: TLabel
       Left = 45
       Top = 295
-      Width = 56
-      Height = 13
+      Width = 52
+      Height = 15
       Caption = #51204#54868#48264#54840':'
     end
     object Label16: TLabel
       Left = 58
       Top = 319
-      Width = 43
-      Height = 13
+      Width = 40
+      Height = 15
       Caption = #51060#47700#51068':'
     end
     object Label4: TLabel
@@ -192,7 +192,7 @@ object fmSMSSetting: TfmSMSSetting
       Left = 112
       Top = 244
       Width = 121
-      Height = 21
+      Height = 23
       ImeMode = imSAlpha
       TabOrder = 9
     end
@@ -200,7 +200,7 @@ object fmSMSSetting: TfmSMSSetting
       Left = 112
       Top = 268
       Width = 121
-      Height = 21
+      Height = 23
       ImeMode = imSAlpha
       PasswordChar = '*'
       TabOrder = 10
@@ -236,21 +236,21 @@ object fmSMSSetting: TfmSMSSetting
       Left = 112
       Top = 340
       Width = 121
-      Height = 21
+      Height = 23
       TabOrder = 13
     end
     object CorpNum: TEdit
       Left = 112
       Top = 28
       Width = 121
-      Height = 21
+      Height = 23
       TabOrder = 0
     end
     object CorpName: TEdit
       Left = 112
       Top = 52
       Width = 193
-      Height = 21
+      Height = 23
       ImeMode = imSHanguel
       TabOrder = 1
     end
@@ -258,7 +258,7 @@ object fmSMSSetting: TfmSMSSetting
       Left = 112
       Top = 76
       Width = 121
-      Height = 21
+      Height = 23
       ImeMode = imSHanguel
       TabOrder = 2
     end
@@ -266,7 +266,7 @@ object fmSMSSetting: TfmSMSSetting
       Left = 112
       Top = 100
       Width = 193
-      Height = 21
+      Height = 23
       ImeMode = imSHanguel
       TabOrder = 3
     end
@@ -274,7 +274,7 @@ object fmSMSSetting: TfmSMSSetting
       Left = 112
       Top = 124
       Width = 193
-      Height = 21
+      Height = 23
       ImeMode = imSHanguel
       TabOrder = 4
     end
@@ -282,14 +282,14 @@ object fmSMSSetting: TfmSMSSetting
       Left = 112
       Top = 148
       Width = 57
-      Height = 21
+      Height = 23
       TabOrder = 5
     end
     object Addr1: TEdit
       Left = 112
       Top = 172
       Width = 256
-      Height = 21
+      Height = 23
       ImeMode = imSHanguel
       TabOrder = 6
     end
@@ -297,7 +297,7 @@ object fmSMSSetting: TfmSMSSetting
       Left = 112
       Top = 196
       Width = 256
-      Height = 21
+      Height = 23
       ImeMode = imSHanguel
       TabOrder = 7
     end
@@ -305,7 +305,7 @@ object fmSMSSetting: TfmSMSSetting
       Left = 112
       Top = 220
       Width = 121
-      Height = 21
+      Height = 23
       ImeMode = imSHanguel
       TabOrder = 8
     end
@@ -313,14 +313,14 @@ object fmSMSSetting: TfmSMSSetting
       Left = 112
       Top = 292
       Width = 121
-      Height = 21
+      Height = 23
       TabOrder = 11
     end
     object Email: TEdit
       Left = 112
       Top = 316
       Width = 193
-      Height = 21
+      Height = 23
       ImeMode = imSAlpha
       TabOrder = 12
     end
@@ -337,26 +337,26 @@ object fmSMSSetting: TfmSMSSetting
     object Label20: TLabel
       Left = 19
       Top = 28
-      Width = 75
-      Height = 13
+      Width = 64
+      Height = 15
       Caption = #51092#50668#54252#51064#53944':'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlue
       Font.Height = -13
-      Font.Name = #44404#47548
+      Font.Name = #45208#45588#44256#46357
       Font.Style = [fsBold]
       ParentFont = False
     end
     object lblRestPoint: TLabel
       Left = 44
       Top = 47
-      Width = 42
-      Height = 13
+      Width = 36
+      Height = 15
       Caption = #54252#51064#53944
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clRed
       Font.Height = -13
-      Font.Name = #44404#47548
+      Font.Name = #45208#45588#44256#46357
       Font.Style = [fsBold]
       ParentFont = False
     end

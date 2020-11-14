@@ -9,12 +9,12 @@ object fmAttendanceIn: TfmAttendanceIn
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel3: TPanel
     AlignWithMargins = True
     Left = 3
@@ -23,47 +23,43 @@ object fmAttendanceIn: TfmAttendanceIn
     Height = 223
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 5
-    ExplicitTop = 42
-    ExplicitWidth = 396
-    ExplicitHeight = 311
     object Label8: TLabel
       Left = 131
-      Top = 116
-      Width = 26
-      Height = 13
+      Top = 112
+      Width = 24
+      Height = 15
       Caption = #49884#44036
     end
     object Label1: TLabel
       Left = 11
-      Top = 116
-      Width = 52
-      Height = 13
+      Top = 112
+      Width = 48
+      Height = 15
       Caption = #52636#49437#51068#51088
     end
     object lblName: TLabel
       Left = 13
       Top = 59
-      Width = 42
-      Height = 13
+      Width = 36
+      Height = 15
       Caption = #54924#50896#47749
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlue
       Font.Height = -13
-      Font.Name = #44404#47548
+      Font.Name = #45208#45588#44256#46357
       Font.Style = [fsBold]
       ParentFont = False
     end
     object lblTel: TLabel
       Left = 13
       Top = 81
-      Width = 56
-      Height = 13
+      Width = 48
+      Height = 15
       Caption = #51204#54868#48264#54840
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlue
       Font.Height = -13
-      Font.Name = #44404#47548
+      Font.Name = #45208#45588#44256#46357
       Font.Style = [fsBold]
       ParentFont = False
     end
@@ -107,7 +103,7 @@ object fmAttendanceIn: TfmAttendanceIn
       Left = 131
       Top = 129
       Width = 54
-      Height = 21
+      Height = 23
       ImeName = 'Microsoft IME 2010'
       MaxLength = 10
       TabOrder = 2
@@ -140,7 +136,7 @@ object fmAttendanceIn: TfmAttendanceIn
       Left = 24
       Top = 192
       Width = 149
-      Height = 21
+      Height = 23
       ImeName = 'Microsoft IME 2010'
       TabOrder = 5
       Visible = False

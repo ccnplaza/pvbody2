@@ -9,12 +9,12 @@ object fmLessonOut: TfmLessonOut
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel1: TPanel
     AlignWithMargins = True
     Left = 3
@@ -43,7 +43,7 @@ object fmLessonOut: TfmLessonOut
       TabOrder = 1
       object OUT_DATE: TcxDateEdit
         Left = 6
-        Top = 4
+        Top = 3
         TabOrder = 0
         Width = 121
       end
@@ -67,7 +67,7 @@ object fmLessonOut: TfmLessonOut
       TabOrder = 3
       object OUT_PRICE: TcxCurrencyEdit
         Left = 6
-        Top = 4
+        Top = 3
         TabOrder = 0
         Width = 98
       end
@@ -91,7 +91,7 @@ object fmLessonOut: TfmLessonOut
       TabOrder = 5
       object OUT_KIND: TcxImageComboBox
         Left = 6
-        Top = 4
+        Top = 3
         EditValue = 1
         Properties.Items = <
           item
@@ -132,7 +132,7 @@ object fmLessonOut: TfmLessonOut
         Left = 6
         Top = 3
         Width = 211
-        Height = 21
+        Height = 23
         ImeName = 'Microsoft IME 2010'
         TabOrder = 0
       end

@@ -9,13 +9,13 @@ object fmMultiUploader: TfmMultiUploader
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object GroupBox1: TGroupBox
     AlignWithMargins = True
     Left = 3
@@ -37,7 +37,7 @@ object fmMultiUploader: TfmMultiUploader
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -13
-      Font.Name = #44404#47548
+      Font.Name = #45208#45588#44256#46357
       Font.Style = [fsBold]
       ParentColor = False
       ParentFont = False
@@ -56,7 +56,7 @@ object fmMultiUploader: TfmMultiUploader
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -13
-      Font.Name = #44404#47548
+      Font.Name = #45208#45588#44256#46357
       Font.Style = [fsBold]
       ParentColor = False
       ParentFont = False
@@ -75,7 +75,7 @@ object fmMultiUploader: TfmMultiUploader
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -13
-      Font.Name = #44404#47548
+      Font.Name = #45208#45588#44256#46357
       Font.Style = [fsBold]
       ParentColor = False
       ParentFont = False
@@ -94,7 +94,7 @@ object fmMultiUploader: TfmMultiUploader
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -13
-      Font.Name = #44404#47548
+      Font.Name = #45208#45588#44256#46357
       Font.Style = [fsBold]
       ParentColor = False
       ParentFont = False
@@ -113,7 +113,7 @@ object fmMultiUploader: TfmMultiUploader
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -13
-      Font.Name = #44404#47548
+      Font.Name = #45208#45588#44256#46357
       Font.Style = [fsBold]
       ParentColor = False
       ParentFont = False
@@ -132,7 +132,7 @@ object fmMultiUploader: TfmMultiUploader
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -13
-      Font.Name = #44404#47548
+      Font.Name = #45208#45588#44256#46357
       Font.Style = [fsBold]
       ParentColor = False
       ParentFont = False
@@ -151,7 +151,7 @@ object fmMultiUploader: TfmMultiUploader
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -13
-      Font.Name = #44404#47548
+      Font.Name = #45208#45588#44256#46357
       Font.Style = [fsBold]
       ParentColor = False
       ParentFont = False
@@ -161,13 +161,13 @@ object fmMultiUploader: TfmMultiUploader
     object Label8: TLabel
       Left = 312
       Top = 360
-      Width = 400
-      Height = 13
+      Width = 372
+      Height = 15
       Caption = #54028#51068#47749#51060' '#51080#45716' '#51088#49464#47564' '#51200#51109#54633#45768#45796'. '#54596#50836#54620' '#51088#49464#47564' '#49440#53469#54616#49492#46020' '#46121#45768#45796'.'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clRed
       Font.Height = -13
-      Font.Name = #44404#47548
+      Font.Name = #45208#45588#44256#46357
       Font.Style = []
       ParentFont = False
     end
@@ -175,49 +175,49 @@ object fmMultiUploader: TfmMultiUploader
       Left = 8
       Top = 273
       Width = 142
-      Height = 21
+      Height = 23
       TabOrder = 0
     end
     object Edit2: TEdit
       Left = 152
       Top = 273
       Width = 142
-      Height = 21
+      Height = 23
       TabOrder = 1
     end
     object Edit3: TEdit
       Left = 296
       Top = 273
       Width = 142
-      Height = 21
+      Height = 23
       TabOrder = 2
     end
     object Edit4: TEdit
       Left = 440
       Top = 273
       Width = 142
-      Height = 21
+      Height = 23
       TabOrder = 3
     end
     object Edit5: TEdit
       Left = 584
       Top = 273
       Width = 142
-      Height = 21
+      Height = 23
       TabOrder = 4
     end
     object Edit6: TEdit
       Left = 728
       Top = 273
       Width = 142
-      Height = 21
+      Height = 23
       TabOrder = 5
     end
     object Edit7: TEdit
       Left = 872
       Top = 273
       Width = 142
-      Height = 21
+      Height = 23
       TabOrder = 6
     end
     object btnPic1: TBitBtn

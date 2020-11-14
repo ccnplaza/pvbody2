@@ -6,7 +6,7 @@ object frmImageMultiView: TfrmImageMultiView
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   ParentFont = False
   TabOrder = 0
@@ -31,16 +31,21 @@ object frmImageMultiView: TfrmImageMultiView
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 73
-        Height = 13
+        Width = 68
+        Height = 19
         Align = alLeft
         Caption = #50040#45348#51068' '#53356#44592':'
         Layout = tlCenter
+        ExplicitHeight = 15
       end
       object edtTrackBar: TcxSpinEdit
         AlignWithMargins = True
-        Left = 142
-        Top = 3
+        Left = 135
+        Top = 1
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 1
+        Margins.Bottom = 1
         Align = alLeft
         Properties.ImmediatePost = True
         Properties.MaxValue = 1000.000000000000000000
@@ -49,11 +54,14 @@ object frmImageMultiView: TfrmImageMultiView
         Properties.OnChange = edtTrackBarPropertiesChange
         TabOrder = 0
         Value = 250
+        ExplicitLeft = 142
+        ExplicitTop = 3
+        ExplicitHeight = 19
         Width = 51
       end
       object btnDelete: TcxButton
         AlignWithMargins = True
-        Left = 199
+        Left = 190
         Top = 1
         Width = 106
         Height = 23
@@ -102,10 +110,11 @@ object frmImageMultiView: TfrmImageMultiView
         ShowHint = True
         TabOrder = 1
         OnClick = btnDeleteClick
+        ExplicitLeft = 199
       end
       object btnEditImage: TcxButton
         AlignWithMargins = True
-        Left = 311
+        Left = 302
         Top = 1
         Width = 101
         Height = 23
@@ -150,10 +159,11 @@ object frmImageMultiView: TfrmImageMultiView
           0000000000000000000000000000000000000000000000000000}
         TabOrder = 2
         OnClick = btnEditImageClick
+        ExplicitLeft = 311
       end
       object btnRotate: TcxButton
         AlignWithMargins = True
-        Left = 418
+        Left = 409
         Top = 1
         Width = 101
         Height = 23
@@ -172,10 +182,11 @@ object frmImageMultiView: TfrmImageMultiView
           8888888874444888888888888844888888888888884888888888}
         TabOrder = 3
         OnClick = btnRotateClick
+        ExplicitLeft = 418
       end
       object icbThumbSize: TcxImageComboBox
         AlignWithMargins = True
-        Left = 80
+        Left = 75
         Top = 1
         Margins.Left = 1
         Margins.Top = 1
@@ -201,6 +212,7 @@ object frmImageMultiView: TfrmImageMultiView
           end>
         Properties.OnChange = icbThumbSizePropertiesChange
         TabOrder = 4
+        ExplicitLeft = 80
         Width = 58
       end
     end

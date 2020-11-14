@@ -9,7 +9,7 @@ object fmPracticeEdit: TfmPracticeEdit
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
-  Font.Name = 'Tahoma'
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poOwnerFormCenter
@@ -26,40 +26,36 @@ object fmPracticeEdit: TfmPracticeEdit
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
-    Font.Name = #44404#47548
+    Font.Name = #45208#45588#44256#46357
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitLeft = -2
-    ExplicitTop = -2
-    ExplicitWidth = 396
-    ExplicitHeight = 237
     object Label1: TLabel
       Left = 64
       Top = 40
-      Width = 43
-      Height = 17
+      Width = 40
+      Height = 15
       Caption = #50868#46041#47749':'
     end
     object Label2: TLabel
       Left = 25
       Top = 67
-      Width = 82
-      Height = 13
+      Width = 76
+      Height = 15
       Caption = #51201#50857#49888#52404#48512#50948':'
     end
     object Label3: TLabel
       Left = 51
       Top = 114
-      Width = 56
-      Height = 13
+      Width = 52
+      Height = 15
       Caption = #44288#47144#53685#51613':'
     end
     object edtPName: TEdit
       Left = 113
       Top = 37
       Width = 224
-      Height = 21
+      Height = 23
       TabOrder = 0
     end
     object edtBody: TMemo

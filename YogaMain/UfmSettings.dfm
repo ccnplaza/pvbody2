@@ -9,13 +9,13 @@ object fmSettings: TfmSettings
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object cxPageControl1: TcxPageControl
     AlignWithMargins = True
     Left = 3
@@ -30,10 +30,12 @@ object fmSettings: TfmSettings
     ClientRectBottom = 385
     ClientRectLeft = 2
     ClientRectRight = 526
-    ClientRectTop = 25
+    ClientRectTop = 27
     object cxTabSheet1: TcxTabSheet
       Caption = #52636#47141#49444#51221
       ImageIndex = 0
+      ExplicitTop = 25
+      ExplicitHeight = 360
       object GroupBox1: TGroupBox
         Left = 8
         Top = 8
@@ -44,43 +46,43 @@ object fmSettings: TfmSettings
         object Label1: TLabel
           Left = 24
           Top = 32
-          Width = 30
-          Height = 13
+          Width = 28
+          Height = 15
           Caption = #49345#54840':'
         end
         object Label2: TLabel
           Left = 24
           Top = 64
-          Width = 37
-          Height = 13
+          Width = 36
+          Height = 15
           Caption = #51204#54868'1:'
         end
         object Label3: TLabel
           Left = 24
           Top = 96
-          Width = 37
-          Height = 13
+          Width = 36
+          Height = 15
           Caption = #51452#49548'1:'
         end
         object Label4: TLabel
           Left = 24
           Top = 127
-          Width = 37
-          Height = 13
+          Width = 36
+          Height = 15
           Caption = #51452#49548'2:'
         end
         object Label5: TLabel
           Left = 240
           Top = 64
-          Width = 37
-          Height = 13
+          Width = 36
+          Height = 15
           Caption = #51204#54868'2:'
         end
         object edtCompname: TEdit
           Left = 72
           Top = 29
           Width = 217
-          Height = 21
+          Height = 23
           ImeName = 'Microsoft IME 2010'
           TabOrder = 0
         end
@@ -88,7 +90,7 @@ object fmSettings: TfmSettings
           Left = 72
           Top = 61
           Width = 137
-          Height = 21
+          Height = 23
           ImeName = 'Microsoft IME 2010'
           TabOrder = 1
         end
@@ -96,7 +98,7 @@ object fmSettings: TfmSettings
           Left = 283
           Top = 61
           Width = 137
-          Height = 21
+          Height = 23
           ImeName = 'Microsoft IME 2010'
           TabOrder = 2
         end
@@ -104,7 +106,7 @@ object fmSettings: TfmSettings
           Left = 72
           Top = 93
           Width = 409
-          Height = 21
+          Height = 23
           ImeName = 'Microsoft IME 2010'
           TabOrder = 3
         end
@@ -112,7 +114,7 @@ object fmSettings: TfmSettings
           Left = 72
           Top = 124
           Width = 409
-          Height = 21
+          Height = 23
           ImeName = 'Microsoft IME 2010'
           TabOrder = 4
         end
@@ -127,15 +129,15 @@ object fmSettings: TfmSettings
         object Label6: TLabel
           Left = 24
           Top = 24
-          Width = 121
-          Height = 13
+          Width = 112
+          Height = 15
           Caption = #51088#49464#51312#54924' '#51060#48120#51648#53356#44592
         end
         object Label7: TLabel
           Left = 278
           Top = 24
-          Width = 121
-          Height = 13
+          Width = 112
+          Height = 15
           Caption = #48708#44368#48516#49437' '#51060#48120#51648#53356#44592
         end
         object TrackBar1: TTrackBar

@@ -27,7 +27,11 @@ uses
   dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxSchedulerPainter;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxSchedulerPainter,
+  cxSchedulerRecurrence, cxSchedulerTreeListBrowser,
+  cxSchedulerRibbonStyleEventEditor, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
+  cxClasses;
 
 type
   TDemoBasicMainForm = class(TForm)
@@ -397,7 +401,7 @@ var
 implementation
 
 uses
-  cxClasses,Variants, DateUtils,cxSchedulerDialogs;
+  Variants, DateUtils,cxSchedulerDialogs;
 
 {$R *.dfm}
 

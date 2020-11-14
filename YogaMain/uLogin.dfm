@@ -9,14 +9,14 @@ object fmLogin: TfmLogin
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object pnl1: TPanel
     AlignWithMargins = True
     Left = 8
@@ -32,12 +32,11 @@ object fmLogin: TfmLogin
     BevelOuter = bvLowered
     ParentColor = True
     TabOrder = 0
-    ExplicitHeight = 332
     object lbl7: TLabel
       Left = 27
       Top = 49
       Width = 4
-      Height = 13
+      Height = 15
       IsControl = True
     end
     object cxPageControl1: TcxPageControl
@@ -54,14 +53,14 @@ object fmLogin: TfmLogin
       Properties.CustomButtons.Buttons = <>
       LookAndFeel.NativeStyle = False
       LookAndFeel.SkinName = ''
-      ExplicitHeight = 328
       ClientRectBottom = 295
       ClientRectRight = 347
-      ClientRectTop = 24
+      ClientRectTop = 26
       object cxTabSheet1: TcxTabSheet
         Caption = 'Login'
         ImageIndex = 0
-        ExplicitHeight = 304
+        ExplicitTop = 24
+        ExplicitHeight = 271
         object lbl3: TLabel
           Left = 0
           Top = 0
@@ -74,7 +73,7 @@ object fmLogin: TfmLogin
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clPurple
           Font.Height = -21
-          Font.Name = 'Arial'
+          Font.Name = #45208#45588#44256#46357
           Font.Style = [fsBold]
           ParentFont = False
           Layout = tlCenter
@@ -85,22 +84,22 @@ object fmLogin: TfmLogin
           Left = 0
           Top = 33
           Width = 347
-          Height = 13
+          Height = 15
           Align = alTop
           Alignment = taCenter
           Caption = 'lblVersion'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlue
           Font.Height = -13
-          Font.Name = #44404#47548
+          Font.Name = #45208#45588#44256#46357
           Font.Style = []
           ParentFont = False
           Layout = tlCenter
-          ExplicitWidth = 62
+          ExplicitWidth = 60
         end
         object img1: TImage
           Left = 0
-          Top = 46
+          Top = 48
           Width = 347
           Height = 81
           Align = alTop
@@ -555,7 +554,7 @@ object fmLogin: TfmLogin
         object grpLogin: TGroupBox
           AlignWithMargins = True
           Left = 10
-          Top = 137
+          Top = 139
           Width = 327
           Height = 121
           Margins.Left = 10
@@ -564,30 +563,31 @@ object fmLogin: TfmLogin
           Align = alTop
           Caption = #47196#44536#51064
           TabOrder = 0
+          ExplicitTop = 137
           object Label1: TLabel
             Left = 27
             Top = 27
-            Width = 59
-            Height = 13
+            Width = 56
+            Height = 15
             Caption = #47196#44536#51064' ID:'
           end
           object Label2: TLabel
             Left = 30
             Top = 51
-            Width = 56
-            Height = 13
+            Width = 52
+            Height = 15
             Caption = #48708#48128#48264#54840':'
           end
           object Label4: TLabel
             Left = 90
             Top = 100
-            Width = 184
-            Height = 11
+            Width = 165
+            Height = 13
             Caption = #48120#46321#47197' '#49324#50857#51088#45716' '#46321#47197#51012' '#47676#51200' '#54616#49464#50836'.'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clRed
             Font.Height = -11
-            Font.Name = #44404#47548
+            Font.Name = #45208#45588#44256#46357
             Font.Style = []
             ParentFont = False
           end
@@ -595,7 +595,7 @@ object fmLogin: TfmLogin
             Left = 90
             Top = 23
             Width = 128
-            Height = 21
+            Height = 23
             ImeName = 'Microsoft IME 2010'
             TabOrder = 0
           end
@@ -603,7 +603,7 @@ object fmLogin: TfmLogin
             Left = 90
             Top = 48
             Width = 128
-            Height = 21
+            Height = 23
             ImeName = 'Microsoft IME 2010'
             PasswordChar = '*'
             TabOrder = 1
@@ -695,13 +695,12 @@ object fmLogin: TfmLogin
       object cxTabSheet3: TcxTabSheet
         Caption = 'Activation'
         ImageIndex = 2
-        ExplicitHeight = 304
         object grpActivation: TGroupBox
           AlignWithMargins = True
           Left = 10
           Top = 10
           Width = 327
-          Height = 251
+          Height = 249
           Margins.Left = 10
           Margins.Top = 10
           Margins.Right = 10
@@ -709,24 +708,23 @@ object fmLogin: TfmLogin
           Align = alClient
           Caption = #50529#54000#48288#51060#49496
           TabOrder = 0
-          ExplicitHeight = 284
           object Label3: TLabel
             Left = 34
             Top = 94
-            Width = 64
-            Height = 13
+            Width = 60
+            Height = 15
             Caption = #51652#54665#49345#53468' : '
           end
           object lblActivationMsg: TLabel
             Left = 104
             Top = 94
-            Width = 197
-            Height = 39
+            Width = 168
+            Height = 45
             Caption = #49324#50857#51088' '#49849#51064' '#52376#47532#51473#51077#45768#45796'.'#13#10#49849#51064#52376#47532#44032' '#50756#47308#46104#50612#50556' '#49324#50857#51060' '#13#10#44032#45733#54633#45768#45796'.'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clBlue
             Font.Height = -13
-            Font.Name = #44404#47548
+            Font.Name = #45208#45588#44256#46357
             Font.Style = [fsBold]
             ParentFont = False
           end
@@ -744,45 +742,45 @@ object fmLogin: TfmLogin
       object cxTabSheet2: TcxTabSheet
         Caption = 'cxTabSheet2'
         ImageIndex = 2
-        ExplicitHeight = 304
         object Label5: TLabel
           Left = 0
           Top = 0
           Width = 347
-          Height = 26
+          Height = 30
           Align = alTop
           Alignment = taCenter
           Caption = #50629#45936#51060#53944' '#48260#51204#51060' '#51080#49845#45768#45796'.'#13#10#50629#45936#51060#53944' '#48260#53948#51012' '#53364#47533#54616#50668' '#49444#52824#47484' '#51652#54665#54616#49464#50836'. '
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlue
           Font.Height = -13
-          Font.Name = #44404#47548
+          Font.Name = #45208#45588#44256#46357
           Font.Style = [fsBold]
           ParentFont = False
           Layout = tlCenter
-          ExplicitWidth = 296
+          ExplicitWidth = 252
         end
         object Memo1: TMemo
           AlignWithMargins = True
           Left = 10
-          Top = 29
+          Top = 33
           Width = 327
           Height = 185
           Margins.Left = 10
           Margins.Right = 10
           Align = alTop
           TabOrder = 0
+          ExplicitTop = 29
         end
         object Panel1: TPanel
           Left = 0
-          Top = 217
+          Top = 221
           Width = 347
-          Height = 54
+          Height = 48
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 1
-          ExplicitTop = 248
-          ExplicitHeight = 56
+          ExplicitTop = 217
+          ExplicitHeight = 52
           object btnDown: TcxButton
             Left = 120
             Top = 11
@@ -833,31 +831,30 @@ object fmLogin: TfmLogin
       object cxTabSheet4: TcxTabSheet
         Caption = 'cxTabSheet4'
         ImageIndex = 3
-        ExplicitHeight = 304
         object Label6: TLabel
           Left = 35
           Top = 30
-          Width = 291
-          Height = 39
+          Width = 248
+          Height = 45
           Caption = #50629#45936#51060#53944' '#48260#51204#54028#51068#51012' '#45796#50868#47196#46300' '#54616#44256' '#51080#49845#45768#45796'.'#13#10#13#10#45796#50868#47196#46300#44032' '#50756#47308#46104#47732' '#50629#45936#51060#53944#47484' '#49884#51089#54633#45768#45796'.'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlue
           Font.Height = -13
-          Font.Name = #44404#47548
+          Font.Name = #45208#45588#44256#46357
           Font.Style = [fsBold]
           ParentFont = False
         end
         object Label7: TLabel
           Left = 96
           Top = 107
-          Width = 141
-          Height = 13
+          Width = 120
+          Height = 15
           ParentCustomHint = False
           Caption = #51104#49884#47564' '#44592#45796#47140' '#51452#49464#50836'.'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clRed
           Font.Height = -13
-          Font.Name = #44404#47548
+          Font.Name = #45208#45588#44256#46357
           Font.Style = [fsBold]
           ParentFont = False
         end

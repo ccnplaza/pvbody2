@@ -8,7 +8,7 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   FormStyle = fsMDIChild
   OldCreateOrder = False
@@ -16,7 +16,7 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
   OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel7: TPanel
     Left = 280
     Top = 0
@@ -610,7 +610,7 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -15
-      Font.Name = #44404#47548
+      Font.Name = #45208#45588#44256#46357
       Font.Style = [fsBold]
       Color = 16776176
       ParentColor = False

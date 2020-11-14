@@ -8,7 +8,7 @@ object fmAttendance: TfmAttendance
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   FormStyle = fsMDIChild
   OldCreateOrder = False
@@ -16,7 +16,7 @@ object fmAttendance: TfmAttendance
   OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel12: TPanel
     Left = 0
     Top = 0
@@ -35,8 +35,8 @@ object fmAttendance: TfmAttendance
       object Label6: TLabel
         Left = 8
         Top = 6
-        Width = 52
-        Height = 13
+        Width = 48
+        Height = 15
         Caption = #51312#54924#44592#44036
       end
       object edtInDate: TcxDateEdit
@@ -240,7 +240,6 @@ object fmAttendance: TfmAttendance
             item
               FieldName = 'C_NAME'
             end>
-          Properties.ListSource = dmDBCommon.d_center
           Width = 51
         end
         object gridAttendanceATT_DATE: TcxGridDBColumn

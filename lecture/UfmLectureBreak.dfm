@@ -9,12 +9,12 @@ object fmLectureBreak: TfmLectureBreak
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel1: TPanel
     AlignWithMargins = True
     Left = 3
@@ -24,7 +24,6 @@ object fmLectureBreak: TfmLectureBreak
     Align = alClient
     BevelOuter = bvLowered
     TabOrder = 0
-    ExplicitHeight = 148
     object Panel20: TPanel
       Left = 16
       Top = 19
@@ -44,7 +43,7 @@ object fmLectureBreak: TfmLectureBreak
       TabOrder = 0
       object START_DATE: TcxDateEdit
         Left = 6
-        Top = 4
+        Top = 3
         TabOrder = 0
         Width = 121
       end
@@ -68,7 +67,7 @@ object fmLectureBreak: TfmLectureBreak
       TabOrder = 1
       object END_DATE: TcxDateEdit
         Left = 6
-        Top = 3
+        Top = 2
         TabOrder = 0
         Width = 121
       end
@@ -128,9 +127,9 @@ object fmLectureBreak: TfmLectureBreak
       TabOrder = 3
       object edtReason: TEdit
         Left = 6
-        Top = 4
+        Top = 3
         Width = 166
-        Height = 21
+        Height = 23
         ImeName = 'Microsoft IME 2010'
         TabOrder = 0
       end
@@ -144,7 +143,7 @@ object fmLectureBreak: TfmLectureBreak
       TabOrder = 2
       object cbStatus: TcxImageComboBox
         Left = 6
-        Top = 4
+        Top = 3
         Properties.Items = <
           item
             Description = #55092#44053#51473

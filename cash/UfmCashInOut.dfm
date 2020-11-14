@@ -8,7 +8,7 @@ object fmCashInOut: TfmCashInOut
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   FormStyle = fsMDIChild
   OldCreateOrder = False
@@ -16,7 +16,7 @@ object fmCashInOut: TfmCashInOut
   OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel8: TPanel
     Left = 0
     Top = 0
@@ -27,8 +27,8 @@ object fmCashInOut: TfmCashInOut
     object Label1: TLabel
       Left = 142
       Top = 6
-      Width = 56
-      Height = 13
+      Width = 52
+      Height = 15
       Caption = #51312#54924#44592#44036':'
     end
     object btnView: TBitBtn
@@ -133,7 +133,7 @@ object fmCashInOut: TfmCashInOut
       Left = 203
       Top = 3
       Width = 93
-      Height = 21
+      Height = 23
       Date = 41963.425637268520000000
       Time = 41963.425637268520000000
       ImeName = 'Microsoft IME 2010'
@@ -144,7 +144,7 @@ object fmCashInOut: TfmCashInOut
       Left = 298
       Top = 3
       Width = 93
-      Height = 21
+      Height = 23
       Date = 41963.425637268520000000
       Time = 41963.425637268520000000
       ImeName = 'Microsoft IME 2010'

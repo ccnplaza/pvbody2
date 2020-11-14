@@ -9,7 +9,7 @@ object fmCapture: TfmCapture
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
@@ -17,7 +17,7 @@ object fmCapture: TfmCapture
   OnResize = FormResize
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel2: TPanel
     Left = 0
     Top = 0
@@ -72,7 +72,7 @@ object fmCapture: TfmCapture
         Style.Font.Charset = DEFAULT_CHARSET
         Style.Font.Color = clBlack
         Style.Font.Height = -13
-        Style.Font.Name = #44404#47548
+        Style.Font.Name = #45208#45588#44256#46357
         Style.Font.Style = []
         Style.LookAndFeel.SkinName = 'Black'
         Style.TextColor = clBlue
@@ -87,8 +87,8 @@ object fmCapture: TfmCapture
         object Label1: TLabel
           Left = 119
           Top = 69
-          Width = 30
-          Height = 13
+          Width = 28
+          Height = 15
           Caption = #54924#51204':'
         end
         object btnSet1: TcxButton
@@ -255,7 +255,7 @@ object fmCapture: TfmCapture
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clDefault
           Font.Height = -12
-          Font.Name = #44404#47548
+          Font.Name = #45208#45588#44256#46357
           Font.Style = []
           ImeName = 'Microsoft IME 2010'
           ParentFont = False
@@ -272,7 +272,7 @@ object fmCapture: TfmCapture
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
-          Font.Name = #44404#47548
+          Font.Name = #45208#45588#44256#46357
           Font.Style = []
           ImeName = 'Microsoft IME 2010'
           ParentFont = False
@@ -322,7 +322,7 @@ object fmCapture: TfmCapture
           Style.Font.Charset = DEFAULT_CHARSET
           Style.Font.Color = clWindowText
           Style.Font.Height = -13
-          Style.Font.Name = #44404#47548
+          Style.Font.Name = #45208#45588#44256#46357
           Style.Font.Style = [fsBold]
           Style.HotTrack = False
           Style.LookAndFeel.NativeStyle = False
@@ -341,11 +341,16 @@ object fmCapture: TfmCapture
         object btnMakePicture: TBitBtn
           Tag = 1
           Left = 208
-          Top = 15
+          Top = 17
           Width = 59
-          Height = 75
+          Height = 73
           Align = alRight
           Caption = #52897#52432
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = #45208#45588#44256#46357
+          Font.Style = []
           Glyph.Data = {
             36100000424D3610000000000000360000002800000020000000200000000100
             2000000000000010000000000000000000000000000000000000000000000000
@@ -478,11 +483,11 @@ object fmCapture: TfmCapture
             0000000000000000000000000000000000000000000000000000000000000000
             0000000000000000000000000000000000000000000000000000}
           Layout = blGlyphTop
+          ParentFont = False
           TabOrder = 6
           OnClick = btnMakePictureClick
-          ExplicitLeft = 3
-          ExplicitTop = 16
-          ExplicitHeight = 71
+          ExplicitTop = 15
+          ExplicitHeight = 75
         end
       end
       object cxGroupBox6: TcxGroupBox
@@ -497,22 +502,20 @@ object fmCapture: TfmCapture
         StyleFocused.LookAndFeel.SkinName = 'Black'
         StyleHot.LookAndFeel.SkinName = 'Black'
         TabOrder = 1
-        ExplicitTop = 363
-        ExplicitHeight = 325
         Height = 531
         Width = 270
         object Label4: TLabel
           Left = 18
           Top = 117
-          Width = 86
-          Height = 13
+          Width = 80
+          Height = 15
           Caption = #51060#48120#51648' '#49324#51060#51592':'
         end
         object lblImageSize: TLabel
           Left = 112
           Top = 117
-          Width = 7
-          Height = 13
+          Width = 8
+          Height = 15
           Caption = '0'
         end
         object btnActClearScreen: TBitBtn
@@ -569,7 +572,7 @@ object fmCapture: TfmCapture
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
-          Font.Name = #44404#47548
+          Font.Name = #45208#45588#44256#46357
           Font.Style = []
           ParentFont = False
           TabOrder = 3
@@ -583,7 +586,7 @@ object fmCapture: TfmCapture
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
-          Font.Name = #44404#47548
+          Font.Name = #45208#45588#44256#46357
           Font.Style = []
           ParentFont = False
           ParentShowHint = False
@@ -603,7 +606,7 @@ object fmCapture: TfmCapture
         Style.Font.Charset = DEFAULT_CHARSET
         Style.Font.Color = clWindowText
         Style.Font.Height = -13
-        Style.Font.Name = #44404#47548
+        Style.Font.Name = #45208#45588#44256#46357
         Style.Font.Style = []
         Style.LookAndFeel.SkinName = 'Black'
         Style.TextColor = clBlue
@@ -618,14 +621,27 @@ object fmCapture: TfmCapture
         object Label5: TLabel
           Left = 16
           Top = 19
-          Width = 56
-          Height = 13
+          Width = 52
+          Height = 15
           Caption = #52897#52432#51068#51088':'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = #45208#45588#44256#46357
+          Font.Style = []
+          ParentFont = False
         end
         object edtPicDate: TcxDateEdit
           Left = 82
           Top = 16
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -13
+          Style.Font.Name = #45208#45588#44256#46357
+          Style.Font.Style = []
           Style.LookAndFeel.SkinName = 'DevExpressStyle'
+          Style.IsFontAssigned = True
           StyleDisabled.LookAndFeel.SkinName = 'DevExpressStyle'
           StyleFocused.LookAndFeel.SkinName = 'DevExpressStyle'
           StyleHot.LookAndFeel.SkinName = 'DevExpressStyle'

@@ -9,13 +9,13 @@ object fmHistoryEdit: TfmHistoryEdit
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object GroupBox1: TGroupBox
     Left = 8
     Top = 8
@@ -26,27 +26,27 @@ object fmHistoryEdit: TfmHistoryEdit
     object Label1: TLabel
       Left = 24
       Top = 24
-      Width = 56
-      Height = 13
+      Width = 52
+      Height = 15
       Caption = #51089#49457#51068#51088':'
     end
     object Label2: TLabel
       Left = 24
       Top = 51
-      Width = 56
-      Height = 13
+      Width = 52
+      Height = 15
       Caption = #44592#47197#45236#50857':'
     end
     object Label3: TLabel
       Left = 88
       Top = 104
-      Width = 400
-      Height = 12
+      Width = 361
+      Height = 14
       Caption = #44592#47197#45236#50857#51060' '#47566#51012' '#46412#45716' '#49789#44172' '#51312#54924#47484' '#50948#54644#49436' '#50668#47084' '#44148#51004#47196' '#45208#45572#50612' '#51077#47141#54616#49464#50836'.'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clRed
       Font.Height = -12
-      Font.Name = #44404#47548
+      Font.Name = #45208#45588#44256#46357
       Font.Style = []
       ParentFont = False
     end

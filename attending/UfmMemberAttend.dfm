@@ -8,7 +8,7 @@ object fmMemberAttend: TfmMemberAttend
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   FormStyle = fsMDIChild
   OldCreateOrder = False
@@ -17,7 +17,7 @@ object fmMemberAttend: TfmMemberAttend
   OnResize = FormResize
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel8: TPanel
     Left = 0
     Top = 0
@@ -28,8 +28,8 @@ object fmMemberAttend: TfmMemberAttend
     object Label1: TLabel
       Left = 9
       Top = 6
-      Width = 56
-      Height = 13
+      Width = 52
+      Height = 15
       Caption = #46321#47197#51068#51088':'
     end
     object btnView: TBitBtn
@@ -103,7 +103,7 @@ object fmMemberAttend: TfmMemberAttend
       Left = 67
       Top = 3
       Width = 93
-      Height = 21
+      Height = 23
       Date = 41963.425637268520000000
       Time = 41963.425637268520000000
       ImeName = 'Microsoft IME 2010'
@@ -113,7 +113,7 @@ object fmMemberAttend: TfmMemberAttend
       Left = 161
       Top = 3
       Width = 93
-      Height = 21
+      Height = 23
       Date = 41963.425637268520000000
       Time = 41963.425637268520000000
       ImeName = 'Microsoft IME 2010'
@@ -246,12 +246,14 @@ object fmMemberAttend: TfmMemberAttend
     Width = 255
     object cxGrid2: TcxGrid
       Left = 3
-      Top = 15
+      Top = 17
       Width = 249
-      Height = 582
+      Height = 580
       Align = alClient
       TabOrder = 0
       LookAndFeel.SkinName = 'Black'
+      ExplicitTop = 15
+      ExplicitHeight = 582
       object gridAttend: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = False
@@ -344,12 +346,14 @@ object fmMemberAttend: TfmMemberAttend
     Width = 801
     object cxGrid1: TcxGrid
       Left = 3
-      Top = 15
+      Top = 17
       Width = 795
-      Height = 582
+      Height = 580
       Align = alClient
       TabOrder = 0
       LookAndFeel.SkinName = 'Black'
+      ExplicitTop = 15
+      ExplicitHeight = 582
       object gridCustomer: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = False
@@ -397,7 +401,6 @@ object fmMemberAttend: TfmMemberAttend
             item
               FieldName = 'C_NAME'
             end>
-          Properties.ListSource = dmDBCommon.d_center
           HeaderAlignmentHorz = taCenter
           Width = 44
         end
@@ -526,8 +529,8 @@ object fmMemberAttend: TfmMemberAttend
       object Label2: TLabel
         Left = 40
         Top = 16
-        Width = 271
-        Height = 13
+        Width = 252
+        Height = 15
         Caption = #52636#49437#51068#51012' '#44228#49328#54616#44256' '#51080#49845#45768#45796'. '#51104#49884' '#44592#45796#47532#49464#50836'.'
       end
       object Gauge1: TGauge

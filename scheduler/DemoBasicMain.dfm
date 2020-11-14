@@ -79,6 +79,7 @@ object DemoBasicMainForm: TDemoBasicMainForm
     Top = 8
   end
   object lfController: TcxLookAndFeelController
+    SkinName = 'DevExpressStyle'
     Left = 544
     Top = 8
   end

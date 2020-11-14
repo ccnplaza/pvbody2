@@ -9,13 +9,13 @@ object fmMemberEditBasic: TfmMemberEditBasic
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel3: TPanel
     Left = 84
     Top = 40
@@ -24,7 +24,7 @@ object fmMemberEditBasic: TfmMemberEditBasic
     TabOrder = 1
     object REG_DATE: TcxDateEdit
       Left = 4
-      Top = 4
+      Top = 2
       Properties.DateOnError = deNull
       Properties.SaveTime = False
       Properties.ShowTime = False
@@ -61,9 +61,9 @@ object fmMemberEditBasic: TfmMemberEditBasic
     TabOrder = 3
     object CNAME: TEdit
       Left = 4
-      Top = 4
+      Top = 2
       Width = 112
-      Height = 21
+      Height = 23
       ImeName = 'Microsoft IME 2010'
       TabOrder = 0
     end
@@ -86,7 +86,7 @@ object fmMemberEditBasic: TfmMemberEditBasic
     TabOrder = 4
     object SEX: TcxImageComboBox
       Left = 4
-      Top = 4
+      Top = 2
       EditValue = #50668
       Properties.Items = <
         item
@@ -120,9 +120,9 @@ object fmMemberEditBasic: TfmMemberEditBasic
     TabOrder = 2
     object JOBKIND: TEdit
       Left = 4
-      Top = 4
+      Top = 2
       Width = 113
-      Height = 21
+      Height = 23
       ImeName = 'Microsoft IME 2010'
       TabOrder = 0
     end
@@ -145,9 +145,9 @@ object fmMemberEditBasic: TfmMemberEditBasic
     TabOrder = 5
     object CTEL: TEdit
       Left = 4
-      Top = 4
+      Top = 2
       Width = 308
-      Height = 21
+      Height = 23
       ImeName = 'Microsoft IME 2010'
       TabOrder = 0
     end
@@ -170,9 +170,9 @@ object fmMemberEditBasic: TfmMemberEditBasic
     TabOrder = 6
     object CEMAIL: TEdit
       Left = 4
-      Top = 4
+      Top = 2
       Width = 308
-      Height = 21
+      Height = 23
       ImeName = 'Microsoft IME 2010'
       TabOrder = 0
     end
@@ -185,9 +185,9 @@ object fmMemberEditBasic: TfmMemberEditBasic
     TabOrder = 7
     object CBIGO: TEdit
       Left = 4
-      Top = 4
+      Top = 2
       Width = 308
-      Height = 21
+      Height = 23
       ImeName = 'Microsoft IME 2010'
       TabOrder = 0
     end
@@ -256,7 +256,7 @@ object fmMemberEditBasic: TfmMemberEditBasic
     TabOrder = 0
     object cbCenter: TcxLookupComboBox
       Left = 4
-      Top = 4
+      Top = 3
       Properties.DropDownListStyle = lsFixedList
       Properties.KeyFieldNames = 'ID'
       Properties.ListColumns = <
@@ -264,7 +264,6 @@ object fmMemberEditBasic: TfmMemberEditBasic
           FieldName = 'C_NAME'
         end>
       Properties.ListOptions.ShowHeader = False
-      Properties.ListSource = dmDBCommon.d_center
       TabOrder = 0
       Width = 112
     end

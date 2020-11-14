@@ -23,7 +23,8 @@ uses
   dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMoneyTwins,
   dxSkinPumpkin, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinValentine, dxSkinWhiteprint,
-  dxSkinXmas2008Blue;
+  dxSkinXmas2008Blue, hyieutils, iexBitmaps, hyiedefs, iesettings, iexLayers,
+  iexRulers, iexToolbars;
 
 type
   TfmHowTo = class(TForm)

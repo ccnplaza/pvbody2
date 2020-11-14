@@ -8,7 +8,7 @@ object fmMember: TfmMember
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   FormStyle = fsMDIChild
   OldCreateOrder = False
@@ -17,7 +17,7 @@ object fmMember: TfmMember
   OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object cxGrid1: TcxGrid
     Left = 329
     Top = 28
@@ -235,32 +235,32 @@ object fmMember: TfmMember
       AlignWithMargins = True
       Left = 5
       Top = 3
-      Width = 56
+      Width = 52
       Height = 22
       Margins.Left = 5
       Align = alLeft
       Caption = #46321#47197#45380#46020':'
       Layout = tlCenter
-      ExplicitHeight = 13
+      ExplicitHeight = 15
     end
     object lbl2: TLabel
       AlignWithMargins = True
-      Left = 125
+      Left = 121
       Top = 3
-      Width = 10
+      Width = 9
       Height = 22
       Margins.Left = 0
       Margins.Right = 0
       Align = alLeft
       Caption = '~'
       Layout = tlCenter
-      ExplicitHeight = 13
+      ExplicitHeight = 15
     end
     object Label2: TLabel
       AlignWithMargins = True
-      Left = 233
+      Left = 228
       Top = 0
-      Width = 30
+      Width = 28
       Height = 28
       Margins.Left = 0
       Margins.Top = 0
@@ -269,11 +269,11 @@ object fmMember: TfmMember
       Align = alLeft
       Caption = #44160#49353':'
       Layout = tlCenter
-      ExplicitHeight = 13
+      ExplicitHeight = 15
     end
     object btnAdd: TBitBtn
       AlignWithMargins = True
-      Left = 422
+      Left = 415
       Top = 3
       Width = 59
       Height = 22
@@ -283,10 +283,11 @@ object fmMember: TfmMember
       Align = alLeft
       Caption = #46321#47197
       TabOrder = 0
+      ExplicitLeft = 422
     end
     object btnEdit: TBitBtn
       AlignWithMargins = True
-      Left = 481
+      Left = 474
       Top = 3
       Width = 59
       Height = 22
@@ -296,10 +297,11 @@ object fmMember: TfmMember
       Align = alLeft
       Caption = #49688#51221
       TabOrder = 1
+      ExplicitLeft = 481
     end
     object btnDel: TBitBtn
       AlignWithMargins = True
-      Left = 540
+      Left = 533
       Top = 3
       Width = 59
       Height = 22
@@ -309,10 +311,11 @@ object fmMember: TfmMember
       Align = alLeft
       Caption = #49325#51228
       TabOrder = 2
+      ExplicitLeft = 540
     end
     object btnSMSSending: TBitBtn
       AlignWithMargins = True
-      Left = 783
+      Left = 776
       Top = 3
       Width = 35
       Height = 22
@@ -359,11 +362,11 @@ object fmMember: TfmMember
       ParentShowHint = False
       ShowHint = True
       TabOrder = 3
-      ExplicitLeft = 840
+      ExplicitLeft = 783
     end
     object btnReportActive: TBitBtn
       AlignWithMargins = True
-      Left = 853
+      Left = 846
       Top = 3
       Width = 35
       Height = 22
@@ -375,11 +378,11 @@ object fmMember: TfmMember
       ParentShowHint = False
       ShowHint = True
       TabOrder = 4
-      ExplicitLeft = 910
+      ExplicitLeft = 853
     end
     object btnExcelActive: TBitBtn
       AlignWithMargins = True
-      Left = 888
+      Left = 881
       Top = 3
       Width = 35
       Height = 22
@@ -391,11 +394,11 @@ object fmMember: TfmMember
       ParentShowHint = False
       ShowHint = True
       TabOrder = 5
-      ExplicitLeft = 945
+      ExplicitLeft = 888
     end
     object btnGridSave: TBitBtn
       AlignWithMargins = True
-      Left = 1003
+      Left = 996
       Top = 3
       Width = 35
       Height = 22
@@ -407,11 +410,11 @@ object fmMember: TfmMember
       ParentShowHint = False
       ShowHint = True
       TabOrder = 6
-      ExplicitLeft = 1060
+      ExplicitLeft = 1003
     end
     object edtSYear: TcxSpinEdit
       AlignWithMargins = True
-      Left = 64
+      Left = 60
       Top = 3
       Margins.Left = 0
       Align = alLeft
@@ -428,11 +431,12 @@ object fmMember: TfmMember
       TabOrder = 7
       Value = 1000
       OnClick = edtSYearClick
+      ExplicitLeft = 64
       Width = 58
     end
     object edtEYear: TcxSpinEdit
       AlignWithMargins = True
-      Left = 138
+      Left = 133
       Top = 3
       Margins.Right = 0
       Align = alLeft
@@ -449,11 +453,12 @@ object fmMember: TfmMember
       TabOrder = 8
       Value = 1000
       OnClick = edtEYearClick
+      ExplicitLeft = 138
       Width = 58
     end
     object btnView: TBitBtn
       AlignWithMargins = True
-      Left = 196
+      Left = 191
       Top = 3
       Width = 34
       Height = 22
@@ -473,10 +478,11 @@ object fmMember: TfmMember
       ShowHint = True
       TabOrder = 9
       OnClick = btnViewClick
+      ExplicitLeft = 196
     end
     object btnCenter: TBitBtn
       AlignWithMargins = True
-      Left = 923
+      Left = 916
       Top = 3
       Width = 35
       Height = 22
@@ -497,11 +503,11 @@ object fmMember: TfmMember
       ShowHint = True
       TabOrder = 10
       OnClick = btnCenterClick
-      ExplicitLeft = 980
+      ExplicitLeft = 923
     end
     object btnHistory: TBitBtn
       AlignWithMargins = True
-      Left = 599
+      Left = 592
       Top = 3
       Width = 87
       Height = 22
@@ -522,11 +528,11 @@ object fmMember: TfmMember
       ShowHint = False
       TabOrder = 11
       OnClick = btnHistoryClick
-      ExplicitLeft = 656
+      ExplicitLeft = 599
     end
     object btnAddFavorite: TBitBtn
       AlignWithMargins = True
-      Left = 686
+      Left = 679
       Top = 3
       Width = 87
       Height = 22
@@ -545,11 +551,11 @@ object fmMember: TfmMember
         DADA7BA7FD7BADADADADBAD7BAD7DADADADAADA7FDADADADADAD}
       TabOrder = 12
       OnClick = btnAddFavoriteClick
-      ExplicitLeft = 743
+      ExplicitLeft = 686
     end
     object btnCustKind: TBitBtn
       AlignWithMargins = True
-      Left = 958
+      Left = 951
       Top = 3
       Width = 35
       Height = 22
@@ -596,11 +602,11 @@ object fmMember: TfmMember
       ShowHint = True
       TabOrder = 13
       OnClick = btnCustKindClick
-      ExplicitLeft = 1015
+      ExplicitLeft = 958
     end
     object btnNoSMS: TBitBtn
       AlignWithMargins = True
-      Left = 818
+      Left = 811
       Top = 3
       Width = 35
       Height = 22
@@ -647,11 +653,11 @@ object fmMember: TfmMember
       ShowHint = True
       TabOrder = 14
       OnClick = btnNoSMSClick
-      ExplicitLeft = 875
+      ExplicitLeft = 818
     end
     object edtFind: TEdit
       AlignWithMargins = True
-      Left = 263
+      Left = 256
       Top = 3
       Width = 94
       Height = 22
@@ -660,11 +666,11 @@ object fmMember: TfmMember
       Align = alLeft
       ImeMode = imSHanguel
       TabOrder = 15
-      ExplicitHeight = 21
+      ExplicitHeight = 23
     end
     object btnFilter: TcxButton
       AlignWithMargins = True
-      Left = 357
+      Left = 350
       Top = 3
       Width = 28
       Height = 22
@@ -708,10 +714,11 @@ object fmMember: TfmMember
         A5DE286298D11D4872A410284164020509150000000400000001}
       TabOrder = 16
       OnClick = btnFilterClick
+      ExplicitLeft = 357
     end
     object btnFilterClear: TcxButton
       AlignWithMargins = True
-      Left = 385
+      Left = 378
       Top = 3
       Width = 27
       Height = 22
@@ -755,6 +762,7 @@ object fmMember: TfmMember
         587F070E16250000000300000001000000000000000000000000}
       TabOrder = 17
       OnClick = btnFilterClearClick
+      ExplicitLeft = 385
     end
   end
   object Panel4: TPanel
@@ -994,13 +1002,15 @@ object fmMember: TfmMember
       Width = 327
       object cxGrid4: TcxGrid
         Left = 3
-        Top = 15
+        Top = 17
         Width = 321
-        Height = 430
+        Height = 428
         Align = alClient
         TabOrder = 0
         LookAndFeel.NativeStyle = False
         LookAndFeel.SkinName = 'Black'
+        ExplicitTop = 15
+        ExplicitHeight = 430
         object gridCLRegist: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.First.Visible = False
@@ -1154,7 +1164,6 @@ object fmMember: TfmMember
       Active = True
       Component = cxGrid1
       DesignerCaption = #52636#47141#49444#51221
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -1168,14 +1177,13 @@ object fmMember: TfmMember
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 44137.929101145830000000
+      ReportDocument.CreationDate = 44149.370156712960000000
       ReportTitle.Font.Charset = DEFAULT_CHARSET
       ReportTitle.Font.Color = clBlack
       ReportTitle.Font.Height = -19
       ReportTitle.Font.Name = #44404#47548
       ReportTitle.Font.Style = [fsBold]
       ReportTitle.Text = #54924#50896' '#46321#47197#54788#54889
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

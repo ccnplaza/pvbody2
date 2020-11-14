@@ -25,7 +25,10 @@ uses
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxSchedulerPainter, Buttons,
-  cxExportSchedulerLink, MemDS, DBAccess, Uni;
+  cxExportSchedulerLink, MemDS, DBAccess, Uni, cxSchedulerRecurrence,
+  cxSchedulerTreeListBrowser, cxSchedulerRibbonStyleEventEditor,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, cxClasses;
 
 type
   TDBDemoMainForm = class(TDemoBasicMainForm)

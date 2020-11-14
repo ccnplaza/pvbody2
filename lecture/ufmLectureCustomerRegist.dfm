@@ -2,11 +2,12 @@ inherited fmLectureCustomerRegist: TfmLectureCustomerRegist
   Caption = #49688#44053#46321#47197'/'#49688#51221
   ClientHeight = 541
   ClientWidth = 338
+  Font.Name = #45208#45588#44256#46357
   OnShow = FormShow
   ExplicitWidth = 344
   ExplicitHeight = 570
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel1: TPanel
     AlignWithMargins = True
     Left = 3
@@ -19,21 +20,21 @@ inherited fmLectureCustomerRegist: TfmLectureCustomerRegist
     object LabelMsg: TLabel
       Left = 15
       Top = 6
-      Width = 244
-      Height = 13
+      Width = 208
+      Height = 15
       Caption = #54924#50896#47749#51012' '#51077#47141#54616#44256' '#54924#50896#44160#49353#51012' '#54616#49464#50836'.'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clRed
       Font.Height = -13
-      Font.Name = #44404#47548
+      Font.Name = #45208#45588#44256#46357
       Font.Style = [fsBold]
       ParentFont = False
     end
     object Label1: TLabel
       Left = 49
       Top = 27
-      Width = 47
-      Height = 13
+      Width = 44
+      Height = 15
       Caption = #54924#50896#47749' :'
     end
     object Panel2: TPanel
@@ -54,15 +55,15 @@ inherited fmLectureCustomerRegist: TfmLectureCustomerRegist
       BevelOuter = bvLowered
       TabOrder = 15
       object lblCustName: TLabel
-        Left = 6
-        Top = 9
-        Width = 42
-        Height = 13
+        Left = 7
+        Top = 7
+        Width = 36
+        Height = 15
         Caption = #54924#50896#47749
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlue
         Font.Height = -13
-        Font.Name = #44404#47548
+        Font.Name = #45208#45588#44256#46357
         Font.Style = [fsBold]
         ParentFont = False
       end
@@ -86,20 +87,20 @@ inherited fmLectureCustomerRegist: TfmLectureCustomerRegist
       TabOrder = 6
       object Label2: TLabel
         Left = 175
-        Top = 9
-        Width = 42
-        Height = 13
+        Top = 8
+        Width = 39
+        Height = 15
         Caption = '('#50900'/'#54924')'
       end
       object s_date: TcxDateEdit
         Left = 6
-        Top = 4
+        Top = 3
         TabOrder = 0
         Width = 121
       end
       object M_MONTH: TcxSpinEdit
         Left = 128
-        Top = 4
+        Top = 3
         Properties.AssignedValues.MinValue = True
         TabOrder = 1
         Value = 3
@@ -135,7 +136,7 @@ inherited fmLectureCustomerRegist: TfmLectureCustomerRegist
       TabOrder = 9
       object LEC_PRICE: TcxCurrencyEdit
         Left = 6
-        Top = 4
+        Top = 3
         TabOrder = 0
         Width = 92
       end
@@ -185,7 +186,7 @@ inherited fmLectureCustomerRegist: TfmLectureCustomerRegist
       TabOrder = 7
       object e_date: TcxDateEdit
         Left = 6
-        Top = 4
+        Top = 3
         TabOrder = 0
         Width = 121
       end
@@ -209,7 +210,7 @@ inherited fmLectureCustomerRegist: TfmLectureCustomerRegist
       TabOrder = 4
       object edtLectureName: TcxLookupComboBox
         Left = 6
-        Top = 4
+        Top = 3
         Properties.DropDownListStyle = lsFixedList
         Properties.KeyFieldNames = 'ID'
         Properties.ListColumns = <
@@ -347,7 +348,7 @@ inherited fmLectureCustomerRegist: TfmLectureCustomerRegist
         Left = 6
         Top = 3
         Width = 92
-        Height = 21
+        Height = 23
         TabStop = False
         ImeName = 'Microsoft IME 2010'
         ReadOnly = True
@@ -407,7 +408,7 @@ inherited fmLectureCustomerRegist: TfmLectureCustomerRegist
       TabOrder = 10
       object PAY_KIND: TcxImageComboBox
         Left = 6
-        Top = 4
+        Top = 3
         EditValue = 1
         Properties.Items = <
           item
@@ -446,7 +447,7 @@ inherited fmLectureCustomerRegist: TfmLectureCustomerRegist
       TabOrder = 11
       object IS_DONE: TcxImageComboBox
         Left = 6
-        Top = 4
+        Top = 3
         EditValue = 0
         Properties.Items = <
           item
@@ -495,7 +496,7 @@ inherited fmLectureCustomerRegist: TfmLectureCustomerRegist
       TabOrder = 3
       object REG_DATE: TcxDateEdit
         Left = 6
-        Top = 4
+        Top = 3
         TabOrder = 0
         Width = 121
       end
@@ -536,7 +537,7 @@ inherited fmLectureCustomerRegist: TfmLectureCustomerRegist
       TabOrder = 2
       object lcCenter: TcxLookupComboBox
         Left = 6
-        Top = 4
+        Top = 3
         Properties.DropDownListStyle = lsFixedList
         Properties.KeyFieldNames = 'ID'
         Properties.ListColumns = <
@@ -553,7 +554,7 @@ inherited fmLectureCustomerRegist: TfmLectureCustomerRegist
       Left = 103
       Top = 23
       Width = 119
-      Height = 21
+      Height = 23
       ImeMode = imSHanguel
       TabOrder = 0
       OnExit = edtCNAMEExit

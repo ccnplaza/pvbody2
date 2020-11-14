@@ -9,12 +9,12 @@ object fmYearMonth: TfmYearMonth
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object GroupBox1: TGroupBox
     Left = 16
     Top = 8
@@ -25,22 +25,22 @@ object fmYearMonth: TfmYearMonth
     object Label1: TLabel
       Left = 32
       Top = 24
-      Width = 30
-      Height = 13
+      Width = 28
+      Height = 15
       Caption = #45380#46020':'
     end
     object Label2: TLabel
       Left = 157
       Top = 24
-      Width = 17
-      Height = 13
+      Width = 16
+      Height = 15
       Caption = #50900':'
     end
     object Label3: TLabel
       Left = 68
       Top = 56
-      Width = 138
-      Height = 13
+      Width = 128
+      Height = 15
       Caption = #51312#54924#45380#50900#51012' '#49440#53469#54616#49464#50836'.'
     end
     object cxImageComboBox1: TcxImageComboBox

@@ -8,7 +8,7 @@ object fmStaticCheckItems: TfmStaticCheckItems
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   FormStyle = fsMDIChild
   OldCreateOrder = False
@@ -16,7 +16,7 @@ object fmStaticCheckItems: TfmStaticCheckItems
   OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel7: TPanel
     Left = 280
     Top = 0
@@ -54,7 +54,7 @@ object fmStaticCheckItems: TfmStaticCheckItems
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
-          Font.Name = #44404#47548
+          Font.Name = #45208#45588#44256#46357
           Font.Style = [fsBold]
           ParentBackground = False
           ParentFont = False
@@ -78,7 +78,7 @@ object fmStaticCheckItems: TfmStaticCheckItems
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
-            Font.Name = #44404#47548
+            Font.Name = #45208#45588#44256#46357
             Font.Style = [fsBold]
             Glyph.Data = {
               F6000000424DF600000000000000760000002800000010000000100000000100
@@ -105,7 +105,7 @@ object fmStaticCheckItems: TfmStaticCheckItems
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
-            Font.Name = #44404#47548
+            Font.Name = #45208#45588#44256#46357
             Font.Style = [fsBold]
             Glyph.Data = {
               F6000000424DF600000000000000760000002800000010000000100000000100
@@ -244,7 +244,7 @@ object fmStaticCheckItems: TfmStaticCheckItems
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
-      Font.Name = #44404#47548
+      Font.Name = #45208#45588#44256#46357
       Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
@@ -268,7 +268,7 @@ object fmStaticCheckItems: TfmStaticCheckItems
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
-        Font.Name = #44404#47548
+        Font.Name = #45208#45588#44256#46357
         Font.Style = [fsBold]
         Glyph.Data = {
           F6000000424DF600000000000000760000002800000010000000100000000100
@@ -295,7 +295,7 @@ object fmStaticCheckItems: TfmStaticCheckItems
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
-        Font.Name = #44404#47548
+        Font.Name = #45208#45588#44256#46357
         Font.Style = [fsBold]
         Glyph.Data = {
           F6000000424DF600000000000000760000002800000010000000100000000100
@@ -405,6 +405,11 @@ object fmStaticCheckItems: TfmStaticCheckItems
         Height = 25
         Hint = #52769#51221#48169#48277
         Caption = #52769#51221#54637#47785' '#49444#47749
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = #45208#45588#44256#46357
+        Font.Style = [fsBold]
         Glyph.Data = {
           F6000000424DF600000000000000760000002800000010000000100000000100
           04000000000080000000120B0000120B00001000000000000000000000000000
@@ -414,6 +419,7 @@ object fmStaticCheckItems: TfmStaticCheckItems
           FF0A0F0787701088FF0D0078E7F70FFFFF0A008E878F08888F0D00EFE7E80FFF
           FF0A007FF78708888F0D0F07E770FFFFFF0A0F8000088888FF0D0FFFF0FFFFFF
           FF0A444444444444444D444444444444444A444444444444444D}
+        ParentFont = False
         TabOrder = 0
         OnClick = btnViewPosClick
       end
@@ -446,7 +452,7 @@ object fmStaticCheckItems: TfmStaticCheckItems
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -15
-      Font.Name = #44404#47548
+      Font.Name = #45208#45588#44256#46357
       Font.Style = [fsBold]
       Color = 16776176
       ParentColor = False
@@ -470,7 +476,7 @@ object fmStaticCheckItems: TfmStaticCheckItems
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
-      Font.Name = #44404#47548
+      Font.Name = #45208#45588#44256#46357
       Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False

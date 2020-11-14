@@ -8,7 +8,7 @@ object fmMain: TfmMain
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   FormStyle = fsMDIForm
   Icon.Data = {
@@ -2993,17 +2993,16 @@ object fmMain: TfmMain
     1128
     686)
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object lblTimer: TLabel
-    Left = 1000
+    Left = 1001
     Top = 7
-    Width = 35
-    Height = 13
+    Width = 34
+    Height = 15
     Alignment = taRightJustify
     Anchors = [akTop, akRight]
     Caption = 'Timer'
     Visible = False
-    ExplicitLeft = 1032
   end
   object StatusBar1: TStatusBar
     Left = 0
@@ -4416,12 +4415,15 @@ object fmMain: TfmMain
       Caption = #51088#49464#48516#49437
       Hint = #51088#49464#48516#49437
       ImageIndex = 10
-      object N6: TMenuItem
-        Action = actCompareList
-        Caption = #51088#49464' '#51312#54924'/'#48516#49437
-      end
       object N19: TMenuItem
         Action = ActCustomerImageList
+        Caption = #51088#49464' '#51068#48324#51312#54924
+        ImageIndex = 0
+      end
+      object N6: TMenuItem
+        Action = actCompareList
+        Caption = #51088#49464' '#48708#44368#48516#49437
+        ImageIndex = 3
       end
       object N2: TMenuItem
         Caption = #48708#44368#48516#49437'('#47112#51060#50612')'

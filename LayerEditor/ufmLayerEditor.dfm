@@ -9,7 +9,7 @@ object fmLayerEditor: TfmLayerEditor
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = True
   Position = poMainFormCenter
@@ -17,7 +17,7 @@ object fmLayerEditor: TfmLayerEditor
   OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel1: TPanel
     Left = 939
     Top = 0
@@ -42,8 +42,8 @@ object fmLayerEditor: TfmLayerEditor
     object lblRectangle: TLabel
       Left = 10
       Top = 29
-      Width = 67
-      Height = 13
+      Width = 63
+      Height = 15
       Caption = 'Rectangle:'
     end
     object grpStyle: TGroupBox
@@ -64,41 +64,41 @@ object fmLayerEditor: TfmLayerEditor
         Enabled = False
       end
       object lblGradient: TLabel
-        Left = 32
-        Top = 117
-        Width = 60
-        Height = 13
+        Left = 20
+        Top = 115
+        Width = 70
+        Height = 17
         Alignment = taRightJustify
         AutoSize = False
-        Caption = #44536#46972#51060#50616#53944':'
+        Caption = #44536#46972#46356#50616#53944':'
         Enabled = False
       end
       object lblOpacity: TLabel
         Left = 14
         Top = 149
-        Width = 43
-        Height = 13
+        Width = 40
+        Height = 15
         Caption = #53804#47749#46020':'
       end
       object lblOperation: TLabel
         Left = 14
         Top = 176
-        Width = 69
-        Height = 13
+        Width = 64
+        Height = 15
         Caption = #50724#54140#47112#51060#49496':'
       end
       object lblFeather: TLabel
         Left = 14
         Top = 203
-        Width = 56
-        Height = 13
+        Width = 52
+        Height = 15
         Caption = #53076#45320#48660#47084':'
       end
       object edtBorderWidth: TEdit
         Left = 98
         Top = 48
         Width = 48
-        Height = 21
+        Height = 23
         Enabled = False
         TabOrder = 0
         Text = '0'
@@ -135,7 +135,7 @@ object fmLayerEditor: TfmLayerEditor
         Left = 98
         Top = 112
         Width = 104
-        Height = 21
+        Height = 23
         Style = csDropDownList
         Enabled = False
         TabOrder = 4
@@ -203,7 +203,7 @@ object fmLayerEditor: TfmLayerEditor
         Left = 89
         Top = 172
         Width = 112
-        Height = 21
+        Height = 23
         Style = csDropDownList
         TabOrder = 10
         OnChange = LayerControlChange
@@ -251,7 +251,7 @@ object fmLayerEditor: TfmLayerEditor
         Left = 89
         Top = 199
         Width = 60
-        Height = 21
+        Height = 23
         TabOrder = 11
         Text = '0'
         OnChange = LayerControlChange
@@ -286,25 +286,27 @@ object fmLayerEditor: TfmLayerEditor
       TabWidth = 37
       object tabImage: TTabSheet
         Caption = #44536#47548
+        ExplicitTop = 25
+        ExplicitHeight = 246
         object lblMagnification: TLabel
           Left = 24
           Top = 63
-          Width = 56
-          Height = 13
+          Width = 52
+          Height = 15
           Caption = #54869#45824#48708#50984':'
         end
         object lblMagnification2: TLabel
           Left = 24
           Top = 90
-          Width = 69
-          Height = 13
+          Width = 64
+          Height = 15
           Caption = #54869#45824#49828#53440#51068':'
         end
         object lblMagnification3: TLabel
           Left = 24
           Top = 119
-          Width = 56
-          Height = 13
+          Width = 52
+          Height = 15
           Caption = #54869#45824#49548#49828':'
         end
         object chkMagnify: TCheckBox
@@ -330,7 +332,7 @@ object fmLayerEditor: TfmLayerEditor
           Left = 107
           Top = 86
           Width = 89
-          Height = 21
+          Height = 23
           Style = csDropDownList
           TabOrder = 2
           OnChange = LayerControlChange
@@ -342,7 +344,7 @@ object fmLayerEditor: TfmLayerEditor
           Left = 107
           Top = 115
           Width = 89
-          Height = 21
+          Height = 23
           Style = csDropDownList
           TabOrder = 3
           OnChange = LayerControlChange
@@ -380,22 +382,18 @@ object fmLayerEditor: TfmLayerEditor
       end
       object tabShape: TTabSheet
         Caption = #46020#54805
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object lblShape: TLabel
           Left = 10
           Top = 14
-          Width = 30
-          Height = 13
+          Width = 28
+          Height = 15
           Caption = #46020#54805':'
         end
         object lblModifier: TLabel
           Left = 10
           Top = 70
-          Width = 53
-          Height = 13
+          Width = 56
+          Height = 15
           Caption = 'Modifier:'
         end
         object cmbShape: TComboBox
@@ -415,7 +413,7 @@ object fmLayerEditor: TfmLayerEditor
           Left = 70
           Top = 66
           Width = 60
-          Height = 21
+          Height = 23
           TabOrder = 1
           Text = '0'
           OnChange = LayerControlChange
@@ -424,50 +422,46 @@ object fmLayerEditor: TfmLayerEditor
           Left = 130
           Top = 66
           Width = 16
-          Height = 21
+          Height = 23
           Associate = edtModifier
           TabOrder = 2
         end
       end
       object tabLine: TTabSheet
         Caption = #46972#51064
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object lblLabelPosition: TLabel
           Left = 10
           Top = 14
-          Width = 56
-          Height = 13
+          Width = 52
+          Height = 15
           Caption = #46972#48296#50948#52824':'
         end
         object lblEndShape: TLabel
           Left = 10
           Top = 70
-          Width = 47
-          Height = 13
+          Width = 44
+          Height = 15
           Caption = #45149' '#47784#50577':'
         end
         object lblStartShape: TLabel
           Left = 10
           Top = 43
-          Width = 56
-          Height = 13
+          Width = 52
+          Height = 15
           Caption = #49884#51089#47784#50577':'
         end
         object lblShapeSize: TLabel
           Left = 10
           Top = 97
-          Width = 56
-          Height = 13
+          Width = 52
+          Height = 15
           Caption = #47784#50577#53356#44592':'
         end
         object edtShapeSize: TEdit
           Left = 85
           Top = 93
           Width = 48
-          Height = 21
+          Height = 23
           Enabled = False
           TabOrder = 0
           Text = '0'
@@ -477,7 +471,7 @@ object fmLayerEditor: TfmLayerEditor
           Left = 85
           Top = 10
           Width = 133
-          Height = 21
+          Height = 23
           Style = csDropDownList
           TabOrder = 1
           OnChange = LayerControlChange
@@ -494,7 +488,7 @@ object fmLayerEditor: TfmLayerEditor
           Left = 85
           Top = 66
           Width = 133
-          Height = 21
+          Height = 23
           Style = csDropDownList
           TabOrder = 2
           OnChange = LayerControlChange
@@ -512,7 +506,7 @@ object fmLayerEditor: TfmLayerEditor
           Left = 85
           Top = 39
           Width = 133
-          Height = 21
+          Height = 23
           Style = csDropDownList
           TabOrder = 3
           OnChange = LayerControlChange
@@ -530,7 +524,7 @@ object fmLayerEditor: TfmLayerEditor
           Left = 133
           Top = 93
           Width = 16
-          Height = 21
+          Height = 23
           Associate = edtShapeSize
           Enabled = False
           TabOrder = 4
@@ -548,7 +542,7 @@ object fmLayerEditor: TfmLayerEditor
           Left = 91
           Top = 125
           Width = 127
-          Height = 21
+          Height = 23
           Style = csDropDownList
           Enabled = False
           TabOrder = 6
@@ -570,10 +564,6 @@ object fmLayerEditor: TfmLayerEditor
       object tabPolyline: TTabSheet
         Caption = #54260#47532
         ImageIndex = 3
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object chkPolylineClosed: TCheckBox
           Left = 10
           Top = 10
@@ -632,22 +622,18 @@ object fmLayerEditor: TfmLayerEditor
       object tabAngle: TTabSheet
         Caption = #44033#46020
         ImageIndex = 6
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object lblStartAngle: TLabel
           Left = 11
           Top = 14
-          Width = 56
-          Height = 13
+          Width = 52
+          Height = 15
           Caption = #49884#51089#44033#46020':'
         end
         object lblSweepAngle: TLabel
           Left = 11
           Top = 41
-          Width = 56
-          Height = 13
+          Width = 52
+          Height = 15
           Caption = #54204#52840#44033#46020':'
         end
         object btnSetAngleFont: TButton
@@ -663,7 +649,7 @@ object fmLayerEditor: TfmLayerEditor
           Left = 98
           Top = 11
           Width = 50
-          Height = 21
+          Height = 23
           TabStop = False
           TabOrder = 1
           Text = '0'
@@ -673,7 +659,7 @@ object fmLayerEditor: TfmLayerEditor
           Left = 148
           Top = 11
           Width = 16
-          Height = 21
+          Height = 23
           Associate = edtStartAngle
           Min = -1000
           Max = 1000
@@ -683,7 +669,7 @@ object fmLayerEditor: TfmLayerEditor
           Left = 98
           Top = 38
           Width = 48
-          Height = 21
+          Height = 23
           TabStop = False
           TabOrder = 3
           Text = '0'
@@ -693,7 +679,7 @@ object fmLayerEditor: TfmLayerEditor
           Left = 146
           Top = 38
           Width = 16
-          Height = 21
+          Height = 23
           Associate = edtSweepAngle
           Min = -1000
           Max = 1000
@@ -703,43 +689,39 @@ object fmLayerEditor: TfmLayerEditor
       object tabText: TTabSheet
         Caption = #47928#51088
         ImageIndex = 4
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object lblText: TLabel
           Left = 10
           Top = 14
-          Width = 30
-          Height = 13
+          Width = 28
+          Height = 15
           Caption = #47928#51088':'
         end
         object lblAlignment: TLabel
           Left = 10
           Top = 41
-          Width = 30
-          Height = 13
+          Width = 28
+          Height = 15
           Caption = #51221#47148':'
         end
         object lblTextLayout: TLabel
           Left = 11
           Top = 68
-          Width = 30
-          Height = 13
+          Width = 28
+          Height = 15
           Caption = #48176#52824':'
         end
         object lblTextShape: TLabel
           Left = 11
           Top = 95
-          Width = 30
-          Height = 13
+          Width = 28
+          Height = 15
           Caption = #47784#50577':'
         end
         object lblTextOverflow: TLabel
           Left = 11
           Top = 123
-          Width = 57
-          Height = 13
+          Width = 59
+          Height = 15
           Caption = 'Overflow:'
         end
         object btnSetText: TButton
@@ -755,7 +737,7 @@ object fmLayerEditor: TfmLayerEditor
           Left = 42
           Top = 10
           Width = 166
-          Height = 21
+          Height = 23
           Enabled = False
           TabOrder = 1
         end
@@ -763,7 +745,7 @@ object fmLayerEditor: TfmLayerEditor
           Left = 67
           Top = 37
           Width = 141
-          Height = 21
+          Height = 23
           Style = csDropDownList
           TabOrder = 2
           OnChange = LayerControlChange
@@ -776,7 +758,7 @@ object fmLayerEditor: TfmLayerEditor
           Left = 67
           Top = 64
           Width = 141
-          Height = 21
+          Height = 23
           Style = csDropDownList
           TabOrder = 3
           OnChange = LayerControlChange
@@ -844,7 +826,7 @@ object fmLayerEditor: TfmLayerEditor
           Left = 74
           Top = 119
           Width = 134
-          Height = 21
+          Height = 23
           Style = csDropDownList
           TabOrder = 10
           OnChange = LayerControlChange
@@ -858,18 +840,14 @@ object fmLayerEditor: TfmLayerEditor
         BorderWidth = 4
         Caption = #51204#52404
         ImageIndex = 5
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         DesignSize = (
           246
-          238)
+          237)
         object memProps: TMemo
           Left = 0
           Top = 0
           Width = 246
-          Height = 179
+          Height = 178
           Align = alTop
           Anchors = [akLeft, akTop, akRight, akBottom]
           Lines.Strings = (
@@ -880,7 +858,7 @@ object fmLayerEditor: TfmLayerEditor
         end
         object btnUpdateProps: TButton
           Left = 171
-          Top = 185
+          Top = 184
           Width = 75
           Height = 25
           Anchors = [akRight, akBottom]
@@ -1082,7 +1060,7 @@ object fmLayerEditor: TfmLayerEditor
           Left = 75
           Top = 18
           Width = 132
-          Height = 21
+          Height = 23
           Style = csDropDownList
           Anchors = [akLeft, akTop, akRight]
           TabOrder = 3
@@ -1097,7 +1075,7 @@ object fmLayerEditor: TfmLayerEditor
         end
         object btnAdd: TButton
           Left = 208
-          Top = 16
+          Top = 18
           Width = 67
           Height = 25
           Hint = 'Add new layer'
@@ -1136,8 +1114,8 @@ object fmLayerEditor: TfmLayerEditor
         object lblLayerViewStyle: TLabel
           Left = 16
           Top = 535
-          Width = 43
-          Height = 13
+          Width = 40
+          Height = 15
           Anchors = [akLeft, akBottom]
           Caption = #49828#53440#51068':'
         end
@@ -1223,7 +1201,7 @@ object fmLayerEditor: TfmLayerEditor
           Left = 67
           Top = 530
           Width = 89
-          Height = 21
+          Height = 23
           Style = csDropDownList
           Anchors = [akLeft, akBottom]
           ItemIndex = 1
@@ -1257,15 +1235,15 @@ object fmLayerEditor: TfmLayerEditor
         object lblZoom: TLabel
           Left = 11
           Top = 70
-          Width = 30
-          Height = 13
+          Width = 28
+          Height = 15
           Caption = #54869#45824':'
         end
         object lblPreviewQuality: TLabel
           Left = 11
           Top = 96
-          Width = 73
-          Height = 13
+          Width = 68
+          Height = 15
           Caption = #47112#51060#50612' '#54868#51656':'
         end
         object chkStampMode: TCheckBox
@@ -1302,7 +1280,7 @@ object fmLayerEditor: TfmLayerEditor
           Left = 125
           Top = 93
           Width = 102
-          Height = 21
+          Height = 23
           Style = csDropDownList
           TabOrder = 3
           OnChange = cmbPreviewQualityChange

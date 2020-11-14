@@ -2,11 +2,12 @@ inherited fmStaticResultView: TfmStaticResultView
   Caption = #51221#51201#48516#49437#44208#44284#51312#54924
   ClientHeight = 515
   ClientWidth = 819
+  Font.Name = #45208#45588#44256#46357
   OnShow = FormShow
   ExplicitWidth = 825
   ExplicitHeight = 544
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel1: TPanel
     Left = 0
     Top = 0
@@ -91,16 +92,14 @@ inherited fmStaticResultView: TfmStaticResultView
       Width = 557
       object Memo1: TMemo
         Left = 3
-        Top = 15
+        Top = 17
         Width = 551
-        Height = 64
+        Height = 62
         Align = alClient
         TabOrder = 0
         WantTabs = True
-        ExplicitLeft = 32
-        ExplicitTop = 28
-        ExplicitWidth = 185
-        ExplicitHeight = 89
+        ExplicitTop = 15
+        ExplicitHeight = 64
       end
     end
     object btnSave: TBitBtn

@@ -9,14 +9,14 @@ object fmMuscleView: TfmMuscleView
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
   OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object Panel1: TPanel
     Left = 0
     Top = 28
@@ -25,8 +25,6 @@ object fmMuscleView: TfmMuscleView
     Align = alLeft
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitTop = 0
-    ExplicitHeight = 638
     object cxGrid2: TcxGrid
       Left = 0
       Top = 0
@@ -35,10 +33,6 @@ object fmMuscleView: TfmMuscleView
       Align = alClient
       TabOrder = 0
       LookAndFeel.SkinName = 'Black'
-      ExplicitLeft = 177
-      ExplicitTop = 30
-      ExplicitWidth = 312
-      ExplicitHeight = 663
       object gridMuscleImage: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = False
@@ -152,10 +146,6 @@ object fmMuscleView: TfmMuscleView
     Height = 610
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 350
-    ExplicitTop = -25
-    ExplicitWidth = 584
-    ExplicitHeight = 663
     object ImageEnView1: TImageEnView
       Left = 1
       Top = 1
@@ -168,7 +158,6 @@ object fmMuscleView: TfmMuscleView
       Align = alTop
       TabOrder = 0
       OnDblClick = ImageEnView1DblClick
-      ExplicitWidth = 582
     end
     object IERichEdit1: TIERichEdit
       Left = 1
@@ -176,9 +165,9 @@ object fmMuscleView: TfmMuscleView
       Width = 595
       Height = 138
       RTFText = 
-        '{\rtf1\ansi\ansicpg949\deff0{\fonttbl{\f0\fnil\fcharset129 \'#39'b3\' +
-        #39'aa\'#39'b4\'#39'ae\'#39'b8\'#39'ed\'#39'c1\'#39'b6;}}'#13#10'\viewkind4\uc1\pard\lang1042\f0\' +
-        'fs24\par'#13#10'}'#13#10#0
+        '{\rtf1\ansi\deff0{\fonttbl{\f0\fnil\fcharset129 \'#39'b3\'#39'aa\'#39'b4\'#39'ae' +
+        '\'#39'b8\'#39'ed\'#39'c1\'#39'b6;}}'#13#10'\viewkind4\uc1\pard\lang1042\f0\fs24\par'#13#10'}' +
+        #13#10#0
       Align = alClient
       Font.Charset = HANGEUL_CHARSET
       Font.Color = clWindowText
@@ -187,8 +176,6 @@ object fmMuscleView: TfmMuscleView
       Font.Style = []
       ParentFont = False
       TabOrder = 1
-      ExplicitWidth = 582
-      ExplicitHeight = 191
     end
     object IERichEditToolbar1: TIERichEditToolbar
       Left = 1
@@ -199,7 +186,6 @@ object fmMuscleView: TfmMuscleView
       ButtonWidth = 31
       Caption = 'IERichEditToolbar1'
       TabOrder = 2
-      ExplicitWidth = 582
     end
     object Panel4: TPanel
       Left = 1
@@ -208,8 +194,6 @@ object fmMuscleView: TfmMuscleView
       Height = 33
       Align = alBottom
       TabOrder = 3
-      ExplicitTop = 629
-      ExplicitWidth = 582
       object btnSave: TcxButton
         Left = 210
         Top = 3
@@ -267,18 +251,16 @@ object fmMuscleView: TfmMuscleView
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 30
+      Width = 28
       Height = 20
       Align = alLeft
       Caption = #54637#47785':'
       Layout = tlCenter
-      ExplicitLeft = 16
-      ExplicitTop = 6
-      ExplicitHeight = 13
+      ExplicitHeight = 15
     end
     object lcMain: TcxLookupComboBox
       AlignWithMargins = True
-      Left = 38
+      Left = 36
       Top = 2
       Margins.Left = 1
       Margins.Top = 1
@@ -295,14 +277,12 @@ object fmMuscleView: TfmMuscleView
       Properties.ListSource = dmDBCommon.ds_MUSCLE_MAIN_SEL
       Properties.OnCloseUp = lcMainPropertiesCloseUp
       TabOrder = 0
-      ExplicitLeft = 52
-      ExplicitTop = 3
-      ExplicitHeight = 21
+      ExplicitLeft = 38
       Width = 101
     end
     object btnView: TcxButton
       AlignWithMargins = True
-      Left = 141
+      Left = 139
       Top = 2
       Width = 56
       Height = 24
@@ -314,8 +294,7 @@ object fmMuscleView: TfmMuscleView
       Caption = #54869#51064
       TabOrder = 1
       OnClick = btnViewClick
-      ExplicitLeft = 349
-      ExplicitHeight = 23
+      ExplicitLeft = 141
     end
     object btnImageEdit: TcxButton
       AlignWithMargins = True

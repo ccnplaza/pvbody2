@@ -8,7 +8,7 @@ object fmPostureEditor2: TfmPostureEditor2
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = #44404#47548
+  Font.Name = #45208#45588#44256#46357
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
@@ -17,7 +17,7 @@ object fmPostureEditor2: TfmPostureEditor2
   OnResize = FormResize
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   inline frmImageEditor21: TfrmImageEditor2
     Left = 0
     Top = 0
@@ -27,7 +27,7 @@ object fmPostureEditor2: TfmPostureEditor2
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
-    Font.Name = #44404#47548
+    Font.Name = #45208#45588#44256#46357
     Font.Style = []
     ParentFont = False
     TabOrder = 0
@@ -48,10 +48,10 @@ object fmPostureEditor2: TfmPostureEditor2
           ExplicitHeight = 723
           ClientRectBottom = 718
           inherited cxTabSheet1: TcxTabSheet
-            ExplicitHeight = 693
+            ExplicitHeight = 691
             inherited pnl2: TPanel
-              Height = 693
-              ExplicitHeight = 693
+              Height = 691
+              ExplicitHeight = 691
               inherited cxGroupBox1: TcxGroupBox
                 inherited colorLine: TdxColorEdit
                   Style.IsFontAssigned = True
@@ -71,14 +71,6 @@ object fmPostureEditor2: TfmPostureEditor2
               end
             end
           end
-          inherited cxTabSheet2: TcxTabSheet
-            inherited pnl3: TPanel
-              Height = 655
-              inherited ImageEnMView1: TImageEnMView
-                Height = 610
-              end
-            end
-          end
         end
       end
       inherited pnl5: TPanel
@@ -89,9 +81,6 @@ object fmPostureEditor2: TfmPostureEditor2
         inherited pnl6: TPanel
           Width = 1166
           ExplicitWidth = 1166
-          inherited btnSaveDraw: TBitBtn
-            OnClick = frmImageEditor21btnSaveDrawClick
-          end
         end
         inherited Panel1: TPanel
           Width = 1166
@@ -101,8 +90,7 @@ object fmPostureEditor2: TfmPostureEditor2
           inherited ImageEnVect1: TImageEnVect
             Width = 564
             Height = 695
-            ExplicitLeft = 251
-            ExplicitWidth = 664
+            ExplicitWidth = 564
             ExplicitHeight = 695
           end
           inherited cxPageControl2: TcxPageControl
@@ -111,40 +99,236 @@ object fmPostureEditor2: TfmPostureEditor2
             ExplicitHeight = 695
             ClientRectBottom = 695
             inherited cxTabSheet4: TcxTabSheet
-              ExplicitLeft = 0
-              ExplicitTop = 20
-              ExplicitWidth = 250
-              ExplicitHeight = 675
               inherited HotSpotImage1: THotSpotImage
-                Height = 675
+                Height = 673
+                HotSpots = <
+                  item
+                    ShapeType = stPolygon
+                    Name = 'neck'
+                    ID = 1
+                    X = 113
+                    Y = 73
+                    Width = 72
+                    Height = 27
+                    Clipped = True
+                    Down = False
+                    HoverColor = clNone
+                    ClickColor = clNone
+                    SelectedColor = clNone
+                    BlinkColor = clWhite
+                    HoverImageIndex = -1
+                    ClickImageIndex = -1
+                    SelectedImageIndex = -1
+                    BlinkImageIndex = -1
+                    PolyPoints = (
+                      4
+                      0
+                      113.000000000000000000
+                      73.252336448598160000
+                      185.000000000000000000
+                      73.000000000000000000
+                      185.000000000000000000
+                      99.747663551401870000
+                      113.000000000000000000
+                      100.000000000000000000)
+                  end
+                  item
+                    ShapeType = stPolygon
+                    Name = 'chest'
+                    ID = 2
+                    X = 88
+                    Y = 130
+                    Width = 133
+                    Height = 96
+                    Clipped = True
+                    Down = False
+                    HoverColor = clNone
+                    ClickColor = clNone
+                    SelectedColor = clNone
+                    BlinkColor = clWhite
+                    HoverImageIndex = -1
+                    ClickImageIndex = -1
+                    SelectedImageIndex = -1
+                    BlinkImageIndex = -1
+                    PolyPoints = (
+                      4
+                      0
+                      88.000000000000000000
+                      130.000000000000000000
+                      221.000000000000000000
+                      130.000000000000000000
+                      221.000000000000000000
+                      226.000000000000000000
+                      88.000000000000000000
+                      226.000000000000000000)
+                  end
+                  item
+                    ShapeType = stPolygon
+                    Name = 'arm1'
+                    ID = 3
+                    X = 15
+                    Y = 101
+                    Width = 52
+                    Height = 179
+                    Clipped = True
+                    Down = False
+                    HoverColor = clNone
+                    ClickColor = clNone
+                    SelectedColor = clNone
+                    BlinkColor = clWhite
+                    HoverImageIndex = -1
+                    ClickImageIndex = -1
+                    SelectedImageIndex = -1
+                    BlinkImageIndex = -1
+                    PolyPoints = (
+                      4
+                      0
+                      16.268292682926830000
+                      101.000000000000000000
+                      67.000000000000000000
+                      101.000000000000000000
+                      65.731707317073170000
+                      280.000000000000000000
+                      15.000000000000000000
+                      280.000000000000000000)
+                  end
+                  item
+                    ShapeType = stPolygon
+                    Name = 'arm2'
+                    ID = 4
+                    X = 228
+                    Y = 98
+                    Width = 66
+                    Height = 182
+                    Clipped = True
+                    Down = False
+                    HoverColor = clNone
+                    ClickColor = clNone
+                    SelectedColor = clNone
+                    BlinkColor = clWhite
+                    HoverImageIndex = -1
+                    ClickImageIndex = -1
+                    SelectedImageIndex = -1
+                    BlinkImageIndex = -1
+                    PolyPoints = (
+                      4
+                      0
+                      228.000000000000000000
+                      98.000000000000000000
+                      294.000000000000000000
+                      98.000000000000000000
+                      294.000000000000000000
+                      279.999999999999900000
+                      228.000000000000000000
+                      279.999999999999900000)
+                  end
+                  item
+                    ShapeType = stPolygon
+                    Name = 'hight_body'
+                    ID = 5
+                    X = 72
+                    Y = 247
+                    Width = 150
+                    Height = 32
+                    Clipped = True
+                    Down = False
+                    HoverColor = clNone
+                    ClickColor = clNone
+                    SelectedColor = clNone
+                    BlinkColor = clWhite
+                    HoverImageIndex = -1
+                    ClickImageIndex = -1
+                    SelectedImageIndex = -1
+                    BlinkImageIndex = -1
+                    PolyPoints = (
+                      4
+                      0
+                      71.999999999999990000
+                      247.000000000000000000
+                      222.000000000000000000
+                      247.000000000000000000
+                      222.000000000000000000
+                      279.000000000000000000
+                      71.999999999999990000
+                      279.000000000000000000)
+                  end
+                  item
+                    ShapeType = stPolygon
+                    Name = 'knee'
+                    ID = 6
+                    X = 51
+                    Y = 300
+                    Width = 194
+                    Height = 131
+                    Clipped = True
+                    Down = False
+                    HoverColor = clNone
+                    ClickColor = clNone
+                    SelectedColor = clNone
+                    BlinkColor = clWhite
+                    HoverImageIndex = -1
+                    ClickImageIndex = -1
+                    SelectedImageIndex = -1
+                    BlinkImageIndex = -1
+                    PolyPoints = (
+                      4
+                      0
+                      51.000000000000000000
+                      299.999999999999900000
+                      245.000000000000000000
+                      299.999999999999900000
+                      245.000000000000000000
+                      431.000000000000000000
+                      51.000000000000000000
+                      431.000000000000000000)
+                  end
+                  item
+                    ShapeType = stPolygon
+                    Name = 'foot'
+                    ID = 7
+                    X = 51
+                    Y = 443
+                    Width = 194
+                    Height = 149
+                    Clipped = True
+                    Down = False
+                    HoverColor = clNone
+                    ClickColor = clNone
+                    SelectedColor = clNone
+                    BlinkColor = clWhite
+                    HoverImageIndex = -1
+                    ClickImageIndex = -1
+                    SelectedImageIndex = -1
+                    BlinkImageIndex = -1
+                    PolyPoints = (
+                      4
+                      0
+                      51.000000000000000000
+                      443.000000000000000000
+                      245.000000000000000000
+                      443.000000000000000000
+                      245.000000000000000000
+                      592.000000000000000000
+                      51.000000000000000000
+                      592.000000000000000000)
+                  end>
               end
             end
             inherited cxTabSheet5: TcxTabSheet
-              ExplicitLeft = 0
-              ExplicitTop = 20
-              ExplicitWidth = 250
-              ExplicitHeight = 637
+              ExplicitHeight = 673
               inherited HotSpotImage2: THotSpotImage
-                Height = 675
+                Height = 673
               end
             end
             inherited cxTabSheet6: TcxTabSheet
-              ExplicitLeft = 0
-              ExplicitTop = 20
-              ExplicitWidth = 250
-              ExplicitHeight = 637
-              inherited HotSpotImage3: THotSpotImage
-                Height = 675
-              end
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
             end
             inherited cxTabSheet7: TcxTabSheet
-              ExplicitLeft = 0
-              ExplicitTop = 20
-              ExplicitWidth = 250
-              ExplicitHeight = 637
-              inherited HotSpotImage4: THotSpotImage
-                Height = 675
-              end
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
             end
           end
           inherited cxPageControl3: TcxPageControl
@@ -155,39 +339,14 @@ object fmPostureEditor2: TfmPostureEditor2
             ExplicitHeight = 695
             ClientRectBottom = 695
             inherited cxTabSheet8: TcxTabSheet
-              ExplicitLeft = 0
-              ExplicitTop = 20
-              ExplicitWidth = 250
-              ExplicitHeight = 675
               inherited HotSpotImage5: THotSpotImage
-                Height = 675
-              end
-            end
-            inherited cxTabSheet9: TcxTabSheet
-              ExplicitLeft = 0
-              ExplicitTop = 20
-              ExplicitWidth = 250
-              ExplicitHeight = 637
-              inherited HotSpotImage6: THotSpotImage
-                Height = 675
+                Height = 673
               end
             end
             inherited cxTabSheet10: TcxTabSheet
-              ExplicitLeft = 0
-              ExplicitTop = 20
-              ExplicitWidth = 250
-              ExplicitHeight = 637
+              ExplicitHeight = 673
               inherited HotSpotImage7: THotSpotImage
-                Height = 675
-              end
-            end
-            inherited cxTabSheet11: TcxTabSheet
-              ExplicitLeft = 0
-              ExplicitTop = 20
-              ExplicitWidth = 250
-              ExplicitHeight = 637
-              inherited HotSpotImage8: THotSpotImage
-                Height = 675
+                Height = 673
               end
             end
           end
