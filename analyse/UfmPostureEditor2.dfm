@@ -81,6 +81,9 @@ object fmPostureEditor2: TfmPostureEditor2
         inherited pnl6: TPanel
           Width = 1166
           ExplicitWidth = 1166
+          inherited btnSaveDraw: TBitBtn
+            OnClick = frmImageEditor21btnSaveDrawClick
+          end
         end
         inherited Panel1: TPanel
           Width = 1166
@@ -107,9 +110,9 @@ object fmPostureEditor2: TfmPostureEditor2
                     Name = 'neck'
                     ID = 1
                     X = 113
-                    Y = 73
+                    Y = 65
                     Width = 72
-                    Height = 27
+                    Height = 23
                     Clipped = True
                     Down = False
                     HoverColor = clNone
@@ -124,22 +127,22 @@ object fmPostureEditor2: TfmPostureEditor2
                       4
                       0
                       113.000000000000000000
-                      73.252336448598160000
+                      65.214953271028070000
                       185.000000000000000000
-                      73.000000000000000000
+                      65.000000000000000000
                       185.000000000000000000
-                      99.747663551401870000
+                      87.785046728971960000
                       113.000000000000000000
-                      100.000000000000000000)
+                      88.000000000000000000)
                   end
                   item
                     ShapeType = stPolygon
                     Name = 'chest'
                     ID = 2
                     X = 88
-                    Y = 130
+                    Y = 115
                     Width = 133
-                    Height = 96
+                    Height = 85
                     Clipped = True
                     Down = False
                     HoverColor = clNone
@@ -154,22 +157,22 @@ object fmPostureEditor2: TfmPostureEditor2
                       4
                       0
                       88.000000000000000000
-                      130.000000000000000000
+                      115.000000000000000000
                       221.000000000000000000
-                      130.000000000000000000
+                      115.000000000000000000
                       221.000000000000000000
-                      226.000000000000000000
+                      200.000000000000000000
                       88.000000000000000000
-                      226.000000000000000000)
+                      200.000000000000000000)
                   end
                   item
                     ShapeType = stPolygon
                     Name = 'arm1'
                     ID = 3
                     X = 15
-                    Y = 101
+                    Y = 89
                     Width = 52
-                    Height = 179
+                    Height = 159
                     Clipped = True
                     Down = False
                     HoverColor = clNone
@@ -184,22 +187,22 @@ object fmPostureEditor2: TfmPostureEditor2
                       4
                       0
                       16.268292682926830000
-                      101.000000000000000000
+                      89.000000000000000000
                       67.000000000000000000
-                      101.000000000000000000
+                      89.000000000000000000
                       65.731707317073170000
-                      280.000000000000000000
+                      248.000000000000000000
                       15.000000000000000000
-                      280.000000000000000000)
+                      248.000000000000000000)
                   end
                   item
                     ShapeType = stPolygon
                     Name = 'arm2'
                     ID = 4
                     X = 228
-                    Y = 98
+                    Y = 87
                     Width = 66
-                    Height = 182
+                    Height = 161
                     Clipped = True
                     Down = False
                     HoverColor = clNone
@@ -214,22 +217,22 @@ object fmPostureEditor2: TfmPostureEditor2
                       4
                       0
                       228.000000000000000000
-                      98.000000000000000000
+                      87.000000000000000000
                       294.000000000000000000
-                      98.000000000000000000
+                      87.000000000000000000
                       294.000000000000000000
-                      279.999999999999900000
+                      247.999999999999900000
                       228.000000000000000000
-                      279.999999999999900000)
+                      247.999999999999900000)
                   end
                   item
                     ShapeType = stPolygon
                     Name = 'hight_body'
                     ID = 5
                     X = 72
-                    Y = 247
+                    Y = 218
                     Width = 150
-                    Height = 32
+                    Height = 29
                     Clipped = True
                     Down = False
                     HoverColor = clNone
@@ -244,22 +247,22 @@ object fmPostureEditor2: TfmPostureEditor2
                       4
                       0
                       71.999999999999990000
-                      247.000000000000000000
+                      218.000000000000000000
+                      222.000000000000000000
+                      218.000000000000000000
                       222.000000000000000000
                       247.000000000000000000
-                      222.000000000000000000
-                      279.000000000000000000
                       71.999999999999990000
-                      279.000000000000000000)
+                      247.000000000000000000)
                   end
                   item
                     ShapeType = stPolygon
                     Name = 'knee'
                     ID = 6
                     X = 51
-                    Y = 300
+                    Y = 265
                     Width = 194
-                    Height = 131
+                    Height = 116
                     Clipped = True
                     Down = False
                     HoverColor = clNone
@@ -274,22 +277,22 @@ object fmPostureEditor2: TfmPostureEditor2
                       4
                       0
                       51.000000000000000000
-                      299.999999999999900000
+                      264.999999999999900000
                       245.000000000000000000
-                      299.999999999999900000
+                      264.999999999999900000
                       245.000000000000000000
-                      431.000000000000000000
+                      381.000000000000000000
                       51.000000000000000000
-                      431.000000000000000000)
+                      381.000000000000000000)
                   end
                   item
                     ShapeType = stPolygon
                     Name = 'foot'
                     ID = 7
                     X = 51
-                    Y = 443
+                    Y = 392
                     Width = 194
-                    Height = 149
+                    Height = 132
                     Clipped = True
                     Down = False
                     HoverColor = clNone
@@ -304,31 +307,16 @@ object fmPostureEditor2: TfmPostureEditor2
                       4
                       0
                       51.000000000000000000
-                      443.000000000000000000
+                      392.000000000000000000
                       245.000000000000000000
-                      443.000000000000000000
+                      392.000000000000000000
                       245.000000000000000000
-                      592.000000000000000000
+                      524.000000000000000000
                       51.000000000000000000
-                      592.000000000000000000)
+                      524.000000000000000000)
                   end>
+                ExplicitHeight = 673
               end
-            end
-            inherited cxTabSheet5: TcxTabSheet
-              ExplicitHeight = 673
-              inherited HotSpotImage2: THotSpotImage
-                Height = 673
-              end
-            end
-            inherited cxTabSheet6: TcxTabSheet
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
-            end
-            inherited cxTabSheet7: TcxTabSheet
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
             end
           end
           inherited cxPageControl3: TcxPageControl
@@ -341,12 +329,7 @@ object fmPostureEditor2: TfmPostureEditor2
             inherited cxTabSheet8: TcxTabSheet
               inherited HotSpotImage5: THotSpotImage
                 Height = 673
-              end
-            end
-            inherited cxTabSheet10: TcxTabSheet
-              ExplicitHeight = 673
-              inherited HotSpotImage7: THotSpotImage
-                Height = 673
+                ExplicitHeight = 673
               end
             end
           end

@@ -130,7 +130,6 @@ type
     ImageEnVect2Print: TImageEnVect;
     ImageEnVect4Print: TImageEnVect;
     btnDeleteLayer: TBitBtn;
-    BMDThread1: TBMDThread;
     LayerWindow: TImageEnView;
     btnSaveLayers: TBitBtn;
     btnDrawing: TBitBtn;
@@ -143,6 +142,7 @@ type
     BitBtn2: TBitBtn;
     cxButton1: TcxButton;
     btnLatlist: TBitBtn;
+    btnSave: TcxButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure frmImageMultiView1ImageEnMView1DblClick(Sender: TObject);
     procedure btnFindMemberClick(Sender: TObject);
@@ -159,11 +159,9 @@ type
     procedure btnDelClick(Sender: TObject);
     procedure btnRefreshClick(Sender: TObject);
     procedure FormResize(Sender: TObject);
-    procedure edtTrackBarPropertiesChange(Sender: TObject);
     procedure btnDeleteClick(Sender: TObject);
     procedure btnEditImageClick(Sender: TObject);
     procedure ImageEnMView1AfterEvent(Sender: TObject; Event: TIEAfterEvent);
-    procedure ImageEnMView1Changed(Sender: TObject);
     procedure ImageEnMView1DblClick(Sender: TObject);
     procedure ImageEnMView1DragDrop(Sender, Source: TObject; X, Y: Integer);
     procedure ImageEnMView1DragOver(Sender, Source: TObject; X, Y: Integer;
@@ -202,8 +200,6 @@ type
     procedure btnDeleteLayerClick(Sender: TObject);
     procedure edtNameExit(Sender: TObject);
     procedure TrackBar1Change(Sender: TObject);
-    procedure BMDThread1Execute(Sender: TObject; Thread: TBMDExecuteThread;
-      var Data: Pointer);
     procedure BMDThread1Start(Sender: TObject; Thread: TBMDExecuteThread;
       var Data: Pointer);
     procedure BMDThread1Terminate(Sender: TObject; Thread: TBMDExecuteThread;
@@ -225,6 +221,8 @@ type
     procedure BitBtn2Click(Sender: TObject);
     procedure cxButton1Click(Sender: TObject);
     procedure btnLatlistClick(Sender: TObject);
+    procedure btnSaveClick(Sender: TObject);
+    procedure edtTrackBarPropertiesEditValueChanged(Sender: TObject);
   private
     fShapeProps: TShapeProps;
     fLineProps : TLineProps;
@@ -365,39 +363,6 @@ begin
   LayerWindow.Update();
 end;
 
-procedure TfmCompareList2.BMDThread1Execute(Sender: TObject;
-  Thread: TBMDExecuteThread; var Data: Pointer);
-var
-  i, cnt, idx, thumb_id : integer;
-  img_name, drw_name : string;
-  mStream, dStream : TMemoryStream;
-begin
-  ImageEnMView1.LockPaint;
-  ImageEnMView1.Clear;
-  ImageEnMView1.TextTruncSide := iemtsLeft;
-  with dmDBCommon do begin
-    cnt := IMAGES_SEL.RecordCount;
-    IMAGES_SEL.First;
-    for i := 0 to cnt - 1 do begin
-      mStream := TMemoryStream.Create;
-      IMAGES_SELIMAGE_DATA.SaveToStream(mStream);
-      if mStream.Size > 10 then begin
-        mStream.Position := 0;
-        idx := ImageEnMView1.AppendImage;
-        ImageEnMView1.SetImageFromStream(idx, mStream);
-        ImageEnMView1.ImageID[idx] := IMAGES_SELID.Value;
-        ImageEnMView1.ImageTopText[idx] := IntToStr(IMAGES_SELID.Value);
-        //ImageEnMView1.Update();
-      end;
-      mStream.Free;
-      IMAGES_SEL.Next;
-    end;
-  end;
-  //ImageEnMView1.Sort(iesb);
-  ImageEnMView1.UnlockPaint;
-  ImageEnMView1.SelectedImage := 0;
-end;
-
 procedure TfmCompareList2.BMDThread1Start(Sender: TObject;
   Thread: TBMDExecuteThread; var Data: Pointer);
 begin
@@ -481,6 +446,20 @@ procedure TfmCompareList2.btnArrowClick(Sender: TObject);
 begin
   LayerWindow.MouseInteractLayers := [mlMoveLayers, mlResizeLayers, mlRotateLayers];
 //  LayerWindow.Update();
+end;
+
+procedure TfmCompareList2.btnSaveClick(Sender: TObject);
+var
+  i, id, cnt, idx : Integer;
+begin
+  cnt := ImageEnMView1.ImageCount;
+  for i := 0 to cnt - 1 do begin
+    id := StrToInt(ImageEnMView1.ImageFileName[i]);
+    dmDBCommon.IMAGES_UPD_IDX.ParamByName('ID').Value := id;
+    dmDBCommon.IMAGES_UPD_IDX.ParamByName('IDX').Value := i + 1;
+    dmDBCommon.IMAGES_UPD_IDX.ExecProc;
+  end;
+  dmDBCommon.ds_IMAGES_SEL.DataSet.Refresh;
 end;
 
 procedure TfmCompareList2.btnSaveLayersClick(Sender: TObject);
@@ -739,20 +718,18 @@ end;
 
 procedure TfmCompareList2.RetrieveMemberInfo;
 begin
+  Screen.Cursor := crHourGlass;
   edtName.Text := CustomerImages.CustName;
   pnlNo.Caption := CustomerImages.CustTel;
   gbMember.Refresh;
-  //retrieve all image list...
   dmDBCommon.IMAGES_SEL_BYDATE.ParamByName('C_ID').Value := CustomerImages.CustID;
   dmDBCommon.IMAGES_SEL_BYDATE.Open;
   dmDBCommon.ds_IMAGES_SEL_BYDATE.DataSet.Refresh;
   dmDBCommon.IMAGES_SEL_BYDATE.Locate('P_DATE', CustomerImages.PDate, []);
-  //retrieve selected list...
   dmDBCommon.RetrievePictureByDate;
   RetrieveThumbnailList;
-  //insert last customer...
   dmDBCommon.InsertLatestCustomer;
-//  RetrieveCheckResult;
+  Screen.Cursor := crArrow;
 end;
 
 procedure TfmCompareList2.RetrieveThumbnailList;
@@ -776,7 +753,7 @@ begin
         ImageEnMView1.SetImageFromStream(idx, mStream);
         ImageEnMView1.ImageID[idx] := IMAGES_SELID.Value;
         ImageEnMView1.ImageTopText[idx] := IntToStr(IMAGES_SELID.Value);
-        //ImageEnMView1.Update();
+        //ImageEnMView1.ImageFileName[idx] := IntToStr(IMAGES_SELID.Value);
       end;
       mStream.Free;
       IMAGES_SEL.Next;
@@ -785,7 +762,6 @@ begin
   ImageEnMView1.Sort(iesbTopText);
   ImageEnMView1.UnlockPaint;
   ImageEnMView1.SelectedImage := 0;
-//  ImageEnMView1.Update();
 end;
 
 procedure TfmCompareList2.TrackBar1Change(Sender: TObject);
@@ -970,12 +946,8 @@ end;
 procedure TfmCompareList2.btnStaticCheckClick(Sender: TObject);
 begin
   fmStaticCheck := TfmStaticCheck.Create(Self);
-  try
-    fmStaticCheck.PICTURE_DATE := gridCheckP_DATE.EditValue;
-    fmStaticCheck.ShowModal;
-  finally
-    fmStaticCheck.Free;
-  end;
+  fmStaticCheck.PICTURE_DATE := gridCheckP_DATE.EditValue;
+  fmStaticCheck.Show;
 end;
 
 procedure TfmCompareList2.btnTextClick(Sender: TObject);
@@ -1124,10 +1096,10 @@ begin
   btnFindMember.Click;
 end;
 
-procedure TfmCompareList2.edtTrackBarPropertiesChange(Sender: TObject);
+procedure TfmCompareList2.edtTrackBarPropertiesEditValueChanged(
+  Sender: TObject);
 begin
   ImageEnMView1.Zoom := edtTrackBar.Value;
-//  ImageEnMView1.Update;
 end;
 
 procedure TfmCompareList2.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -1240,42 +1212,10 @@ begin
   if LIST_LOADED then begin
     dmDBCommon.RetrievePictureByDate;
     RetrieveThumbnailList;
+    //BMDThread1.Start;
   end;
 end;
 
-{
-procedure TfmCompareList2.RetrieveThumbnailLIst;
-var
-  i, cnt, idx, thumb_id : integer;
-  img_name, drw_name : string;
-  mStream, dStream : TMemoryStream;
-begin
-  ImageEnMView1.LockPaint;
-  ImageEnMView1.Clear;
-  ImageEnMView1.TextTruncSide := iemtsLeft;
-  with dmDBCommon do begin
-    cnt := IMAGES_SEL.RecordCount;
-    IMAGES_SEL.First;
-    for i := 0 to cnt - 1 do begin
-      mStream := TMemoryStream.Create;
-      IMAGES_SELIMAGE_DATA.SaveToStream(mStream);
-      if mStream.Size > 10 then begin
-        mStream.Position := 0;
-        idx := ImageEnMView1.AppendImage;
-        ImageEnMView1.SetImageFromStream(idx, mStream);
-        ImageEnMView1.ImageID[idx] := IMAGES_SELID.Value;
-        ImageEnMView1.ImageTopText[idx] := IntToStr(IMAGES_SELID.Value);
-        //ImageEnMView1.Update();
-      end;
-      mStream.Free;
-      IMAGES_SEL.Next;
-    end;
-  end;
-  //ImageEnMView1.Sort(iesb);
-  ImageEnMView1.UnlockPaint;
-  ImageEnMView1.SelectedImage := 0;
-end;
-}
 procedure TfmCompareList2.ImageEnMView1AfterEvent(Sender: TObject;
   Event: TIEAfterEvent);
 var
@@ -1297,19 +1237,6 @@ begin
       MoveTo(ImgX + 10, ImgY);
       LineTo(ImgX + ImageEnMView1.ThumbWidth - 10, ImgY);
     end;
-  end;
-end;
-
-procedure TfmCompareList2.ImageEnMView1Changed(Sender: TObject);
-var
-  i, id, cnt, idx : Integer;
-begin
-  cnt := ImageEnMView1.ImageCount;
-  for i := 0 to cnt - 1 do begin
-    id := ImageEnMView1.ImageID[i];
-    dmDBCommon.IMAGES_UPD_IDX.ParamByName('ID').Value := id;
-    dmDBCommon.IMAGES_UPD_IDX.ParamByName('IDX').Value := i + 1;
-    dmDBCommon.IMAGES_UPD_IDX.ExecProc;
   end;
 end;
 

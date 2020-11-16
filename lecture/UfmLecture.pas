@@ -219,6 +219,8 @@ type
     btnFilterClear: TcxButton;
     cxGridPopupMenu2: TcxGridPopupMenu;
     icbCenter: TcxImageComboBox;
+    icbQryKind: TcxImageComboBox;
+    Button1: TButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure btnAddCustLecClick(Sender: TObject);
@@ -268,6 +270,8 @@ type
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
     procedure icbCenterPropertiesCloseUp(Sender: TObject);
+    procedure icbQryKindPropertiesCloseUp(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     procedure ShowMemberData;
     { Private declarations }
@@ -401,23 +405,33 @@ end;
 
 procedure TfmLecture.btnBreakClick(Sender: TObject);
 var
-  toprow : Integer;
+  toprow, day_cnt, is_done : Integer;
+  old_end, new_end, start_date, end_date, new_date : TDate;
 begin
   fmLectureBreakList := TfmLectureBreakList.Create(Self);
   try
     fmLectureBreakList.LECTURE_ID := gridLectureCustID.EditValue;
     fmLectureBreakList.ShowModal;
     if fmLectureBreakList.ModalResult = mrOk then begin
-      LESSON_CUSTOMER_UPD_BREAK.ParamByName('ID').Value := CurrentLectureID;
-      if fmLectureBreakList.gridBreakBREAK_STATUS.EditValue = 1 then begin
-        LESSON_CUSTOMER_UPD_BREAK.ParamByName('IS_DONE').Value := 3;
-        LESSON_CUSTOMER_UPD_BREAK.ParamByName('BREAK_START').Value := fmLectureBreakList.gridBreakSTART_DATE.EditValue;
-        LESSON_CUSTOMER_UPD_BREAK.ParamByName('BREAK_END').Value := fmLectureBreakList.gridBreakEND_DATE.EditValue;
+      old_end := gridLectureCustEND_DATE.EditValue;
+      start_date := fmLectureBreakList.BREAK_START;
+      end_date := fmLectureBreakList.BREAK_END;
+      day_cnt := DaysBetween(start_date, end_date)+1;
+      new_date := old_end + day_cnt;
+      if new_date >= Date then begin
+        if end_date >= Date then
+          is_done := 3
+        else
+          is_done := 0;
       end else begin
-        LESSON_CUSTOMER_UPD_BREAK.ParamByName('IS_DONE').Value := 0;
-        LESSON_CUSTOMER_UPD_BREAK.ParamByName('BREAK_START').Clear;
-        LESSON_CUSTOMER_UPD_BREAK.ParamByName('BREAK_END').Clear;
+        is_done := 1;
       end;
+
+      LESSON_CUSTOMER_UPD_BREAK.ParamByName('ID').Value := CurrentLectureID;
+      LESSON_CUSTOMER_UPD_BREAK.ParamByName('IS_DONE').Value := is_done;
+      LESSON_CUSTOMER_UPD_BREAK.ParamByName('BREAK_START').Value := start_date;
+      LESSON_CUSTOMER_UPD_BREAK.ParamByName('BREAK_END').Value := end_date;
+      LESSON_CUSTOMER_UPD_BREAK.ParamByName('NEW_END_DATE').Value := new_date;
       LESSON_CUSTOMER_UPD_BREAK.ExecProc;
       toprow := gridLectureCust.Controller.TopRecordIndex;
       gridLectureCust.DataController.SaveBookmark;
@@ -426,10 +440,20 @@ begin
       gridLectureCust.DataController.GotoBookmark;
     end;
     if fmLectureBreakList.ModalResult = mrAbort then begin
+      old_end := gridLectureCustEND_DATE.EditValue;
+      start_date := fmLectureBreakList.BREAK_START;
+      end_date := fmLectureBreakList.BREAK_END;
+      day_cnt := DaysBetween(start_date, end_date)+1;
+      new_date := old_end - day_cnt;
+      if new_date >= Date then
+        is_done := 0
+      else
+        is_done := 1;
       LESSON_CUSTOMER_UPD_BREAK.ParamByName('ID').Value := CurrentLectureID;
-      LESSON_CUSTOMER_UPD_BREAK.ParamByName('IS_DONE').Value := 0;
+      LESSON_CUSTOMER_UPD_BREAK.ParamByName('IS_DONE').Value := is_done;
       LESSON_CUSTOMER_UPD_BREAK.ParamByName('BREAK_START').Clear;
       LESSON_CUSTOMER_UPD_BREAK.ParamByName('BREAK_END').Clear;
+      LESSON_CUSTOMER_UPD_BREAK.ParamByName('NEW_END_DATE').Value := new_date;
       LESSON_CUSTOMER_UPD_BREAK.ExecProc;
 
       toprow := gridLectureCust.Controller.TopRecordIndex;
@@ -683,14 +707,8 @@ procedure TfmLecture.btnEndUpdateClick(Sender: TObject);
 begin
   Screen.Cursor := crHourGlass;
   IsMyAction := True;
-
-  LESSON_CUSTOMER_UPD_ENDSTATUS.ParamByName('S_CENTER').Value := S_CENTER;
-  LESSON_CUSTOMER_UPD_ENDSTATUS.ParamByName('E_CENTER').Value := E_CENTER;
-  LESSON_CUSTOMER_UPD_ENDSTATUS.ParamByName('EDATE').Value := Date;
   LESSON_CUSTOMER_UPD_ENDSTATUS.ExecProc;
-
   btnView.Click;
-
   cxGrid3.SetFocus;
   IsMyAction := False;
   Screen.Cursor := crArrow;
@@ -914,6 +932,7 @@ begin
   dmDBCommon.LESSON_CUSTOMER_MIXSEL.ParamByName('COMP_ID').Value := LoginUserCompID;
   dmDBCommon.LESSON_CUSTOMER_MIXSEL.ParamByName('S_DATE').Value := s_date.Date;
   dmDBCommon.LESSON_CUSTOMER_MIXSEL.ParamByName('E_DATE').Value := e_date.Date;
+  dmDBCommon.LESSON_CUSTOMER_MIXSEL.ParamByName('QRY_KIND').Value := icbQryKind.EditValue;
   dmDBCommon.LESSON_CUSTOMER_MIXSEL.Active := True;
   dmDBCommon.d_LESSON_CUSTOMER_MIXSEL.DataSet.Refresh;
   if icbCenter.EditValue > 0 then begin
@@ -924,6 +943,11 @@ begin
     dmDBCommon.LESSON_CUSTOMER_MIXSEL.Filtered := False;
   end;
   ShowMemberData;
+end;
+
+procedure TfmLecture.Button1Click(Sender: TObject);
+begin
+  ShowMessage(LoginUserCompID);
 end;
 
 procedure TfmLecture.ShowMemberData;
@@ -1043,6 +1067,11 @@ begin
 end;
 
 procedure TfmLecture.icbCenterPropertiesCloseUp(Sender: TObject);
+begin
+  btnView.Click;
+end;
+
+procedure TfmLecture.icbQryKindPropertiesCloseUp(Sender: TObject);
 begin
   btnView.Click;
 end;

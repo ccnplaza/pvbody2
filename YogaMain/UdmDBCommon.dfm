@@ -675,6 +675,11 @@ object dmDBCommon: TdmDBCommon
         ParamType = ptInput
       end
       item
+        DataType = ftInteger
+        Name = 'QRY_KIND'
+        ParamType = ptInput
+      end
+      item
         DataType = ftString
         Name = 'ID'
         ParamType = ptOutput

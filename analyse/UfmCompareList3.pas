@@ -62,6 +62,7 @@ type
     Label2: TLabel;
     ImageEnView1: TImageEnView;
     btnSelect: TBitBtn;
+    btnSave: TcxButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure gridCheckColumn1GetDisplayText(Sender: TcxCustomGridTableItem;
       ARecord: TcxCustomGridRecord; var AText: string);
@@ -76,8 +77,6 @@ type
     procedure gridCustomerFocusedRecordChanged(Sender: TcxCustomGridTableView;
       APrevFocusedRecord, AFocusedRecord: TcxCustomGridRecord;
       ANewItemRecordFocusingChanged: Boolean);
-    procedure BMDThread1Execute(Sender: TObject; Thread: TBMDExecuteThread;
-      var Data: Pointer);
     procedure s_dateCloseUp(Sender: TObject);
     procedure e_dateCloseUp(Sender: TObject);
     procedure btnSelectClick(Sender: TObject);
@@ -87,12 +86,23 @@ type
     procedure btnStaticCheckClick(Sender: TObject);
     procedure cxButton1Click(Sender: TObject);
     procedure ImageEnMView1ImageSelect(Sender: TObject; idx: Integer);
+    procedure ImageEnMView1AfterEvent(Sender: TObject; Event: TIEAfterEvent);
+    procedure ImageEnMView1Changed(Sender: TObject);
+    procedure ImageEnMView1DragDrop(Sender, Source: TObject; X, Y: Integer);
+    procedure ImageEnMView1EndDrag(Sender, Target: TObject; X, Y: Integer);
+    procedure ImageEnMView1MouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure ImageEnMView1DragOver(Sender, Source: TObject; X, Y: Integer;
+      State: TDragState; var Accept: Boolean);
+    procedure btnSaveClick(Sender: TObject);
+    procedure edtTrackBarPropertiesEditValueChanged(Sender: TObject);
   private
     procedure RetrievePictures;
     procedure RetrieveThumbNails;
     { Private declarations }
   public
     { Public declarations }
+    fDragInsertPos : integer;
     IMAGE_DATE1, IMAGE_DATE2, IMAGE_DATE3, IMAGE_DATE4 : string;
     CURRENT_MEMBER_UID : string;
     CURRENT_CHECK_UID : string;
@@ -115,15 +125,17 @@ uses GlobalVar, uCommonLogic, uMemberSelect, UfmAnalyseRequestSelect, UdmDBCommo
 
 procedure TfmCompareList3.FormShow(Sender: TObject);
 begin
+  Screen.Cursor := crHourGlass;
   LIST_LOADED := False;
   s_date.Date := Date - 7;
   e_date.Date := Date;
   dmDBCommon.CUSTOMER_SEL_LOOK_TEL.Open;
   dmDBCommon.ds_CUSTOMER_SEL_LOOK_TEL.DataSet.Refresh;
+  ImageEnMView1.Zoom := edtTrackBar.Value;
   btnView.Click;
   RetrievePictures;
   RetrieveThumbNails;
-  //BMDThread1.Start;
+  Screen.Cursor := crArrow;
 end;
 
 procedure TfmCompareList3.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -154,12 +166,12 @@ procedure TfmCompareList3.gridCustomerFocusedRecordChanged(
   Sender: TcxCustomGridTableView; APrevFocusedRecord,
   AFocusedRecord: TcxCustomGridRecord; ANewItemRecordFocusingChanged: Boolean);
 begin
-//  CustomerImages.CustID := gridCustomerCUST_ID.EditValue;
   if LIST_LOADED then begin
+    Screen.Cursor := crHourGlass;
     RetrievePictures;
     RetrieveThumbNails;
-    //BMDThread1.Start;
     btnSelect.Click;
+    Screen.Cursor := crArrow;
   end;
 end;
 
@@ -176,9 +188,75 @@ begin
   end;
 end;
 
+procedure TfmCompareList3.ImageEnMView1AfterEvent(Sender: TObject;
+  Event: TIEAfterEvent);
+var
+  imgX, imgY :integer;
+begin
+  if (Event = ieaePaint) and ImageEnMView1.Dragging and (fDragInsertPos > -1) then begin
+    if fDragInsertPos >= ImageEnMView1.ImageCount then begin
+      // Position at end of last thumbnail
+      imgX := ImageEnMView1.ImageX[ImageEnMView1.ImageCount - 1] - ImageEnMView1.ViewX;
+      imgY := ImageEnMView1.ImageY[ImageEnMView1.ImageCount - 1] - ImageEnMView1.ViewY + ImageEnMView1.ThumbHeight - 2;
+    end else begin
+      // Position before current thumbnail
+      imgX := ImageEnMView1.ImageX[fDragInsertPos] - ImageEnMView1.ViewX;
+      imgY := ImageEnMView1.ImageY[fDragInsertPos] - ImageEnMView1.ViewY + 1;
+    end;
+    with ImageEnMView1.GetCanvas do begin
+      Pen.Color := clRed;
+      Pen.Width := 5;
+      MoveTo(ImgX + 10, ImgY);
+      LineTo(ImgX + ImageEnMView1.ThumbWidth - 10, ImgY);
+    end;
+  end;
+end;
+
+procedure TfmCompareList3.ImageEnMView1Changed(Sender: TObject);
+var
+  i, id, cnt, idx : Integer;
+begin
+//  cnt := ImageEnMView1.ImageCount;
+//  for i := 0 to cnt - 1 do begin
+//    id := ImageEnMView1.ImageID[i];
+//    dmDBCommon.IMAGES_UPD_IDX.ParamByName('ID').Value := id;
+//    dmDBCommon.IMAGES_UPD_IDX.ParamByName('IDX').Value := i + 1;
+//    dmDBCommon.IMAGES_UPD_IDX.ExecProc;
+//  end;
+end;
+
 procedure TfmCompareList3.ImageEnMView1DblClick(Sender: TObject);
 begin
   btnEditImage.Click;
+end;
+
+procedure TfmCompareList3.ImageEnMView1DragDrop(Sender, Source: TObject; X,
+  Y: Integer);
+var
+  im:integer;
+begin
+  im := ImageEnMView1.InsertingPoint(X, Y);
+  ImageEnMView1.MoveSelectedImagesTo( im );
+end;
+
+procedure TfmCompareList3.ImageEnMView1DragOver(Sender, Source: TObject; X,
+  Y: Integer; State: TDragState; var Accept: Boolean);
+begin
+  fDragInsertPos := -1;
+  if Source = ImageEnMView1 then
+  begin
+    Accept := True;
+    fDragInsertPos := ImageEnMView1.InsertingPoint(X, Y);
+  end;
+  ImageEnMView1.Paint;
+end;
+
+procedure TfmCompareList3.ImageEnMView1EndDrag(Sender, Target: TObject; X,
+  Y: Integer);
+begin
+  ImageEnMView1.IEEndDrag;
+  ImageEnMView1.MouseInteract := [mmiSelect];
+  ImageEnMView1.Paint;
 end;
 
 procedure TfmCompareList3.ImageEnMView1ImageSelect(Sender: TObject;
@@ -188,37 +266,14 @@ begin
   CustomerImages.ImageID := ImageEnMView1.ImageID[idx];
 end;
 
-procedure TfmCompareList3.BMDThread1Execute(Sender: TObject;
-  Thread: TBMDExecuteThread; var Data: Pointer);
-var
-  i, cnt, idx, thumb_id : integer;
-  img_name, drw_name : string;
-  mStream, dStream : TMemoryStream;
+procedure TfmCompareList3.ImageEnMView1MouseMove(Sender: TObject;
+  Shift: TShiftState; X, Y: Integer);
 begin
-  ImageEnMView1.LockPaint;
-  ImageEnMView1.Clear;
-  ImageEnMView1.TextTruncSide := iemtsLeft;
-  with dmDBCommon do begin
-    cnt := IMAGES_SEL.RecordCount;
-    IMAGES_SEL.First;
-    for i := 0 to cnt - 1 do begin
-      mStream := TMemoryStream.Create;
-      IMAGES_SELIMAGE_DATA.SaveToStream(mStream);
-      if mStream.Size > 10 then begin
-        mStream.Position := 0;
-        idx := ImageEnMView1.AppendImage;
-        ImageEnMView1.SetImageFromStream(idx, mStream);
-        ImageEnMView1.ImageID[idx] := IMAGES_SELID.Value;
-        ImageEnMView1.ImageTopText[idx] := IntToStr(IMAGES_SELID.Value);
-        //ImageEnMView1.Update();
-      end;
-      mStream.Free;
-      IMAGES_SEL.Next;
-    end;
+  if (ssLeft in Shift) then
+  begin
+    ImageEnMView1.MouseInteract := [];
+    ImageEnMView1.IEBeginDrag(true, -1);
   end;
-  //ImageEnMView1.Sort(iesb);
-  ImageEnMView1.UnlockPaint;
-  ImageEnMView1.SelectedImage := 0;
 end;
 
 procedure TfmCompareList3.RetrievePictures;
@@ -250,13 +305,13 @@ begin
         ImageEnMView1.SetImageFromStream(idx, mStream);
         ImageEnMView1.ImageID[idx] := IMAGES_SELID.Value;
         ImageEnMView1.ImageTopText[idx] := IntToStr(IMAGES_SELID.Value);
-        //ImageEnMView1.Update();
+        //ImageEnMView1.ImageFileName[idx] := IntToStr(IMAGES_SELID.Value);
       end;
-      mStream.Free;
       IMAGES_SEL.Next;
     end;
   end;
-  //ImageEnMView1.Sort(iesb);
+  mStream.Free;
+  ImageEnMView1.Sort(iesbTopText);
   ImageEnMView1.UnlockPaint;
   ImageEnMView1.SelectedImage := 0;
 end;
@@ -327,6 +382,20 @@ begin
   end;
 end;
 
+procedure TfmCompareList3.btnSaveClick(Sender: TObject);
+var
+  i, id, cnt, idx : Integer;
+begin
+  cnt := ImageEnMView1.ImageCount;
+  for i := 0 to cnt - 1 do begin
+    id := StrToInt(ImageEnMView1.ImageFileName[i]);
+    dmDBCommon.IMAGES_UPD_IDX.ParamByName('ID').Value := id;
+    dmDBCommon.IMAGES_UPD_IDX.ParamByName('IDX').Value := i + 1;
+    dmDBCommon.IMAGES_UPD_IDX.ExecProc;
+  end;
+  dmDBCommon.ds_IMAGES_SEL.DataSet.Refresh;
+end;
+
 procedure TfmCompareList3.btnSelectClick(Sender: TObject);
 var
   cust_id : string;
@@ -344,12 +413,8 @@ end;
 procedure TfmCompareList3.btnStaticCheckClick(Sender: TObject);
 begin
   fmStaticCheck := TfmStaticCheck.Create(Self);
-  try
-    fmStaticCheck.PICTURE_DATE := gridCustomerP_DATE.EditValue;
-    fmStaticCheck.ShowModal;
-  finally
-    fmStaticCheck.Free;
-  end;
+  fmStaticCheck.PICTURE_DATE := gridCustomerP_DATE.EditValue;
+  fmStaticCheck.Show;
 end;
 
 procedure TfmCompareList3.btnViewClick(Sender: TObject);
@@ -366,6 +431,12 @@ procedure TfmCompareList3.cxButton1Click(Sender: TObject);
 begin
   fmMuscleView := TfmMuscleView.Create(self);
   fmMuscleView.Show;
+end;
+
+procedure TfmCompareList3.edtTrackBarPropertiesEditValueChanged(
+  Sender: TObject);
+begin
+  ImageEnMView1.Zoom := edtTrackBar.Value;
 end;
 
 procedure TfmCompareList3.e_dateCloseUp(Sender: TObject);

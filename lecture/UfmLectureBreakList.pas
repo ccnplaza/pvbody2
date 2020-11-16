@@ -54,6 +54,8 @@ type
   public
     { Public declarations }
     LECTURE_ID : string;
+    BREAK_START : TDate;
+    BREAK_END : TDate;
   end;
 
 var
@@ -68,17 +70,29 @@ uses
 
 procedure TfmLectureBreakList.btnCancelBreakClick(Sender: TObject);
 begin
-  if gridBreakID.EditValue > 0 then
-    ModalResult := mrAbort
-  else
+  if gridBreakID.EditValue > 0 then begin
+    if Application.MessageBox('선택한 자료를 삭제합니다. ' + #13#10 + '삭제한 자료는 되살릴 수 없습니다.'
+      + #13#10 + '삭제전에 반드시 확인하세요.', '자료삭제', MB_OKCANCEL) = IDOK then
+    begin
+      BREAK_START := gridBreakSTART_DATE.EditValue;
+      BREAK_END := gridBreakEND_DATE.EditValue;
+      LESSON_CUSTOMER_BREAK_DEL.ParamByName('ID').Value := gridBreakID.EditValue;
+      LESSON_CUSTOMER_BREAK_DEL.ExecProc;
+      dmDBCommon.ds_LESSON_CUSTOMER_BREAK_SEL.DataSet.Refresh;
+      ModalResult := mrAbort;
+    end;
+  end else begin
     ModalResult := mrNone;
+  end;
 end;
 
 procedure TfmLectureBreakList.btnOKClick(Sender: TObject);
 begin
-  if gridBreakID.EditValue > 0 then
-    ModalResult := mrOk
-  else
+  if gridBreakID.EditValue > 0 then begin
+    BREAK_START := gridBreakSTART_DATE.EditValue;
+    BREAK_END := gridBreakEND_DATE.EditValue;
+    ModalResult := mrOk;
+  end else
     ModalResult := mrNone;
 end;
 

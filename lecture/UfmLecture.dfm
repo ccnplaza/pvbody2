@@ -976,7 +976,7 @@ object fmLecture: TfmLecture
       end
       object Label3: TLabel
         AlignWithMargins = True
-        Left = 652
+        Left = 727
         Top = 4
         Width = 36
         Height = 19
@@ -987,7 +987,7 @@ object fmLecture: TfmLecture
       end
       object Label2: TLabel
         AlignWithMargins = True
-        Left = 369
+        Left = 444
         Top = 4
         Width = 28
         Height = 19
@@ -998,7 +998,7 @@ object fmLecture: TfmLecture
       end
       object btnView: TBitBtn
         AlignWithMargins = True
-        Left = 267
+        Left = 342
         Top = 2
         Width = 35
         Height = 23
@@ -1050,7 +1050,7 @@ object fmLecture: TfmLecture
       end
       object btnAddCustLec: TBitBtn
         AlignWithMargins = True
-        Left = 552
+        Left = 627
         Top = 2
         Width = 32
         Height = 23
@@ -1076,7 +1076,7 @@ object fmLecture: TfmLecture
       end
       object btnEditCustLec: TBitBtn
         AlignWithMargins = True
-        Left = 584
+        Left = 659
         Top = 2
         Width = 32
         Height = 23
@@ -1102,7 +1102,7 @@ object fmLecture: TfmLecture
       end
       object btnDelLecMember: TBitBtn
         AlignWithMargins = True
-        Left = 616
+        Left = 691
         Top = 2
         Width = 32
         Height = 23
@@ -1128,7 +1128,7 @@ object fmLecture: TfmLecture
       end
       object s_date: TDateTimePicker
         AlignWithMargins = True
-        Left = 80
+        Left = 155
         Top = 3
         Width = 93
         Height = 21
@@ -1145,7 +1145,7 @@ object fmLecture: TfmLecture
       end
       object e_date: TDateTimePicker
         AlignWithMargins = True
-        Left = 174
+        Left = 249
         Top = 3
         Width = 93
         Height = 21
@@ -1162,7 +1162,7 @@ object fmLecture: TfmLecture
       end
       object seLimit: TcxSpinEdit
         AlignWithMargins = True
-        Left = 692
+        Left = 767
         Top = 2
         Margins.Left = 1
         Margins.Top = 1
@@ -1184,7 +1184,7 @@ object fmLecture: TfmLecture
       end
       object btnExcelActive: TBitBtn
         AlignWithMargins = True
-        Left = 1073
+        Left = 1148
         Top = 2
         Width = 29
         Height = 23
@@ -1288,7 +1288,7 @@ object fmLecture: TfmLecture
       end
       object btnOut: TBitBtn
         AlignWithMargins = True
-        Left = 975
+        Left = 1050
         Top = 2
         Width = 31
         Height = 23
@@ -1340,7 +1340,7 @@ object fmLecture: TfmLecture
       end
       object btnDelCancel: TBitBtn
         AlignWithMargins = True
-        Left = 1008
+        Left = 1083
         Top = 2
         Width = 32
         Height = 23
@@ -1392,7 +1392,7 @@ object fmLecture: TfmLecture
       end
       object btnCountDown: TBitBtn
         AlignWithMargins = True
-        Left = 734
+        Left = 809
         Top = 2
         Width = 32
         Height = 23
@@ -1430,7 +1430,7 @@ object fmLecture: TfmLecture
       end
       object btnCountUp: TBitBtn
         AlignWithMargins = True
-        Left = 766
+        Left = 841
         Top = 2
         Width = 32
         Height = 23
@@ -1468,7 +1468,7 @@ object fmLecture: TfmLecture
       end
       object btnCustInfo: TBitBtn
         AlignWithMargins = True
-        Left = 909
+        Left = 984
         Top = 2
         Width = 34
         Height = 23
@@ -1494,7 +1494,7 @@ object fmLecture: TfmLecture
       end
       object btnFindEnder: TBitBtn
         AlignWithMargins = True
-        Left = 798
+        Left = 873
         Top = 2
         Width = 37
         Height = 23
@@ -1546,7 +1546,7 @@ object fmLecture: TfmLecture
       end
       object btnReport: TBitBtn
         AlignWithMargins = True
-        Left = 1042
+        Left = 1117
         Top = 2
         Width = 29
         Height = 23
@@ -1598,7 +1598,7 @@ object fmLecture: TfmLecture
       end
       object btnEndUpdate: TBitBtn
         AlignWithMargins = True
-        Left = 1104
+        Left = 1179
         Top = 2
         Width = 35
         Height = 23
@@ -1624,7 +1624,7 @@ object fmLecture: TfmLecture
       end
       object btnSMSSending: TBitBtn
         AlignWithMargins = True
-        Left = 837
+        Left = 912
         Top = 2
         Width = 35
         Height = 23
@@ -1676,7 +1676,7 @@ object fmLecture: TfmLecture
       end
       object btnNoSMS: TBitBtn
         AlignWithMargins = True
-        Left = 872
+        Left = 947
         Top = 2
         Width = 35
         Height = 23
@@ -1728,7 +1728,7 @@ object fmLecture: TfmLecture
       end
       object btnBreak: TBitBtn
         AlignWithMargins = True
-        Left = 944
+        Left = 1019
         Top = 2
         Width = 29
         Height = 23
@@ -1780,7 +1780,7 @@ object fmLecture: TfmLecture
       end
       object edtFind: TEdit
         AlignWithMargins = True
-        Left = 401
+        Left = 476
         Top = 3
         Width = 94
         Height = 21
@@ -1794,7 +1794,7 @@ object fmLecture: TfmLecture
         ExplicitHeight = 23
       end
       object btnFilter: TcxButton
-        Left = 496
+        Left = 571
         Top = 1
         Width = 28
         Height = 25
@@ -1838,7 +1838,7 @@ object fmLecture: TfmLecture
         OnClick = btnFilterClick
       end
       object btnFilterClear: TcxButton
-        Left = 524
+        Left = 599
         Top = 1
         Width = 27
         Height = 25
@@ -1883,7 +1883,7 @@ object fmLecture: TfmLecture
       end
       object icbCenter: TcxImageComboBox
         AlignWithMargins = True
-        Left = 304
+        Left = 379
         Top = 2
         Margins.Left = 1
         Margins.Top = 1
@@ -1894,6 +1894,40 @@ object fmLecture: TfmLecture
         Properties.OnCloseUp = icbCenterPropertiesCloseUp
         TabOrder = 23
         Width = 61
+      end
+      object icbQryKind: TcxImageComboBox
+        AlignWithMargins = True
+        Left = 79
+        Top = 2
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 1
+        Margins.Bottom = 1
+        Align = alLeft
+        EditValue = 1
+        Properties.ImmediatePost = True
+        Properties.Items = <
+          item
+            Description = #49688#44053#51473
+            ImageIndex = 0
+            Value = 1
+          end
+          item
+            Description = #44592#44036#51312#54924
+            Value = 2
+          end>
+        Properties.OnCloseUp = icbQryKindPropertiesCloseUp
+        TabOrder = 24
+        Width = 73
+      end
+      object Button1: TButton
+        Left = 1240
+        Top = 1
+        Width = 75
+        Height = 25
+        Caption = 'Button1'
+        TabOrder = 25
+        OnClick = Button1Click
       end
     end
   end
@@ -2507,7 +2541,7 @@ object fmLecture: TfmLecture
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 44149.607379386570000000
+      ReportDocument.CreationDate = 44151.531830196760000000
       AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       OptionsFormatting.UseNativeStyles = True
       OptionsOnEveryPage.Footers = False
@@ -2541,6 +2575,11 @@ object fmLecture: TfmLecture
       item
         DataType = ftInteger
         Name = 'IS_DONE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftDate
+        Name = 'NEW_END_DATE'
         ParamType = ptInput
       end>
     CommandStoredProcName = 'LESSON_CUSTOMER_UPD_BREAK'
@@ -2584,22 +2623,6 @@ object fmLecture: TfmLecture
       'InterBase.FetchAll=True')
     Left = 272
     Top = 176
-    ParamData = <
-      item
-        DataType = ftInteger
-        Name = 'S_CENTER'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'E_CENTER'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftDate
-        Name = 'EDATE'
-        ParamType = ptInput
-      end>
     CommandStoredProcName = 'LESSON_CUSTOMER_UPD_ENDSTATUS'
   end
   object LESSON_CUSTOMER_BREAK_SEL: TUniStoredProc

@@ -292,6 +292,7 @@ object fmLectureBreakList: TfmLectureBreakList
       OptionsSelection.CellSelect = False
       OptionsView.CellEndEllipsis = True
       OptionsView.CellAutoHeight = True
+      OptionsView.ColumnAutoWidth = True
       OptionsView.GroupByBox = False
       OptionsView.Indicator = True
       object gridBreakID: TcxGridDBColumn
@@ -306,17 +307,18 @@ object fmLectureBreakList: TfmLectureBreakList
         Caption = #55092#44053#49884#51089
         DataBinding.FieldName = 'START_DATE'
         HeaderAlignmentHorz = taCenter
-        Width = 87
+        Width = 84
       end
       object gridBreakEND_DATE: TcxGridDBColumn
         Caption = #55092#44053#51333#47308
         DataBinding.FieldName = 'END_DATE'
         HeaderAlignmentHorz = taCenter
-        Width = 89
+        Width = 85
       end
       object gridBreakREASONS: TcxGridDBColumn
         Caption = #55092#44053#49324#50976
         DataBinding.FieldName = 'REASONS'
+        Width = 233
       end
       object gridBreakBREAK_STATUS: TcxGridDBColumn
         Caption = #49345#53468
@@ -333,6 +335,7 @@ object fmLectureBreakList: TfmLectureBreakList
             Value = 0
           end>
         HeaderAlignmentHorz = taCenter
+        Width = 62
       end
     end
     object cxGrid1Level1: TcxGridLevel
