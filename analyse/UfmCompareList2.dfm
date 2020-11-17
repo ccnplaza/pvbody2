@@ -431,7 +431,7 @@ object fmCompareList2: TfmCompareList2
       Height = 724
       Align = alClient
       TabOrder = 0
-      Properties.ActivePage = cxTabSheet1
+      Properties.ActivePage = cxTabSheet2
       Properties.CustomButtons.Buttons = <>
       LookAndFeel.SkinName = ''
       OnResize = cxPageControl1Resize

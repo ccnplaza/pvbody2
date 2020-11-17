@@ -454,7 +454,7 @@ var
 begin
   cnt := ImageEnMView1.ImageCount;
   for i := 0 to cnt - 1 do begin
-    id := StrToInt(ImageEnMView1.ImageFileName[i]);
+    id := ImageEnMView1.ImageTag[i];
     dmDBCommon.IMAGES_UPD_IDX.ParamByName('ID').Value := id;
     dmDBCommon.IMAGES_UPD_IDX.ParamByName('IDX').Value := i + 1;
     dmDBCommon.IMAGES_UPD_IDX.ExecProc;
@@ -523,8 +523,7 @@ end;
 
 procedure TfmCompareList2.btnDeleteClick(Sender: TObject);
 var
-  id, i, img_field, idx : Integer;
-  img_name, db_name : string;
+  id, idx : Integer;
   pdate : TDateTime;
 begin
   try
@@ -535,8 +534,7 @@ begin
       begin
         pdate := dmDBCommon.IMAGES_SEL_BYDATEP_DATE.Value;
         idx := ImageEnMView1.SelectedImage;
-        id := ImageEnMView1.ImageID[idx];
-        img_name := ImageEnMView1.ImageFileName[idx];
+        id := ImageEnMView1.ImageTag[idx];
         dmDBCommon.IMAGES_DEL.ParamByName('ID').Value := id;
         dmDBCommon.IMAGES_DEL.ExecProc;
         ImageEnMView1.DeleteSelectedImages;
@@ -594,7 +592,6 @@ begin
       dmDBCommon.IMAGES_SEL.Locate('ID', CustomerImages.ImageID, []);
       fmPostureEditor2.SetImageIndex(IMAGE_IDX);
       fmPostureEditor2.frmImageEditor21.ImageEnVect1.IEBitmap.Assign(ImageEnMView1.GetTIEBitmap(IMAGE_IDX));
-      CustomerImages.ImageID := ImageEnMView1.ImageID[IMAGE_IDX];
       dmDBCommon.IMAGES_SELDRAW_DATA.SaveToStream(dStream);
       if dStream.Size > 10 then begin
         dStream.Position := 0;
@@ -751,15 +748,15 @@ begin
         mStream.Position := 0;
         idx := ImageEnMView1.AppendImage;
         ImageEnMView1.SetImageFromStream(idx, mStream);
-        ImageEnMView1.ImageID[idx] := IMAGES_SELID.Value;
+        ImageEnMView1.ImageTag[idx] := IMAGES_SELID.Value;
         ImageEnMView1.ImageTopText[idx] := IntToStr(IMAGES_SELID.Value);
-        //ImageEnMView1.ImageFileName[idx] := IntToStr(IMAGES_SELID.Value);
+        ImageEnMView1.ImageFileName[idx] := Format('%2d', [IMAGES_SELIDX.Value]);
       end;
       mStream.Free;
       IMAGES_SEL.Next;
     end;
   end;
-  ImageEnMView1.Sort(iesbTopText);
+  ImageEnMView1.Sort(iesbFilename);
   ImageEnMView1.UnlockPaint;
   ImageEnMView1.SelectedImage := 0;
 end;
@@ -1278,7 +1275,7 @@ procedure TfmCompareList2.ImageEnMView1ImageSelect(Sender: TObject;
   idx: Integer);
 begin
   IMAGE_IDX := idx;
-  CustomerImages.ImageID := ImageEnMView1.ImageID[idx];
+  CustomerImages.ImageID := ImageEnMView1.ImageTag[idx];
 end;
 
 procedure TfmCompareList2.ImageEnMView1MouseMove(Sender: TObject;
@@ -1349,25 +1346,25 @@ begin
       compareGroupLeftTop.Caption := '비교화면1 - ' + img_date;
       IMAGE_DATE1 := img_date;
       IMAGE_NAME1 := ImageEnMView1.ImageInfoText[idx];
-      IMAGE_ID1 := ImageEnMView1.ImageID[idx];
+      IMAGE_ID1 := ImageEnMView1.ImageTag[idx];
     end;
     2: begin
       compareGroupLeftBottom.Caption := '비교화면2 - ' + img_date;
       IMAGE_DATE1 := img_date;
       IMAGE_NAME2 := ImageEnMView1.ImageInfoText[idx];
-      IMAGE_ID2 := ImageEnMView1.ImageID[idx];
+      IMAGE_ID2 := ImageEnMView1.ImageTag[idx];
     end;
     3: begin
       compareGroupRightTop.Caption := '비교화면3 - ' + img_date;
       IMAGE_DATE2 := img_date;
       IMAGE_NAME3 := ImageEnMView1.ImageInfoText[idx];
-      IMAGE_ID3 := ImageEnMView1.ImageID[idx];
+      IMAGE_ID3 := ImageEnMView1.ImageTag[idx];
     end;
     4: begin
       compareGroupRightBottom.Caption := '비교화면4 - ' + img_date;
       IMAGE_DATE4 := img_date;
       IMAGE_NAME4 := ImageEnMView1.ImageInfoText[idx];
-      IMAGE_ID4 := ImageEnMView1.ImageID[idx];
+      IMAGE_ID4 := ImageEnMView1.ImageTag[idx];
     end;
   end;
 end;
@@ -1433,6 +1430,7 @@ begin
     LayerWindow.CurrentLayer.Width := imgWidth; //l_rect.Right;
     LayerWindow.CurrentLayer.Height := imgHeight; //l_rect.Bottom;
     LayerWindow.IO.LoadFromStreamJpeg(mStream);
+    LayerWindow.Update;
     LayerWindow.MouseInteractLayers := [mlMoveLayers, mlResizeLayers, mlRotateLayers];
     LayerWindow.FitToHeight;
   finally
@@ -1443,7 +1441,7 @@ end;
 procedure TfmCompareList2.LayerWindowDragOver(Sender, Source: TObject; X,
   Y: Integer; State: TDragState; var Accept: Boolean);
 begin
-  if Source is TImageEnView then
+  if Source is TImageEnMView then
     Accept := True;
 end;
 

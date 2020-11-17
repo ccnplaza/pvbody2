@@ -442,6 +442,7 @@ object fmCompareList3: TfmCompareList3
           ShowHint = True
           TabOrder = 2
           OnClick = btnEditImageClick
+          ExplicitTop = -2
         end
         object btnStaticCheck: TcxButton
           AlignWithMargins = True

@@ -216,13 +216,8 @@ procedure TfmCompareList3.ImageEnMView1Changed(Sender: TObject);
 var
   i, id, cnt, idx : Integer;
 begin
-//  cnt := ImageEnMView1.ImageCount;
-//  for i := 0 to cnt - 1 do begin
-//    id := ImageEnMView1.ImageID[i];
-//    dmDBCommon.IMAGES_UPD_IDX.ParamByName('ID').Value := id;
-//    dmDBCommon.IMAGES_UPD_IDX.ParamByName('IDX').Value := i + 1;
-//    dmDBCommon.IMAGES_UPD_IDX.ExecProc;
-//  end;
+//  IMAGE_IDX := idx;
+//  CustomerImages.ImageID := ImageEnMView1.ImageID[idx];
 end;
 
 procedure TfmCompareList3.ImageEnMView1DblClick(Sender: TObject);
@@ -263,7 +258,7 @@ procedure TfmCompareList3.ImageEnMView1ImageSelect(Sender: TObject;
   idx: Integer);
 begin
   IMAGE_IDX := idx;
-  CustomerImages.ImageID := ImageEnMView1.ImageID[idx];
+  CustomerImages.ImageID := ImageEnMView1.ImageTag[idx];
 end;
 
 procedure TfmCompareList3.ImageEnMView1MouseMove(Sender: TObject;
@@ -303,15 +298,15 @@ begin
         mStream.Position := 0;
         idx := ImageEnMView1.AppendImage;
         ImageEnMView1.SetImageFromStream(idx, mStream);
-        ImageEnMView1.ImageID[idx] := IMAGES_SELID.Value;
+        ImageEnMView1.ImageTag[idx] := IMAGES_SELID.Value;
         ImageEnMView1.ImageTopText[idx] := IntToStr(IMAGES_SELID.Value);
-        //ImageEnMView1.ImageFileName[idx] := IntToStr(IMAGES_SELID.Value);
+        ImageEnMView1.ImageFileName[idx] := Format('%2d', [IMAGES_SELIDX.Value]);
       end;
       IMAGES_SEL.Next;
     end;
   end;
   mStream.Free;
-  ImageEnMView1.Sort(iesbTopText);
+  ImageEnMView1.Sort(iesbFilename);
   ImageEnMView1.UnlockPaint;
   ImageEnMView1.SelectedImage := 0;
 end;
@@ -323,8 +318,7 @@ end;
 
 procedure TfmCompareList3.btnDeleteClick(Sender: TObject);
 var
-  id, i, img_field, idx : Integer;
-  img_name, db_name : string;
+  id, idx : Integer;
   pdate : TDateTime;
 begin
   try
@@ -335,8 +329,7 @@ begin
       begin
         pdate := dmDBCommon.IMAGES_SEL_BYDATEP_DATE.Value;
         idx := ImageEnMView1.SelectedImage;
-        id := ImageEnMView1.ImageID[idx];
-        img_name := ImageEnMView1.ImageFileName[idx];
+        id := ImageEnMView1.ImageTag[idx];
         dmDBCommon.IMAGES_DEL.ParamByName('ID').Value := id;
         dmDBCommon.IMAGES_DEL.ExecProc;
         ImageEnMView1.DeleteSelectedImages;
@@ -363,7 +356,6 @@ begin
       dmDBCommon.IMAGES_SEL.Locate('ID', CustomerImages.ImageID, []);
       fmPostureEditor2.SetImageIndex(IMAGE_IDX);
       fmPostureEditor2.frmImageEditor21.ImageEnVect1.IEBitmap.Assign(ImageEnMView1.GetTIEBitmap(IMAGE_IDX));
-      CustomerImages.ImageID := ImageEnMView1.ImageID[IMAGE_IDX];
       dmDBCommon.IMAGES_SELDRAW_DATA.SaveToStream(dStream);
       if dStream.Size > 10 then begin
         dStream.Position := 0;
@@ -371,10 +363,8 @@ begin
       end;
       fmPostureEditor2.ShowModal;
       if fmPostureEditor2.ModalResult = mrOk then begin
-        if fmPostureEditor2.frmImageEditor21.IMAGE_CHANGED = True then begin
-          ImageEnMView1.SetIEBitmap(IMAGE_IDX, fmPostureEditor2.frmImageEditor21.ImageEnVect1.IEBitmap);
-          ImageEnMView1.Update;
-        end;
+        ImageEnMView1.SetIEBitmap(IMAGE_IDX, fmPostureEditor2.frmImageEditor21.ImageEnVect1.IEBitmap);
+        ImageEnMView1.Update;
       end;
     finally
       fmPostureEditor2.Free;
@@ -384,11 +374,11 @@ end;
 
 procedure TfmCompareList3.btnSaveClick(Sender: TObject);
 var
-  i, id, cnt, idx : Integer;
+  i, id, cnt : Integer;
 begin
   cnt := ImageEnMView1.ImageCount;
   for i := 0 to cnt - 1 do begin
-    id := StrToInt(ImageEnMView1.ImageFileName[i]);
+    id := ImageEnMView1.ImageTag[i];
     dmDBCommon.IMAGES_UPD_IDX.ParamByName('ID').Value := id;
     dmDBCommon.IMAGES_UPD_IDX.ParamByName('IDX').Value := i + 1;
     dmDBCommon.IMAGES_UPD_IDX.ExecProc;
