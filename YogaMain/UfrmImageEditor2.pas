@@ -767,7 +767,7 @@ begin
     hobj := ImageEnVect1.AddNewObject;
     ImageEnVect1.ObjKind[hobj] := iekLINE;
     ImageEnVect1.ObjName[hobj] := 'hLine' + inttostr(i);
-    ImageEnVect1.ObjPenWidth[hobj] := 1;
+    ImageEnVect1.ObjPenWidth[hobj] := 2;
     ImageEnVect1.ObjLeft[hobj] := 0;
     ImageEnVect1.ObjTop[hobj] := gab * i;
     ImageEnVect1.ObjWidth[hobj] := tWidth;
@@ -795,7 +795,7 @@ begin
     hobj := ImageEnVect1.AddNewObject;
     ImageEnVect1.ObjKind[hobj] := iekLINE;
     ImageEnVect1.ObjName[hobj] := 'vLine' + inttostr(i);
-    ImageEnVect1.ObjPenWidth[hobj] := 1;
+    ImageEnVect1.ObjPenWidth[hobj] := 2;
     ImageEnVect1.ObjLeft[hobj] := gab * i;
     ImageEnVect1.ObjTop[hobj] := 0;
     ImageEnVect1.ObjWidth[hobj] := 0;
