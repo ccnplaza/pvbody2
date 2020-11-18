@@ -17,7 +17,7 @@ uses
   dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, cxStyles, dxSkinscxPCPainter, cxCustomData, cxFilter,
-  cxData, cxDataStorage, cxNavigator, DB, cxDBData, cxTextEdit, Menus,
+  cxData, cxDataStorage, cxNavigator, DB, cxDBData, cxTextEdit, Menus, imageen,
   imageenview, ievect, cxButtons, StdCtrls, ExtCtrls, Buttons, cxGridLevel,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
   cxGridCustomView, cxGrid, cxGroupBox, ieview, iemview, Uni, MemDS, DBAccess,
@@ -30,7 +30,8 @@ uses
   BMDThread, UfrmImages, cxImageComboBox, UfrmImageMultiView, iexDBBitmaps,
   iexBitmaps, iesettings, iexLayers, iexRulers, iexToolbars, cxDropDownEdit,
   cxSplitter, dxBarBuiltInMenu, cxPC, cxDBLookupComboBox, cxCheckBox,
-  cxRadioGroup, dxtree, dxdbtree, uShapeProps, uLineProps, uTextProps;
+  cxRadioGroup, dxtree, dxdbtree, uShapeProps, uLineProps, uTextProps,
+  cxColorComboBox, cxFontNameComboBox, iexActionsLayers, iexActions;
 
 type
   TfmCompareList2 = class(TForm)
@@ -80,10 +81,8 @@ type
     cxTabSheet2: TcxTabSheet;
     cxGroupBox1: TcxGroupBox;
     Panel2: TPanel;
-    Label3: TLabel;
     btnDeleteLayerAll: TBitBtn;
     btnReport: TBitBtn;
-    TrackBar1: TTrackBar;
     ImageEnVect1Print: TImageEnVect;
     Panel3: TPanel;
     pgcCompareFrame: TPanel;
@@ -129,20 +128,28 @@ type
     ImageEnVect3Print: TImageEnVect;
     ImageEnVect2Print: TImageEnVect;
     ImageEnVect4Print: TImageEnVect;
-    btnDeleteLayer: TBitBtn;
     LayerWindow: TImageEnView;
     btnSaveLayers: TBitBtn;
-    btnDrawing: TBitBtn;
-    btnText: TBitBtn;
-    btnAngle: TBitBtn;
-    btnLine: TBitBtn;
     btnArrow: TBitBtn;
     btnSelRect: TBitBtn;
     btnSelCopy: TBitBtn;
-    BitBtn2: TBitBtn;
     cxButton1: TcxButton;
     btnLatlist: TBitBtn;
     btnSave: TcxButton;
+    icbDrawingTool: TcxImageComboBox;
+    btnBackward: TBitBtn;
+    btnForward: TBitBtn;
+    ColorBox: TcxColorComboBox;
+    speLineThick: TcxSpinEdit;
+    FontDialog1: TFontDialog;
+    btnFont: TBitBtn;
+    btnHelp: TBitBtn;
+    btnMatchWidth: TBitBtn;
+    btnMatchHeight: TBitBtn;
+    ActionList1: TActionList;
+    ImageEnViewLayersMatchWidth1: TImageEnViewLayersMatchWidth;
+    ImageEnViewLayersMatchHeight1: TImageEnViewLayersMatchHeight;
+    btnTrim: TcxButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure frmImageMultiView1ImageEnMView1DblClick(Sender: TObject);
     procedure btnFindMemberClick(Sender: TObject);
@@ -197,9 +204,7 @@ type
     procedure btnSaveWinClick(Sender: TObject);
     procedure btnReportClick(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
-    procedure btnDeleteLayerClick(Sender: TObject);
     procedure edtNameExit(Sender: TObject);
-    procedure TrackBar1Change(Sender: TObject);
     procedure BMDThread1Start(Sender: TObject; Thread: TBMDExecuteThread;
       var Data: Pointer);
     procedure BMDThread1Terminate(Sender: TObject; Thread: TBMDExecuteThread;
@@ -208,21 +213,28 @@ type
       State: TDragState; var Accept: Boolean);
     procedure LayerWindowDragDrop(Sender, Source: TObject; X, Y: Integer);
     procedure btnSaveLayersClick(Sender: TObject);
-    procedure btnTextClick(Sender: TObject);
-    procedure btnDrawingClick(Sender: TObject);
-    procedure btnAngleClick(Sender: TObject);
-    procedure btnLineClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure LayerWindowUserInteraction(Sender: TObject;
       Event: TIEUserInteractionEvent; Info: Integer);
     procedure btnArrowClick(Sender: TObject);
     procedure btnSelRectClick(Sender: TObject);
     procedure btnSelCopyClick(Sender: TObject);
-    procedure BitBtn2Click(Sender: TObject);
     procedure cxButton1Click(Sender: TObject);
     procedure btnLatlistClick(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
     procedure edtTrackBarPropertiesEditValueChanged(Sender: TObject);
+    procedure icbDrawingToolPropertiesCloseUp(Sender: TObject);
+    procedure LayerWindowNewLayer(Sender: TObject; LayerIdx: Integer;
+      LayerKind: TIELayerKind);
+    procedure btnForwardClick(Sender: TObject);
+    procedure btnBackwardClick(Sender: TObject);
+    procedure speLineThickPropertiesChange(Sender: TObject);
+    procedure ColorBoxPropertiesChange(Sender: TObject);
+    procedure btnFontClick(Sender: TObject);
+    procedure btnHelpClick(Sender: TObject);
+    procedure btnMatchWidthClick(Sender: TObject);
+    procedure btnMatchHeightClick(Sender: TObject);
+    procedure btnTrimClick(Sender: TObject);
   private
     fShapeProps: TShapeProps;
     fLineProps : TLineProps;
@@ -235,10 +247,12 @@ type
     procedure RetrieveCompareWindows;
     procedure RetrieveCompareWindowThumbnail;
     procedure RetrieveCompareImage(image_id: string; ImageEnVect: TImageEnVect);
-    procedure ResetButtonEnable;
+    procedure AssignControlValues;
+    procedure RefreshControls;
     { Private declarations }
   public
     { Public declarations }
+    fUpdating : Boolean;
     fDragInsertPos : integer;
     IMAGE_IDX : Integer;  //image sequence
     IMAGE_ID : Integer;   //image order index
@@ -267,9 +281,132 @@ uses GlobalVar, uCommonLogic, UfmAnalyseRequestSelect, UdmDBCommon,
   UfmCustomerHistory, UfmPostureEditor2, uCapture,
   UfmDateSelector, UfmCheckCommennts, uPlayer, UfmPracticeMethodSingle,
   ufmStaticResultView, UfmCheckImageViewer, UfmHowToSingle, UfmCompareLayerList,
-  UfmCompareComment, UfmCompareWindowList, UfmImportImages, UfmStaticCheck, UfmSearchResults, UfmMuscleView, UfmCustomerRecent;
+  UfmCompareComment, UfmCompareWindowList, UfmImportImages, UfmStaticCheck, UfmSearchResults, UfmMuscleView, UfmCustomerRecent, UfmPictureZoom;
 
 {$R *.dfm}
+
+// refresh controls with the layer content
+procedure TfmCompareList2.RefreshControls();
+var
+  borderAvail, fillAvail: Boolean;
+  isLineLayer, isPolylineLayer, isAngleLayer: Boolean;
+
+  procedure _EnableGroup(Ctrl: TWinControl; Enable: Boolean);
+  var
+    I: Integer;
+  begin
+    Ctrl.Enabled := Enable;
+    for I := 0 to Ctrl.ControlCount - 1 do
+      Ctrl.Controls[ i ].Enabled := Enable;
+  end;
+
+begin
+  fUpdating := True;
+  with LayerWindow do begin
+    isLineLayer     := CurrentLayer is TIELineLayer ;
+    isPolylineLayer := CurrentLayer is TIEPolylineLayer ;
+    isAngleLayer    := CurrentLayer is TIEAngleLayer ;
+    // SHARED STYLE PROPERTIES
+    borderAvail := ( CurrentLayer.Kind <> ielkImage ) and CurrentLayer.SupportsFeature( ielfBorder );   // In this case the "border" is the line
+    //btnBorderColor.Enabled := borderAvail;
+    //lblBorder.Enabled := borderAvail;
+    //lblBorderWidth.Enabled := borderAvail;
+    //edtBorderWidth.Enabled := borderAvail;
+    //updBorderWidth.Enabled := borderAvail;
+    //if borderAvail then begin
+    //  btnBorderColor.SelectedColor := CurrentLayer.BorderColor;
+    //  updBorderWidth.Position := CurrentLayer.BorderWidth;
+    //end else begin
+    //  btnBorderColor.SelectedColor := clBlack;
+    //  updBorderWidth.Position := 3;
+    //end;
+    fillAvail  := CurrentLayer.SupportsFeature( ielfFill );
+    //if fillAvail then
+    //  btnFillColor.SelectedColor := CurrentLayer.FillColor;
+    //btnFillColor.Enabled := fillAvail;
+    //lblFill.Enabled := fillAvail;
+    // LINE PROPERTIES
+    //if isLineLayer then
+    //  with TIELineLayer( CurrentLayer ) do begin
+    //    cmbLabel.ItemIndex := ord( LabelPosition );
+    //    cmbStartShape.ItemIndex := ord( StartShape );
+    //    cmbEndShape.ItemIndex := ord( EndShape );
+    //    updShapeSize.Position := ShapeSize;
+    //  end;
+    // POLYLINE PROPERTIES
+    //if isPolylineLayer then
+    //  with TIEPolylineLayer( CurrentLayer ) do begin
+    //    chkPolylineClosed.checked := PolylineClosed;
+    //  end;
+    // ANGLE PROPERTIES
+    //if isAngleLayer then
+    //  with TIEAngleLayer( CurrentLayer ) do begin
+    //    cmbAngleMode.ItemIndex := ord( AngleMode );
+    //  end;
+    //_EnableGroup( grpLine    , isLineLayer );
+    //_EnableGroup( grpPolyline, isPolylineLayer );
+    //_EnableGroup( grpAngle   , isAngleLayer );
+  end;
+  //ImageEnView1.CurrentLayer.GetProperties( memProps.Lines );
+  fUpdating := False;
+end;
+
+// Apply our control values to the current layer
+procedure TfmCompareList2.AssignControlValues();
+begin
+  if fUpdating then
+    exit;
+  with LayerWindow do begin
+    // SHARED STYLE PROPERTIES
+    CurrentLayer.BorderColor := clRed;
+    CurrentLayer.BorderWidth := speLineThick.Value;
+    CurrentLayer.FillColor   := clYellow;
+    // LINE PROPERTIES
+    if CurrentLayer is TIELineLayer then
+      with TIELineLayer( CurrentLayer ) do begin
+        BorderColor := ColorBox.ColorValue;
+        BorderWidth := speLineThick.Value;
+        LabelPosition := TIELineLabelPos(0); //hide
+        StartShape := TIELineEndShape(0); //none
+        EndShape := TIELineEndShape(0);   //none
+        ShapeSize := 20;
+      end;
+    // POLYLINE PROPERTIES
+    if CurrentLayer is TIEPolylineLayer then
+      with TIEPolylineLayer( CurrentLayer ) do begin
+        // Don't close polyline until we finish creating it
+        // PolylineClosed := chkPolylineClosed.checked;
+      end;
+    // ANGLE PROPERTIES
+    if CurrentLayer is TIEAngleLayer then
+      with TIEAngleLayer( CurrentLayer ) do begin
+        AngleMode := TIEAngleMode(0); //normal mode
+        LabelFont.Size := FontDialog1.Font.Size;
+        BorderColor := ColorBox.ColorValue;
+        BorderWidth := speLineThick.Value;
+      end;
+    if CurrentLayer is TIEImageLayer then
+      with TIEImageLayer( CurrentLayer ) do begin
+        BorderColor := clNone;
+        BorderWidth := 0;
+      end;
+    if CurrentLayer is TIETextLayer then
+      with TIETextLayer( CurrentLayer ) do begin
+        //Text := DateToStr(gridCheckP_DATE.EditValue);
+        Font.Size := FontDialog1.Font.Size;
+        Font.Style := FontDialog1.Font.Style;
+        Font.Color := FontDialog1.Font.Color;
+        Font.Name := FontDialog1.Font.Name;
+        BorderColor := clBlack;
+        BorderWidth := 2;
+        FillColor := clYellow;
+        Alignment := iejCenter;
+        Layout := ielCenter;
+        AutoSize := True;
+      end;
+  end;
+  LayerWindow.Update();
+end;
 
 procedure TfmCompareList2.BitBtn1Click(Sender: TObject);
 var
@@ -344,25 +481,6 @@ begin
   end;
 end;
 
-procedure TfmCompareList2.BitBtn2Click(Sender: TObject);
-var
-  pdate : string;
-begin
-  pdate := DateToStr(gridCheckP_DATE.EditValue);
-  LayerWindow.LayersAdd(pdate, 26, clBlue, 'Arial Black', [] );
-  TIETextLayer( LayerWindow.CurrentLayer ).BorderShape := iesRectangle;
-  TIETextLayer( LayerWindow.CurrentLayer ).AutoSize := True;
-  TIETextLayer( LayerWindow.CurrentLayer ).BorderColor := clBlack;
-  TIETextLayer( LayerWindow.CurrentLayer ).BorderWidth := 2;
-  TIETextLayer( LayerWindow.CurrentLayer ).Alignment := iejCenter;
-  TIETextLayer( LayerWindow.CurrentLayer ).Layout := ielCenter;
-  TIETextLayer( LayerWindow.CurrentLayer ).FillColor := clWhite;
-  TIETextLayer( LayerWindow.CurrentLayer ).TextOverflow := ieoShrink;
-  TIETextLayer( LayerWindow.CurrentLayer ).HorzMargin := 0.03; //percent
-  LayerWindow.MouseInteractLayers := [mlMoveLayers, mlResizeLayers, mlRotateLayers];
-  LayerWindow.Update();
-end;
-
 procedure TfmCompareList2.BMDThread1Start(Sender: TObject;
   Thread: TBMDExecuteThread; var Data: Pointer);
 begin
@@ -422,30 +540,18 @@ begin
   end;
 end;
 
-procedure TfmCompareList2.btnAngleClick(Sender: TObject);
-begin
-  LayerWindow.LayersAdd( ielkAngle );
-  with TIEAngleLayer( LayerWindow.CurrentLayer ) do
-  begin
-    PosX := 100;
-    PosY := 100;
-    Width := 209;
-    Height := 159;
-    LineWidth := 5;
-    LineColor := clBlue;
-    LabelFont.Color := clBlue;
-    LabelFont.Style := [fsBold];
-    StartAngle := 0;
-    SweepAngle := 45;
-  end;
-  LayerWindow.MouseInteractLayers := [mlMoveLayers, mlResizeLayers, mlRotateLayers];
-  LayerWindow.Update();
-end;
-
 procedure TfmCompareList2.btnArrowClick(Sender: TObject);
 begin
-  LayerWindow.MouseInteractLayers := [mlMoveLayers, mlResizeLayers, mlRotateLayers];
+  LayerWindow.MouseInteractLayers := [mlMoveLayers, mlResizeLayers, mlRotateLayers, mlEditLayerPoints];
 //  LayerWindow.Update();
+end;
+
+procedure TfmCompareList2.btnBackwardClick(Sender: TObject);
+var
+  cnt : Integer;
+begin
+  if LayerWindow.CurrentLayer.LayerIndex > 1 then
+    LayerWindow.CurrentLayer.LayerIndex := LayerWindow.CurrentLayer.LayerIndex - 1;
 end;
 
 procedure TfmCompareList2.btnSaveClick(Sender: TObject);
@@ -482,12 +588,12 @@ begin
     if cxPageControl1.ActivePageIndex = 0 then begin
       PanelRight.Width := 1;
     end else begin
-      PanelRight.Width := (ClientWidth - pnlMember.Width) div 2;
+      PanelRight.Width := (ClientWidth - pnlMember.Width - 300);
       cxPageControl1.ActivePageIndex := 0;
     end;
   end else begin
     cxPageControl1.ActivePageIndex := 0;
-    PanelRight.Width := (ClientWidth - pnlMember.Width) div 2;
+    PanelRight.Width := (ClientWidth - pnlMember.Width - 300);
     dmDBCommon.IMAGE_LAYERS_SEL.ParamByName('M_ID').Value := CustomerImages.CustID;
     dmDBCommon.IMAGE_LAYERS_SEL.Open;
     dmDBCommon.ds_IMAGE_LAYERS_SEL.DataSet.Refresh;
@@ -552,13 +658,6 @@ begin
   LayerWindow.ClearAll;
 end;
 
-procedure TfmCompareList2.btnDeleteLayerClick(Sender: TObject);
-var
-  i : Integer;
-begin
-  LayerWindow.LayersRemove(LYR_SELECTED_LAYERS);
-end;
-
 procedure TfmCompareList2.btnDelWinClick(Sender: TObject);
 begin
   ImageEnVectComp1.ClearAll;
@@ -567,21 +666,8 @@ begin
   ImageEnVectComp4.ClearAll;
 end;
 
-procedure TfmCompareList2.btnDrawingClick(Sender: TObject);
-begin
-  LayerWindow.LayersAdd( ielkShape );
-  TIEShapeLayer( LayerWindow.CurrentLayer ).Shape := iesExplosion;
-  LayerWindow.CurrentLayer.FillColor := clYellow;
-  LayerWindow.CurrentLayer.BorderColor := clBlack;
-  LayerWindow.CurrentLayer.BorderWidth := 2;
-  LayerWindow.MouseInteractLayers := [mlMoveLayers, mlResizeLayers, mlRotateLayers];
-  LayerWindow.Update();
-end;
-
 procedure TfmCompareList2.btnEditImageClick(Sender: TObject);
 var
-  iev_name : string;
-  image_uid : string;
   mStream, dStream : TMemoryStream;
 begin
   if ImageEnMView1.ImageCount > 0 then begin
@@ -624,7 +710,6 @@ begin
     fmMemberFavorite.ShowModal;
     if fmMemberFavorite.ModalResult = mrOk then begin
       RetrieveMemberInfo;
-      ResetButtonEnable;
       if gridCheck.DataController.RecordCount > 0 then LIST_LOADED := True;
     end;
   finally
@@ -646,7 +731,6 @@ begin
       fmMemberSelect.ShowModal;
       if fmMemberSelect.ModalResult = mrOk then begin
         RetrieveMemberInfo;
-        ResetButtonEnable;
         if gridCheck.DataController.RecordCount > 0 then LIST_LOADED := True;
       end;
     finally
@@ -667,7 +751,6 @@ begin
       CustomerImages.CustTel := dmDBCommon.CUSTOMER_SEARCHCTEL.Value;
       CustomerImages.CustSex := StrToInt(dmDBCommon.CUSTOMER_SEARCHSEX.Value);
       RetrieveMemberInfo;
-      ResetButtonEnable;
       if gridCheck.DataController.RecordCount > 0 then
         LIST_LOADED := True;
     end;
@@ -687,7 +770,6 @@ begin
           CustomerImages.CustTel := dmDBCommon.CUSTOMER_SEARCHCTEL.Value;
           CustomerImages.CustSex := StrToInt(dmDBCommon.CUSTOMER_SEARCHSEX.Value);
           RetrieveMemberInfo;
-          ResetButtonEnable;
           if gridCheck.DataController.RecordCount > 0 then LIST_LOADED := True;
         end;
       finally
@@ -695,6 +777,47 @@ begin
       end;
     end;
   end;
+end;
+
+procedure TfmCompareList2.btnFontClick(Sender: TObject);
+begin
+  if FontDialog1.Execute then
+    AssignControlValues;
+end;
+
+procedure TfmCompareList2.btnForwardClick(Sender: TObject);
+var
+  cnt : Integer;
+begin
+  if LayerWindow.CurrentLayer.LayerIndex < LayerWindow.LayersCount then
+    LayerWindow.CurrentLayer.LayerIndex := LayerWindow.CurrentLayer.LayerIndex + 1;
+end;
+
+procedure TfmCompareList2.btnHelpClick(Sender: TObject);
+var
+  msgHelp : string;
+begin
+  msgHelp := 'Cursor: 선택한 레이어를 이동(쉬프트키를 누르면 빠르게 이동함)' +
+    #13#10 + 'Ctrl+Cursor: 레이어의 사이즈변경' +
+    #13#10 + 'Del: 선택한 레이어 삭제' +
+    #13#10 + 'F2: 선택한 텍스트 수정' +
+    #13#10 + 'Ctrl+Tab: 다음 레이어 선택' +
+    #13#10 + 'Ctrl+[, Ctrl+] : 레이어 앞뒤로 이동(쉬프트키 사용가능)' +
+    #13#10 + 'Ctrl+<, Ctrl+>: 라인두께, 폰트크기 변경' +
+    #13#10 + 'Alt+Enter: 속성창 열기' +
+    #13#10 + 'Ctrl+A: 모든 레이어 선택' +
+    #13#10 + 'Ctrl+D: 텍스트 폰트창열기' +
+    #13#10 + 'Ctrl+B: 텍스트 굵게' +
+    #13#10 + 'Ctrl+I: 텍스트 이탤릭' +
+    #13#10 + 'Ctrl+U: 텍스트 밑줄' +
+    #13#10 + 'Ctrl+L/E/R: 텍스트 왼쪽/가운데/우측 정렬' +
+    #13#10 + 'Shift+Ctrl+L/M/R: 텍스트 상/중/하 정렬' +
+    #13#10 + 'Ctrl+C/X/V: 복사/자르기/붙여넣기' +
+    #13#10 + 'Esc: 취소 또는 창닫기' +
+    #13#10 + 'Enter: 다중라인 완료' +
+    #13#10 + 'Alt+Mouse: 다중라인에서 선택한 포인트 곡선처리' +
+    #13#10 + 'Alt+I: 각도 내경/외경 변경';
+  ShowMessage(msgHelp);
 end;
 
 procedure TfmCompareList2.btnHistoryClick(Sender: TObject);
@@ -761,10 +884,9 @@ begin
   ImageEnMView1.SelectedImage := 0;
 end;
 
-procedure TfmCompareList2.TrackBar1Change(Sender: TObject);
+procedure TfmCompareList2.speLineThickPropertiesChange(Sender: TObject);
 begin
-  LayerWindow.CurrentLayer.Transparency := TrackBar1.Position;
-  LayerWindow.Update;
+  AssignControlValues;
 end;
 
 procedure TfmCompareList2.btnLatelySelectClick(Sender: TObject);
@@ -786,7 +908,6 @@ begin
       CustomerImages.CustTel := dmDBCommon.LATEST_CUSTOMER_SELCUST_TEL.Value;
       CustomerImages.CustSex := dmDBCommon.LATEST_CUSTOMER_SELCUST_SEX.Value;
       RetrieveMemberInfo;
-      ResetButtonEnable;
       if gridCheck.DataController.RecordCount > 0 then LIST_LOADED := True;
     end;
   finally
@@ -813,21 +934,10 @@ begin
       CustomerImages.CustTel := dmDBCommon.CUSTOMER_SEL_RECENT_REGCTEL.Value;
       CustomerImages.CustSex := StrToIntDef(dmDBCommon.CUSTOMER_SEL_RECENT_REGSEX.Value, 0);
       RetrieveMemberInfo;
-      ResetButtonEnable;
     end;
   finally
     fmCustomerRecent.Free;
   end;
-end;
-
-procedure TfmCompareList2.ResetButtonEnable;
-begin
-  btnDelete.Enabled := True;
-  btnEditImage.Enabled := True;
-  btnCapture.Enabled := True;
-  btnCompareLayer.Enabled := True;
-  btnCompareWin.Enabled := True;
-  btnStaticCheck.Enabled := True;
 end;
 
 procedure TfmCompareList2.btnLayerListClick(Sender: TObject);
@@ -844,25 +954,28 @@ begin
   end;
 end;
 
-procedure TfmCompareList2.btnLineClick(Sender: TObject);
+procedure TfmCompareList2.btnMatchHeightClick(Sender: TObject);
+var
+  i, cnt, l_width, l_posX : Integer;
+  l_lect : TRect;
 begin
-  if fLineProps = nil then
-    fLineProps := TLineProps.Create( Self );
-  if fLineProps.ShowModal <> mrOK then
-    exit;
+  cnt := LayerWindow.LayersCount;
+  l_posX := 0;
+  l_width := LayerWindow.Layers[1].Width;
+  for i := 0 to cnt - 1 do begin
+    if i > 0 then begin
+      LayerWindow.Layers[i].PosX := l_posX;
+      LayerWindow.Layers[i].PosY := 0;
+      l_posX := l_posX + l_width;
+    end;
+  end;
+  LayerWindow.Update;
+end;
 
-  LayerWindow.MouseInteractLayers := [ mlClickCreateLineLayers ];
-{
-  LayerWindow.LayersAdd( ielkLine );
-  TIELineLayer( LayerWindow.CurrentLayer ).StartShape := ieesArrow;
-  TIELineLayer( LayerWindow.CurrentLayer ).FillColor := clYellow;
-  TIELineLayer( LayerWindow.CurrentLayer ).ShapeSize := 50;
-  TIELineLayer( LayerWindow.CurrentLayer ).LineWidth := 5;
-  TIELineLayer( LayerWindow.CurrentLayer ).LabelPosition := ielpAtEnd;
-  TIELineLayer( LayerWindow.CurrentLayer ).LabelText := '내용입력';
-
-  LayerWindow.Update();
-}
+procedure TfmCompareList2.btnMatchWidthClick(Sender: TObject);
+begin
+  LayerWindow.LayersAlign(ilaMatchWidth, -2);
+  LayerWindow.LayersAlign(ilaMatchHeight, -2);
 end;
 
 procedure TfmCompareList2.RetrieveCompareLayers;
@@ -936,8 +1049,9 @@ procedure TfmCompareList2.btnSelRectClick(Sender: TObject);
 var
   lyr_sel : Integer;
 begin
-  LayerWindow.LayersCurrent := LayerWindow.CurrentLayer.LayerIndex;
-  LayerWindow.MouseInteractGeneral := [miSelect];
+//  LayerWindow.LayersCurrent := LayerWindow.CurrentLayer.LayerIndex;
+  LayerWindow.LayersMergeAll(false);
+  LayerWindow.MouseInteractGeneral := [miCropTool];
 end;
 
 procedure TfmCompareList2.btnStaticCheckClick(Sender: TObject);
@@ -947,15 +1061,37 @@ begin
   fmStaticCheck.Show;
 end;
 
-procedure TfmCompareList2.btnTextClick(Sender: TObject);
+procedure TfmCompareList2.btnTrimClick(Sender: TObject);
+var
+  mStream, dStream : TMemoryStream;
 begin
-  LayerWindow.LayersAdd('내용입력', 42, clRed, 'Arial Black', [fsBold] );
-  TIETextLayer( LayerWindow.CurrentLayer ).SizeToText();
-  TIETextLayer( LayerWindow.CurrentLayer ).BorderColor := clBlack;
-  TIETextLayer( LayerWindow.CurrentLayer ).BorderWidth := 3;
-  TIETextLayer( LayerWindow.CurrentLayer ).FillColor := clYellow;
-  LayerWindow.MouseInteractLayers := [mlMoveLayers, mlResizeLayers, mlRotateLayers];
-  LayerWindow.Update();
+  if ImageEnMView1.ImageCount > 0 then begin
+    fmPictureZoom := TfmPictureZoom.Create(Self);
+    try
+      fmPictureZoom.Height := ClientHeight;
+      mStream := TMemoryStream.Create;
+      dmDBCommon.IMAGES_SEL.Locate('ID', CustomerImages.ImageID, []);
+      fmPictureZoom.ImageEnView1.IEBitmap.Assign(ImageEnMView1.GetTIEBitmap(IMAGE_IDX));
+      fmPictureZoom.ImageEnView1.Update;
+      fmPictureZoom.ShowModal;
+      if fmPictureZoom.ModalResult = mrOk then begin
+        ImageEnMView1.SetIEBitmap(IMAGE_IDX, fmPictureZoom.ImageEnView1.IEBitmap);
+        ImageEnMView1.Update;
+        dStream := TMemoryStream.Create;
+        fmPictureZoom.ImageEnView1.IO.SaveToStreamJpeg(dStream);
+        dStream.Position := 0;
+        dmDBCommon.IMAGES_UPD.ParamByName('ID').Value := CustomerImages.ImageID;
+        dmDBCommon.IMAGES_UPD.ParamByName('IMAGE_DATA').LoadFromStream(dStream, ftBlob);
+        dmDBCommon.IMAGES_UPD.ParamByName('DRAW_DATA').Clear;
+        dmDBCommon.IMAGES_UPD.ExecProc;
+        dmDBCommon.ds_IMAGES_SEL.DataSet.Refresh;
+      end;
+    finally
+      mStream.Free;
+      dStream.Free;
+      fmPictureZoom.Free;
+    end;
+  end;
 end;
 
 procedure TfmCompareList2.btnWindowListClick(Sender: TObject);
@@ -970,6 +1106,11 @@ begin
   finally
     fmCompareWindowList.Free;
   end;
+end;
+
+procedure TfmCompareList2.ColorBoxPropertiesChange(Sender: TObject);
+begin
+  AssignControlValues;
 end;
 
 procedure TfmCompareList2.RetrieveCompareWindowThumbnail;
@@ -1181,10 +1322,11 @@ end;
 
 procedure TfmCompareList2.FormShow(Sender: TObject);
 begin
+  IEGlobalSettings().MsgLanguage := msKorean;
+
   PanelRight.Width := 1;
   if Length(CustomerImages.CustID) > 10 then begin
     RetrieveMemberInfo;
-    ResetButtonEnable;
     LIST_LOADED := True;
   end;
 end;
@@ -1211,6 +1353,26 @@ begin
     RetrieveThumbnailList;
     //BMDThread1.Start;
   end;
+end;
+
+procedure TfmCompareList2.icbDrawingToolPropertiesCloseUp(Sender: TObject);
+begin
+  if fUpdating then
+    exit;
+  fUpdating := True;
+  case icbDrawingTool.EditValue of
+    1: LayerWindow.MouseInteractLayers := [mlClickCreateLineLayers];
+    2: LayerWindow.MouseInteractLayers := [mlClickCreatePolylineLayers];
+    3: LayerWindow.MouseInteractLayers := [mlDrawCreatePolylineLayers];
+    4: LayerWindow.MouseInteractLayers := [mlClickCreateAngleLayers];
+    5: LayerWindow.LayersAdd(TIELayerKind(1));
+    6: LayerWindow.LayersAdd(TIELayerKind(4));
+    7: LayerWindow.MouseInteractLayers := [mlCreateImageLayers];
+  end;
+  LayerWindow.MouseInteractLayers := LayerWindow.MouseInteractLayers + [mlEditLayerPoints];
+//  memPolyEditNote.Enabled := ( rdbClickCreatePolylineLayers.Checked or rdbDrawCreatePolylineLayers.Checked ) and
+//                               chkAllowPointEditing.Checked;
+  fUpdating := False;
 end;
 
 procedure TfmCompareList2.ImageEnMView1AfterEvent(Sender: TObject;
@@ -1443,6 +1605,25 @@ procedure TfmCompareList2.LayerWindowDragOver(Sender, Source: TObject; X,
 begin
   if Source is TImageEnMView then
     Accept := True;
+end;
+
+procedure TfmCompareList2.LayerWindowNewLayer(Sender: TObject;
+  LayerIdx: Integer; LayerKind: TIELayerKind);
+begin
+  if LayerKind = ielkText then begin
+    TIETextLayer(LayerWindow.CurrentLayer).Text := DateToStr(gridCheckP_DATE.EditValue);
+    TIETextLayer(LayerWindow.CurrentLayer).Font.Size := FontDialog1.Font.Size;
+    TIETextLayer(LayerWindow.CurrentLayer).Font.Style := FontDialog1.Font.Style;
+    TIETextLayer(LayerWindow.CurrentLayer).Font.Color := FontDialog1.Font.Color;
+    TIETextLayer(LayerWindow.CurrentLayer).Font.Name := FontDialog1.Font.Name;
+    TIETextLayer(LayerWindow.CurrentLayer).BorderColor := clBlack;
+    TIETextLayer(LayerWindow.CurrentLayer).BorderWidth := 2;
+    TIETextLayer(LayerWindow.CurrentLayer).FillColor := clYellow;
+    TIETextLayer(LayerWindow.CurrentLayer).Alignment := iejCenter;
+    TIETextLayer(LayerWindow.CurrentLayer).Layout := ielCenter;
+    TIETextLayer(LayerWindow.CurrentLayer).AutoSize := True;
+  end;
+  AssignControlValues();
 end;
 
 procedure TfmCompareList2.LayerWindowUserInteraction(Sender: TObject;

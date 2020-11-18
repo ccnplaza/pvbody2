@@ -416,9 +416,9 @@ object fmCompareList2: TfmCompareList2
     end
   end
   object PanelRight: TPanel
-    Left = 912
+    Left = 936
     Top = 0
-    Width = 445
+    Width = 421
     Height = 724
     Align = alRight
     BevelOuter = bvNone
@@ -427,20 +427,22 @@ object fmCompareList2: TfmCompareList2
     object cxPageControl1: TcxPageControl
       Left = 0
       Top = 0
-      Width = 445
+      Width = 421
       Height = 724
       Align = alClient
       TabOrder = 0
-      Properties.ActivePage = cxTabSheet2
+      Properties.ActivePage = cxTabSheet1
       Properties.CustomButtons.Buttons = <>
       LookAndFeel.SkinName = ''
       OnResize = cxPageControl1Resize
+      ExplicitWidth = 661
       ClientRectBottom = 724
-      ClientRectRight = 445
+      ClientRectRight = 421
       ClientRectTop = 26
       object cxTabSheet1: TcxTabSheet
         Caption = 'cxTabSheet1'
         ImageIndex = 0
+        ExplicitWidth = 661
         object cxGroupBox1: TcxGroupBox
           Tag = 1
           AlignWithMargins = True
@@ -459,28 +461,18 @@ object fmCompareList2: TfmCompareList2
           StyleFocused.LookAndFeel.SkinName = 'Black'
           StyleHot.LookAndFeel.SkinName = 'Black'
           TabOrder = 0
+          ExplicitWidth = 659
           Height = 696
-          Width = 443
+          Width = 419
           object Panel2: TPanel
             Left = 3
             Top = 17
-            Width = 437
+            Width = 413
             Height = 27
             Align = alTop
             BevelOuter = bvNone
             TabOrder = 0
-            object Label3: TLabel
-              AlignWithMargins = True
-              Left = 202
-              Top = 3
-              Width = 40
-              Height = 21
-              Margins.Left = 10
-              Align = alLeft
-              Caption = #53804#47749#46020':'
-              Layout = tlCenter
-              ExplicitHeight = 15
-            end
+            ExplicitWidth = 653
             object btnDeleteLayerAll: TBitBtn
               AlignWithMargins = True
               Left = 69
@@ -510,9 +502,9 @@ object fmCompareList2: TfmCompareList2
             end
             object btnReport: TBitBtn
               AlignWithMargins = True
-              Left = 392
+              Left = 379
               Top = 1
-              Width = 44
+              Width = 33
               Height = 25
               Hint = #48708#44368#44208#44284#52636#47141
               Margins.Left = 1
@@ -533,20 +525,7 @@ object fmCompareList2: TfmCompareList2
               ShowHint = True
               TabOrder = 1
               OnClick = btnReportClick
-            end
-            object TrackBar1: TTrackBar
-              AlignWithMargins = True
-              Left = 248
-              Top = 3
-              Width = 117
-              Height = 21
-              Align = alLeft
-              Max = 255
-              Position = 128
-              ShowSelRange = False
-              TabOrder = 2
-              TickStyle = tsNone
-              OnChange = TrackBar1Change
+              ExplicitLeft = 619
             end
             object btnLayerList: TcxButton
               AlignWithMargins = True
@@ -598,7 +577,7 @@ object fmCompareList2: TfmCompareList2
                 99FFCAA699FFCAA699FFCAA699FFCAA699FF967B70BF00000002}
               ParentShowHint = False
               ShowHint = True
-              TabOrder = 3
+              TabOrder = 2
               OnClick = btnLayerListClick
             end
             object cxButton7: TcxButton
@@ -651,39 +630,12 @@ object fmCompareList2: TfmCompareList2
                 0005000000050000000500000006000000060000000400000001}
               ParentShowHint = False
               ShowHint = True
-              TabOrder = 4
+              TabOrder = 3
               OnClick = cxButton7Click
-            end
-            object btnDeleteLayer: TBitBtn
-              AlignWithMargins = True
-              Left = 131
-              Top = 1
-              Width = 60
-              Height = 25
-              Hint = #49440#53469#49325#51228
-              Margins.Left = 1
-              Margins.Top = 1
-              Margins.Right = 1
-              Margins.Bottom = 1
-              Align = alLeft
-              Caption = #49440#53469
-              Glyph.Data = {
-                F6000000424DF600000000000000760000002800000010000000100000000100
-                04000000000080000000120B0000120B00001000000000000000000000000000
-                8000008000000080800080000000800080008080000080808000C0C0C0000000
-                FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00888888888888
-                8888888888888888898888898888888888888899988888889888889998888889
-                8888888999888899888888889998899888888888899999888888888888999888
-                8888888889999988888888889998898888888899998888998888899998888889
-                9888899888888888998888888888888888888888888888888888}
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 5
-              OnClick = btnDeleteLayerClick
             end
             object btnSaveLayers: TBitBtn
               AlignWithMargins = True
-              Left = 368
+              Left = 130
               Top = 1
               Width = 30
               Height = 25
@@ -722,117 +674,12 @@ object fmCompareList2: TfmCompareList2
                 78787878787878787878787878787B7B7BFF00FFFF00FFFF00FF}
               ParentShowHint = False
               ShowHint = True
-              TabOrder = 6
+              TabOrder = 4
               OnClick = btnSaveLayersClick
-            end
-            object btnDrawing: TBitBtn
-              AlignWithMargins = True
-              Left = 488
-              Top = 1
-              Width = 30
-              Height = 25
-              Hint = #46020#54805#44536#47532#44592
-              Margins.Left = 0
-              Margins.Top = 1
-              Margins.Right = 0
-              Margins.Bottom = 1
-              Align = alLeft
-              Glyph.Data = {
-                F6000000424DF600000000000000760000002800000010000000100000000100
-                04000000000080000000120B0000120B00001000000000000000000000000000
-                8000008000000080800080000000800080008080000080808000C0C0C0000000
-                FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
-                DADAADADADADADADADADDADADAD0DADADADAADADAD0D0DADADADDADAD0DAD0DA
-                DADAADAD0DADAD0DADADDAD0DADADAD0DADAAD0DADADADAD0DADD0DADADADADA
-                D0DA0DADADADADADAD0D0ADADAD7DADADA0A0DADADA0ADADAD0D70DADA0A0ADA
-                D07AA70000ADA00007ADDADADADADADADADAADADADADADADADAD}
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 7
-              OnClick = btnDrawingClick
-            end
-            object btnText: TBitBtn
-              AlignWithMargins = True
-              Left = 458
-              Top = 1
-              Width = 30
-              Height = 25
-              Hint = #53581#49828#53944#51077#47141
-              Margins.Left = 0
-              Margins.Top = 1
-              Margins.Right = 0
-              Margins.Bottom = 1
-              Align = alLeft
-              Glyph.Data = {
-                F6000000424DF600000000000000760000002800000010000000100000000100
-                04000000000080000000120B0000120B00001000000000000000000000000000
-                8000008000000080800080000000800080008080000080808000C0C0C0000000
-                FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
-                DADAADADADADADADADADDADADADADADADADAA4444DAD444444ADDA74DADAD744
-                7ADAADA44DADA744ADADDAD74ADAD447DADAADAD4444444DADADDADA74DA447A
-                DADAADADA44D44ADADADDADAD74447DADADAADADAD444DADADADDADADA747ADA
-                DADAADADADA4ADADADADDADADADADADADADAADADADADADADADAD}
-              ParentShowHint = False
-              ShowHint = True
-              Style = bsNew
-              TabOrder = 8
-              OnClick = btnTextClick
-            end
-            object btnAngle: TBitBtn
-              AlignWithMargins = True
-              Left = 518
-              Top = 1
-              Width = 30
-              Height = 25
-              Hint = #44033#46020#44536#47532#44592
-              Margins.Left = 0
-              Margins.Top = 1
-              Margins.Right = 0
-              Margins.Bottom = 1
-              Align = alLeft
-              Glyph.Data = {
-                F6000000424DF600000000000000760000002800000010000000100000000100
-                04000000000080000000120B0000120B00001000000000000000000000000000
-                8000008000000080800080000000800080008080000080808000C0C0C0000000
-                FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00888888888888
-                8888800000000000008880888888808888888708888800888888880888880888
-                8888887088800888888888808800888888888887000888888888888808888008
-                8888888870880880888888888088088088888888870880088888888888088888
-                8888888888708888888888888880888888888888888888888888}
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 9
-              OnClick = btnAngleClick
-            end
-            object btnLine: TBitBtn
-              AlignWithMargins = True
-              Left = 548
-              Top = 1
-              Width = 30
-              Height = 25
-              Hint = #46020#54805#44536#47532#44592
-              Margins.Left = 0
-              Margins.Top = 1
-              Margins.Right = 0
-              Margins.Bottom = 1
-              Align = alLeft
-              Glyph.Data = {
-                F6000000424DF600000000000000760000002800000010000000100000000100
-                04000000000080000000120B0000120B00001000000000000000000000000000
-                8000008000000080800080000000800080008080000080808000C0C0C0000000
-                FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
-                0000ADADADADADAD0FF0DADADADADADA0FF0ADADADADADAD0000DADADADADAD4
-                DADAADADADADAD4DADADDADADADAD4DADADAADADADAD4DADADADDADADAD4DADA
-                DADAADADAD4DADADADADDADAD4DADADADADAADAD4DADADADADAD0000DADADADA
-                DADA0FF0ADADADADADAD0FF0DADADADADADA0000ADADADADADAD}
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 10
-              OnClick = btnLineClick
             end
             object btnArrow: TBitBtn
               AlignWithMargins = True
-              Left = 398
+              Left = 160
               Top = 1
               Width = 30
               Height = 25
@@ -847,18 +694,18 @@ object fmCompareList2: TfmCompareList2
                 04000000000080000000120B0000120B00001000000000000000000000000000
                 8000008000000080800080000000800080008080000080808000C0C0C0000000
                 FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
-                DADAADADADADADADADADDADADADADADADADAADADADADADAD77ADDADADADADA70
-                07DAADADADAD70000DADDADADAD000007ADAADADADA70000ADADDADADADA0007
-                DADAADADADA0A70DADADDADADA0ADADADADAADADA0ADADADADADDADA0ADADADA
-                DADAADA0ADADADADADADDADADADADADADADAADADADADADADADAD}
+                DADAADADADADA00DADADDADADADAD0F0DADAADAD0DAD0FF0ADADDADA00DA0F0A
+                DADAADAD0F00FF0DADADDADA0FF0F0DADADAADAD0FFFF0000DADDADA0FFFFFF0
+                DADAADAD0FFFFF0DADADDADA0FFFF0DADADAADAD0FFF0DADADADDADA0FF0DADA
+                DADAADAD0F0DADADADADDADA00DADADADADAADAD0DADADADADAD}
               ParentShowHint = False
               ShowHint = True
-              TabOrder = 11
+              TabOrder = 5
               OnClick = btnArrowClick
             end
             object btnSelRect: TBitBtn
               AlignWithMargins = True
-              Left = 578
+              Left = 264
               Top = 1
               Width = 30
               Height = 25
@@ -879,12 +726,12 @@ object fmCompareList2: TfmCompareList2
                 DADA000DADADA4ADA0000004444444DAD000000DADADADADA000}
               ParentShowHint = False
               ShowHint = True
-              TabOrder = 12
+              TabOrder = 6
               OnClick = btnSelRectClick
             end
             object btnSelCopy: TBitBtn
               AlignWithMargins = True
-              Left = 608
+              Left = 294
               Top = 1
               Width = 30
               Height = 25
@@ -905,77 +752,268 @@ object fmCompareList2: TfmCompareList2
                 88880BFBFBF707F088880FBFBFBFBFB088880040000000008888}
               ParentShowHint = False
               ShowHint = True
-              TabOrder = 13
+              TabOrder = 7
               OnClick = btnSelCopyClick
             end
-            object BitBtn2: TBitBtn
+            object icbDrawingTool: TcxImageComboBox
               AlignWithMargins = True
-              Left = 428
+              Left = 191
+              Top = 1
+              Margins.Left = 1
+              Margins.Top = 1
+              Margins.Right = 1
+              Margins.Bottom = 1
+              Align = alLeft
+              EditValue = 1
+              Properties.ImmediatePost = True
+              Properties.Items = <
+                item
+                  Description = #46972#51064
+                  ImageIndex = 0
+                  Value = 1
+                end
+                item
+                  Description = #47680#54000#46972#51064
+                  Value = 2
+                end
+                item
+                  Description = #51088#50976#49440
+                  Value = 3
+                end
+                item
+                  Description = #44033#46020
+                  Value = 4
+                end
+                item
+                  Description = #46020#54805
+                  Value = 5
+                end
+                item
+                  Description = #53581#49828#53944
+                  Value = 6
+                end>
+              Properties.OnCloseUp = icbDrawingToolPropertiesCloseUp
+              TabOrder = 8
+              Width = 72
+            end
+            object btnBackward: TBitBtn
+              AlignWithMargins = True
+              Left = 354
               Top = 1
               Width = 30
               Height = 25
-              Hint = #49440#53469#48373#49324
+              Hint = #46244#47196#51060#46041
               Margins.Left = 0
               Margins.Top = 1
               Margins.Right = 0
               Margins.Bottom = 1
               Align = alLeft
               Glyph.Data = {
-                36040000424D3604000000000000360000002800000010000000100000000100
-                2000000000000004000000000000000000000000000000000000000000020000
-                000A000000100000001100000011000000110000001200000012000000120000
-                0012000000120000001300000013000000120000000C000000030000000A8159
-                4CC2B47C69FFB37B69FFB37B68FFB37A68FFB37A68FFB27A68FFB37968FFB279
-                68FFB27967FFB27867FFB17867FFB17866FF7F5649C30000000B0000000EB77F
-                6EFFFBF7F4FFF9F0EBFFFBF5F1FFFBF7F4FFFBF7F4FFF9F3EEFFF7EDE7FFFAF4
-                EFFFFBF6F3FFFBF6F3FFF9F3EFFFF6ECE5FFB47B69FF000000110000000EB984
-                72FFFBF8F5FFDAD0C9FF776258FF563D32FF553D32FFA3948DFFF8F1ECFF806B
-                62FF543B31FF543B30FF7E6961FFF7EDE7FFB77F6EFF000000110000000EBC89
-                78FFFCF9F7FFAF9F97FF8F7B71FFF8F0EBFFD9CDC7FF573F33FFC3B5AFFFF8EF
-                EAFF97867EFF816E64FFF7EEE8FFF8EEE9FFB98472FF000000100000000DC08E
-                7DFFFCFAF8FFFAF3EFFFF9F2EEFFFCF9F7FFE7E0DBFF5A4034FFCEC3BBFFF9F1
-                ECFF99887FFF837066FFF8EFEAFFF8F1EBFFBC8977FF000000100000000CC394
-                82FFFCFBF9FFFBF5F2FFFBF4F1FF5D4336FF725A4FFFB2A39CFFFAF3EFFFFAF2
-                EEFF9B8980FF847268FFF9F2EDFFF9F2EEFFC08E7CFF0000000F0000000BC798
-                87FFFDFCFAFFFCF8F5FFFDFAF9FFFBF6F2FFBDB0A9FF7F685EFFFAF4F1FFFCF9
-                F6FF9D8C84FF877268FFFAF3F0FFFAF4F0FFC49381FF0000000E0000000BC99D
-                8CFFFDFCFBFFD3C9C4FF6D5346FFFEFBFAFFBFB3ADFF614639FFF1EAE7FF8974
-                6AFF5F4538FF88746AFFFAF5F2FFFAF6F2FFC69886FF0000000D0000000ACDA1
-                90FFFEFDFCFFFCF9F8FF8C786DFF65493AFF63483BFFA18E85FFFCF7F6FFFCF7
-                F6FFBEB1AAFF8B756AFFFBF6F5FFFBF7F5FFC99D8BFF0000000D00000009CFA5
-                94FFFEFDFDFFFDFAF9FFFDF9F9FFFDFAF8FFFDF9F8FFFDFAF8FFFCF9F7FFFCF9
-                F7FFFCF9F7FFFDF8F7FFFCF9F7FFFCF9F7FFCCA290FF0000000C000000084B53
-                C3FF8D9EECFF687CE3FF6678E2FF6476E1FF6172E0FF5F70DFFF5D6CDEFF5B69
-                DCFF5966DBFF5664DAFF5462D9FF616DDCFF3337AAFF0000000B000000084C55
-                C4FF93A4EEFF6C80E6FF6A7EE4FF687BE4FF6678E2FF6375E1FF6172E0FF5E6F
-                DEFF5C6CDDFF5A69DCFF5766DAFF6472DDFF3538ABFF0000000A000000074D56
-                C6FF96A7EFFF95A6EFFF93A4EDFF90A2EDFF8F9FEDFF8B9BEBFF8898EAFF8595
-                EAFF8291E7FF7F8DE7FF7D89E5FF7987E5FF3539ACFF00000009000000043A40
-                93C14D55C5FF4B53C3FF4A51C1FF484FBFFF464DBEFF444BBBFF4249B9FF4046
-                B7FF3E44B4FF3C41B3FF3A3EB0FF393CAEFF282B80C200000006000000010000
-                0004000000060000000600000006000000070000000700000007000000070000
-                0007000000070000000800000008000000070000000500000001}
+                F6000000424DF600000000000000760000002800000010000000100000000100
+                04000000000080000000120B0000120B00001000000000000000000000000000
+                8000008000000080800080000000800080008080000080808000C0C0C0000000
+                FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+                DADAADADADADADADADADDADADA000000000AADADAD077777770DDADADA077777
+                770AA00000077777770DD0FBFB077777770AA0BFBF077777770DD0FBFB077777
+                770AA0BFBF000000000DD0FBFBFBFBF0DADAA0BFBFBFBFB0ADADD0FBFBFBFBF0
+                DADAA0BFBFBFBFB0ADADD00000000000DADAADADADADADADADAD}
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 9
+              OnClick = btnBackwardClick
+            end
+            object btnForward: TBitBtn
+              AlignWithMargins = True
+              Left = 324
+              Top = 1
+              Width = 30
+              Height = 25
+              Hint = #50526#51004#47196#51060#46041
+              Margins.Left = 0
+              Margins.Top = 1
+              Margins.Right = 0
+              Margins.Bottom = 1
+              Align = alLeft
+              Glyph.Data = {
+                F6000000424DF600000000000000760000002800000010000000100000000100
+                04000000000080000000120B0000120B00001000000000000000000000000000
+                8000008000000080800080000000800080008080000080808000C0C0C0000000
+                FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+                DADAADADADADADADADADDADADA000000000AADADAD077777770DDADADA077777
+                770AA00000000000770DD0FBFBFBFBF0770AA0BFBFBFBFB0770DD0FBFBFBFBF0
+                770AA0BFBFBFBFB0000DD0FBFBFBFBF0DADAA0BFBFBFBFB0ADADD0FBFBFBFBF0
+                DADAA0BFBFBFBFB0ADADD00000000000DADAADADADADADADADAD}
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 10
+              OnClick = btnForwardClick
+            end
+            object ColorBox: TcxColorComboBox
+              AlignWithMargins = True
+              Left = 445
+              Top = 1
+              Hint = #46972#51064#49353#49345
+              Margins.Left = 1
+              Margins.Top = 1
+              Margins.Right = 1
+              Margins.Bottom = 1
+              Align = alLeft
+              ParentShowHint = False
+              Properties.ColorDialogType = cxcdtAdvanced
+              Properties.CustomColors = <>
+              Properties.DefaultColor = clRed
+              Properties.DropDownAutoWidth = False
+              Properties.ImmediatePost = True
+              Properties.ShowDescriptions = False
+              Properties.OnChange = ColorBoxPropertiesChange
+              ShowHint = True
+              Style.LookAndFeel.SkinName = 'VS2010'
+              StyleDisabled.LookAndFeel.SkinName = 'VS2010'
+              StyleFocused.LookAndFeel.SkinName = 'VS2010'
+              StyleHot.LookAndFeel.SkinName = 'VS2010'
+              TabOrder = 11
+              Width = 50
+            end
+            object speLineThick: TcxSpinEdit
+              AlignWithMargins = True
+              Left = 497
+              Top = 1
+              Hint = #46972#51064#46160#44760
+              Margins.Left = 1
+              Margins.Top = 1
+              Margins.Right = 1
+              Margins.Bottom = 1
+              Align = alLeft
+              ParentShowHint = False
+              Properties.OnChange = speLineThickPropertiesChange
+              ShowHint = True
+              TabOrder = 12
+              Value = 5
+              Width = 44
+            end
+            object btnFont: TBitBtn
+              AlignWithMargins = True
+              Left = 542
+              Top = 1
+              Width = 30
+              Height = 25
+              Hint = #54256#53944
+              Margins.Left = 0
+              Margins.Top = 1
+              Margins.Right = 0
+              Margins.Bottom = 1
+              Align = alLeft
+              Glyph.Data = {
+                F6000000424DF600000000000000760000002800000010000000100000000100
+                04000000000080000000120B0000120B00001000000000000000000000000000
+                8000008000000080800080000000800080008080000080808000C0C0C0000000
+                FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+                DADAADAD444444444444DADADADADADADADAADAD44444DAD4444DADADA44DADA
+                D44AADADADA44DADA44DDADADADA4444444AADADADADA44DA44DD0DAD0DADA44
+                D44AA07D70ADADA4444DD70007DADADA444AAD0D0DADADADA44DDA0A0ADADADA
+                DADAAD707DADADADADADDAD0DADADADADADAADADADADADADADAD}
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 13
+              OnClick = btnFontClick
+            end
+            object btnHelp: TBitBtn
+              AlignWithMargins = True
+              Left = 348
+              Top = 1
+              Width = 30
+              Height = 25
+              Hint = #54256#53944
+              Margins.Left = 0
+              Margins.Top = 1
+              Margins.Right = 0
+              Margins.Bottom = 1
+              Align = alRight
+              Glyph.Data = {
+                F6000000424DF600000000000000760000002800000010000000100000000100
+                04000000000080000000120B0000120B00001000000000000000000000000000
+                8000008000000080800080000000800080008080000080808000C0C0C0000000
+                FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+                0ADAADADADADADA00DADDADA7777770B07DAADA0000000FF007DDA0FFFBFBFBF
+                FF07AD0FBFFF44FFBF07DA0FFFBFFFBFFF07AD0FBFFF47FFBF07DA0FFFBF748F
+                FF07AD0FBFFFB747BF07DA0FFF47FF44FF07AD0FBF44B844BF07DA0FFF844448
+                FF07AD0FBFFFBFFFBF07DA0FFFBFFFBFFF0AADA00000000000AD}
               ParentShowHint = False
               ShowHint = True
               TabOrder = 14
-              OnClick = BitBtn2Click
+              OnClick = btnHelpClick
+              ExplicitLeft = 588
+            end
+            object btnMatchWidth: TBitBtn
+              AlignWithMargins = True
+              Left = 384
+              Top = 1
+              Width = 30
+              Height = 25
+              Hint = #49440#53469#54620' '#47784#46304' '#47112#51060#50612#47484' '#44032#51109' '#45331#51008' '#47112#51060#50612#51032' '#45320#48708#50640' '#47582#44172' '#53356#44592' '#51312#51221
+              Margins.Left = 0
+              Margins.Top = 1
+              Margins.Right = 0
+              Margins.Bottom = 1
+              Align = alLeft
+              Glyph.Data = {
+                F6000000424DF600000000000000760000002800000010000000100000000100
+                04000000000080000000120B0000120B00001000000000000000000000000000
+                8000008000000080800080000000800080008080000080808000C0C0C0000000
+                FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00D00000000000
+                00DAA0FFFFFFFFFFF0ADD0FFFFF4FFFFF0DAA0FFFF444FFFF0ADD0FFFFFFFFFF
+                F0DAA0FFFFFFFFFFF0ADD0FF4FFFFF4FF0DAA0F44FFFFF44F0ADD0FF4FFFFF4F
+                F0DAA0FFFFFFFFFFF0ADD0FFFFFFFFFFF0DAA0FFFFFFFFFFF0ADD0FFFF444F00
+                00DAA0FFFFF4FF080DADD0FFFFFFFF00DADAA0000000000DADAD}
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 15
+              OnClick = btnMatchWidthClick
+            end
+            object btnMatchHeight: TBitBtn
+              AlignWithMargins = True
+              Left = 414
+              Top = 1
+              Width = 30
+              Height = 25
+              Hint = #51088#46041' '#44032#47196#51221#47148
+              Margins.Left = 0
+              Margins.Top = 1
+              Margins.Right = 0
+              Margins.Bottom = 1
+              Align = alLeft
+              Glyph.Data = {
+                F6000000424DF600000000000000760000002800000010000000100000000100
+                04000000000080000000120B0000120B00001000000000000000000000000000
+                8000008000000080800080000000800080008080000080808000C0C0C0000000
+                FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+                DADAAD0FFFFF0FFFFF0DDA0FFFFF0FFFFF0AAD0FFFFF0FFFFF0DDA0FFFFF0FFF
+                FF0AAD0FFFFF0FFFFF0DDA0FFFFF0FFFFF0AAD0FFFFF0FFFFF0DDA0000000000
+                000AADADADADADADADADDA4ADADA4ADADA4AAD4DADAD4DADAD4DD44444444444
+                4444AD4DADAD4DADAD4DDA4ADADA4ADADA4AADADADADADADADAD}
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 16
+              OnClick = btnMatchHeightClick
             end
           end
           object LayerWindow: TImageEnView
             Left = 3
             Top = 44
-            Width = 437
+            Width = 413
             Height = 642
             Background = clBtnFace
             BackgroundStyle = iebsChessboard
             Ctl3D = True
             PopupMenus = [ievViewing, ievEditing, ievLayerEditing, ievSelection, ievLayerSelection]
             Center = False
+            OnNewLayer = LayerWindowNewLayer
             OnUserInteraction = LayerWindowUserInteraction
             Align = alClient
             TabOrder = 2
             OnDragDrop = LayerWindowDragDrop
             OnDragOver = LayerWindowDragOver
+            ExplicitWidth = 653
           end
           object ImageEnVect1Print: TImageEnVect
             Tag = 1
@@ -994,6 +1032,7 @@ object fmCompareList2: TfmCompareList2
       object cxTabSheet2: TcxTabSheet
         Caption = 'cxTabSheet2'
         ImageIndex = 1
+        ExplicitWidth = 661
         object cxGroupBox3: TcxGroupBox
           AlignWithMargins = True
           Left = 1
@@ -1006,19 +1045,21 @@ object fmCompareList2: TfmCompareList2
           Caption = #48708#44368#48516#49437'('#50952#46020#50864')'
           Style.TextStyle = [fsBold]
           TabOrder = 0
+          ExplicitWidth = 659
           Height = 696
-          Width = 443
+          Width = 419
           object Panel3: TPanel
             Left = 3
             Top = 17
-            Width = 437
+            Width = 413
             Height = 25
             Align = alTop
             BevelOuter = bvNone
             TabOrder = 0
+            ExplicitWidth = 653
             object BitBtn1: TBitBtn
               AlignWithMargins = True
-              Left = 392
+              Left = 368
               Top = 1
               Width = 44
               Height = 23
@@ -1041,6 +1082,7 @@ object fmCompareList2: TfmCompareList2
               ShowHint = True
               TabOrder = 0
               OnClick = BitBtn1Click
+              ExplicitLeft = 608
             end
             object btnWindowList: TcxButton
               AlignWithMargins = True
@@ -1201,11 +1243,12 @@ object fmCompareList2: TfmCompareList2
           object pgcCompareFrame: TPanel
             Left = 3
             Top = 42
-            Width = 437
+            Width = 413
             Height = 644
             Align = alClient
             BevelOuter = bvNone
             TabOrder = 1
+            ExplicitWidth = 653
             object pnlCompareFrameLeft: TPanel
               Left = 0
               Top = 0
@@ -1277,11 +1320,12 @@ object fmCompareList2: TfmCompareList2
             object pnlCompareFrameRight: TPanel
               Left = 321
               Top = 0
-              Width = 116
+              Width = 92
               Height = 644
               Align = alClient
               BevelOuter = bvNone
               TabOrder = 1
+              ExplicitWidth = 332
               object compareGroupRightTop: TcxGroupBox
                 Tag = 3
                 Left = 0
@@ -1294,13 +1338,14 @@ object fmCompareList2: TfmCompareList2
                 StyleFocused.LookAndFeel.SkinName = 'Black'
                 StyleHot.LookAndFeel.SkinName = 'Black'
                 TabOrder = 0
+                ExplicitWidth = 332
                 Height = 303
-                Width = 116
+                Width = 92
                 object ImageEnVectComp3: TImageEnVect
                   Tag = 3
                   Left = 3
                   Top = 17
-                  Width = 110
+                  Width = 86
                   Height = 276
                   Background = clInactiveCaptionText
                   AutoStretch = True
@@ -1309,6 +1354,7 @@ object fmCompareList2: TfmCompareList2
                   TabOrder = 0
                   OnDragDrop = ImageEnVectComp1DragDrop
                   OnDragOver = ImageEnVectComp3DragOver
+                  ExplicitWidth = 326
                 end
               end
               object compareGroupRightBottom: TcxGroupBox
@@ -1323,13 +1369,14 @@ object fmCompareList2: TfmCompareList2
                 StyleFocused.LookAndFeel.SkinName = 'Black'
                 StyleHot.LookAndFeel.SkinName = 'Black'
                 TabOrder = 1
+                ExplicitWidth = 332
                 Height = 341
-                Width = 116
+                Width = 92
                 object ImageEnVectComp4: TImageEnVect
                   Tag = 4
                   Left = 3
                   Top = 17
-                  Width = 110
+                  Width = 86
                   Height = 314
                   Background = clInactiveCaptionText
                   AutoStretch = True
@@ -1338,6 +1385,7 @@ object fmCompareList2: TfmCompareList2
                   TabOrder = 0
                   OnDragDrop = ImageEnVectComp1DragDrop
                   OnDragOver = ImageEnVectComp4DragOver
+                  ExplicitWidth = 326
                 end
               end
             end
@@ -1380,7 +1428,7 @@ object fmCompareList2: TfmCompareList2
     end
   end
   object cxSplitter1: TcxSplitter
-    Left = 906
+    Left = 930
     Top = 0
     Width = 6
     Height = 724
@@ -1389,6 +1437,7 @@ object fmCompareList2: TfmCompareList2
     Control = PanelRight
     Color = clGray
     ParentColor = False
+    ExplicitLeft = 690
   end
   object compareGroupLeftTop: TcxGroupBox
     Tag = 1
@@ -1408,24 +1457,27 @@ object fmCompareList2: TfmCompareList2
     StyleFocused.LookAndFeel.SkinName = 'Black'
     StyleHot.LookAndFeel.SkinName = 'Black'
     TabOrder = 3
+    ExplicitWidth = 476
     Height = 722
-    Width = 692
+    Width = 716
     object Panel1: TPanel
       Left = 3
       Top = 17
-      Width = 686
+      Width = 710
       Height = 695
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 1
+      ExplicitWidth = 470
       object PanelButtons: TPanel
         Left = 0
         Top = 0
-        Width = 686
+        Width = 710
         Height = 25
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitWidth = 470
         object Label1: TLabel
           AlignWithMargins = True
           Left = 3
@@ -1469,7 +1521,6 @@ object fmCompareList2: TfmCompareList2
           Margins.Bottom = 1
           Align = alLeft
           Caption = #49325#51228
-          Enabled = False
           LookAndFeel.SkinName = 'DevExpressStyle'
           OptionsImage.Glyph.Data = {
             36040000424D3604000000000000360000002800000010000000100000000100
@@ -1513,7 +1564,7 @@ object fmCompareList2: TfmCompareList2
         end
         object btnEditImage: TcxButton
           AlignWithMargins = True
-          Left = 222
+          Left = 289
           Top = 1
           Width = 65
           Height = 23
@@ -1524,7 +1575,6 @@ object fmCompareList2: TfmCompareList2
           Margins.Bottom = 1
           Align = alLeft
           Caption = #54200#51665
-          Enabled = False
           OptionsImage.Glyph.Data = {
             36040000424D3604000000000000360000002800000010000000100000000100
             2000000000000004000000000000000000000000000000000000000000000000
@@ -1564,10 +1614,11 @@ object fmCompareList2: TfmCompareList2
           ShowHint = True
           TabOrder = 2
           OnClick = btnEditImageClick
+          ExplicitLeft = 222
         end
         object btnCompareWin: TcxButton
           AlignWithMargins = True
-          Left = 423
+          Left = 490
           Top = 1
           Width = 68
           Height = 23
@@ -1578,7 +1629,6 @@ object fmCompareList2: TfmCompareList2
           Margins.Bottom = 1
           Align = alLeft
           Caption = #48708#44368'2'
-          Enabled = False
           OptionsImage.Glyph.Data = {
             36040000424D3604000000000000360000002800000010000000100000000100
             2000000000000004000000000000000000000000000000000000000000000000
@@ -1616,10 +1666,11 @@ object fmCompareList2: TfmCompareList2
             0000000000010000000100000001000000010000000000000000}
           TabOrder = 3
           OnClick = btnCompareWinClick
+          ExplicitLeft = 423
         end
         object btnCompareLayer: TcxButton
           AlignWithMargins = True
-          Left = 356
+          Left = 423
           Top = 1
           Width = 65
           Height = 23
@@ -1630,7 +1681,6 @@ object fmCompareList2: TfmCompareList2
           Margins.Bottom = 1
           Align = alLeft
           Caption = #48708#44368
-          Enabled = False
           OptionsImage.Glyph.Data = {
             36040000424D3604000000000000360000002800000010000000100000000100
             2000000000000004000000000000000000000000000000000000000000000000
@@ -1670,11 +1720,12 @@ object fmCompareList2: TfmCompareList2
           ShowHint = True
           TabOrder = 4
           OnClick = btnCompareLayerClick
+          ExplicitLeft = 356
         end
         object btnCapture: TcxButton
           Tag = 1
           AlignWithMargins = True
-          Left = 289
+          Left = 356
           Top = 1
           Width = 65
           Height = 23
@@ -1685,7 +1736,6 @@ object fmCompareList2: TfmCompareList2
           Margins.Bottom = 1
           Align = alLeft
           Caption = #52897#52432
-          Enabled = False
           LookAndFeel.NativeStyle = False
           LookAndFeel.SkinName = 'DevExpressStyle'
           OptionsImage.Glyph.Data = {
@@ -1734,10 +1784,11 @@ object fmCompareList2: TfmCompareList2
           Font.Style = []
           ParentFont = False
           OnClick = btnCaptureClick
+          ExplicitLeft = 289
         end
         object btnStaticCheck: TcxButton
           AlignWithMargins = True
-          Left = 493
+          Left = 560
           Top = 1
           Width = 89
           Height = 23
@@ -1748,7 +1799,6 @@ object fmCompareList2: TfmCompareList2
           Margins.Bottom = 1
           Align = alLeft
           Caption = #51221#51201#54217#44032
-          Enabled = False
           OptionsImage.Glyph.Data = {
             36040000424D3604000000000000360000002800000010000000100000000100
             2000000000000004000000000000000000000000000000000000000000000000
@@ -1786,10 +1836,11 @@ object fmCompareList2: TfmCompareList2
             4B9B392B25510000000400000001000000000000000000000000}
           TabOrder = 6
           OnClick = btnStaticCheckClick
+          ExplicitLeft = 493
         end
         object cxButton1: TcxButton
           AlignWithMargins = True
-          Left = 584
+          Left = 651
           Top = 1
           Width = 75
           Height = 23
@@ -1801,6 +1852,7 @@ object fmCompareList2: TfmCompareList2
           Caption = #44540#50977'/'#44264#44201
           TabOrder = 7
           OnClick = cxButton1Click
+          ExplicitLeft = 584
         end
         object btnSave: TcxButton
           AlignWithMargins = True
@@ -1852,19 +1904,69 @@ object fmCompareList2: TfmCompareList2
           TabOrder = 8
           OnClick = btnSaveClick
         end
+        object btnTrim: TcxButton
+          AlignWithMargins = True
+          Left = 222
+          Top = 1
+          Width = 65
+          Height = 23
+          Margins.Left = 1
+          Margins.Top = 1
+          Margins.Right = 1
+          Margins.Bottom = 1
+          Align = alLeft
+          Caption = #53944#47548
+          OptionsImage.Glyph.Data = {
+            36040000424D3604000000000000360000002800000010000000100000000100
+            2000000000000004000000000000000000000000000000000000000000000000
+            00030000000E00000018000000180000000F0000000400000000000000000000
+            00030000000E00000018000000180000000F0000000400000000000000030402
+            011A512408A5833A0BEE81380AEF4F2105A70301001C00000003000000030302
+            001A512408A5833A0BEE81380AEF4F2105A70301001C00000003000000095931
+            159BB8763BFFF1BF6EFFF1BD6BFFB56F33FF52280DA10000000C00000009552C
+            129BB76F34FFEEA457FFEDA354FFB3672CFF52280DA10000000C0000000CA868
+            37EEF6CE8FFFC08B57FFD2A26DFFF3C983FF985525F00000001400000010A05E
+            2FEFF4B775FFB57A47FFC8905BFFF0B06AFF995425EF0000001000000009B77C
+            48EDFAE3BFFFA26638FFAE7545FFF8DEB5FFAC6A38FF0000002A0000002AB777
+            44FFF9D4A9FF97592FFFA3663AFFF7CFA0FFA56735EE0000000D000000047251
+            3290DFAE7EFFF4DDC1FFF3DDC0FFDEB58BFFCB9C76FF67372BFF603226FFD0A1
+            7AFFE1B58AFFF4D5B3FFF3D4B1FFD49F6EFF68462A9300000006000000010504
+            030B7356378ECD9762F2D69F69FFE0BA94FFE6CBB4FFF0DED4FF9E796DFFCAAB
+            94FFDDB591FFD29964FFC28C5AF36D4E33910504020D00000001000000000000
+            0000000000030000000A35241F66AD8577FBF9F4F2FFF2E2D9FFE4CDC4FF9772
+            68FF865B4EFB23120D6F00000010000000040000000100000000000000000000
+            000000000000000000010000000C5B3B32B2B58B7EFFFAF5F3FFF4E5DCFFB799
+            8EFF43241CB40000000F00000001000000000000000000000000000000000000
+            000000000000000000031E141142A07567FDDECAC2FFB89388FFF8F3F1FFF3E7
+            DFFF8A6054FD150B093F00000003000000000000000000000000000000000000
+            0000000000010403020F82584BD8E6D1C9FFEFE5E1FF795144E0885E53DFF6F1
+            EEFFDFCFC6FF61382ED70201010E000000010000000000000000000000000000
+            0000000000045339318ACCAEA3FFF0E5E1FF734D41C80805041E0A0605197550
+            45C5F4EEECFFB99B93FF39201988000000040000000000000000000000000000
+            00022219153BB68D7EFBEEE2DDFF68473DB00402021000000002000000010403
+            020C644237ACF2EAE7FF92695DFD170D0A390000000200000000000000010403
+            030B946C5FD6EBDED9FF5C413894000000070000000200000000000000000000
+            00010000000454372E91ECE3E0FF683F34D50301010A00000001000000025E45
+            3B85EBDCD6FF4B362E7200000005000000010000000000000000000000000000
+            000000000000000000023F2A236FE9DFDCFF3E231D8400000002000000028965
+            58BB3D2D27590000000300000001000000000000000000000000000000000000
+            000000000000000000000000000131201B57654236BA00000001}
+          TabOrder = 9
+          OnClick = btnTrimClick
+        end
       end
       object ImageEnMView1: TImageEnMView
         Left = 0
         Top = 25
-        Width = 686
+        Width = 710
         Height = 670
         Background = clWindowFrame
         GridWidth = -1
-        StoreType = ietFastThumb
+        StoreType = ietNormal
         ThumbWidth = 250
         ThumbHeight = 400
         TextMargin = 0
-        ThumbnailOptionsEx = [ietxShowIconForUnknownFormat, ietxShowIconWhileLoading, ietxEnableInternalIcons, ietxStretchSmallImages, ietxAutoPadThumbnailColumns, ietxCenterSingleFrame]
+        ThumbnailOptionsEx = [ietxShowIconWhileLoading, ietxEnableInternalIcons, ietxStretchSmallImages, ietxAutoPadThumbnailColumns, ietxCenterSingleFrame]
         PopupMenus = [impDefault, impSelection]
         Zoom = 120.000000000000000000
         OnImageSelect = ImageEnMView1ImageSelect
@@ -1881,7 +1983,6 @@ object fmCompareList2: TfmCompareList2
         DefaultInfoText = iedtFilename
         DefaultBottomText = iedtImageDimAndSize
         Align = alClient
-        ThumbnailResampleFilter = rfNone
         SelectedFontColor = clWhite
         TabOrder = 1
         OnDblClick = ImageEnMView1DblClick
@@ -1890,6 +1991,7 @@ object fmCompareList2: TfmCompareList2
         OnEndDrag = ImageEnMView1EndDrag
         OnMouseMove = ImageEnMView1MouseMove
         ThreadPoolSize = 100
+        ExplicitWidth = 470
       end
       object PanelMessage: TPanel
         Left = 278
@@ -3288,6 +3390,33 @@ object fmCompareList2: TfmCompareList2
     object dxMemDatamember_no: TStringField
       FieldName = 'member_no'
       Size = 30
+    end
+  end
+  object FontDialog1: TFontDialog
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlue
+    Font.Height = -40
+    Font.Name = #44404#47548
+    Font.Style = [fsBold]
+    Left = 1184
+    Top = 120
+  end
+  object ActionList1: TActionList
+    Left = 1040
+    Top = 112
+    object ImageEnViewLayersMatchWidth1: TImageEnViewLayersMatchWidth
+      Category = 'ImageEnView Layers'
+      Caption = #44221#44592' '#54253
+      Hint = #49440#53469#54620' '#47784#46304' '#47112#51060#50612#47484' '#44032#51109' '#45331#51008' '#47112#51060#50612#51032' '#45320#48708#50640' '#47582#44172' '#53356#44592' '#51312#51221
+      ImageIndex = 152
+      ImageEnView = LayerWindow
+    end
+    object ImageEnViewLayersMatchHeight1: TImageEnViewLayersMatchHeight
+      Category = 'ImageEnView Layers'
+      Caption = #54616#51060#52768' '#44221#44592
+      Hint = #49440#53469#54620' '#47784#46304' '#47112#51060#50612#51032' '#53356#44592#47484' '#44032#51109' '#45458#51008' '#47112#51060#50612#51032' '#45458#51060#47196' '#51312#51221#54633#45768#45796'.'
+      ImageIndex = 153
+      ImageEnView = LayerWindow
     end
   end
 end
