@@ -25,34 +25,15 @@ uses
   iexBitmaps, hyiedefs, iesettings, iexLayers, iexRulers, iexToolbars, ieview,
   iemview, ToolWin, ComCtrls, iexRichEdit, imageenview, cxContainer,
   dxGDIPlusClasses, cxImage, cxTextEdit, cxMaskEdit, cxDropDownEdit,
-  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxGroupBox;
 
 type
   TfmMuscleEditor = class(TForm)
     Panel1: TPanel;
     MUSCLE_IMAGES_INS: TUniStoredProc;
-    gridMuscleImage: TcxGridDBTableView;
-    cxGrid2Level1: TcxGridLevel;
-    cxGrid2: TcxGrid;
-    gridMuscleImageID: TcxGridDBColumn;
-    gridMuscleImageM_NAME: TcxGridDBColumn;
-    gridMuscleImageM_KIND: TcxGridDBColumn;
-    gridMuscleImageM_IDX: TcxGridDBColumn;
-    gridMuscleImageM_POINT: TcxGridDBColumn;
-    gridMuscleImageM_SEX: TcxGridDBColumn;
     btnAdd: TcxButton;
     btnEdit: TcxButton;
     cxButton3: TcxButton;
-    MUSCLE_IMAGES_SEL_ALL: TUniStoredProc;
-    ds_MUSCLE_IMAGES_SEL_ALL: TDataSource;
-    MUSCLE_IMAGES_SEL_ALLID: TIntegerField;
-    MUSCLE_IMAGES_SEL_ALLM_NAME: TStringField;
-    MUSCLE_IMAGES_SEL_ALLM_IMAGE: TBlobField;
-    MUSCLE_IMAGES_SEL_ALLM_KIND: TIntegerField;
-    MUSCLE_IMAGES_SEL_ALLM_DESC: TMemoField;
-    MUSCLE_IMAGES_SEL_ALLM_IDX: TIntegerField;
-    MUSCLE_IMAGES_SEL_ALLM_POINT: TIntegerField;
-    MUSCLE_IMAGES_SEL_ALLM_SEX: TIntegerField;
     Panel2: TPanel;
     ImageEnView1: TImageEnView;
     IERichEdit1: TIERichEdit;
@@ -61,17 +42,48 @@ type
     btnSave: TcxButton;
     btnCancel: TcxButton;
     MUSCLE_IMAGES_UPD_DESC: TUniStoredProc;
-    gridMuscleImageM_IMAGE: TcxGridDBColumn;
-    gridMuscleImageM_DESC: TcxGridDBColumn;
     MUSCLE_IMAGES_UPD: TUniStoredProc;
     cxImage1: TcxImage;
-    Label1: TLabel;
-    lcMain: TcxLookupComboBox;
-    btnView: TcxButton;
     MUSCLE_IMAGES_DEL: TUniStoredProc;
     btnImageEdit: TcxButton;
     MUSCLE_IMAGES_UPD_DRAW: TUniStoredProc;
-    MUSCLE_IMAGES_SEL_ALLM_DRAW: TBlobField;
+    MUSCLE_MAIN_SEL_MIX: TUniStoredProc;
+    MUSCLE_MAIN_SEL_MIXM_NAME: TStringField;
+    MUSCLE_MAIN_SEL_MIXM_POINT: TIntegerField;
+    MUSCLE_MAIN_SEL_MIXM_KIND: TIntegerField;
+    ds_MUSCLE_MAIN_SEL_MIX: TDataSource;
+    cxGroupBox1: TcxGroupBox;
+    cxGrid1: TcxGrid;
+    gridMain: TcxGridDBTableView;
+    gridMainM_NAME: TcxGridDBColumn;
+    gridMainM_POINT: TcxGridDBColumn;
+    gridMainM_KIND: TcxGridDBColumn;
+    cxGrid1Level1: TcxGridLevel;
+    MUSCLE_IMAGES_SEL_NOIMG: TUniStoredProc;
+    MUSCLE_IMAGES_SEL_NOIMGID: TIntegerField;
+    MUSCLE_IMAGES_SEL_NOIMGM_NAME: TStringField;
+    MUSCLE_IMAGES_SEL_NOIMGM_KIND: TIntegerField;
+    MUSCLE_IMAGES_SEL_NOIMGM_DESC: TMemoField;
+    MUSCLE_IMAGES_SEL_NOIMGM_IDX: TIntegerField;
+    MUSCLE_IMAGES_SEL_NOIMGM_POINT: TIntegerField;
+    MUSCLE_IMAGES_SEL_NOIMGM_SEX: TIntegerField;
+    ds_MUSCLE_IMAGES_SEL_NOIMG: TDataSource;
+    MUSCLE_IMAGES_SEL_IMG: TUniStoredProc;
+    MUSCLE_IMAGES_SEL_IMGM_IMAGE: TBlobField;
+    MUSCLE_IMAGES_SEL_IMGM_DRAW: TBlobField;
+    ds_MUSCLE_IMAGES_SEL_IMG: TDataSource;
+    cxGroupBox2: TcxGroupBox;
+    cxGrid2: TcxGrid;
+    gridMuscleImage: TcxGridDBTableView;
+    gridMuscleImageID: TcxGridDBColumn;
+    gridMuscleImageM_IDX: TcxGridDBColumn;
+    gridMuscleImageM_KIND: TcxGridDBColumn;
+    gridMuscleImageM_NAME: TcxGridDBColumn;
+    gridMuscleImageM_POINT: TcxGridDBColumn;
+    gridMuscleImageM_SEX: TcxGridDBColumn;
+    gridMuscleImageM_DESC: TcxGridDBColumn;
+    cxGrid2Level1: TcxGridLevel;
+    PanelLeft: TPanel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnAddClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -84,13 +96,19 @@ type
       Sender: TcxCustomGridTableView; APrevFocusedRecord,
       AFocusedRecord: TcxCustomGridRecord;
       ANewItemRecordFocusingChanged: Boolean);
-    procedure btnViewClick(Sender: TObject);
-    procedure lcMainPropertiesCloseUp(Sender: TObject);
     procedure cxButton3Click(Sender: TObject);
     procedure btnImageEditClick(Sender: TObject);
     procedure ImageEnView1DblClick(Sender: TObject);
+    procedure gridMainCellClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
+    procedure gridMainM_NAMECustomDrawCell(Sender: TcxCustomGridTableView;
+      ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
+      var ADone: Boolean);
   private
     procedure RetrieveImage;
+    procedure RetrieveMainData;
+    procedure RetrieveSubData;
     { Private declarations }
   public
     { Public declarations }
@@ -122,10 +140,10 @@ begin
       MUSCLE_IMAGES_INS.ParamByName('M_KIND').Value := fmMuscleInsert.icbPosture.EditValue;
       MUSCLE_IMAGES_INS.ParamByName('M_DESC').Value := fmMuscleInsert.edtDesc.RTFText;
       MUSCLE_IMAGES_INS.ParamByName('M_IDX').Value := fmMuscleInsert.edtIDX.EditValue;
-      MUSCLE_IMAGES_INS.ParamByName('M_POINT').Value := lcMain.EditValue;
+      MUSCLE_IMAGES_INS.ParamByName('M_POINT').Value := gridMainM_POINT.EditValue;
       MUSCLE_IMAGES_INS.ParamByName('M_SEX').Value := fmMuscleInsert.icbMuscle.EditValue;
       MUSCLE_IMAGES_INS.ExecProc;
-      ds_MUSCLE_IMAGES_SEL_ALL.DataSet.Refresh;
+      ds_MUSCLE_IMAGES_SEL_NOIMG.DataSet.Refresh;
     end;
   finally
     fmMuscleInsert.Free;
@@ -137,16 +155,8 @@ begin
   MUSCLE_IMAGES_UPD_DESC.ParamByName('ID').Value := gridMuscleImageID.EditValue;
   MUSCLE_IMAGES_UPD_DESC.ParamByName('M_DESC').Value := IERichEdit1.RTFText;
   MUSCLE_IMAGES_UPD_DESC.ExecProc;
-  ds_MUSCLE_IMAGES_SEL_ALL.DataSet.Refresh;
-  ds_MUSCLE_IMAGES_SEL_ALL.DataSet.Locate('ID', gridMuscleImageID.EditValue, []);
-end;
-
-procedure TfmMuscleEditor.btnViewClick(Sender: TObject);
-begin
-  MUSCLE_IMAGES_SEL_ALL.ParamByName('MPOINT').Value := lcMain.EditValue;
-  MUSCLE_IMAGES_SEL_ALL.Open;
-  ds_MUSCLE_IMAGES_SEL_ALL.DataSet.Refresh;
-  RetrieveImage;
+  ds_MUSCLE_IMAGES_SEL_NOIMG.DataSet.Refresh;
+  ds_MUSCLE_IMAGES_SEL_NOIMG.DataSet.Locate('ID', gridMuscleImageID.EditValue, []);
 end;
 
 procedure TfmMuscleEditor.cxButton3Click(Sender: TObject);
@@ -157,7 +167,7 @@ begin
   begin
     MUSCLE_IMAGES_DEL.ParamByName('ID').Value := gridMuscleImageID.EditValue;
     MUSCLE_IMAGES_DEL.ExecProc;
-    ds_MUSCLE_IMAGES_SEL_ALL.DataSet.Refresh;
+    ds_MUSCLE_IMAGES_SEL_NOIMG.DataSet.Refresh;
   end;
 end;
 
@@ -175,7 +185,7 @@ begin
     fmMuscleInsert.edtDesc.RTFText := VarToStrDef(gridMuscleImageM_DESC.EditValue, '');
     fmMuscleInsert.icbMuscle.EditValue := gridMuscleImageM_SEX.EditValue;
     mStream := TMemoryStream.Create;
-    MUSCLE_IMAGES_SEL_ALLM_IMAGE.SaveToStream(mStream);
+    MUSCLE_IMAGES_SEL_IMGM_IMAGE.SaveToStream(mStream);
     mStream.Position := 0 ;
     fmMuscleInsert.ImageEnView1.IO.LoadFromStreamJpeg(mStream);
     fmMuscleInsert.ImageEnView1.Update;
@@ -193,11 +203,11 @@ begin
       MUSCLE_IMAGES_UPD.ParamByName('M_KIND').Value := fmMuscleInsert.icbPosture.EditValue;
       MUSCLE_IMAGES_UPD.ParamByName('M_DESC').Value := fmMuscleInsert.edtDesc.RTFText;
       MUSCLE_IMAGES_UPD.ParamByName('M_IDX').Value := fmMuscleInsert.edtIDX.EditValue;
-      MUSCLE_IMAGES_UPD.ParamByName('M_POINT').Value := lcMain.EditValue;
+      MUSCLE_IMAGES_UPD.ParamByName('M_POINT').Value := gridMainM_POINT.EditValue;
       MUSCLE_IMAGES_UPD.ParamByName('M_SEX').Value := fmMuscleInsert.icbMuscle.EditValue;
       MUSCLE_IMAGES_UPD.ExecProc;
-      ds_MUSCLE_IMAGES_SEL_ALL.DataSet.Refresh;
-      ds_MUSCLE_IMAGES_SEL_ALL.DataSet.Locate('ID', record_id, []);
+      ds_MUSCLE_IMAGES_SEL_NOIMG.DataSet.Refresh;
+      ds_MUSCLE_IMAGES_SEL_NOIMG.DataSet.Locate('ID', record_id, []);
     end;
   finally
     mStream.Free;
@@ -229,8 +239,8 @@ begin
       MUSCLE_IMAGES_UPD_DRAW.ParamByName('ID').Value := id;
       MUSCLE_IMAGES_UPD_DRAW.ParamByName('M_DRAW').LoadFromStream(dStream, ftBlob);
       MUSCLE_IMAGES_UPD_DRAW.ExecProc;
-      ds_MUSCLE_IMAGES_SEL_ALL.DataSet.Refresh;
-      ds_MUSCLE_IMAGES_SEL_ALL.DataSet.Locate('ID', id, []);
+      ds_MUSCLE_IMAGES_SEL_NOIMG.DataSet.Refresh;
+      ds_MUSCLE_IMAGES_SEL_NOIMG.DataSet.Locate('ID', id, []);
     end;
   finally
     dStream.Free;
@@ -246,11 +256,24 @@ end;
 procedure TfmMuscleEditor.FormShow(Sender: TObject);
 begin
   DATA_LOADED := False;
-  dmDBCommon.MUSCLE_MAIN_SEL.Open;
-  dmDBCommon.ds_MUSCLE_MAIN_SEL.DataSet.Refresh;
-  lcMain.EditValue := 1;
-  btnView.Click;
+  RetrieveMainData;
+  RetrieveSubData;
+  RetrieveImage;
   DATA_LOADED := True;
+end;
+
+procedure TfmMuscleEditor.RetrieveMainData;
+begin
+  MUSCLE_MAIN_SEL_MIX.Open;
+  ds_MUSCLE_MAIN_SEL_MIX.DataSet.Refresh;
+end;
+
+procedure TfmMuscleEditor.RetrieveSubData;
+begin
+  MUSCLE_IMAGES_SEL_NOIMG.ParamByName('MPOINT').Value := MUSCLE_MAIN_SEL_MIXM_POINT.Value;
+  MUSCLE_IMAGES_SEL_NOIMG.ParamByName('MKIND').Value := MUSCLE_MAIN_SEL_MIXM_KIND.Value;
+  MUSCLE_IMAGES_SEL_NOIMG.Open;
+  ds_MUSCLE_IMAGES_SEL_NOIMG.DataSet.Refresh;
 end;
 
 procedure TfmMuscleEditor.RetrieveImage;
@@ -261,17 +284,40 @@ begin
   dStream := TMemoryStream.Create;
   try
     ImageEnView1.ClearAll;
-    MUSCLE_IMAGES_SEL_ALLM_IMAGE.SaveToStream(mStream);
-    MUSCLE_IMAGES_SEL_ALLM_DRAW.SaveToStream(dStream);
+    MUSCLE_IMAGES_SEL_IMG.ParamByName('ID').Value := gridMuscleImageID.EditValue;
+    MUSCLE_IMAGES_SEL_IMG.Open;
+    ds_MUSCLE_IMAGES_SEL_IMG.DataSet.Refresh;
+    MUSCLE_IMAGES_SEL_IMGM_IMAGE.SaveToStream(mStream);
+    MUSCLE_IMAGES_SEL_IMGM_DRAW.SaveToStream(dStream);
     mStream.Position := 0;
     dStream.Position := 0;
     ImageEnView1.IO.LoadFromStreamJpeg(mStream);
     ImageEnView1.IO.LoadFromStreamIEN(dStream);
     ImageEnView1.Update;
-    IERichEdit1.RTFText := MUSCLE_IMAGES_SEL_ALLM_DESC.Value;
+    IERichEdit1.RTFText := MUSCLE_IMAGES_SEL_NOIMGM_DESC.Value;
   finally
     mStream.Free;
     dStream.Free;
+  end;
+end;
+
+procedure TfmMuscleEditor.gridMainCellClick(Sender: TcxCustomGridTableView;
+  ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+  AShift: TShiftState; var AHandled: Boolean);
+begin
+  DATA_LOADED := False;
+  RetrieveSubData;
+  RetrieveImage;
+  DATA_LOADED := True;
+end;
+
+procedure TfmMuscleEditor.gridMainM_NAMECustomDrawCell(
+  Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
+  AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+begin
+  if AViewInfo.Selected then begin
+    ACanvas.Brush.Color := clYellow;
+    ACanvas.Font.Color := clBlack;
   end;
 end;
 
@@ -286,19 +332,13 @@ procedure TfmMuscleEditor.gridMuscleImageFocusedRecordChanged(
   Sender: TcxCustomGridTableView; APrevFocusedRecord,
   AFocusedRecord: TcxCustomGridRecord; ANewItemRecordFocusingChanged: Boolean);
 begin
-  if DATA_LOADED then begin
+  if DATA_LOADED then
     RetrieveImage;
-  end;
 end;
 
 procedure TfmMuscleEditor.ImageEnView1DblClick(Sender: TObject);
 begin
   btnImageEdit.Click;
-end;
-
-procedure TfmMuscleEditor.lcMainPropertiesCloseUp(Sender: TObject);
-begin
-  btnView.Click;
 end;
 
 initialization RegisterClasses([TfmMuscleEditor]);

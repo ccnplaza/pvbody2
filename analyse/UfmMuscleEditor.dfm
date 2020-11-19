@@ -2,7 +2,7 @@ object fmMuscleEditor: TfmMuscleEditor
   Left = 0
   Top = 0
   Caption = #44540#50977#48143' '#44264#44201' '#49444#51221
-  ClientHeight = 693
+  ClientHeight = 749
   ClientWidth = 1313
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -24,24 +24,13 @@ object fmMuscleEditor: TfmMuscleEditor
     Height = 30
     Align = alTop
     TabOrder = 0
-    object Label1: TLabel
-      AlignWithMargins = True
-      Left = 4
-      Top = 4
-      Width = 28
-      Height = 22
-      Align = alLeft
-      Caption = #54637#47785':'
-      Layout = tlCenter
-      ExplicitHeight = 15
-    end
     object btnAdd: TcxButton
       AlignWithMargins = True
-      Left = 216
+      Left = 2
       Top = 2
       Width = 75
       Height = 26
-      Margins.Left = 20
+      Margins.Left = 1
       Margins.Top = 1
       Margins.Right = 1
       Margins.Bottom = 1
@@ -84,11 +73,11 @@ object fmMuscleEditor: TfmMuscleEditor
         60CD6C543F8B16110D2200000003000000010000000000000000}
       TabOrder = 0
       OnClick = btnAddClick
-      ExplicitLeft = 218
+      ExplicitLeft = 216
     end
     object btnEdit: TcxButton
       AlignWithMargins = True
-      Left = 293
+      Left = 79
       Top = 2
       Width = 75
       Height = 26
@@ -135,11 +124,11 @@ object fmMuscleEditor: TfmMuscleEditor
         A2FFD9B2A2FFD8B2A2FFA08377C2000000060000000000000000}
       TabOrder = 1
       OnClick = btnEditClick
-      ExplicitLeft = 295
+      ExplicitLeft = 293
     end
     object cxButton3: TcxButton
       AlignWithMargins = True
-      Left = 370
+      Left = 156
       Top = 2
       Width = 75
       Height = 26
@@ -186,50 +175,11 @@ object fmMuscleEditor: TfmMuscleEditor
         0000000000000000000000000000000000000000000000000000}
       TabOrder = 2
       OnClick = cxButton3Click
-      ExplicitLeft = 372
-    end
-    object lcMain: TcxLookupComboBox
-      AlignWithMargins = True
-      Left = 36
-      Top = 2
-      Margins.Left = 1
-      Margins.Top = 1
-      Margins.Right = 1
-      Margins.Bottom = 1
-      Align = alLeft
-      Properties.DropDownListStyle = lsFixedList
-      Properties.ImmediatePost = True
-      Properties.KeyFieldNames = 'ID'
-      Properties.ListColumns = <
-        item
-          FieldName = 'M_NAME'
-        end>
-      Properties.ListOptions.ShowHeader = False
-      Properties.ListSource = dmDBCommon.ds_MUSCLE_MAIN_SEL
-      Properties.OnCloseUp = lcMainPropertiesCloseUp
-      TabOrder = 3
-      ExplicitLeft = 38
-      Width = 101
-    end
-    object btnView: TcxButton
-      AlignWithMargins = True
-      Left = 139
-      Top = 2
-      Width = 56
-      Height = 26
-      Margins.Left = 1
-      Margins.Top = 1
-      Margins.Right = 1
-      Margins.Bottom = 1
-      Align = alLeft
-      Caption = #54869#51064
-      TabOrder = 4
-      OnClick = btnViewClick
-      ExplicitLeft = 141
+      ExplicitLeft = 370
     end
     object btnImageEdit: TcxButton
       AlignWithMargins = True
-      Left = 466
+      Left = 252
       Top = 2
       Width = 120
       Height = 26
@@ -274,137 +224,23 @@ object fmMuscleEditor: TfmMuscleEditor
         FEFFFEFEFEFFFEFEFEFFD7AE9EFF000000090000000000000000000000000000
         0003A3867AC0DBB5A5FFDAB5A4FFDAB5A4FFDAB4A4FFD9B3A3FFD9B3A3FFD9B3
         A2FFD9B2A2FFD8B2A2FFA08377C2000000060000000000000000}
-      TabOrder = 5
+      TabOrder = 3
       OnClick = btnImageEditClick
-      ExplicitLeft = 468
-    end
-  end
-  object cxGrid2: TcxGrid
-    Left = 0
-    Top = 30
-    Width = 312
-    Height = 663
-    Align = alLeft
-    TabOrder = 1
-    LookAndFeel.SkinName = 'Black'
-    object gridMuscleImage: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      Navigator.Buttons.First.Visible = False
-      Navigator.Buttons.PriorPage.Visible = False
-      Navigator.Buttons.Prior.Visible = False
-      Navigator.Buttons.Next.Visible = False
-      Navigator.Buttons.NextPage.Visible = False
-      Navigator.Buttons.Last.Visible = False
-      Navigator.Buttons.Insert.Visible = False
-      Navigator.Buttons.Append.Visible = False
-      Navigator.Buttons.Delete.Visible = False
-      Navigator.Buttons.Edit.Visible = False
-      Navigator.Buttons.Post.Visible = False
-      Navigator.Buttons.Cancel.Visible = False
-      Navigator.Buttons.Refresh.Visible = False
-      Navigator.Buttons.SaveBookmark.Visible = False
-      Navigator.Buttons.GotoBookmark.Visible = False
-      Navigator.Buttons.Filter.Visible = False
-      OnCellDblClick = gridMuscleImageCellDblClick
-      OnFocusedRecordChanged = gridMuscleImageFocusedRecordChanged
-      DataController.DataSource = ds_MUSCLE_IMAGES_SEL_ALL
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-      OptionsCustomize.ColumnsQuickCustomization = True
-      OptionsSelection.CellSelect = False
-      OptionsSelection.HideFocusRectOnExit = False
-      OptionsView.ColumnAutoWidth = True
-      OptionsView.GroupByBox = False
-      OptionsView.Indicator = True
-      object gridMuscleImageID: TcxGridDBColumn
-        DataBinding.FieldName = 'ID'
-        Visible = False
-        Width = 46
-      end
-      object gridMuscleImageM_IDX: TcxGridDBColumn
-        Caption = 'No'
-        DataBinding.FieldName = 'M_IDX'
-        HeaderAlignmentHorz = taCenter
-        Width = 47
-      end
-      object gridMuscleImageM_KIND: TcxGridDBColumn
-        Caption = #51088#49464
-        DataBinding.FieldName = 'M_KIND'
-        PropertiesClassName = 'TcxImageComboBoxProperties'
-        Properties.Items = <
-          item
-            Description = #51204#47732
-            ImageIndex = 0
-            Value = 1
-          end
-          item
-            Description = #51340#52769
-            Value = 2
-          end
-          item
-            Description = #50864#52769
-            Value = 3
-          end
-          item
-            Description = #54980#47732
-            Value = 4
-          end>
-        HeaderAlignmentHorz = taCenter
-        Width = 67
-      end
-      object gridMuscleImageM_NAME: TcxGridDBColumn
-        Caption = #44540#50977'/'#44264#44201' '#47749#52845
-        DataBinding.FieldName = 'M_NAME'
-        HeaderAlignmentHorz = taCenter
-        Width = 166
-      end
-      object gridMuscleImageM_POINT: TcxGridDBColumn
-        DataBinding.FieldName = 'M_POINT'
-        Visible = False
-      end
-      object gridMuscleImageM_SEX: TcxGridDBColumn
-        Caption = #44396#48516
-        DataBinding.FieldName = 'M_SEX'
-        PropertiesClassName = 'TcxImageComboBoxProperties'
-        Properties.Items = <
-          item
-            Description = #44540#50977
-            ImageIndex = 0
-            Value = 1
-          end
-          item
-            Description = #44264#44201
-            Value = 2
-          end>
-        HeaderAlignmentHorz = taCenter
-        Width = 66
-      end
-      object gridMuscleImageM_IMAGE: TcxGridDBColumn
-        DataBinding.FieldName = 'M_IMAGE'
-        Visible = False
-      end
-      object gridMuscleImageM_DESC: TcxGridDBColumn
-        DataBinding.FieldName = 'M_DESC'
-        Visible = False
-      end
-    end
-    object cxGrid2Level1: TcxGridLevel
-      GridView = gridMuscleImage
+      ExplicitLeft = 466
     end
   end
   object Panel2: TPanel
-    Left = 312
+    Left = 229
     Top = 30
-    Width = 584
-    Height = 663
+    Width = 676
+    Height = 719
     Align = alLeft
-    TabOrder = 2
+    TabOrder = 1
     object ImageEnView1: TImageEnView
       Left = 1
       Top = 1
-      Width = 582
-      Height = 408
+      Width = 674
+      Height = 472
       Cursor = crHandPoint
       Background = clBtnFace
       AutoStretch = True
@@ -415,9 +251,9 @@ object fmMuscleEditor: TfmMuscleEditor
     end
     object IERichEdit1: TIERichEdit
       Left = 1
-      Top = 438
-      Width = 582
-      Height = 191
+      Top = 502
+      Width = 674
+      Height = 183
       RTFText = 
         '{\rtf1\ansi\deff0{\fonttbl{\f0\fnil\fcharset129 \'#39'b3\'#39'aa\'#39'b4\'#39'ae' +
         '\'#39'b8\'#39'ed\'#39'c1\'#39'b6;}}'#13#10'\viewkind4\uc1\pard\lang1042\f0\fs24\par'#13#10'}' +
@@ -430,24 +266,31 @@ object fmMuscleEditor: TfmMuscleEditor
       Font.Style = []
       ParentFont = False
       TabOrder = 1
+      ExplicitTop = 438
+      ExplicitWidth = 582
+      ExplicitHeight = 191
     end
     object IERichEditToolbar1: TIERichEditToolbar
       Left = 1
-      Top = 409
-      Width = 582
+      Top = 473
+      Width = 674
       Height = 29
       ButtonHeight = 30
       ButtonWidth = 31
       Caption = 'IERichEditToolbar1'
       TabOrder = 2
+      ExplicitTop = 409
+      ExplicitWidth = 582
     end
     object Panel3: TPanel
       Left = 1
-      Top = 629
-      Width = 582
+      Top = 685
+      Width = 674
       Height = 33
       Align = alBottom
       TabOrder = 3
+      ExplicitTop = 629
+      ExplicitWidth = 582
       object btnSave: TcxButton
         Left = 219
         Top = 3
@@ -539,7 +382,7 @@ object fmMuscleEditor: TfmMuscleEditor
     end
   end
   object cxImage1: TcxImage
-    Left = 896
+    Left = 905
     Top = 30
     Align = alLeft
     Picture.Data = {
@@ -3556,15 +3399,268 @@ object fmMuscleEditor: TfmMuscleEditor
       A84DAEE9D737315846C238E28248833E199880123C9C9EBF502BF5D68A2BEAF8
       7A52A94AAD59BBCA52BB3F9CBC63853C2E6382C1508A8D3A54928A5D15DA4BD1
       24AC1451457D59FCFA14514500145145007FFFD9}
-    TabOrder = 3
-    Height = 663
+    TabOrder = 2
+    ExplicitLeft = 896
+    ExplicitHeight = 663
+    Height = 719
     Width = 272
+  end
+  object PanelLeft: TPanel
+    Left = 0
+    Top = 30
+    Width = 229
+    Height = 719
+    Align = alLeft
+    TabOrder = 3
+    object cxGroupBox1: TcxGroupBox
+      AlignWithMargins = True
+      Left = 1
+      Top = 2
+      Margins.Left = 0
+      Margins.Top = 1
+      Margins.Right = 0
+      Align = alTop
+      Caption = #49888#52404' '#48143' '#51088#49464
+      Style.LookAndFeel.SkinName = 'Black'
+      StyleDisabled.LookAndFeel.SkinName = 'Black'
+      StyleFocused.LookAndFeel.SkinName = 'Black'
+      StyleHot.LookAndFeel.SkinName = 'Black'
+      TabOrder = 0
+      ExplicitLeft = 0
+      ExplicitTop = 1
+      ExplicitWidth = 279
+      Height = 353
+      Width = 227
+      object cxGrid1: TcxGrid
+        Left = 3
+        Top = 17
+        Width = 221
+        Height = 326
+        Align = alClient
+        TabOrder = 0
+        LookAndFeel.SkinName = 'Black'
+        ExplicitLeft = 2
+        ExplicitTop = -2
+        ExplicitWidth = 275
+        ExplicitHeight = 353
+        object gridMain: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          Navigator.Buttons.First.Visible = False
+          Navigator.Buttons.PriorPage.Visible = False
+          Navigator.Buttons.Prior.Visible = False
+          Navigator.Buttons.Next.Visible = False
+          Navigator.Buttons.NextPage.Visible = False
+          Navigator.Buttons.Last.Visible = False
+          Navigator.Buttons.Insert.Visible = False
+          Navigator.Buttons.Append.Visible = False
+          Navigator.Buttons.Delete.Visible = False
+          Navigator.Buttons.Edit.Visible = False
+          Navigator.Buttons.Post.Visible = False
+          Navigator.Buttons.Cancel.Visible = False
+          Navigator.Buttons.Refresh.Visible = False
+          Navigator.Buttons.SaveBookmark.Visible = False
+          Navigator.Buttons.GotoBookmark.Visible = False
+          Navigator.Buttons.Filter.Visible = False
+          OnCellClick = gridMainCellClick
+          DataController.DataSource = ds_MUSCLE_MAIN_SEL_MIX
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsCustomize.ColumnsQuickCustomization = True
+          OptionsSelection.CellSelect = False
+          OptionsSelection.HideFocusRectOnExit = False
+          OptionsView.FocusRect = False
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.GroupByBox = False
+          OptionsView.Indicator = True
+          object gridMainM_NAME: TcxGridDBColumn
+            Caption = #49888#52404
+            DataBinding.FieldName = 'M_NAME'
+            OnCustomDrawCell = gridMainM_NAMECustomDrawCell
+            HeaderAlignmentHorz = taCenter
+            Options.CellMerging = True
+            Width = 129
+          end
+          object gridMainM_POINT: TcxGridDBColumn
+            DataBinding.FieldName = 'M_POINT'
+            Visible = False
+            Width = 97
+          end
+          object gridMainM_KIND: TcxGridDBColumn
+            Caption = #51088#49464
+            DataBinding.FieldName = 'M_KIND'
+            PropertiesClassName = 'TcxImageComboBoxProperties'
+            Properties.Alignment.Horz = taCenter
+            Properties.Items = <
+              item
+                Description = #51204#47732
+                ImageIndex = 0
+                Value = 1
+              end
+              item
+                Description = #51340#52769
+                Value = 2
+              end
+              item
+                Description = #50864#52769
+                Value = 3
+              end
+              item
+                Description = #54980#47732
+                Value = 4
+              end>
+            HeaderAlignmentHorz = taCenter
+            Width = 76
+          end
+        end
+        object cxGrid1Level1: TcxGridLevel
+          GridView = gridMain
+        end
+      end
+    end
+    object cxGroupBox2: TcxGroupBox
+      AlignWithMargins = True
+      Left = 1
+      Top = 358
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 0
+      Align = alClient
+      Caption = #44540#50977' '#48143' '#44264#44201
+      Style.LookAndFeel.SkinName = 'Black'
+      StyleDisabled.LookAndFeel.SkinName = 'Black'
+      StyleFocused.LookAndFeel.SkinName = 'Black'
+      StyleHot.LookAndFeel.SkinName = 'Black'
+      TabOrder = 1
+      ExplicitLeft = 0
+      ExplicitTop = 357
+      ExplicitWidth = 279
+      ExplicitHeight = 304
+      Height = 360
+      Width = 227
+      object cxGrid2: TcxGrid
+        Left = 3
+        Top = 17
+        Width = 221
+        Height = 333
+        Align = alClient
+        TabOrder = 0
+        LookAndFeel.SkinName = 'Black'
+        ExplicitLeft = 2
+        ExplicitTop = -2
+        ExplicitWidth = 275
+        ExplicitHeight = 304
+        object gridMuscleImage: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          Navigator.Buttons.First.Visible = False
+          Navigator.Buttons.PriorPage.Visible = False
+          Navigator.Buttons.Prior.Visible = False
+          Navigator.Buttons.Next.Visible = False
+          Navigator.Buttons.NextPage.Visible = False
+          Navigator.Buttons.Last.Visible = False
+          Navigator.Buttons.Insert.Visible = False
+          Navigator.Buttons.Append.Visible = False
+          Navigator.Buttons.Delete.Visible = False
+          Navigator.Buttons.Edit.Visible = False
+          Navigator.Buttons.Post.Visible = False
+          Navigator.Buttons.Cancel.Visible = False
+          Navigator.Buttons.Refresh.Visible = False
+          Navigator.Buttons.SaveBookmark.Visible = False
+          Navigator.Buttons.GotoBookmark.Visible = False
+          Navigator.Buttons.Filter.Visible = False
+          OnFocusedRecordChanged = gridMuscleImageFocusedRecordChanged
+          DataController.DataSource = ds_MUSCLE_IMAGES_SEL_NOIMG
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsCustomize.ColumnsQuickCustomization = True
+          OptionsSelection.CellSelect = False
+          OptionsSelection.HideFocusRectOnExit = False
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.GroupByBox = False
+          OptionsView.Indicator = True
+          object gridMuscleImageID: TcxGridDBColumn
+            DataBinding.FieldName = 'ID'
+            Visible = False
+            Width = 46
+          end
+          object gridMuscleImageM_IDX: TcxGridDBColumn
+            Caption = 'No'
+            DataBinding.FieldName = 'M_IDX'
+            Visible = False
+            HeaderAlignmentHorz = taCenter
+            Width = 47
+          end
+          object gridMuscleImageM_KIND: TcxGridDBColumn
+            Caption = #51088#49464
+            DataBinding.FieldName = 'M_KIND'
+            PropertiesClassName = 'TcxImageComboBoxProperties'
+            Properties.Items = <
+              item
+                Description = #51204#47732
+                ImageIndex = 0
+                Value = 1
+              end
+              item
+                Description = #51340#52769
+                Value = 2
+              end
+              item
+                Description = #50864#52769
+                Value = 3
+              end
+              item
+                Description = #54980#47732
+                Value = 4
+              end>
+            Visible = False
+            HeaderAlignmentHorz = taCenter
+            Width = 67
+          end
+          object gridMuscleImageM_NAME: TcxGridDBColumn
+            Caption = #44540#50977'/'#44264#44201' '#47749#52845
+            DataBinding.FieldName = 'M_NAME'
+            HeaderAlignmentHorz = taCenter
+            Width = 166
+          end
+          object gridMuscleImageM_POINT: TcxGridDBColumn
+            DataBinding.FieldName = 'M_POINT'
+            Visible = False
+          end
+          object gridMuscleImageM_SEX: TcxGridDBColumn
+            Caption = #44396#48516
+            DataBinding.FieldName = 'M_SEX'
+            PropertiesClassName = 'TcxImageComboBoxProperties'
+            Properties.Items = <
+              item
+                Description = #44540#50977
+                ImageIndex = 0
+                Value = 1
+              end
+              item
+                Description = #44264#44201
+                Value = 2
+              end>
+            HeaderAlignmentHorz = taCenter
+            Width = 66
+          end
+          object gridMuscleImageM_DESC: TcxGridDBColumn
+            DataBinding.FieldName = 'M_DESC'
+            Visible = False
+          end
+        end
+        object cxGrid2Level1: TcxGridLevel
+          GridView = gridMuscleImage
+        end
+      end
+    end
   end
   object MUSCLE_IMAGES_INS: TUniStoredProc
     StoredProcName = 'MUSCLE_IMAGES_INS'
     Connection = dmDBCommon.UniDBConnection
-    Left = 320
-    Top = 192
+    Left = 368
+    Top = 224
     ParamData = <
       item
         DataType = ftString
@@ -3606,110 +3702,11 @@ object fmMuscleEditor: TfmMuscleEditor
       end>
     CommandStoredProcName = 'MUSCLE_IMAGES_INS'
   end
-  object MUSCLE_IMAGES_SEL_ALL: TUniStoredProc
-    StoredProcName = 'MUSCLE_IMAGES_SEL_ALL'
-    Connection = dmDBCommon.UniDBConnection
-    Left = 320
-    Top = 288
-    ParamData = <
-      item
-        DataType = ftInteger
-        Name = 'MPOINT'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'ID'
-        ParamType = ptOutput
-      end
-      item
-        DataType = ftString
-        Name = 'M_NAME'
-        ParamType = ptOutput
-        Size = 50
-      end
-      item
-        DataType = ftBlob
-        Name = 'M_IMAGE'
-        ParamType = ptOutput
-        Value = ''
-      end
-      item
-        DataType = ftInteger
-        Name = 'M_KIND'
-        ParamType = ptOutput
-      end
-      item
-        DataType = ftMemo
-        Name = 'M_DESC'
-        ParamType = ptOutput
-        Value = ''
-      end
-      item
-        DataType = ftInteger
-        Name = 'M_IDX'
-        ParamType = ptOutput
-      end
-      item
-        DataType = ftInteger
-        Name = 'M_POINT'
-        ParamType = ptOutput
-      end
-      item
-        DataType = ftInteger
-        Name = 'M_SEX'
-        ParamType = ptOutput
-      end>
-    CommandStoredProcName = 'MUSCLE_IMAGES_SEL_ALL'
-    StoredProcIsQuery = True
-    object MUSCLE_IMAGES_SEL_ALLID: TIntegerField
-      Alignment = taCenter
-      FieldName = 'ID'
-    end
-    object MUSCLE_IMAGES_SEL_ALLM_NAME: TStringField
-      Alignment = taCenter
-      FieldName = 'M_NAME'
-      Size = 50
-    end
-    object MUSCLE_IMAGES_SEL_ALLM_IMAGE: TBlobField
-      Alignment = taCenter
-      FieldName = 'M_IMAGE'
-    end
-    object MUSCLE_IMAGES_SEL_ALLM_KIND: TIntegerField
-      Alignment = taCenter
-      FieldName = 'M_KIND'
-    end
-    object MUSCLE_IMAGES_SEL_ALLM_DESC: TMemoField
-      Alignment = taCenter
-      FieldName = 'M_DESC'
-      BlobType = ftMemo
-    end
-    object MUSCLE_IMAGES_SEL_ALLM_IDX: TIntegerField
-      Alignment = taCenter
-      FieldName = 'M_IDX'
-    end
-    object MUSCLE_IMAGES_SEL_ALLM_POINT: TIntegerField
-      Alignment = taCenter
-      FieldName = 'M_POINT'
-    end
-    object MUSCLE_IMAGES_SEL_ALLM_SEX: TIntegerField
-      Alignment = taCenter
-      FieldName = 'M_SEX'
-    end
-    object MUSCLE_IMAGES_SEL_ALLM_DRAW: TBlobField
-      FieldName = 'M_DRAW'
-    end
-  end
-  object ds_MUSCLE_IMAGES_SEL_ALL: TDataSource
-    DataSet = MUSCLE_IMAGES_SEL_ALL
-    Left = 320
-    Top = 336
-  end
   object MUSCLE_IMAGES_UPD_DESC: TUniStoredProc
     StoredProcName = 'MUSCLE_IMAGES_UPD_DESC'
     Connection = dmDBCommon.UniDBConnection
-    Left = 320
-    Top = 384
+    Left = 376
+    Top = 528
     ParamData = <
       item
         DataType = ftInteger
@@ -3727,8 +3724,8 @@ object fmMuscleEditor: TfmMuscleEditor
   object MUSCLE_IMAGES_UPD: TUniStoredProc
     StoredProcName = 'MUSCLE_IMAGES_UPD'
     Connection = dmDBCommon.UniDBConnection
-    Left = 320
-    Top = 240
+    Left = 368
+    Top = 272
     ParamData = <
       item
         DataType = ftInteger
@@ -3778,8 +3775,8 @@ object fmMuscleEditor: TfmMuscleEditor
   object MUSCLE_IMAGES_DEL: TUniStoredProc
     StoredProcName = 'MUSCLE_IMAGES_DEL'
     Connection = dmDBCommon.UniDBConnection
-    Left = 320
-    Top = 144
+    Left = 368
+    Top = 176
     ParamData = <
       item
         DataType = ftInteger
@@ -3791,8 +3788,8 @@ object fmMuscleEditor: TfmMuscleEditor
   object MUSCLE_IMAGES_UPD_DRAW: TUniStoredProc
     StoredProcName = 'MUSCLE_IMAGES_UPD_DRAW'
     Connection = dmDBCommon.UniDBConnection
-    Left = 320
-    Top = 96
+    Left = 368
+    Top = 128
     ParamData = <
       item
         DataType = ftInteger
@@ -3806,5 +3803,169 @@ object fmMuscleEditor: TfmMuscleEditor
         Value = ''
       end>
     CommandStoredProcName = 'MUSCLE_IMAGES_UPD_DRAW'
+  end
+  object MUSCLE_MAIN_SEL_MIX: TUniStoredProc
+    StoredProcName = 'MUSCLE_MAIN_SEL_MIX'
+    Connection = dmDBCommon.UniDBConnection
+    Left = 104
+    Top = 104
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'M_NAME'
+        ParamType = ptOutput
+        Size = 30
+      end
+      item
+        DataType = ftInteger
+        Name = 'M_POINT'
+        ParamType = ptOutput
+      end
+      item
+        DataType = ftInteger
+        Name = 'M_KIND'
+        ParamType = ptOutput
+      end>
+    CommandStoredProcName = 'MUSCLE_MAIN_SEL_MIX'
+    object MUSCLE_MAIN_SEL_MIXM_NAME: TStringField
+      Alignment = taCenter
+      FieldName = 'M_NAME'
+      Size = 30
+    end
+    object MUSCLE_MAIN_SEL_MIXM_POINT: TIntegerField
+      Alignment = taCenter
+      FieldName = 'M_POINT'
+    end
+    object MUSCLE_MAIN_SEL_MIXM_KIND: TIntegerField
+      Alignment = taCenter
+      FieldName = 'M_KIND'
+    end
+  end
+  object ds_MUSCLE_MAIN_SEL_MIX: TDataSource
+    DataSet = MUSCLE_MAIN_SEL_MIX
+    Left = 104
+    Top = 152
+  end
+  object MUSCLE_IMAGES_SEL_NOIMG: TUniStoredProc
+    StoredProcName = 'MUSCLE_IMAGES_SEL_NOIMG'
+    Connection = dmDBCommon.UniDBConnection
+    Left = 88
+    Top = 424
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'MPOINT'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'MKIND'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'ID'
+        ParamType = ptOutput
+      end
+      item
+        DataType = ftString
+        Name = 'M_NAME'
+        ParamType = ptOutput
+        Size = 50
+      end
+      item
+        DataType = ftInteger
+        Name = 'M_KIND'
+        ParamType = ptOutput
+      end
+      item
+        DataType = ftMemo
+        Name = 'M_DESC'
+        ParamType = ptOutput
+        Value = ''
+      end
+      item
+        DataType = ftInteger
+        Name = 'M_IDX'
+        ParamType = ptOutput
+      end
+      item
+        DataType = ftInteger
+        Name = 'M_POINT'
+        ParamType = ptOutput
+      end
+      item
+        DataType = ftInteger
+        Name = 'M_SEX'
+        ParamType = ptOutput
+      end>
+    CommandStoredProcName = 'MUSCLE_IMAGES_SEL_NOIMG'
+    object MUSCLE_IMAGES_SEL_NOIMGID: TIntegerField
+      FieldName = 'ID'
+    end
+    object MUSCLE_IMAGES_SEL_NOIMGM_NAME: TStringField
+      Alignment = taCenter
+      FieldName = 'M_NAME'
+      Size = 50
+    end
+    object MUSCLE_IMAGES_SEL_NOIMGM_KIND: TIntegerField
+      Alignment = taCenter
+      FieldName = 'M_KIND'
+    end
+    object MUSCLE_IMAGES_SEL_NOIMGM_DESC: TMemoField
+      FieldName = 'M_DESC'
+      BlobType = ftMemo
+    end
+    object MUSCLE_IMAGES_SEL_NOIMGM_IDX: TIntegerField
+      FieldName = 'M_IDX'
+    end
+    object MUSCLE_IMAGES_SEL_NOIMGM_POINT: TIntegerField
+      FieldName = 'M_POINT'
+    end
+    object MUSCLE_IMAGES_SEL_NOIMGM_SEX: TIntegerField
+      Alignment = taCenter
+      FieldName = 'M_SEX'
+    end
+  end
+  object ds_MUSCLE_IMAGES_SEL_NOIMG: TDataSource
+    DataSet = MUSCLE_IMAGES_SEL_NOIMG
+    Left = 88
+    Top = 472
+  end
+  object MUSCLE_IMAGES_SEL_IMG: TUniStoredProc
+    StoredProcName = 'MUSCLE_IMAGES_SEL_IMG'
+    Connection = dmDBCommon.UniDBConnection
+    Left = 88
+    Top = 528
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'ID'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftBlob
+        Name = 'M_IMAGE'
+        ParamType = ptOutput
+        Value = ''
+      end
+      item
+        DataType = ftBlob
+        Name = 'M_DRAW'
+        ParamType = ptOutput
+        Value = ''
+      end>
+    CommandStoredProcName = 'MUSCLE_IMAGES_SEL_IMG'
+    object MUSCLE_IMAGES_SEL_IMGM_IMAGE: TBlobField
+      FieldName = 'M_IMAGE'
+    end
+    object MUSCLE_IMAGES_SEL_IMGM_DRAW: TBlobField
+      FieldName = 'M_DRAW'
+    end
+  end
+  object ds_MUSCLE_IMAGES_SEL_IMG: TDataSource
+    DataSet = MUSCLE_IMAGES_SEL_IMG
+    Left = 88
+    Top = 576
   end
 end

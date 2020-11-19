@@ -4,7 +4,7 @@ object fmCustomerRecent: TfmCustomerRecent
   BorderStyle = bsDialog
   Caption = #52572#44540' '#46321#47197#51088
   ClientHeight = 544
-  ClientWidth = 224
+  ClientWidth = 296
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,15 +17,15 @@ object fmCustomerRecent: TfmCustomerRecent
   TextHeight = 15
   object cxGrid1: TcxGrid
     Left = 0
-    Top = 30
-    Width = 224
-    Height = 514
+    Top = 31
+    Width = 296
+    Height = 513
     Align = alClient
     TabOrder = 0
     LookAndFeel.SkinName = 'Black'
-    ExplicitTop = 0
-    ExplicitWidth = 212
-    ExplicitHeight = 354
+    ExplicitTop = 30
+    ExplicitWidth = 224
+    ExplicitHeight = 514
     object gridMember: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = False
@@ -59,10 +59,17 @@ object fmCustomerRecent: TfmCustomerRecent
         DataBinding.FieldName = 'UID'
         Visible = False
       end
+      object gridMemberREG_DATE: TcxGridDBColumn
+        Caption = #46321#47197#51068#51088
+        DataBinding.FieldName = 'REG_DATE'
+        PropertiesClassName = 'TcxDateEditProperties'
+        Properties.DisplayFormat = 'yy-mm-dd'
+        Width = 70
+      end
       object gridMemberCNAME: TcxGridDBColumn
         Caption = #54924#50896#47749
         DataBinding.FieldName = 'CNAME'
-        Width = 80
+        Width = 83
       end
       object gridMemberSEX: TcxGridDBColumn
         DataBinding.FieldName = 'SEX'
@@ -71,11 +78,7 @@ object fmCustomerRecent: TfmCustomerRecent
       object gridMemberCTEL: TcxGridDBColumn
         Caption = #51204#54868#48264#54840
         DataBinding.FieldName = 'CTEL'
-        Width = 130
-      end
-      object gridMemberREG_DATE: TcxGridDBColumn
-        DataBinding.FieldName = 'REG_DATE'
-        Visible = False
+        Width = 133
       end
     end
     object cxGrid1Level1: TcxGridLevel
@@ -85,25 +88,32 @@ object fmCustomerRecent: TfmCustomerRecent
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 224
-    Height = 30
+    Width = 296
+    Height = 31
     Align = alTop
     TabOrder = 1
-    ExplicitLeft = 8
-    ExplicitTop = 8
-    ExplicitWidth = 212
     object Label1: TLabel
-      Left = 6
-      Top = 6
-      Width = 60
-      Height = 15
-      Caption = #52572#44540#46321#47197#51068
+      AlignWithMargins = True
+      Left = 4
+      Top = 4
+      Width = 68
+      Height = 23
+      Align = alLeft
+      Caption = #52572#44540#46321#47197#51068': '
+      Layout = tlCenter
+      ExplicitHeight = 15
     end
     object btnSelect: TBitBtn
-      Left = 114
+      AlignWithMargins = True
+      Left = 193
       Top = 2
       Width = 70
-      Height = 25
+      Height = 27
+      Margins.Left = 1
+      Margins.Top = 1
+      Margins.Right = 1
+      Margins.Bottom = 1
+      Align = alLeft
       Caption = #49440#53469
       Glyph.Data = {
         DE010000424DDE01000000000000760000002800000024000000120000000100
@@ -125,17 +135,27 @@ object fmCustomerRecent: TfmCustomerRecent
       ModalResult = 1
       NumGlyphs = 2
       TabOrder = 0
+      ExplicitLeft = 202
+      ExplicitHeight = 25
     end
-    object speSubDate: TcxSpinEdit
-      Left = 74
+    object DateTimePicker1: TDateTimePicker
+      AlignWithMargins = True
+      Left = 76
       Top = 3
-      Properties.Alignment.Horz = taCenter
-      Properties.ImmediatePost = True
-      Properties.UseLeftAlignmentOnEditing = False
-      Properties.OnEditValueChanged = speSubDatePropertiesEditValueChanged
+      Width = 115
+      Height = 25
+      Margins.Left = 1
+      Margins.Top = 2
+      Margins.Right = 1
+      Margins.Bottom = 2
+      Align = alLeft
+      Date = 44154.210441342590000000
+      Time = 44154.210441342590000000
       TabOrder = 1
-      Value = 3
-      Width = 40
+      OnChange = DateTimePicker1Change
+      ExplicitLeft = 70
+      ExplicitTop = 4
+      ExplicitHeight = 22
     end
   end
 end

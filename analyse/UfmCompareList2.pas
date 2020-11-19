@@ -130,13 +130,11 @@ type
     ImageEnVect4Print: TImageEnVect;
     LayerWindow: TImageEnView;
     btnSaveLayers: TBitBtn;
-    btnArrow: TBitBtn;
     btnSelRect: TBitBtn;
     btnSelCopy: TBitBtn;
     cxButton1: TcxButton;
     btnLatlist: TBitBtn;
     btnSave: TcxButton;
-    icbDrawingTool: TcxImageComboBox;
     btnBackward: TBitBtn;
     btnForward: TBitBtn;
     ColorBox: TcxColorComboBox;
@@ -150,6 +148,14 @@ type
     ImageEnViewLayersMatchWidth1: TImageEnViewLayersMatchWidth;
     ImageEnViewLayersMatchHeight1: TImageEnViewLayersMatchHeight;
     btnTrim: TcxButton;
+    btnCloseCompare: TBitBtn;
+    btnArrow: TSpeedButton;
+    btnLine: TSpeedButton;
+    btnMultiLine: TSpeedButton;
+    btnFreeLine: TSpeedButton;
+    btnAngle: TSpeedButton;
+    btnShape: TSpeedButton;
+    btnText: TSpeedButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure frmImageMultiView1ImageEnMView1DblClick(Sender: TObject);
     procedure btnFindMemberClick(Sender: TObject);
@@ -214,16 +220,12 @@ type
     procedure LayerWindowDragDrop(Sender, Source: TObject; X, Y: Integer);
     procedure btnSaveLayersClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure LayerWindowUserInteraction(Sender: TObject;
-      Event: TIEUserInteractionEvent; Info: Integer);
-    procedure btnArrowClick(Sender: TObject);
     procedure btnSelRectClick(Sender: TObject);
     procedure btnSelCopyClick(Sender: TObject);
     procedure cxButton1Click(Sender: TObject);
     procedure btnLatlistClick(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
     procedure edtTrackBarPropertiesEditValueChanged(Sender: TObject);
-    procedure icbDrawingToolPropertiesCloseUp(Sender: TObject);
     procedure LayerWindowNewLayer(Sender: TObject; LayerIdx: Integer;
       LayerKind: TIELayerKind);
     procedure btnForwardClick(Sender: TObject);
@@ -235,6 +237,14 @@ type
     procedure btnMatchWidthClick(Sender: TObject);
     procedure btnMatchHeightClick(Sender: TObject);
     procedure btnTrimClick(Sender: TObject);
+    procedure btnCloseCompareClick(Sender: TObject);
+    procedure btnArrowClick(Sender: TObject);
+    procedure btnLineClick(Sender: TObject);
+    procedure btnMultiLineClick(Sender: TObject);
+    procedure btnFreeLineClick(Sender: TObject);
+    procedure btnAngleClick(Sender: TObject);
+    procedure btnShapeClick(Sender: TObject);
+    procedure btnTextClick(Sender: TObject);
   private
     fShapeProps: TShapeProps;
     fLineProps : TLineProps;
@@ -404,6 +414,15 @@ begin
         Layout := ielCenter;
         AutoSize := True;
       end;
+    if CurrentLayer is TIEShapeLayer then
+      with TIEShapeLayer(CurrentLayer) do begin
+        Shape := iesEllipse;
+        FillColor := clYellow;
+        BorderColor := ColorBox.ColorValue;
+        BorderWidth := 2;
+        VisibleBox := True;
+        Selectable := True;
+      end;
   end;
   LayerWindow.Update();
 end;
@@ -540,12 +559,6 @@ begin
   end;
 end;
 
-procedure TfmCompareList2.btnArrowClick(Sender: TObject);
-begin
-  LayerWindow.MouseInteractLayers := [mlMoveLayers, mlResizeLayers, mlRotateLayers, mlEditLayerPoints];
-//  LayerWindow.Update();
-end;
-
 procedure TfmCompareList2.btnBackwardClick(Sender: TObject);
 var
   cnt : Integer;
@@ -580,6 +593,11 @@ begin
     fmCapture := TfmCapture.Create(Self);
     fmCapture.Show;
   end;
+end;
+
+procedure TfmCompareList2.btnCloseCompareClick(Sender: TObject);
+begin
+  PanelRight.Width := 1;
 end;
 
 procedure TfmCompareList2.btnCompareLayerClick(Sender: TObject);
@@ -882,6 +900,54 @@ begin
   ImageEnMView1.Sort(iesbFilename);
   ImageEnMView1.UnlockPaint;
   ImageEnMView1.SelectedImage := 0;
+end;
+
+procedure TfmCompareList2.btnArrowClick(Sender: TObject);
+begin
+  LayerWindow.MouseInteractLayers := [mlMoveLayers, mlResizeLayers, mlRotateLayers, mlEditLayerPoints];
+//  LayerWindow.Update();
+end;
+
+procedure TfmCompareList2.btnLineClick(Sender: TObject);
+begin
+  if btnLine.Down then
+    LayerWindow.MouseInteractLayers := [mlClickCreateLineLayers];
+end;
+
+procedure TfmCompareList2.btnMultiLineClick(Sender: TObject);
+begin
+  if btnMultiLine.Down then
+    LayerWindow.MouseInteractLayers := [mlClickCreatePolylineLayers];
+end;
+
+procedure TfmCompareList2.btnFreeLineClick(Sender: TObject);
+begin
+  if btnFreeLine.Down then
+    LayerWindow.MouseInteractLayers := [mlDrawCreatePolylineLayers];
+end;
+
+procedure TfmCompareList2.btnAngleClick(Sender: TObject);
+begin
+  if btnAngle.Down then
+    LayerWindow.MouseInteractLayers := [mlClickCreateAngleLayers];
+end;
+
+procedure TfmCompareList2.btnShapeClick(Sender: TObject);
+begin
+  if btnShape.down then begin
+    LayerWindow.LayersAdd(ielkShape);
+    btnArrow.Down := True;
+    btnArrow.Click;
+  end;
+end;
+
+procedure TfmCompareList2.btnTextClick(Sender: TObject);
+begin
+  if btnText.Down then begin
+    LayerWindow.LayersAdd( ielkText );
+    btnArrow.Down := True;
+    btnArrow.Click;
+  end;
 end;
 
 procedure TfmCompareList2.speLineThickPropertiesChange(Sender: TObject);
@@ -1355,26 +1421,6 @@ begin
   end;
 end;
 
-procedure TfmCompareList2.icbDrawingToolPropertiesCloseUp(Sender: TObject);
-begin
-  if fUpdating then
-    exit;
-  fUpdating := True;
-  case icbDrawingTool.EditValue of
-    1: LayerWindow.MouseInteractLayers := [mlClickCreateLineLayers];
-    2: LayerWindow.MouseInteractLayers := [mlClickCreatePolylineLayers];
-    3: LayerWindow.MouseInteractLayers := [mlDrawCreatePolylineLayers];
-    4: LayerWindow.MouseInteractLayers := [mlClickCreateAngleLayers];
-    5: LayerWindow.LayersAdd(TIELayerKind(1));
-    6: LayerWindow.LayersAdd(TIELayerKind(4));
-    7: LayerWindow.MouseInteractLayers := [mlCreateImageLayers];
-  end;
-  LayerWindow.MouseInteractLayers := LayerWindow.MouseInteractLayers + [mlEditLayerPoints];
-//  memPolyEditNote.Enabled := ( rdbClickCreatePolylineLayers.Checked or rdbDrawCreatePolylineLayers.Checked ) and
-//                               chkAllowPointEditing.Checked;
-  fUpdating := False;
-end;
-
 procedure TfmCompareList2.ImageEnMView1AfterEvent(Sender: TObject;
   Event: TIEAfterEvent);
 var
@@ -1623,18 +1669,15 @@ begin
     TIETextLayer(LayerWindow.CurrentLayer).Layout := ielCenter;
     TIETextLayer(LayerWindow.CurrentLayer).AutoSize := True;
   end;
-  AssignControlValues();
-end;
-
-procedure TfmCompareList2.LayerWindowUserInteraction(Sender: TObject;
-  Event: TIEUserInteractionEvent; Info: Integer);
-begin
-  if Event = ieiLayerCreateEnacted then
-  begin
-    // Hovering over image - show color in our panel
-    ShowMessage('event...');
+  if LayerKind = ielkShape then begin
+    TIEShapeLayer(LayerWindow.CurrentLayer).Shape := iesEllipse;
+    TIEShapeLayer(LayerWindow.CurrentLayer).FillColor := clYellow;
+    TIEShapeLayer(LayerWindow.CurrentLayer).BorderColor := ColorBox.ColorValue;
+    TIEShapeLayer(LayerWindow.CurrentLayer).BorderWidth := 2;
+    TIEShapeLayer(LayerWindow.CurrentLayer).VisibleBox := True;
+    TIEShapeLayer(LayerWindow.CurrentLayer).Selectable := True;
   end;
-
+  AssignControlValues();
 end;
 
 initialization RegisterClasses([TfmCompareList2]);

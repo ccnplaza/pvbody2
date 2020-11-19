@@ -4415,15 +4415,15 @@ object fmMain: TfmMain
       Caption = #51088#49464#48516#49437
       Hint = #51088#49464#48516#49437
       ImageIndex = 10
-      object N19: TMenuItem
-        Action = ActCustomerImageList
-        Caption = #51088#49464' '#51068#48324#51312#54924
-        ImageIndex = 0
-      end
       object N6: TMenuItem
         Action = actCompareList
         Caption = #51088#49464' '#48708#44368#48516#49437
         ImageIndex = 3
+      end
+      object N19: TMenuItem
+        Action = ActCustomerImageList
+        Caption = #51088#49464' '#51068#48324#51312#54924
+        ImageIndex = 0
       end
       object N2: TMenuItem
         Caption = #48708#44368#48516#49437'('#47112#51060#50612')'

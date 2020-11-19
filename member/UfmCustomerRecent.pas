@@ -21,7 +21,8 @@ uses
   dxSkinscxPCPainter, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit,
   cxNavigator, DB, cxDBData, StdCtrls, Buttons, ExtCtrls, cxGridLevel,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
-  cxGridCustomView, cxGrid, cxContainer, cxTextEdit, cxMaskEdit, cxSpinEdit;
+  cxGridCustomView, cxGrid, cxContainer, cxTextEdit, cxMaskEdit, cxSpinEdit,
+  cxCalendar, ComCtrls;
 
 type
   TfmCustomerRecent = class(TForm)
@@ -36,12 +37,12 @@ type
     gridMemberCTEL: TcxGridDBColumn;
     gridMemberREG_DATE: TcxGridDBColumn;
     Label1: TLabel;
-    speSubDate: TcxSpinEdit;
+    DateTimePicker1: TDateTimePicker;
     procedure FormShow(Sender: TObject);
     procedure gridMemberCellDblClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
-    procedure speSubDatePropertiesEditValueChanged(Sender: TObject);
+    procedure DateTimePicker1Change(Sender: TObject);
   private
     procedure RetrieveData;
     { Private declarations }
@@ -58,26 +59,23 @@ uses
 
 {$R *.dfm}
 
+procedure TfmCustomerRecent.DateTimePicker1Change(Sender: TObject);
+begin
+  RetrieveData;
+end;
+
 procedure TfmCustomerRecent.FormShow(Sender: TObject);
 begin
+  DateTimePicker1.Date := Date - 5;
   RetrieveData;
 end;
 
 procedure TfmCustomerRecent.RetrieveData;
-var
-  sub_date : TDate;
 begin
-  sub_date := Date - speSubDate.Value;
   dmDBCommon.CUSTOMER_SEL_RECENT_REG.ParamByName('COMP_ID').Value := LoginUserCompID;
-  dmDBCommon.CUSTOMER_SEL_RECENT_REG.ParamByName('SUB_DATE').Value := sub_date;
+  dmDBCommon.CUSTOMER_SEL_RECENT_REG.ParamByName('SUB_DATE').Value := DateTimePicker1.Date;
   dmDBCommon.CUSTOMER_SEL_RECENT_REG.Open;
   dmDBCommon.ds_CUSTOMER_SEL_RECENT_REG.DataSet.Refresh;
-end;
-
-procedure TfmCustomerRecent.speSubDatePropertiesEditValueChanged(
-  Sender: TObject);
-begin
-  RetrieveData;
 end;
 
 procedure TfmCustomerRecent.gridMemberCellDblClick(
