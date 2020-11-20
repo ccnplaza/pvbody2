@@ -119,6 +119,7 @@ type
     N3: TMenuItem;
     N4: TMenuItem;
     N5: TMenuItem;
+    N7: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure actAnalyseExecute(Sender: TObject);
     procedure actSMSManagerExecute(Sender: TObject);
@@ -171,6 +172,7 @@ type
     procedure N2Click(Sender: TObject);
     procedure N3Click(Sender: TObject);
     procedure N5Click(Sender: TObject);
+    procedure N7Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -189,7 +191,7 @@ implementation
 
 
 uses jjsApp, GlobalVar, UdmDBCommon, uMember, ufmAttendMain,
-  UfmAttendCalendar, UfmLockerManager, UfmUserInfo, UfmSettings, UfmSMSSetting;
+  UfmAttendCalendar, UfmLockerManager, UfmUserInfo, UfmSettings, UfmSMSSetting, UfmTextObjectManager;
 
   {$R *.dfm}
 
@@ -331,6 +333,16 @@ end;
 procedure TfmMain.N5Click(Sender: TObject);
 begin
   CreateChild('TfmMuscleEditor');
+end;
+
+procedure TfmMain.N7Click(Sender: TObject);
+begin
+  fmTextObjectManager := TfmTextObjectManager.Create(Self);
+  try
+    fmTextObjectManager.ShowModal;
+  finally
+    fmTextObjectManager.Free;
+  end;
 end;
 
 procedure TfmMain.SMS1Click(Sender: TObject);

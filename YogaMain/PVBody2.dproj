@@ -414,6 +414,12 @@
 			<DCCReference Include="..\member\UfmCustomerRecent.pas">
 				<Form>fmCustomerRecent</Form>
 			</DCCReference>
+			<DCCReference Include="..\analyse\UfmTextObjectManager.pas">
+				<Form>fmTextObjectManager</Form>
+			</DCCReference>
+			<DCCReference Include="..\analyse\UfmTextObjectEdit.pas">
+				<Form>fmTextObjectEdit</Form>
+			</DCCReference>
 			<None Include="PVBody2.todo"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>

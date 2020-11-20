@@ -4453,6 +4453,10 @@ object fmMain: TfmMain
         Caption = #44540#50977'/'#44264#44201' '#49444#51221
         OnClick = N5Click
       end
+      object N7: TMenuItem
+        Caption = #47928#51088#50676' '#44288#47532#51088
+        OnClick = N7Click
+      end
     end
     object N17: TMenuItem
       Caption = #44592#53440#44288#47532

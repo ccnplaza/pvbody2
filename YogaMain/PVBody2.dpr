@@ -129,7 +129,9 @@ uses
   UfmMuscleEditor in '..\analyse\UfmMuscleEditor.pas' {fmMuscleEditor},
   UfmMuscleInsert in '..\analyse\UfmMuscleInsert.pas' {fmMuscleInsert},
   UfmMuscleView in '..\analyse\UfmMuscleView.pas' {fmMuscleView},
-  UfmCustomerRecent in '..\member\UfmCustomerRecent.pas' {fmCustomerRecent};
+  UfmCustomerRecent in '..\member\UfmCustomerRecent.pas' {fmCustomerRecent},
+  UfmTextObjectManager in '..\analyse\UfmTextObjectManager.pas' {fmTextObjectManager},
+  UfmTextObjectEdit in '..\analyse\UfmTextObjectEdit.pas' {fmTextObjectEdit};
 
 {$R *.res}
 

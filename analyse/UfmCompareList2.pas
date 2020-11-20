@@ -36,7 +36,7 @@ uses
 type
   TfmCompareList2 = class(TForm)
     pnlMember: TPanel;
-    compareGroupLeftTop: TcxGroupBox;
+    ThumbnailGroup: TcxGroupBox;
     gbMember: TcxGroupBox;
     Panel10: TPanel;
     Panel11: TPanel;
@@ -87,7 +87,7 @@ type
     Panel3: TPanel;
     pgcCompareFrame: TPanel;
     pnlCompareFrameLeft: TPanel;
-    cxGroupBox2: TcxGroupBox;
+    compareGroupLeftTop: TcxGroupBox;
     ImageEnVectComp1: TImageEnVect;
     compareGroupLeftBottom: TcxGroupBox;
     ImageEnVectComp2: TImageEnVect;
@@ -156,6 +156,7 @@ type
     btnAngle: TSpeedButton;
     btnShape: TSpeedButton;
     btnText: TSpeedButton;
+    BitBtn2: TBitBtn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure frmImageMultiView1ImageEnMView1DblClick(Sender: TObject);
     procedure btnFindMemberClick(Sender: TObject);
@@ -518,41 +519,18 @@ var
   img_name, org_name : string;
   mStream : TMemoryStream;
 begin
+  if edtName.Text = '' then begin
+    ShowMessage('회원을 선택하세요.');
+    Exit;
+  end;
   fmImportImages := TfmImportImages.Create(Self);
   try
     fmImportImages.ShowModal;
     if fmImportImages.ModalResult = mrOk then begin
-      PanelMessage.Visible := True;
-      PanelMessage.Caption := '사진자료 업로드중...';
-      PanelMessage.Refresh;
       Screen.Cursor := crHourGlass;
-      cnt := fmImportImages.OpenImageEnDialog1.Files.Count;
-      dcnt := dmDBCommon.IMAGES_SEL_BYDATECNT.Value + 1;
-      for i := 0 to cnt - 1 do begin
-        mStream := TMemoryStream.Create;
-        org_name := fmImportImages.OpenImageEnDialog1.Files[i];
-        if dmDBCommon.IMAGES_SEL_BYDATEP_DATE.Value = fmImportImages.edtSaveDate.Date then begin
-          idx := dcnt + i;
-        end else begin
-          idx := i + 1;
-        end;
-        mStream.LoadFromFile(org_name);
-        mStream.Position := 0;
-        dmDBCommon.IMAGES_INS.ParamByName('CUST_ID').Value := CustomerImages.CustID;
-        dmDBCommon.IMAGES_INS.ParamByName('P_DATE').Value := fmImportImages.edtSaveDate.Date;
-        dmDBCommon.IMAGES_INS.ParamByName('IMAGE_DATA').LoadFromStream(mStream, ftBlob);
-        dmDBCommon.IMAGES_INS.ParamByName('DRAW_DATA').Clear;
-        dmDBCommon.IMAGES_INS.ParamByName('IDX').Value := idx;
-        dmDBCommon.IMAGES_INS.ExecProc;
-        mStream.Free;
-      end;
       RetrieveMemberInfo;
-      //dmDBCommon.IMAGES_SEL.Last;
-      //RetrieveThumbnailList;
-      //BMDThread1.Start;
       gridCheck.DataController.GotoLast;
       Screen.Cursor := crArrow;
-      PanelMessage.Visible := False;
     end;
   finally
     fmImportImages.Free;
@@ -612,6 +590,9 @@ begin
   end else begin
     cxPageControl1.ActivePageIndex := 0;
     PanelRight.Width := (ClientWidth - pnlMember.Width - 300);
+    LayerWindow.IEBitmap.Allocate( LayerWindow.ClientWidth, LayerWindow.ClientHeight );
+    LayerWindow.IEBitmap.Fill( clWhite );
+    LayerWindow.Update();
     dmDBCommon.IMAGE_LAYERS_SEL.ParamByName('M_ID').Value := CustomerImages.CustID;
     dmDBCommon.IMAGE_LAYERS_SEL.Open;
     dmDBCommon.ds_IMAGE_LAYERS_SEL.DataSet.Refresh;
@@ -634,14 +615,16 @@ end;
 
 procedure TfmCompareList2.btnDelClick(Sender: TObject);
 begin
-  if Application.MessageBox('선택한 자료를 삭제합니다. ' + #13#10 + '삭제한 후에는 되돌릴 수 없습니다.'
-    + #13#10 + '정말 삭제할까요?', 'Application.Title', MB_YESNO + MB_ICONWARNING) =
-    IDYES then
-  begin
-    dmDBCommon.IMAGES_DEL_DATE.ParamByName('CUST_ID').Value := CustomerImages.CustID;
-    dmDBCommon.IMAGES_DEL_DATE.ParamByName('P_DATE').Value := gridCheckP_DATE.EditValue;
-    dmDBCommon.IMAGES_DEL_DATE.ExecProc;
-    dmDBCommon.ds_IMAGES_SEL_BYDATE.DataSet.Refresh;
+  if gridCheck.DataController.RecordCount > 0 then begin
+    if Application.MessageBox('선택한 자료를 삭제합니다. ' + #13#10 + '삭제한 후에는 되돌릴 수 없습니다.'
+      + #13#10 + '정말 삭제할까요?', 'Application.Title', MB_YESNO + MB_ICONWARNING) =
+      IDYES then
+    begin
+      dmDBCommon.IMAGES_DEL_DATE.ParamByName('CUST_ID').Value := CustomerImages.CustID;
+      dmDBCommon.IMAGES_DEL_DATE.ParamByName('P_DATE').Value := gridCheckP_DATE.EditValue;
+      dmDBCommon.IMAGES_DEL_DATE.ExecProc;
+      dmDBCommon.ds_IMAGES_SEL_BYDATE.DataSet.Refresh;
+    end;
   end;
 end;
 
@@ -1035,13 +1018,14 @@ begin
       l_posX := l_posX + l_width;
     end;
   end;
+  LayerWindow.Deselect;
   LayerWindow.Update;
 end;
 
 procedure TfmCompareList2.btnMatchWidthClick(Sender: TObject);
 begin
-  LayerWindow.LayersAlign(ilaMatchWidth, -2);
-  LayerWindow.LayersAlign(ilaMatchHeight, -2);
+  LayerWindow.LayersAlign(ilaMatchWidth, -1);
+  LayerWindow.LayersAlign(ilaMatchHeight, -1);
 end;
 
 procedure TfmCompareList2.RetrieveCompareLayers;
@@ -1611,39 +1595,24 @@ var
   new_idx, idx, hobj, sWidth, sHeight : Integer;
   mStream : TMemoryStream;
   imgWidth, imgHeight, nWidth, iStart : Integer;
-  i, cnt, l_idx, pos_x : Integer;
+  i, cnt, l_cnt, pos_x : Integer;
   l_rect : TRect;
+  bmp: TIEBitmap;
 begin
-  mStream := TMemoryStream.Create;
-  try
-    l_idx := LayerWindow.LayersCount;
-    idx := ImageEnMView1.SelectedImage;
-    ImageEnMView1.GetImageToStream(idx, mStream, ioJPEG);
-    mStream.Position := 0;
-    imgWidth := ImageEnMView1.ImageWidth[idx];
-    imgHeight := ImageEnMView1.ImageHeight[idx];
-    if l_idx = 1 then
-      LayerWindow.IEBitmap.Allocate(imgWidth * 5, imgHeight);
-
-    LayerWindow.LayersAdd(ielkImage);
-    if l_idx > 1 then begin
-      l_rect := LayerWindow.Layers[l_idx-1].LayerRect;
-      pos_x := l_rect.BottomRight.X;
-    end else begin
-      pos_x := 0;
+  If Source = ImageEnMView1 then begin
+    idx := TImageEnMView( Source ).SelectedImage;
+    if idx >= 0 then begin
+      bmp := ImageEnMView1.GetTIEBitmap( idx );
+      LayerWindow.LayersAdd( bmp );
+      LayerWindow.CurrentLayer.AspectRatioLocked := true;
+      LayerWindow.CurrentLayer.PosX := LayerWindow.XScr2Bmp( X );
+      LayerWindow.CurrentLayer.PosY := LayerWindow.YScr2Bmp( Y );
+      TImageEnMView( Source ).ReleaseBitmap( idx, False );
     end;
-
-    LayerWindow.CurrentLayer.PosX := pos_x;
-    LayerWindow.CurrentLayer.PosY := 0;
-    LayerWindow.CurrentLayer.Width := imgWidth; //l_rect.Right;
-    LayerWindow.CurrentLayer.Height := imgHeight; //l_rect.Bottom;
-    LayerWindow.IO.LoadFromStreamJpeg(mStream);
-    LayerWindow.Update;
     LayerWindow.MouseInteractLayers := [mlMoveLayers, mlResizeLayers, mlRotateLayers];
-    LayerWindow.FitToHeight;
-  finally
-    mStream.Free;
   end;
+  LayerWindow.FitToHeight;
+  LayerWindow.Update;
 end;
 
 procedure TfmCompareList2.LayerWindowDragOver(Sender, Source: TObject; X,
