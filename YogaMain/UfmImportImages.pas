@@ -40,6 +40,7 @@ type
     btnRotate: TcxButton;
     Label3: TLabel;
     edtTrackBar: TcxSpinEdit;
+    Label4: TLabel;
     procedure cxButton1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure IEFileDragDrop1FileDrop(Sender: TObject; X, Y: Integer;

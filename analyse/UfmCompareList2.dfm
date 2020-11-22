@@ -1,7 +1,7 @@
 object fmCompareList2: TfmCompareList2
   Left = 0
   Top = 0
-  Caption = #51088#49464' '#51312#54924'/'#48516#49437
+  Caption = #48708#44368#48516#49437
   ClientHeight = 724
   ClientWidth = 1357
   Color = clBtnFace
@@ -534,7 +534,7 @@ object fmCompareList2: TfmCompareList2
               ParentShowHint = False
               ShowHint = True
               Spacing = 1
-              OnClick = btnLineClick
+              OnClick = btnArrowClick
             end
             object btnMultiLine: TSpeedButton
               AlignWithMargins = True
@@ -563,7 +563,7 @@ object fmCompareList2: TfmCompareList2
               ParentShowHint = False
               ShowHint = True
               Spacing = 1
-              OnClick = btnMultiLineClick
+              OnClick = btnArrowClick
             end
             object btnFreeLine: TSpeedButton
               AlignWithMargins = True
@@ -592,7 +592,7 @@ object fmCompareList2: TfmCompareList2
               ParentShowHint = False
               ShowHint = True
               Spacing = 1
-              OnClick = btnFreeLineClick
+              OnClick = btnArrowClick
             end
             object btnAngle: TSpeedButton
               AlignWithMargins = True
@@ -621,7 +621,7 @@ object fmCompareList2: TfmCompareList2
               ParentShowHint = False
               ShowHint = True
               Spacing = 1
-              OnClick = btnAngleClick
+              OnClick = btnArrowClick
             end
             object btnShape: TSpeedButton
               AlignWithMargins = True
@@ -650,7 +650,7 @@ object fmCompareList2: TfmCompareList2
               ParentShowHint = False
               ShowHint = True
               Spacing = 1
-              OnClick = btnShapeClick
+              OnClick = btnArrowClick
             end
             object btnText: TSpeedButton
               AlignWithMargins = True
@@ -679,7 +679,7 @@ object fmCompareList2: TfmCompareList2
               ParentShowHint = False
               ShowHint = True
               Spacing = 1
-              OnClick = btnTextClick
+              OnClick = btnArrowClick
             end
             object btnDeleteLayerAll: TBitBtn
               AlignWithMargins = True
@@ -1271,7 +1271,6 @@ object fmCompareList2: TfmCompareList2
               ShowHint = True
               TabOrder = 0
               OnClick = BitBtn1Click
-              ExplicitLeft = 730
             end
             object btnWindowList: TcxButton
               AlignWithMargins = True
@@ -1479,7 +1478,6 @@ object fmCompareList2: TfmCompareList2
               ShowHint = True
               TabOrder = 4
               OnClick = btnCloseCompareClick
-              ExplicitLeft = 763
             end
           end
           object pgcCompareFrame: TPanel

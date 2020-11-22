@@ -483,6 +483,14 @@ type
     CUSTOMER_SEL_RECENT_REGSEX: TStringField;
     CUSTOMER_SEL_RECENT_REGCTEL: TStringField;
     CUSTOMER_SEL_RECENT_REGREG_DATE: TDateField;
+    MUSCLE_IMAGE_POINT_SEL: TUniStoredProc;
+    ds_MUSCLE_IMAGE_POINT_SEL: TDataSource;
+    MUSCLE_IMAGE_POINT_UPD: TUniStoredProc;
+    MUSCLE_IMAGE_POINT_SELID: TIntegerField;
+    MUSCLE_IMAGE_POINT_SELMUSCLE_IMAGE: TBlobField;
+    MUSCLE_IMAGE_POINT_SELMUSCLE_POSITION: TBlobField;
+    MUSCLE_IMAGE_POINT_SELBONE_IMAGE: TBlobField;
+    MUSCLE_IMAGE_POINT_SELBONE_POSITION: TBlobField;
     procedure DataModuleCreate(Sender: TObject);
   private
     procedure DownloadImage(imgName: string);

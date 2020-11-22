@@ -27,7 +27,8 @@ uses
   dxSkinOffice2013LightGray, dxSkinOffice2013White, dxorgchr, dxGDIPlusClasses,
   imageen, cxSplitter, ieanimation, dxBarBuiltInMenu, cxPC, ComCtrls, dxtree,
   dxdbtree, dxmdaset, cxCheckBox, cxRadioGroup, hyieutils, iexBitmaps, hyiedefs, iesettings, iexLayers,
-  iexRulers, iexToolbars, UfrmMemberSelect, UfrmImageMultiView, cxCalendar;
+  iexRulers, iexToolbars, UfrmMemberSelect, UfrmImageMultiView, cxCalendar,
+  cxMaskEdit, cxSpinEdit, cxDropDownEdit, cxColorComboBox;
 
 type
   TfmStaticCheck = class(TForm)
@@ -130,7 +131,6 @@ type
     cxStyleRed: TcxStyle;
     btnSaveResult: TcxButton;
     btnCapture: TcxButton;
-    btnViewPicture: TcxButton;
     NSTATIC_CHECK_RESULTIMG_SEL: TUniStoredProc;
     NSTATIC_CHECK_RESULTIMG_IU: TUniStoredProc;
     NSTATIC_CHECK_RESULTIMG_SELID: TIntegerField;
@@ -180,22 +180,7 @@ type
     Label1: TLabel;
     Panel2: TPanel;
     cxGroupBox2: TcxGroupBox;
-    Panel10: TPanel;
-    cxPageControl1: TcxPageControl;
-    cxTabSheet1: TcxTabSheet;
-    cxTabSheet2: TcxTabSheet;
-    cxTabSheet3: TcxTabSheet;
-    cxTabSheet4: TcxTabSheet;
-    cxTabSheet5: TcxTabSheet;
-    cxTabSheet6: TcxTabSheet;
-    cxTabSheet7: TcxTabSheet;
     ImageEnView1: TImageEnView;
-    ImageEnView2: TImageEnView;
-    ImageEnView3: TImageEnView;
-    ImageEnView4: TImageEnView;
-    ImageEnView5: TImageEnView;
-    ImageEnView6: TImageEnView;
-    ImageEnView7: TImageEnView;
     gbPictList: TcxGroupBox;
     IMAGES_SEL: TUniStoredProc;
     IMAGES_SELID: TIntegerField;
@@ -212,6 +197,40 @@ type
     IMAGE_ANALYSE_SELDRAW_IMAGE: TBlobField;
     btnSaveResultImage: TcxButton;
     btnMuscle: TBitBtn;
+    ImageEnMView1: TImageEnMView;
+    cxGroupBox5: TcxGroupBox;
+    Panel10: TPanel;
+    chkSize: TcxCheckBox;
+    FlowPanel1: TFlowPanel;
+    btnAngle: TSpeedButton;
+    btnArrow: TSpeedButton;
+    btnBackward: TBitBtn;
+    btnDeleteLayerAll: TBitBtn;
+    btnFont: TBitBtn;
+    btnForward: TBitBtn;
+    btnFreeLine: TSpeedButton;
+    btnLine: TSpeedButton;
+    btnMultiLine: TSpeedButton;
+    btnSaveLayers: TBitBtn;
+    btnSelCopy: TBitBtn;
+    btnSelRect: TBitBtn;
+    btnShape: TSpeedButton;
+    btnText: TSpeedButton;
+    ColorBox: TcxColorComboBox;
+    speLineThick: TcxSpinEdit;
+    FontDialog1: TFontDialog;
+    IMAGE_RESULTS_INS: TUniStoredProc;
+    ImageEnView2: TImageEnView;
+    btnShowImage: TcxButton;
+    IMAGE_RESULTS_SEL: TUniStoredProc;
+    ds_IMAGE_RESULTS_SEL: TDataSource;
+    IMAGE_RESULTS_SELID: TIntegerField;
+    IMAGE_RESULTS_SELCHECK_ID: TIntegerField;
+    IMAGE_RESULTS_SELRESULT_ID: TIntegerField;
+    IMAGE_RESULTS_SELRESULT_MAIN: TIntegerField;
+    IMAGE_RESULTS_SELRESULT_SUB: TIntegerField;
+    IMAGE_RESULTS_SELRESULT_LEVEL: TIntegerField;
+    IMAGE_RESULTS_SELRESULT_IMAGE: TBlobField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ShowProcessMsg(msg, cnt_str: string; onoff: integer);
     procedure gridResultColumn1GetDisplayText(Sender: TcxCustomGridTableItem;
@@ -242,7 +261,6 @@ type
       AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
     procedure btnPracticeMethodClick(Sender: TObject);
     procedure btnCaptureClick(Sender: TObject);
-    procedure btnViewPictureClick(Sender: TObject);
     procedure gridPracticeFocusedRecordChanged(Sender: TcxCustomGridTableView;
       APrevFocusedRecord, AFocusedRecord: TcxCustomGridRecord;
       ANewItemRecordFocusingChanged: Boolean);
@@ -263,15 +281,27 @@ type
     procedure btnChangeLevelClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnChangeDateClick(Sender: TObject);
-    procedure FormResize(Sender: TObject);
     procedure btnCustInfoClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure gridCheckColumn1GetDisplayText(Sender: TcxCustomGridTableItem;
       ARecord: TcxCustomGridRecord; var AText: string);
     procedure btnSaveResultImageClick(Sender: TObject);
-    procedure cxPageControl1Change(Sender: TObject);
-    procedure ImageEnView1DblClick(Sender: TObject);
     procedure btnMuscleClick(Sender: TObject);
+    procedure ImageEnMView1ImageSelect(Sender: TObject; idx: Integer);
+    procedure ImageEnMView1Resize(Sender: TObject);
+    procedure chkSizePropertiesEditValueChanged(Sender: TObject);
+    procedure btnSaveLayersClick(Sender: TObject);
+    procedure btnArrowClick(Sender: TObject);
+    procedure btnSelCopyClick(Sender: TObject);
+    procedure btnForwardClick(Sender: TObject);
+    procedure btnBackwardClick(Sender: TObject);
+    procedure ColorBoxPropertiesChange(Sender: TObject);
+    procedure speLineThickPropertiesChange(Sender: TObject);
+    procedure ImageEnView1NewLayer(Sender: TObject; LayerIdx: Integer;
+      LayerKind: TIELayerKind);
+    procedure btnFontClick(Sender: TObject);
+    procedure btnSelRectClick(Sender: TObject);
+    procedure btnShowImageClick(Sender: TObject);
   private
     function GetImageFilename(image_id: integer): string;
     procedure RetrieveSubitem(tno : Integer);
@@ -283,6 +313,7 @@ type
     procedure RetrieveCheckResult;
     procedure RetrievePicture;
     procedure RetrieveResultImage;
+    procedure AssignControlValues;
     { Private declarations }
   public
     { Public declarations }
@@ -299,6 +330,7 @@ type
     PICTURE_CNT : Integer;
     PICTURE_DATE : TDate;
     PAGE_IDX : Integer;
+    fUpdating : Boolean;
   end;
 
 var
@@ -358,63 +390,22 @@ begin
   d_CHECK_ITEM_TREE.DataSet.Refresh;
 end;
 
-procedure TfmStaticCheck.FormResize(Sender: TObject);
-begin
-  cxGroupBox1.Height := pnlMember.Height div 2;
-end;
-
 procedure TfmStaticCheck.FormShow(Sender: TObject);
 const cap_str = '정적평가';
 var
   i : integer;
 begin
-  imageenview[0] := ImageEnView1;
-  imageenview[1] := ImageEnView2;
-  imageenview[2] := ImageEnView3;
-  imageenview[3] := ImageEnView4;
-  imageenview[4] := ImageEnView5;
-  imageenview[5] := ImageEnView6;
-  imageenview[6] := ImageEnView7;
-  for i := 0 to 6 do
-    imageenview[i].Blank;
-
   Caption := cap_str + ' - ' + CustomerImages.CustName + '(' + CustomerImages.CustTel + ')';
   LabelPictureDate.Caption := DateToStr(PICTURE_DATE);
-
-  IMAGES_SEL.ParamByName('CUST_ID').Value := CustomerImages.CustID;
-  IMAGES_SEL.ParamByName('P_DATE').Value := PICTURE_DATE;
-  IMAGES_SEL.Open;
-  cxPageControl1.ActivePageIndex := 0;
-
-  RetrievePicture;
   RetrieveResults;
   RetrieveResultImage;
   LIST_LOADED := True;
+  ImageEnMView1.SelectedImage := 0;
+  ImageEnMView1ImageSelect(Sender, 0);
 end;
 
 procedure TfmStaticCheck.RetrievePicture;
-var
-  i, cnt, idx, thumb_id : integer;
-  img_name, drw_name : string;
-  mStream, dStream : TMemoryStream;
-  mByte : TBytes;
 begin
-  for i := 0 to 6 do begin
-    imageenview[i].Blank;
-    IMAGE_IDX[i] := 0;
-  end;
-  cnt := IMAGES_SEL.RecordCount;
-  if cnt > 7 then cnt := 7;
-  IMAGES_SEL.First;
-  for i := 0 to cnt - 1 do begin
-    IMAGE_IDX[i] := IMAGES_SELID.Value;
-    mStream := TMemoryStream.Create;
-    IMAGES_SELIMAGE_DATA.SaveToStream(mStream);
-    mStream.Position := 0;
-    imageenview[i].IO.LoadFromStreamJpeg(mStream);
-    mStream.Free;
-    IMAGES_SEL.Next;
-  end;
 end;
 
 procedure TfmStaticCheck.RetrieveResults;
@@ -449,8 +440,6 @@ begin
     finally
       mStream.Free;
     end;
-  end else begin
-    imageenview[PAGE_IDX].LayersClear(False);
   end;
 end;
 
@@ -468,6 +457,11 @@ begin
     pnlProcess.Update;
   end else
     pnlProcess.Visible := False;
+end;
+
+procedure TfmStaticCheck.speLineThickPropertiesChange(Sender: TObject);
+begin
+  AssignControlValues;
 end;
 
 procedure TfmStaticCheck.ActBigExecute(Sender: TObject);
@@ -587,6 +581,29 @@ begin
   end;
 end;
 
+procedure TfmStaticCheck.btnArrowClick(Sender: TObject);
+begin
+  ImageEnView1.MouseInteractLayers := [mlMoveLayers, mlResizeLayers, mlRotateLayers, mlEditLayerPoints];
+  if btnLine.Down then
+    ImageEnView1.MouseInteractLayers := [mlClickCreateLineLayers];
+  if btnMultiLine.Down then
+    ImageEnView1.MouseInteractLayers := [mlClickCreatePolylineLayers];
+  if btnFreeLine.Down then
+    ImageEnView1.MouseInteractLayers := [mlDrawCreatePolylineLayers];
+  if btnAngle.Down then
+    ImageEnView1.MouseInteractLayers := [mlClickCreateAngleLayers];
+  if btnShape.down then begin
+    ImageEnView1.LayersAdd(ielkShape);
+    btnArrow.Down := True;
+    btnArrow.Click;
+  end;
+  if btnText.Down then begin
+    ImageEnView1.LayersAdd( ielkText );
+    btnArrow.Down := True;
+    btnArrow.Click;
+  end;
+end;
+
 procedure TfmStaticCheck.btnLeftClick(Sender: TObject);
 var
   t_no, d_no, id : Integer;
@@ -635,6 +652,12 @@ begin
   InsertPracticeData;
 end;
 
+procedure TfmStaticCheck.btnBackwardClick(Sender: TObject);
+begin
+  if ImageEnView1.CurrentLayer.LayerIndex > 1 then
+    ImageEnView1.CurrentLayer.LayerIndex := ImageEnView1.CurrentLayer.LayerIndex - 1;
+end;
+
 procedure TfmStaticCheck.btnBothClick(Sender: TObject);
 var
   t_no, d_no, id : Integer;
@@ -662,7 +685,6 @@ var
   result_color, label_color : TColor;
   ImageView : TImageEnView;
 begin
-  ImageView := imageenview[cxPageControl1.ActivePageIndex];
   if gridResultsID.EditValue > 0 then begin
     memImg := TMemoryStream.Create;
     try
@@ -684,29 +706,29 @@ begin
       result_str := gridResults.DataController.GetDisplayText(
                     gridResults.DataController.FocusedRecordIndex,
                     gridResultsRESULT_VALUE.Index);
-      ImageView.LayersAdd( ielkLine );
-      TIELineLayer(ImageView.CurrentLayer).SizeToFit;
-      TIELineLayer(ImageView.CurrentLayer).StartShape := ieesArrow;
-      TIELineLayer(ImageView.CurrentLayer).EndShape := ieesNone;
-      TIELineLayer(ImageView.CurrentLayer).FillColor := result_color;
-      TIELineLayer(ImageView.CurrentLayer).LabelText := result_str;
-      TIELineLayer(ImageView.CurrentLayer).LabelPosition := ielpAtEnd;
-      TIELineLayer(ImageView.CurrentLayer).LabelFont.Size := 50;
-      TIELineLayer(ImageView.CurrentLayer).LabelFont.Style := [fsBold];
-      TIELineLayer(ImageView.CurrentLayer).LabelFont.Color := label_color;
-      TIELineLayer(ImageView.CurrentLayer).LabelBorderColor := clBlue;
-      TIELineLayer(ImageView.CurrentLayer).LineLength := 30;
-      TIELineLayer(ImageView.CurrentLayer).LineWidth := 10;
-      TIELineLayer(ImageView.CurrentLayer).LineColor := clBlue;
-      TIELineLayer(ImageView.CurrentLayer).ShapeSize := 50;
-      TIELineLayer(ImageView.CurrentLayer ).SetPoints( 100, 100, 500, 300 );
-      TIELineLayer(ImageView.CurrentLayer).PosX := IELayer_Pos_HCenter;
-      TIELineLayer(ImageView.CurrentLayer).PosY := IELayer_Pos_VCenter;
-      TIELineLayer(ImageView.CurrentLayer ).LabelHorzMargin := 0.10;
-      TIELineLayer(ImageView.CurrentLayer ).LabelVertMargin := 0.10;
+      ImageEnView1.LayersAdd( ielkLine );
+      TIELineLayer(ImageEnView1.CurrentLayer).SizeToFit;
+      TIELineLayer(ImageEnView1.CurrentLayer).StartShape := ieesArrow;
+      TIELineLayer(ImageEnView1.CurrentLayer).EndShape := ieesNone;
+      TIELineLayer(ImageEnView1.CurrentLayer).FillColor := result_color;
+      TIELineLayer(ImageEnView1.CurrentLayer).LabelText := result_str;
+      TIELineLayer(ImageEnView1.CurrentLayer).LabelPosition := ielpAtEnd;
+      TIELineLayer(ImageEnView1.CurrentLayer).LabelFont.Size := 50;
+      TIELineLayer(ImageEnView1.CurrentLayer).LabelFont.Style := [fsBold];
+      TIELineLayer(ImageEnView1.CurrentLayer).LabelFont.Color := label_color;
+      TIELineLayer(ImageEnView1.CurrentLayer).LabelBorderColor := clBlue;
+      TIELineLayer(ImageEnView1.CurrentLayer).LineLength := 30;
+      TIELineLayer(ImageEnView1.CurrentLayer).LineWidth := 10;
+      TIELineLayer(ImageEnView1.CurrentLayer).LineColor := clBlue;
+      TIELineLayer(ImageEnView1.CurrentLayer).ShapeSize := 50;
+      TIELineLayer(ImageEnView1.CurrentLayer ).SetPoints( 100, 100, 500, 300 );
+      TIELineLayer(ImageEnView1.CurrentLayer).PosX := IELayer_Pos_HCenter;
+      TIELineLayer(ImageEnView1.CurrentLayer).PosY := IELayer_Pos_VCenter;
+      TIELineLayer(ImageEnView1.CurrentLayer ).LabelHorzMargin := 0.10;
+      TIELineLayer(ImageEnView1.CurrentLayer ).LabelVertMargin := 0.10;
 
-      ImageView.MouseInteractLayers := [ mlMoveLayers, mlResizeLayers, mlRotateLayers ];
-      ImageView.Update();
+      ImageEnView1.MouseInteractLayers := [ mlMoveLayers, mlResizeLayers, mlRotateLayers ];
+      ImageEnView1.Update();
     finally
       memImg.Free;
     end;
@@ -789,29 +811,79 @@ begin
   end;
 end;
 
-procedure TfmStaticCheck.btnViewPictureClick(Sender: TObject);
-var
-  memImg : TMemoryStream;
+procedure TfmStaticCheck.btnFontClick(Sender: TObject);
 begin
-  if gridResultsID.EditValue > 0 then begin
-    fmCheckImageViewer := TfmCheckImageViewer.Create(Self);
-    memImg := TMemoryStream.Create;
-    try
-      NSTATIC_CHECK_RESULTIMG_SEL.ParamByName('RESULT_ID').Value := gridResultsID.EditValue;
-      NSTATIC_CHECK_RESULTIMG_SEL.Active := True;
-      NSTATIC_CHECK_RESULTIMG_SEL.Refresh;
-      NSTATIC_CHECK_RESULTIMG_SELRESULT_IMG.SaveToStream(memImg);
-      memImg.Position := 0;
-      fmCheckImageViewer.ImageEnVect2.IO.LoadFromStreamJpeg(memImg);
-      fmCheckImageViewer.ImageEnVect2.Update;
-      fmCheckImageViewer.ShowModal;
-    finally
-      memImg.Free;
-      fmCheckImageViewer.Free;
-    end;
-  end else begin
-    ShowMessage('측정결과가 없습니다.');
+  if FontDialog1.Execute then
+    AssignControlValues;
+end;
+
+procedure TfmStaticCheck.btnForwardClick(Sender: TObject);
+begin
+  if ImageEnView1.CurrentLayer.LayerIndex < ImageEnView1.LayersCount then
+    ImageEnView1.CurrentLayer.LayerIndex := ImageEnView1.CurrentLayer.LayerIndex + 1;
+end;
+
+procedure TfmStaticCheck.AssignControlValues();
+begin
+  if fUpdating then
+    exit;
+  with ImageEnView1 do begin
+    CurrentLayer.BorderColor := clRed;
+    CurrentLayer.BorderWidth := speLineThick.Value;
+    CurrentLayer.FillColor   := clYellow;
+    if CurrentLayer is TIELineLayer then
+      with TIELineLayer( CurrentLayer ) do begin
+        BorderColor := ColorBox.ColorValue;
+        BorderWidth := speLineThick.Value;
+        LabelPosition := TIELineLabelPos(0); //hide
+        StartShape := TIELineEndShape(0); //none
+        EndShape := TIELineEndShape(0);   //none
+        ShapeSize := 20;
+      end;
+    if CurrentLayer is TIEPolylineLayer then
+      with TIEPolylineLayer( CurrentLayer ) do begin
+        // Don't close polyline until we finish creating it
+        // PolylineClosed := chkPolylineClosed.checked;
+        BorderColor := ColorBox.ColorValue;
+        BorderWidth := speLineThick.Value;
+      end;
+    if CurrentLayer is TIEAngleLayer then
+      with TIEAngleLayer( CurrentLayer ) do begin
+        AngleMode := TIEAngleMode(0); //normal mode
+        LabelFont.Size := FontDialog1.Font.Size;
+        BorderColor := ColorBox.ColorValue;
+        BorderWidth := speLineThick.Value;
+      end;
+    if CurrentLayer is TIEImageLayer then
+      with TIEImageLayer( CurrentLayer ) do begin
+        BorderColor := clNone;
+        BorderWidth := 0;
+      end;
+    if CurrentLayer is TIETextLayer then
+      with TIETextLayer( CurrentLayer ) do begin
+        Text := '여기에 내용입력...';
+        Font.Size := FontDialog1.Font.Size;
+        Font.Style := FontDialog1.Font.Style;
+        Font.Color := FontDialog1.Font.Color;
+        Font.Name := FontDialog1.Font.Name;
+        BorderColor := clBlack;
+        BorderWidth := 2;
+        FillColor := clYellow;
+        Alignment := iejCenter;
+        Layout := ielCenter;
+        AutoSize := True;
+      end;
+    if CurrentLayer is TIEShapeLayer then
+      with TIEShapeLayer(CurrentLayer) do begin
+        Shape := iesEllipse;
+        FillColor := clYellow;
+        BorderColor := ColorBox.ColorValue;
+        BorderWidth := 2;
+        VisibleBox := True;
+        Selectable := True;
+      end;
   end;
+  ImageEnView1.Update();
 end;
 
 procedure TfmStaticCheck.btnPlayVideoClick(Sender: TObject);
@@ -880,7 +952,7 @@ begin
         dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('PRACTICE_ID').Value := '';
         dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('RESULT_LEVEL').Value := tagno;
         dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('DIRECTION_KIND').Value := 0;
-        dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('IMAGE_ID').Value := IMAGE_IDX[cxPageControl1.ActivePageIndex];
+        dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('IMAGE_ID').Value := IMAGE_IDX[ImageEnMView1.SelectedImage];
         dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('R_GUID').Value := GetUniqInt64;
         dmDBCommon.NSTATIC_CHECK_RESULT_INS.ExecProc;
         dmDBCommon.d_NSTATIC_CHECK_RESULT.DataSet.Refresh;
@@ -891,29 +963,30 @@ begin
   end;
 end;
 
-procedure TfmStaticCheck.ImageEnView1DblClick(Sender: TObject);
-var
-  dStream : TMemoryStream;
-  img_id : Integer;
+procedure TfmStaticCheck.ImageEnMView1ImageSelect(Sender: TObject;
+  idx: Integer);
 begin
-  fmLayerEditor := TfmLayerEditor.Create(Self);
-  try
-    fmLayerEditor.IMAGE_STREAM := TMemoryStream.Create;
-    imageenview[PAGE_IDX].IO.SaveToStreamJpeg(fmLayerEditor.IMAGE_STREAM);
-    fmLayerEditor.IMAGE_STREAM.Position := 0;
-    fmLayerEditor.ShowModal;
-    if fmLayerEditor.ModalResult = mrOk then begin
-      imageenview[PAGE_IDX].Assign(fmLayerEditor.ImageEnView1);
-      imageenview[PAGE_IDX].Update;
-      img_id := IMAGE_IDX[PAGE_IDX];
-      dStream := TMemoryStream.Create;
-      imageenview[PAGE_IDX].IO.SaveToStreamIEN(dStream);
-      dStream.Position := 0;
-      dmDBCommon.UpdateImageDraw(img_id, dStream);
-    end;
-  finally
-    fmLayerEditor.Free;
-  end;
+  ImageEnView1.IEBitmap.Assign(ImageEnMView1.GetTIEBitmap(idx));
+  ImageEnView1.Update;
+end;
+
+procedure TfmStaticCheck.ImageEnMView1Resize(Sender: TObject);
+var
+  w: integer;
+begin
+  w := ImageEnMView1.ClientWidth;
+  if ImageEnMView1.CurrentScrollBars in [ ssVertical, ssBoth ] then
+    dec( w, IEGlobalSettings().VScrollWidth );
+  if chkSize.Checked then
+    ImageEnMView1.SetThumbnailSize(w - 8, MulDiv(w, 16,9))
+  else
+    ImageEnMView1.SetThumbnailSize((w div 2) - 6, MulDiv(w div 2, 16,9))
+end;
+
+procedure TfmStaticCheck.ImageEnView1NewLayer(Sender: TObject;
+  LayerIdx: Integer; LayerKind: TIELayerKind);
+begin
+  AssignControlValues();
 end;
 
 procedure TfmStaticCheck.InsertPracticeData;
@@ -941,6 +1014,12 @@ begin
   NSTATIC_RESULT_PRACTICE_SEL.ParamByName('R_ID').Value := gridResultsID.EditValue;
   NSTATIC_RESULT_PRACTICE_SEL.Active := True;
   ds_NSTATIC_RESULT_PRACTICE_SEL.DataSet.Refresh;
+end;
+
+procedure TfmStaticCheck.btnSaveLayersClick(Sender: TObject);
+begin
+  if SaveImageEnDialog1.Execute then
+    ImageEnView1.LayersSaveMergedTo( SaveImageEnDialog1.Filename );
 end;
 
 procedure TfmStaticCheck.btnSaveResultClick(Sender: TObject);
@@ -1040,12 +1119,41 @@ var
   mStream : TMemoryStream;
 begin
   mStream := TMemoryStream.Create;
-  imageenview[cxPageControl1.ActivePageIndex].LayersSaveToStream(mStream, -1, False, True, False, True, nil); // .IO.SaveToStreamIEN(mStream);
+  ImageEnView1.LayersSaveToStream(mStream, -1, False, True, False, True, nil); // .IO.SaveToStreamIEN(mStream);
   mStream.Position := 0;
   IMAGE_ANALYSE_IU.ParamByName('RESULT_ID').Value := gridCheckID.EditValue;
-  IMAGE_ANALYSE_IU.ParamByName('IMAGE_ID').Value := IMAGE_IDX[cxPageControl1.ActivePageIndex];
+  IMAGE_ANALYSE_IU.ParamByName('IMAGE_ID').Value := IMAGE_IDX[ImageEnMView1.SelectedImage];
   IMAGE_ANALYSE_IU.ParamByName('DRAW_IMAGE').LoadFromStream(mStream, ftBlob);
   IMAGE_ANALYSE_IU.ExecProc;
+end;
+
+procedure TfmStaticCheck.btnSelCopyClick(Sender: TObject);
+var
+  mStream, dStream : TMemoryStream;
+  rc: TRect;
+  destFile: string;
+begin
+  if (ImageEnView1.Selected) and (gridResults.DataController.RecordCount > 0) then begin
+    mStream := TMemoryStream.Create;
+    dStream := TMemoryStream.Create;
+    ImageEnView1.Proc.SelCopyToClip(True);
+    ImageEnView2.Proc.SelPasteFromClip(True);
+    ImageEnView2.Update;
+    ImageEnView2.IO.SaveToStreamJpeg(dStream);
+    dStream.Position := 0;
+    IMAGE_RESULTS_INS.ParamByName('CHECK_ID').Value := gridCheckID.EditValue;
+    IMAGE_RESULTS_INS.ParamByName('RESULT_ID').Value := gridResultsID.EditValue;
+    IMAGE_RESULTS_INS.ParamByName('RESULT_MAIN').Value := gridResultsITEM_MAIN.EditValue;
+    IMAGE_RESULTS_INS.ParamByName('RESULT_SUB').Value := gridResultsRESULT_VALUE.EditValue;
+    IMAGE_RESULTS_INS.ParamByName('RESULT_LEVEL').Value := gridResultsRESULT_LEVEL.EditValue;
+    IMAGE_RESULTS_INS.ParamByName('RESULT_IMAGE').LoadFromStream(dStream, ftBlob);
+    IMAGE_RESULTS_INS.ExecProc;
+    ShowMessage('결과이미지가 저장되었습니다.');
+  end else begin
+    ShowMessage('결과이미지는 선택한 영역만을 저장합니다.' + #13#10 +
+      '이미지의 영역과 평가결과를 선택한 후 다시하세요.'
+    );
+  end;
 end;
 
 procedure TfmStaticCheck.btnSelectClick(Sender: TObject);
@@ -1063,6 +1171,11 @@ begin
   NSTATIC_RESULT_PRACTICE_UPD.ExecProc;
   ds_NSTATIC_RESULT_PRACTICE_SEL.DataSet.Refresh;
   ds_NSTATIC_RESULT_PRACTICE_SEL.DataSet.Locate('id', id, []);
+end;
+
+procedure TfmStaticCheck.btnSelRectClick(Sender: TObject);
+begin
+  ImageEnView1.MouseInteractGeneral := [miSelect];
 end;
 
 procedure TfmStaticCheck.btnSubResultClick(Sender: TObject);
@@ -1185,6 +1298,8 @@ begin
   field_name := TcxGridDBColumn(ACellViewInfo.Item).DataBinding.FieldName;
   if field_name = UpperCase('RESULT_LEVEL') then begin
     btnChangeLevel.Click;
+  end else begin
+    btnShowImage.Click;
   end;
 end;
 
@@ -1235,6 +1350,16 @@ begin
   end;
 end;
 
+procedure TfmStaticCheck.chkSizePropertiesEditValueChanged(Sender: TObject);
+begin
+  ImageEnMView1Resize(Sender);
+end;
+
+procedure TfmStaticCheck.ColorBoxPropertiesChange(Sender: TObject);
+begin
+  AssignControlValues;
+end;
+
 procedure TfmStaticCheck.cxButton1Click(Sender: TObject);
 var
   tno : Integer;
@@ -1245,14 +1370,34 @@ begin
 //  RetrieveResultitem;
 end;
 
-procedure TfmStaticCheck.cxPageControl1Change(Sender: TObject);
+procedure TfmStaticCheck.btnShowImageClick(Sender: TObject);
 var
-  pid : Integer;
+  mStream : TMemoryStream;
+  focus_row : Integer;
 begin
-  PAGE_IDX := cxPageControl1.ActivePageIndex;
-  RetrieveResultImage;
-  pid := IMAGE_IDX[PAGE_IDX];
-  cxGroupBox2.Caption := '자세사진:' + IntToStr(pid);
+  fmCheckImageViewer := TfmCheckImageViewer.Create(Self);
+  mStream := TMemoryStream.Create;
+  try
+    focus_row := gridResults.DataController.GetFocusedRecordIndex;
+    fmCheckImageViewer.RESULT_LEVEL := gridResultsRESULT_LEVEL.EditValue;
+    fmCheckImageViewer.PanelMsg.Caption := 
+        gridResults.DataController.GetDisplayText(focus_row, gridResultsITEM_MAIN.Index) + ' - ' +
+        gridResults.DataController.GetDisplayText(focus_row, gridResultsRESULT_VALUE.Index) + '(' +
+        gridResults.DataController.GetDisplayText(focus_row, gridResultsRESULT_LEVEL.Index) + ')';
+    IMAGE_RESULTS_SEL.ParamByName('RESULTID').Value := gridResultsID.EditValue;
+    IMAGE_RESULTS_SEL.Open;
+    ds_IMAGE_RESULTS_SEL.DataSet.Refresh;
+    if IMAGE_RESULTS_SEL.RecordCount > 0 then begin
+      IMAGE_RESULTS_SELRESULT_IMAGE.SaveToStream(mStream);
+      mStream.Position := 0;
+      fmCheckImageViewer.ImageEnView1.IO.LoadFromStreamJpeg(mStream);
+      fmCheckImageViewer.ShowModal;
+    end else begin
+      ShowMessage('저장된 결과 이미지가 없습니다.');
+    end;
+  finally
+    fmCheckImageViewer.Free;
+  end;
 end;
 
 procedure TfmStaticCheck.RetrieveSubitem(tno : Integer);

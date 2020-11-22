@@ -179,14 +179,14 @@ type
     cxTabSheet9: TcxTabSheet;
     cxTabSheet10: TcxTabSheet;
     cxTabSheet11: TcxTabSheet;
-    HotSpotImage1: THotSpotImage;
-    HotSpotImage2: THotSpotImage;
-    HotSpotImage3: THotSpotImage;
-    HotSpotImage4: THotSpotImage;
-    HotSpotImage5: THotSpotImage;
-    HotSpotImage6: THotSpotImage;
-    HotSpotImage7: THotSpotImage;
-    HotSpotImage8: THotSpotImage;
+    ImageEnView1_1: TImageEnView;
+    ImageEnView1_2: TImageEnView;
+    ImageEnView1_3: TImageEnView;
+    ImageEnView1_4: TImageEnView;
+    ImageEnView2_1: TImageEnView;
+    ImageEnView2_2: TImageEnView;
+    ImageEnView2_3: TImageEnView;
+    ImageEnView2_4: TImageEnView;
     procedure ImageEnVect1NewObject(Sender: TObject; hobj: Integer);
     procedure ImageEnVect1SelectObject(Sender: TObject);
     procedure cbbAngleChange(Sender: TObject);
@@ -259,8 +259,8 @@ type
     procedure btnFitClick(Sender: TObject);
     procedure ImageEnVect1SelectionChanging(Sender: TObject);
     procedure chkGuidLineClick(Sender: TObject);
-    procedure HotSpotImage1HotSpotClick(Sender: TObject; HotSpot: THotSpot);
-    procedure HotSpotImage4HotSpotClick(Sender: TObject; HotSpot: THotSpot);
+    procedure cxPageControl2Change(Sender: TObject);
+    procedure cxPageControl3Change(Sender: TObject);
   private
     procedure SetThumbnail;
     procedure SetArrowSelection;
@@ -270,6 +270,8 @@ type
     procedure WriteObjectAngle(IEV: TImageEnVect; hobj: Integer; ang: Double);
     function Measure_angle(x1, y1, x2, y2: double): double;
     procedure SetFontSize;
+    procedure RetrieveMuscleImage;
+    procedure SetMuscleImageInit;
     { Private declarations }
   public
     { Public declarations }
@@ -280,6 +282,8 @@ type
     ctrlch : Boolean;
     mLineRect, mLengthRect : Array[0..8] of TRect;
     mLineDistance : Array[0..8] of Integer;
+    man_women, body_posture : Integer;
+    ImageEnBody, ImageEnBone : array[0..3] of TImageEnView;
     constructor Create(AOwener : TComponent) ; override;
     procedure OpenImageFile(FileName : string);
     procedure OpenImageStream(imgStream, drawStream : TMemoryStream); overload;
@@ -314,6 +318,10 @@ begin
   DRAW_CHANGED := False;
   ctrlch := False;
   cxPageControl1.ActivePageIndex := 0;
+  cxPageControl2.ActivePageIndex := 0;
+  cxPageControl3.ActivePageIndex := 0;
+  man_women := 1;
+  body_posture := cxPageControl2.ActivePageIndex;
   ImageEnVect1.AutoFit := True;
   ImageEnVect1.AutoStretch := True;
   ImageEnVect1.Fit;
@@ -331,11 +339,78 @@ begin
   ImageEnVect1.PolylineEndingMode := ieemMouseUp;
   ImageEnVect1.MouseInteract := [miZoom, miScroll];
   ImageEnVect1.Update;
-
   //btnLine.Click;
   dxMemThumbnail.Active := True;
   SetThumbnail;
   btnSelect.Click;
+  SetMuscleImageInit;
+end;
+
+procedure TfrmImageEditor2.SetMuscleImageInit;
+var
+  i : integer;
+begin
+  ImageEnBody[0] := ImageEnView1_1;
+  ImageEnBody[1] := ImageEnView1_2;
+  ImageEnBody[2] := ImageEnView1_3;
+  ImageEnBody[3] := ImageEnView1_4;
+  ImageEnBone[0] := ImageEnView2_1;
+  ImageEnBone[1] := ImageEnView2_2;
+  ImageEnBone[2] := ImageEnView2_3;
+  ImageEnBone[3] := ImageEnView2_4;
+  for i := 0 to 3 do begin
+    ImageEnBody[i].AutoStretch := True;
+    ImageEnBody[i].AutoShrink := True;
+    ImageEnBody[i].AutoFit := True;
+    ImageEnBone[i].AutoStretch := True;
+    ImageEnBone[i].AutoShrink := True;
+    ImageEnBone[i].AutoFit := True;
+    //벡터 영역을 마우스로 올렸을 때 자동으로 선택하도록 하고 색상을 변경하는 루틴...
+//    ImageEnBody[i].MouseInteractVt:=[miObjectSelect];
+//    ImageEnBody[i].CenterNewObjects:=true;
+//    ImageEnBody[i].ObjGripPen.Style := psClear;
+//    ImageEnBody[i].ObjGripBrush.Style := bsclear;
+//    ImageEnBone[i].MouseInteractVt:=[miObjectSelect];
+//    ImageEnBone[i].CenterNewObjects:=true;
+//    ImageEnBone[i].ObjGripPen.Style := psClear;
+//    ImageEnBone[i].ObjGripBrush.Style := bsclear;
+  end;
+  //RetrieveMuscleImage;
+  cxPageControl2Change(nil);
+end;
+
+procedure TfrmImageEditor2.RetrieveMuscleImage;
+var
+  mStream1, mStream2, dStream1, dStream2 : TMemoryStream;
+begin
+  mStream1 := TMemoryStream.Create;
+  dStream1 := TMemoryStream.Create;
+  mStream2 := TMemoryStream.Create;
+  dStream2 := TMemoryStream.Create;
+
+  dmDBCommon.MUSCLE_IMAGE_POINT_SEL.ParamByName('MAN_WOMEN').Value := man_women;
+  dmDBCommon.MUSCLE_IMAGE_POINT_SEL.ParamByName('BODY_POSTURE').Value := body_posture + 1;
+  dmDBCommon.MUSCLE_IMAGE_POINT_SEL.Open;
+  dmDBCommon.ds_MUSCLE_IMAGE_POINT_SEL.DataSet.Refresh;
+
+  dmDBCommon.MUSCLE_IMAGE_POINT_SELMUSCLE_IMAGE.SaveToStream(mStream1);
+  dmDBCommon.MUSCLE_IMAGE_POINT_SELMUSCLE_POSITION.SaveToStream(dStream1);
+  dmDBCommon.MUSCLE_IMAGE_POINT_SELBONE_IMAGE.SaveToStream(mStream2);
+  dmDBCommon.MUSCLE_IMAGE_POINT_SELBONE_POSITION.SaveToStream(dStream2);
+  mStream1.Position := 0;
+  mStream2.Position := 0;
+  dStream1.Position := 0;
+  dStream2.Position := 0;
+  ImageEnBody[body_posture].IO.LoadFromStreamJpeg(mStream1);
+  ImageEnBody[body_posture].IO.LoadFromStreamIEN(dStream1);
+  ImageEnBone[body_posture].IO.LoadFromStreamJpeg(mStream2);
+  ImageEnBone[body_posture].IO.LoadFromStreamIEN(mStream2);
+  ImageEnBody[body_posture].Update;
+  ImageEnBone[body_posture].Update;
+  mStream1.Free;
+  mStream2.Free;
+  dStream1.Free;
+  dStream2.Free;
 end;
 
 procedure TfrmImageEditor2.SetArrowSelection;
@@ -359,6 +434,18 @@ begin
   end;
 end;
 
+procedure TfrmImageEditor2.cxPageControl2Change(Sender: TObject);
+begin
+  body_posture := cxPageControl2.ActivePageIndex;
+  cxPageControl3.ActivePageIndex := cxPageControl2.ActivePageIndex;
+  RetrieveMuscleImage;
+end;
+
+procedure TfrmImageEditor2.cxPageControl3Change(Sender: TObject);
+begin
+  cxPageControl2.ActivePageIndex := cxPageControl3.ActivePageIndex;
+end;
+
 procedure TfrmImageEditor2.GetImageStream(var mStream, dStream: TMemoryStream);
 begin
   if (ImageEnVect1.IEBitmap.IsEmpty = False) then begin
@@ -369,45 +456,45 @@ begin
   end;
 end;
 
-procedure TfrmImageEditor2.HotSpotImage1HotSpotClick(Sender: TObject;
-  HotSpot: THotSpot);
-var
-  spot_id : Integer;
-begin
-  fmMuscleImage := TfmMuscleImage.Create(Self);
-  try
-    if (HotSpot.ID = 3) or ((HotSpot.ID = 4)) then
-      spot_id := 3
-    else
-      spot_id := HotSpot.ID;
+//procedure TfrmImageEditor2.HotSpotImage1HotSpotClick(Sender: TObject;
+//  HotSpot: THotSpot);
+//var
+//  spot_id : Integer;
+//begin
+//  fmMuscleImage := TfmMuscleImage.Create(Self);
+//  try
+//    if (HotSpot.ID = 3) or ((HotSpot.ID = 4)) then
+//      spot_id := 3
+//    else
+//      spot_id := HotSpot.ID;
+//
+//    fmMuscleImage.BODY_SIDE := 1;
+//    fmMuscleImage.BODY_POINT := spot_id;
+//    fmMuscleImage.ShowModal;
+//  finally
+//    fmMuscleImage.Free;
+//  end;
+//end;
 
-    fmMuscleImage.BODY_SIDE := 1;
-    fmMuscleImage.BODY_POINT := spot_id;
-    fmMuscleImage.ShowModal;
-  finally
-    fmMuscleImage.Free;
-  end;
-end;
-
-procedure TfrmImageEditor2.HotSpotImage4HotSpotClick(Sender: TObject;
-  HotSpot: THotSpot);
-var
-  spot_id : Integer;
-begin
-  fmMuscleImage := TfmMuscleImage.Create(Self);
-  try
-    if (HotSpot.ID = 3) or ((HotSpot.ID = 4)) then
-      spot_id := 3
-    else
-      spot_id := HotSpot.ID;
-
-    fmMuscleImage.BODY_SIDE := 4;
-    fmMuscleImage.BODY_POINT := spot_id;
-    fmMuscleImage.ShowModal;
-  finally
-    fmMuscleImage.Free;
-  end;
-end;
+//procedure TfrmImageEditor2.HotSpotImage4HotSpotClick(Sender: TObject;
+//  HotSpot: THotSpot);
+//var
+//  spot_id : Integer;
+//begin
+//  fmMuscleImage := TfmMuscleImage.Create(Self);
+//  try
+//    if (HotSpot.ID = 3) or ((HotSpot.ID = 4)) then
+//      spot_id := 3
+//    else
+//      spot_id := HotSpot.ID;
+//
+//    fmMuscleImage.BODY_SIDE := 4;
+//    fmMuscleImage.BODY_POINT := spot_id;
+//    fmMuscleImage.ShowModal;
+//  finally
+//    fmMuscleImage.Free;
+//  end;
+//end;
 
 procedure TfrmImageEditor2.SetThumbnail;
 var

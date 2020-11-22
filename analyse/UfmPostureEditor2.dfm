@@ -31,7 +31,7 @@ object fmPostureEditor2: TfmPostureEditor2
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitLeft = 16
+    ExplicitLeft = 24
     ExplicitTop = -88
     inherited pnl1: TPanel
       Width = 1348
@@ -62,20 +62,9 @@ object fmPostureEditor2: TfmPostureEditor2
                 inherited cbbBrushStyle: TcxImageComboBox
                   Style.IsFontAssigned = True
                 end
-                inherited edtLineThick: TEdit
-                  Height = 23
-                  ExplicitHeight = 23
-                end
-                inherited udLineThick: TUpDown
-                  Top = 244
-                  ExplicitTop = 244
-                end
                 inherited efontColor: TdxColorEdit
                   Style.IsFontAssigned = True
                 end
-              end
-              inherited cxGroupBox6: TcxGroupBox
-                ExplicitTop = 581
               end
             end
           end
@@ -108,219 +97,36 @@ object fmPostureEditor2: TfmPostureEditor2
             LookAndFeel.SkinName = ''
             ClientRectBottom = 695
             inherited cxTabSheet4: TcxTabSheet
-              inherited HotSpotImage1: THotSpotImage
+              inherited ImageEnView1_1: TImageEnView
                 Height = 673
-                HotSpots = <
-                  item
-                    ShapeType = stPolygon
-                    Name = 'neck'
-                    ID = 1
-                    X = 111
-                    Y = 89
-                    Width = 72
-                    Height = 39
-                    Clipped = True
-                    Down = False
-                    HoverColor = clNone
-                    ClickColor = clNone
-                    SelectedColor = clNone
-                    BlinkColor = clWhite
-                    HoverImageIndex = -1
-                    ClickImageIndex = -1
-                    SelectedImageIndex = -1
-                    BlinkImageIndex = -1
-                    PolyPoints = (
-                      4
-                      0
-                      111.620689655172500000
-                      89.279967492889110000
-                      183.000000000000000000
-                      89.000000000000010000
-                      182.379310344827700000
-                      127.720032507110900000
-                      111.000000000000000000
-                      128.000000000000000000)
-                  end
-                  item
-                    ShapeType = stPolygon
-                    Name = 'chest'
-                    ID = 2
-                    X = 77
-                    Y = 148
-                    Width = 143
-                    Height = 131
-                    Clipped = True
-                    Down = False
-                    HoverColor = clNone
-                    ClickColor = clNone
-                    SelectedColor = clNone
-                    BlinkColor = clWhite
-                    HoverImageIndex = -1
-                    ClickImageIndex = -1
-                    SelectedImageIndex = -1
-                    BlinkImageIndex = -1
-                    PolyPoints = (
-                      4
-                      0
-                      77.000000000000000000
-                      148.000000000000000000
-                      219.369742263102300000
-                      149.069387755102000000
-                      220.000000000000000000
-                      279.000000000000000000
-                      77.630257736897590000
-                      277.930612244898000000)
-                  end
-                  item
-                    ShapeType = stPolygon
-                    Name = 'arm1'
-                    ID = 3
-                    X = 11
-                    Y = 141
-                    Width = 52
-                    Height = 203
-                    Clipped = True
-                    Down = False
-                    HoverColor = clNone
-                    ClickColor = clNone
-                    SelectedColor = clNone
-                    BlinkColor = clWhite
-                    HoverImageIndex = -1
-                    ClickImageIndex = -1
-                    SelectedImageIndex = -1
-                    BlinkImageIndex = -1
-                    PolyPoints = (
-                      4
-                      0
-                      12.268292682926830000
-                      141.000000000000000000
-                      63.000000000000000000
-                      141.000000000000000000
-                      61.731707317073170000
-                      344.000000000000000000
-                      11.000000000000000000
-                      344.000000000000000000)
-                  end
-                  item
-                    ShapeType = stPolygon
-                    Name = 'arm2'
-                    ID = 4
-                    X = 232
-                    Y = 142
-                    Width = 66
-                    Height = 206
-                    Clipped = True
-                    Down = False
-                    HoverColor = clNone
-                    ClickColor = clNone
-                    SelectedColor = clNone
-                    BlinkColor = clWhite
-                    HoverImageIndex = -1
-                    ClickImageIndex = -1
-                    SelectedImageIndex = -1
-                    BlinkImageIndex = -1
-                    PolyPoints = (
-                      4
-                      0
-                      232.000000000000000000
-                      142.000000000000000000
-                      298.000000000000000000
-                      142.000000000000000000
-                      298.000000000000000000
-                      347.999999999999800000
-                      232.000000000000000000
-                      347.999999999999800000)
-                  end
-                  item
-                    ShapeType = stPolygon
-                    Name = 'hight_body'
-                    ID = 5
-                    X = 70
-                    Y = 292
-                    Width = 153
-                    Height = 52
-                    Clipped = True
-                    Down = False
-                    HoverColor = clNone
-                    ClickColor = clNone
-                    SelectedColor = clNone
-                    BlinkColor = clWhite
-                    HoverImageIndex = -1
-                    ClickImageIndex = -1
-                    SelectedImageIndex = -1
-                    BlinkImageIndex = -1
-                    PolyPoints = (
-                      4
-                      0
-                      73.135245901639290000
-                      292.000000000000000000
-                      223.000000000000000000
-                      292.000000000000000000
-                      219.864754098360600000
-                      344.000000000000000000
-                      69.999999999999990000
-                      344.000000000000000000)
-                  end
-                  item
-                    ShapeType = stPolygon
-                    Name = 'knee'
-                    ID = 6
-                    X = 50
-                    Y = 347
-                    Width = 197
-                    Height = 160
-                    Clipped = True
-                    Down = False
-                    HoverColor = clNone
-                    ClickColor = clNone
-                    SelectedColor = clNone
-                    BlinkColor = clWhite
-                    HoverImageIndex = -1
-                    ClickImageIndex = -1
-                    SelectedImageIndex = -1
-                    BlinkImageIndex = -1
-                    PolyPoints = (
-                      4
-                      0
-                      50.000000000000000000
-                      347.000000000000100000
-                      244.482428115015800000
-                      347.000000000000100000
-                      247.000000000000000000
-                      507.000000000000100000
-                      52.517571884984020000
-                      507.000000000000100000)
-                  end
-                  item
-                    ShapeType = stPolygon
-                    Name = 'foot'
-                    ID = 7
-                    X = 50
-                    Y = 509
-                    Width = 194
-                    Height = 168
-                    Clipped = True
-                    Down = False
-                    HoverColor = clNone
-                    ClickColor = clNone
-                    SelectedColor = clNone
-                    BlinkColor = clWhite
-                    HoverImageIndex = -1
-                    ClickImageIndex = -1
-                    SelectedImageIndex = -1
-                    BlinkImageIndex = -1
-                    PolyPoints = (
-                      4
-                      0
-                      50.000000000000000000
-                      508.999999999999900000
-                      244.000000000000000000
-                      508.999999999999900000
-                      244.000000000000000000
-                      676.999999999999900000
-                      50.000000000000000000
-                      676.999999999999900000)
-                  end>
+                ExplicitLeft = 0
+                ExplicitTop = 0
+                ExplicitWidth = 300
+                ExplicitHeight = 761
+              end
+            end
+            inherited cxTabSheet5: TcxTabSheet
+              inherited ImageEnView1_2: TImageEnView
+                ExplicitLeft = 0
+                ExplicitTop = 0
+                ExplicitWidth = 300
+                ExplicitHeight = 761
+              end
+            end
+            inherited cxTabSheet6: TcxTabSheet
+              inherited ImageEnView1_3: TImageEnView
+                ExplicitLeft = 0
+                ExplicitTop = 0
+                ExplicitWidth = 300
+                ExplicitHeight = 761
+              end
+            end
+            inherited cxTabSheet7: TcxTabSheet
+              inherited ImageEnView1_4: TImageEnView
+                ExplicitLeft = 0
+                ExplicitTop = 0
+                ExplicitWidth = 300
+                ExplicitHeight = 761
               end
             end
           end
@@ -330,8 +136,36 @@ object fmPostureEditor2: TfmPostureEditor2
             LookAndFeel.SkinName = ''
             ClientRectBottom = 695
             inherited cxTabSheet8: TcxTabSheet
-              inherited HotSpotImage5: THotSpotImage
+              inherited ImageEnView2_1: TImageEnView
                 Height = 673
+                ExplicitLeft = 0
+                ExplicitTop = 0
+                ExplicitWidth = 300
+                ExplicitHeight = 761
+              end
+            end
+            inherited cxTabSheet9: TcxTabSheet
+              inherited ImageEnView2_2: TImageEnView
+                ExplicitLeft = 0
+                ExplicitTop = 0
+                ExplicitWidth = 300
+                ExplicitHeight = 761
+              end
+            end
+            inherited cxTabSheet10: TcxTabSheet
+              inherited ImageEnView2_3: TImageEnView
+                ExplicitLeft = 0
+                ExplicitTop = 0
+                ExplicitWidth = 300
+                ExplicitHeight = 761
+              end
+            end
+            inherited cxTabSheet11: TcxTabSheet
+              inherited ImageEnView2_4: TImageEnView
+                ExplicitLeft = 0
+                ExplicitTop = 0
+                ExplicitWidth = 300
+                ExplicitHeight = 761
               end
             end
           end

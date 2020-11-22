@@ -1,7 +1,7 @@
 object fmCompareList3: TfmCompareList3
   Left = 0
   Top = 0
-  Caption = #51088#49464#49324#51652#51312#54924
+  Caption = #51068#48324#51312#54924
   ClientHeight = 669
   ClientWidth = 1304
   Color = clBtnFace
@@ -442,7 +442,6 @@ object fmCompareList3: TfmCompareList3
           ShowHint = True
           TabOrder = 2
           OnClick = btnEditImageClick
-          ExplicitTop = -2
         end
         object btnStaticCheck: TcxButton
           AlignWithMargins = True

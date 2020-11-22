@@ -34,8 +34,7 @@ object fmImportImages: TfmImportImages
       Align = alLeft
       Caption = #51200#51109#51068#51088':'
       Layout = tlCenter
-      ExplicitLeft = 347
-      ExplicitTop = 3
+      ExplicitHeight = 15
     end
     object Label3: TLabel
       AlignWithMargins = True
@@ -48,6 +47,19 @@ object fmImportImages: TfmImportImages
       Layout = tlCenter
       ExplicitHeight = 15
     end
+    object Label4: TLabel
+      Left = 800
+      Top = 7
+      Width = 332
+      Height = 15
+      Caption = '* '#50952#46020#50864' '#53456#49353#44592#50640#49436' '#46300#47000#44536' '#54616#50668' '#54028#51068#51012' '#52628#44032#54624' '#49688' '#51080#49845#45768#45796'.'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGray
+      Font.Height = -13
+      Font.Name = #45208#45588#44256#46357
+      Font.Style = []
+      ParentFont = False
+    end
     object edtSaveDate: TcxDateEdit
       AlignWithMargins = True
       Left = 567
@@ -58,8 +70,6 @@ object fmImportImages: TfmImportImages
       Margins.Bottom = 1
       Align = alLeft
       TabOrder = 0
-      ExplicitLeft = 627
-      ExplicitTop = 0
       Width = 121
     end
     object cxButton1: TcxButton
@@ -114,8 +124,6 @@ object fmImportImages: TfmImportImages
       ShowHint = True
       TabOrder = 1
       OnClick = cxButton1Click
-      ExplicitLeft = 189
-      ExplicitTop = 4
     end
     object btnSave: TcxButton
       AlignWithMargins = True
@@ -166,7 +174,6 @@ object fmImportImages: TfmImportImages
         0005000000050000000500000006000000060000000400000001}
       TabOrder = 2
       OnClick = btnSaveClick
-      ExplicitLeft = 752
     end
     object btnTrim: TcxButton
       AlignWithMargins = True
@@ -220,7 +227,6 @@ object fmImportImages: TfmImportImages
       ShowHint = True
       TabOrder = 3
       OnClick = btnTrimClick
-      ExplicitLeft = 277
     end
     object btnDel: TcxButton
       AlignWithMargins = True
@@ -274,7 +280,6 @@ object fmImportImages: TfmImportImages
       ShowHint = True
       TabOrder = 4
       OnClick = btnDelClick
-      ExplicitLeft = 403
     end
     object btnRotate: TcxButton
       AlignWithMargins = True
@@ -328,7 +333,6 @@ object fmImportImages: TfmImportImages
       ShowHint = True
       TabOrder = 5
       OnClick = btnRotateClick
-      ExplicitLeft = 547
     end
     object edtTrackBar: TcxSpinEdit
       AlignWithMargins = True
@@ -347,9 +351,6 @@ object fmImportImages: TfmImportImages
       Properties.OnEditValueChanged = edtTrackBarPropertiesEditValueChanged
       TabOrder = 6
       Value = 100
-      ExplicitLeft = 35
-      ExplicitTop = 1
-      ExplicitHeight = 23
       Width = 51
     end
   end
@@ -383,10 +384,6 @@ object fmImportImages: TfmImportImages
     TabOrder = 1
     ThreadPoolSize = 100
     EnableMultiSelect = True
-    ExplicitLeft = 8
-    ExplicitTop = 0
-    ExplicitWidth = 348
-    ExplicitHeight = 670
   end
   object PanelMessage: TPanel
     Left = 502

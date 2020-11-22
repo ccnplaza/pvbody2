@@ -655,8 +655,8 @@ object dmDBCommon: TdmDBCommon
   object LESSON_CUSTOMER_MIXSEL: TUniStoredProc
     StoredProcName = 'LESSON_CUSTOMER_MIXSEL'
     Connection = UniDBConnection
-    Left = 978
-    Top = 443
+    Left = 962
+    Top = 403
     ParamData = <
       item
         DataType = ftString
@@ -944,8 +944,8 @@ object dmDBCommon: TdmDBCommon
   end
   object d_LESSON_CUSTOMER_MIXSEL: TUniDataSource
     DataSet = LESSON_CUSTOMER_MIXSEL
-    Left = 978
-    Top = 491
+    Left = 962
+    Top = 451
   end
   object LESSON_SEL_LOOK: TUniStoredProc
     StoredProcName = 'LESSON_SEL_LOOK'
@@ -2901,8 +2901,8 @@ object dmDBCommon: TdmDBCommon
   object CUSTOMER_FAVORITE_SELECT: TUniStoredProc
     StoredProcName = 'CUSTOMER_FAVORITE_SELECT'
     Connection = UniDBConnection
-    Left = 976
-    Top = 536
+    Left = 960
+    Top = 496
     ParamData = <
       item
         DataType = ftString
@@ -2989,14 +2989,14 @@ object dmDBCommon: TdmDBCommon
   end
   object d_CUSTOMER_FAVORITE_SELECT: TDataSource
     DataSet = CUSTOMER_FAVORITE_SELECT
-    Left = 976
-    Top = 584
+    Left = 960
+    Top = 544
   end
   object CUSTOMER_FAVORITE_INS: TUniStoredProc
     StoredProcName = 'CUSTOMER_FAVORITE_INS'
     Connection = UniDBConnection
-    Left = 976
-    Top = 632
+    Left = 960
+    Top = 592
     ParamData = <
       item
         DataType = ftString
@@ -3009,8 +3009,8 @@ object dmDBCommon: TdmDBCommon
   object CUSTOMER_FAVORITE_DEL: TUniStoredProc
     StoredProcName = 'CUSTOMER_FAVORITE_DEL'
     Connection = UniDBConnection
-    Left = 976
-    Top = 680
+    Left = 960
+    Top = 640
     ParamData = <
       item
         DataType = ftString
@@ -5388,5 +5388,102 @@ object dmDBCommon: TdmDBCommon
     DataSet = CUSTOMER_SEL_RECENT_REG
     Left = 200
     Top = 784
+  end
+  object MUSCLE_IMAGE_POINT_SEL: TUniStoredProc
+    StoredProcName = 'MUSCLE_IMAGE_POINT_SEL'
+    Connection = UniDBConnection
+    Left = 976
+    Top = 696
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'MAN_WOMEN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'BODY_POSTURE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'ID'
+        ParamType = ptOutput
+      end
+      item
+        DataType = ftBlob
+        Name = 'MUSCLE_IMAGE'
+        ParamType = ptOutput
+        Value = ''
+      end
+      item
+        DataType = ftBlob
+        Name = 'MUSCLE_POSITION'
+        ParamType = ptOutput
+        Value = ''
+      end
+      item
+        DataType = ftBlob
+        Name = 'BONE_IMAGE'
+        ParamType = ptOutput
+        Value = ''
+      end
+      item
+        DataType = ftBlob
+        Name = 'BONE_POSITION'
+        ParamType = ptOutput
+        Value = ''
+      end>
+    CommandStoredProcName = 'MUSCLE_IMAGE_POINT_SEL'
+    object MUSCLE_IMAGE_POINT_SELID: TIntegerField
+      FieldName = 'ID'
+    end
+    object MUSCLE_IMAGE_POINT_SELMUSCLE_IMAGE: TBlobField
+      FieldName = 'MUSCLE_IMAGE'
+    end
+    object MUSCLE_IMAGE_POINT_SELMUSCLE_POSITION: TBlobField
+      FieldName = 'MUSCLE_POSITION'
+    end
+    object MUSCLE_IMAGE_POINT_SELBONE_IMAGE: TBlobField
+      FieldName = 'BONE_IMAGE'
+    end
+    object MUSCLE_IMAGE_POINT_SELBONE_POSITION: TBlobField
+      FieldName = 'BONE_POSITION'
+    end
+  end
+  object ds_MUSCLE_IMAGE_POINT_SEL: TDataSource
+    DataSet = MUSCLE_IMAGE_POINT_SEL
+    Left = 976
+    Top = 744
+  end
+  object MUSCLE_IMAGE_POINT_UPD: TUniStoredProc
+    StoredProcName = 'MUSCLE_IMAGE_POINT_UPD'
+    Connection = UniDBConnection
+    Left = 976
+    Top = 792
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'MAN_WOMEN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'BODY_POSTURE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftBlob
+        Name = 'MUSCLE_POSITION'
+        ParamType = ptInput
+        Value = ''
+      end
+      item
+        DataType = ftBlob
+        Name = 'BONE_POSITION'
+        ParamType = ptInput
+        Value = ''
+      end>
+    CommandStoredProcName = 'MUSCLE_IMAGE_POINT_UPD'
   end
 end

@@ -240,12 +240,6 @@ type
     procedure btnTrimClick(Sender: TObject);
     procedure btnCloseCompareClick(Sender: TObject);
     procedure btnArrowClick(Sender: TObject);
-    procedure btnLineClick(Sender: TObject);
-    procedure btnMultiLineClick(Sender: TObject);
-    procedure btnFreeLineClick(Sender: TObject);
-    procedure btnAngleClick(Sender: TObject);
-    procedure btnShapeClick(Sender: TObject);
-    procedure btnTextClick(Sender: TObject);
   private
     fShapeProps: TShapeProps;
     fLineProps : TLineProps;
@@ -403,7 +397,7 @@ begin
       end;
     if CurrentLayer is TIETextLayer then
       with TIETextLayer( CurrentLayer ) do begin
-        //Text := DateToStr(gridCheckP_DATE.EditValue);
+        Text := DateToStr(gridCheckP_DATE.EditValue);
         Font.Size := FontDialog1.Font.Size;
         Font.Style := FontDialog1.Font.Style;
         Font.Color := FontDialog1.Font.Color;
@@ -888,44 +882,19 @@ end;
 procedure TfmCompareList2.btnArrowClick(Sender: TObject);
 begin
   LayerWindow.MouseInteractLayers := [mlMoveLayers, mlResizeLayers, mlRotateLayers, mlEditLayerPoints];
-//  LayerWindow.Update();
-end;
-
-procedure TfmCompareList2.btnLineClick(Sender: TObject);
-begin
   if btnLine.Down then
     LayerWindow.MouseInteractLayers := [mlClickCreateLineLayers];
-end;
-
-procedure TfmCompareList2.btnMultiLineClick(Sender: TObject);
-begin
   if btnMultiLine.Down then
     LayerWindow.MouseInteractLayers := [mlClickCreatePolylineLayers];
-end;
-
-procedure TfmCompareList2.btnFreeLineClick(Sender: TObject);
-begin
   if btnFreeLine.Down then
     LayerWindow.MouseInteractLayers := [mlDrawCreatePolylineLayers];
-end;
-
-procedure TfmCompareList2.btnAngleClick(Sender: TObject);
-begin
   if btnAngle.Down then
     LayerWindow.MouseInteractLayers := [mlClickCreateAngleLayers];
-end;
-
-procedure TfmCompareList2.btnShapeClick(Sender: TObject);
-begin
   if btnShape.down then begin
     LayerWindow.LayersAdd(ielkShape);
     btnArrow.Down := True;
     btnArrow.Click;
   end;
-end;
-
-procedure TfmCompareList2.btnTextClick(Sender: TObject);
-begin
   if btnText.Down then begin
     LayerWindow.LayersAdd( ielkText );
     btnArrow.Down := True;
@@ -1108,6 +1077,7 @@ procedure TfmCompareList2.btnStaticCheckClick(Sender: TObject);
 begin
   fmStaticCheck := TfmStaticCheck.Create(Self);
   fmStaticCheck.PICTURE_DATE := gridCheckP_DATE.EditValue;
+  fmStaticCheck.ImageEnMView1.Assign(ImageEnMView1);
   fmStaticCheck.Show;
 end;
 
@@ -1625,27 +1595,6 @@ end;
 procedure TfmCompareList2.LayerWindowNewLayer(Sender: TObject;
   LayerIdx: Integer; LayerKind: TIELayerKind);
 begin
-  if LayerKind = ielkText then begin
-    TIETextLayer(LayerWindow.CurrentLayer).Text := DateToStr(gridCheckP_DATE.EditValue);
-    TIETextLayer(LayerWindow.CurrentLayer).Font.Size := FontDialog1.Font.Size;
-    TIETextLayer(LayerWindow.CurrentLayer).Font.Style := FontDialog1.Font.Style;
-    TIETextLayer(LayerWindow.CurrentLayer).Font.Color := FontDialog1.Font.Color;
-    TIETextLayer(LayerWindow.CurrentLayer).Font.Name := FontDialog1.Font.Name;
-    TIETextLayer(LayerWindow.CurrentLayer).BorderColor := clBlack;
-    TIETextLayer(LayerWindow.CurrentLayer).BorderWidth := 2;
-    TIETextLayer(LayerWindow.CurrentLayer).FillColor := clYellow;
-    TIETextLayer(LayerWindow.CurrentLayer).Alignment := iejCenter;
-    TIETextLayer(LayerWindow.CurrentLayer).Layout := ielCenter;
-    TIETextLayer(LayerWindow.CurrentLayer).AutoSize := True;
-  end;
-  if LayerKind = ielkShape then begin
-    TIEShapeLayer(LayerWindow.CurrentLayer).Shape := iesEllipse;
-    TIEShapeLayer(LayerWindow.CurrentLayer).FillColor := clYellow;
-    TIEShapeLayer(LayerWindow.CurrentLayer).BorderColor := ColorBox.ColorValue;
-    TIEShapeLayer(LayerWindow.CurrentLayer).BorderWidth := 2;
-    TIEShapeLayer(LayerWindow.CurrentLayer).VisibleBox := True;
-    TIEShapeLayer(LayerWindow.CurrentLayer).Selectable := True;
-  end;
   AssignControlValues();
 end;
 
