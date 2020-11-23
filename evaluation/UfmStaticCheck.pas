@@ -965,9 +965,19 @@ end;
 
 procedure TfmStaticCheck.ImageEnMView1ImageSelect(Sender: TObject;
   idx: Integer);
+var
+  dStream : TMemoryStream;
 begin
   ImageEnView1.IEBitmap.Assign(ImageEnMView1.GetTIEBitmap(idx));
+  dStream := TMemoryStream.Create;
+  dmDBCommon.IMAGES_SEL.Locate('ID', ImageEnMView1.ImageTag[idx], []);
+  dmDBCommon.IMAGES_SELDRAW_DATA.SaveToStream(dStream);
+  if dStream.Size > 100 then begin
+    dStream.Position := 0;
+    ImageEnView1.IO.LoadFromStream(dStream);
+  end;
   ImageEnView1.Update;
+  dStream.Free;
 end;
 
 procedure TfmStaticCheck.ImageEnMView1Resize(Sender: TObject);

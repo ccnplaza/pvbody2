@@ -139,6 +139,8 @@ type
     edtSweepAngle: TEdit;
     updSweepAngle: TUpDown;
     Button1: TButton;
+    btnGroup: TButton;
+    btnUnGroup: TButton;
 
     procedure FormCreate(Sender: TObject);
     procedure btnActivateTextEditorClick(Sender: TObject);
@@ -195,6 +197,8 @@ type
     procedure Undo1Click(Sender: TObject);
     procedure Redo1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure btnGroupClick(Sender: TObject);
+    procedure btnUnGroupClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -269,33 +273,27 @@ begin
   end;
   cmbShape.ItemIndex := 0;
   cmbTextShape.ItemIndex := 0;
-
   // Set colors of background
   ImageEnView1.SetChessboardStyle( 16, bsSolid, clWhite, cl3DLight );
-
   ImageEnView1.SetLayersGripStyle(clBlack,clLime,bsSolid,5,iegsCircle);
   ImageEnView1.LayersResizeAspectRatio := iearLayerDefaultOnCornerGrip;
   ImageEnView1.Center := False;
   ImageEnView1.Blank;
-
   // Default values
   cmbAddLayer.ItemIndex := ord( ielkShape );
   cmbPreviewQuality.ItemIndex := 1;
   cmbPreviewQualityChange(nil);
   cmbOperation.ItemIndex := ord( ielNormal );
-
   // Add default text for new text layers
   IEGlobalSettings().DefaultLayerText := 'Double-click to edit text';
-
   // Avoid selection of the background layer
   ImageEnView1.CurrentLayer.Selectable := False;
-
   // Allow layers to be double-clicked to edit their properties
   ImageEnView1.LayerOptions := ImageEnView1.LayerOptions + [ loPropsOnDblClick ];
-
   fUpdating := False;
   ImageEnView1.IO.LoadFromStream(IMAGE_STREAM);
-  ImageEnView1.IO.LoadFromStreamIEN(DRAW_STREAM);
+  if Assigned(DRAW_STREAM) then
+    ImageEnView1.IO.LoadFromStream(DRAW_STREAM);
 //  ImageEnView1.IO.LoadFromFileIEN(IMAGE_FILE);
   MouseActionCtrlClick(nil);
   RefreshControls();
@@ -356,6 +354,16 @@ begin
   if ImageEnView1.CurrentLayer is TIEImageLayer then
     TIEImageLayer( ImageEnView1.CurrentLayer ).CropAlpha();
   ImageEnView1.Update();
+end;
+
+procedure TfmLayerEditor.btnGroupClick(Sender: TObject);
+begin
+  ImageEnView1.LayersGroup(True);
+end;
+
+procedure TfmLayerEditor.btnUnGroupClick(Sender: TObject);
+begin
+  ImageEnView1.LayersUngroup(True);
 end;
 
 procedure TfmLayerEditor.btnMergeAllClick(Sender: TObject);

@@ -382,6 +382,7 @@ object fmImportImages: TfmImportImages
     Align = alClient
     SelectedFontColor = clWhite
     TabOrder = 1
+    OnDblClick = ImageEnMView1DblClick
     ThreadPoolSize = 100
     EnableMultiSelect = True
   end

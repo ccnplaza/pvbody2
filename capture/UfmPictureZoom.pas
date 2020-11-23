@@ -19,16 +19,16 @@ uses
   dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
   dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, cxButtons;
+  dxSkinXmas2008Blue, cxButtons, cxControls, cxContainer, cxEdit, cxCheckBox;
 
 type
   TfmPictureZoom = class(TForm)
     ImageEnView1: TImageEnView;
     cxButton1: TcxButton;
     PanelTop: TPanel;
-    cxButton2: TcxButton;
     Label1: TLabel;
     btnCut: TcxButton;
+    chkAutoSave: TcxCheckBox;
     procedure FormShow(Sender: TObject);
     procedure ImageEnView1FinishWork(Sender: TObject);
     procedure btnCutClick(Sender: TObject);
@@ -48,6 +48,8 @@ implementation
 procedure TfmPictureZoom.btnCutClick(Sender: TObject);
 begin
   ImageEnView1.CropTool.Enact();
+  if chkAutoSave.Checked then
+    ModalResult := mrOk;
 end;
 
 procedure TfmPictureZoom.FormShow(Sender: TObject);
@@ -64,6 +66,8 @@ procedure TfmPictureZoom.ImageEnView1FinishWork(Sender: TObject);
 begin
   ImageEnView1.AutoFit := True;
   ImageEnView1.Update;
+  if chkAutoSave.Checked then
+    ModalResult := mrOk;
 end;
 
 end.

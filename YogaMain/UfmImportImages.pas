@@ -50,6 +50,7 @@ type
     procedure btnRotateClick(Sender: TObject);
     procedure btnDelClick(Sender: TObject);
     procedure edtTrackBarPropertiesEditValueChanged(Sender: TObject);
+    procedure ImageEnMView1DblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -67,7 +68,7 @@ uses GlobalVar, UfmPictureZoom, UdmDBCommon;
 
 procedure TfmImportImages.btnTrimClick(Sender: TObject);
 var
-  mStream : TMemoryStream;
+  mStream, newStream : TMemoryStream;
   idx : Integer;
 begin
   if ImageEnMView1.ImageCount > 0 then begin
@@ -80,8 +81,12 @@ begin
       fmPictureZoom.ImageEnView1.Update;
       fmPictureZoom.ShowModal;
       if fmPictureZoom.ModalResult = mrOk then begin
-        ImageEnMView1.SetIEBitmap(idx, fmPictureZoom.ImageEnView1.IEBitmap);
+        newStream := TMemoryStream.Create;
+        fmPictureZoom.ImageEnView1.IO.SaveToStreamJpeg(newStream);
+        newStream.Position := 0;
+        ImageEnMView1.SetImageFromStream(idx, newStream);
         ImageEnMView1.Update;
+        newStream.Free;
       end;
     finally
       mStream.Free;
@@ -175,6 +180,11 @@ begin
     ImageEnMView1.ImageBottomText[i] := ExtractFileName(aFileName);
   end;
   ImageEnMView1.SelectedImage := 0;
+end;
+
+procedure TfmImportImages.ImageEnMView1DblClick(Sender: TObject);
+begin
+  btnTrim.Click;
 end;
 
 end.

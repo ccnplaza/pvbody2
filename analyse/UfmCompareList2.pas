@@ -286,7 +286,7 @@ uses GlobalVar, uCommonLogic, UfmAnalyseRequestSelect, UdmDBCommon,
   UfmCustomerHistory, UfmPostureEditor2, uCapture,
   UfmDateSelector, UfmCheckCommennts, uPlayer, UfmPracticeMethodSingle,
   ufmStaticResultView, UfmCheckImageViewer, UfmHowToSingle, UfmCompareLayerList,
-  UfmCompareComment, UfmCompareWindowList, UfmImportImages, UfmStaticCheck, UfmSearchResults, UfmMuscleView, UfmCustomerRecent, UfmPictureZoom;
+  UfmCompareComment, UfmCompareWindowList, UfmImportImages, UfmStaticCheck, UfmSearchResults, UfmMuscleView, UfmCustomerRecent, UfmPictureZoom, ufmLayerEditor;
 
 {$R *.dfm}
 
@@ -663,9 +663,39 @@ end;
 
 procedure TfmCompareList2.btnEditImageClick(Sender: TObject);
 var
-  mStream, dStream : TMemoryStream;
+  mStream, dStream, newIStream, newDStream : TMemoryStream;
+  idx : Integer;
 begin
   if ImageEnMView1.ImageCount > 0 then begin
+    fmLayerEditor := TfmLayerEditor.Create(Self);
+    try
+      mStream := TMemoryStream.Create;
+      dStream := TMemoryStream.Create;
+      idx := ImageEnMView1.SelectedImage;
+      ImageEnMView1.GetImageToStream(idx, mStream, ioJPEG);
+      mStream.Position := 0;
+      fmLayerEditor.IMAGE_STREAM := mStream;
+      dmDBCommon.IMAGES_SEL.Locate('ID', CustomerImages.ImageID, []);
+      dmDBCommon.IMAGES_SELDRAW_DATA.SaveToStream(dStream);
+      if dStream.Size > 100 then begin
+        dStream.Position := 0;
+        fmLayerEditor.DRAW_STREAM := dStream;
+      end;
+      fmLayerEditor.ShowModal;
+      if fmLayerEditor.ModalResult = mrOk then begin
+        newDStream := TMemoryStream.Create;
+        fmLayerEditor.ImageEnView1.LayersSaveToStream(newDStream, -1, False, True, False, False, nil);
+        newDStream.Position := 0;
+        dmDBCommon.IMAGES_UPD_DRAWONLY.ParamByName('ID').Value := CustomerImages.ImageID;
+        dmDBCommon.IMAGES_UPD_DRAWONLY.ParamByName('DRAW_DATA').LoadFromStream(newDStream, ftBlob);
+        dmDBCommon.IMAGES_UPD_DRAWONLY.ExecProc;
+        dmDBCommon.ds_IMAGES_SEL.DataSet.Refresh;
+        newDStream.Free;
+      end;
+    finally
+      fmLayerEditor.Free;
+    end;
+{
     fmPostureEditor2 := TfmPostureEditor2.Create(Self);
     mStream := TMemoryStream.Create;
     dStream := TMemoryStream.Create;
@@ -688,6 +718,7 @@ begin
     finally
       fmPostureEditor2.Free;
     end;
+}
   end;
 end;
 
@@ -1074,10 +1105,18 @@ begin
 end;
 
 procedure TfmCompareList2.btnStaticCheckClick(Sender: TObject);
+var
+  i, cnt : Integer;
 begin
   fmStaticCheck := TfmStaticCheck.Create(Self);
   fmStaticCheck.PICTURE_DATE := gridCheckP_DATE.EditValue;
   fmStaticCheck.ImageEnMView1.Assign(ImageEnMView1);
+  cnt := ImageEnMView1.ImageCount;
+  for i := 0 to cnt - 1 do begin
+    fmStaticCheck.ImageEnMView1.ImageTag[i] := ImageEnMView1.ImageTag[i];
+    fmStaticCheck.ImageEnMView1.ImageTopText[i] := ImageEnMView1.ImageTopText[i];
+  end;
+  fmStaticCheck.ImageEnMView1.Update;
   fmStaticCheck.Show;
 end;
 
@@ -1343,7 +1382,7 @@ end;
 procedure TfmCompareList2.FormShow(Sender: TObject);
 begin
   IEGlobalSettings().MsgLanguage := msKorean;
-
+  ImageEnMView1.AnnotationsVisible := True;
   PanelRight.Width := 1;
   if Length(CustomerImages.CustID) > 10 then begin
     RetrieveMemberInfo;
@@ -1594,6 +1633,8 @@ end;
 
 procedure TfmCompareList2.LayerWindowNewLayer(Sender: TObject;
   LayerIdx: Integer; LayerKind: TIELayerKind);
+var
+  strList : TStringList;
 begin
   AssignControlValues();
 end;

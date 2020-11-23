@@ -108,7 +108,7 @@ object fmLayerEditor: TfmLayerEditor
         Left = 146
         Top = 48
         Width = 16
-        Height = 21
+        Height = 23
         Associate = edtBorderWidth
         Enabled = False
         TabOrder = 1
@@ -260,7 +260,7 @@ object fmLayerEditor: TfmLayerEditor
         Left = 149
         Top = 199
         Width = 16
-        Height = 21
+        Height = 23
         Associate = edtEdgeFeather
         TabOrder = 12
       end
@@ -286,8 +286,6 @@ object fmLayerEditor: TfmLayerEditor
       TabWidth = 37
       object tabImage: TTabSheet
         Caption = #44536#47548
-        ExplicitTop = 25
-        ExplicitHeight = 246
         object lblMagnification: TLabel
           Left = 24
           Top = 63
@@ -1146,9 +1144,9 @@ object fmLayerEditor: TfmLayerEditor
           TabOrder = 0
         end
         object btnRemove: TButton
-          Left = 206
+          Left = 95
           Top = 465
-          Width = 67
+          Width = 78
           Height = 25
           Hint = 'Remove selected layers'
           Anchors = [akRight, akBottom]
@@ -1159,9 +1157,9 @@ object fmLayerEditor: TfmLayerEditor
           OnClick = btnRemoveClick
         end
         object btnRemoveAll: TButton
-          Left = 206
+          Left = 95
           Top = 496
-          Width = 67
+          Width = 78
           Height = 25
           Hint = 'Remove all layers'
           Anchors = [akRight, akBottom]
@@ -1222,6 +1220,32 @@ object fmLayerEditor: TfmLayerEditor
           Caption = #53360#48260#53948
           TabOrder = 6
           OnClick = chkBigButtonsClick
+        end
+        object btnGroup: TButton
+          Left = 179
+          Top = 465
+          Width = 78
+          Height = 25
+          Hint = 'Remove selected layers'
+          Anchors = [akRight, akBottom]
+          Caption = #44536#47353
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 7
+          OnClick = btnGroupClick
+        end
+        object btnUnGroup: TButton
+          Left = 179
+          Top = 496
+          Width = 78
+          Height = 25
+          Hint = 'Remove selected layers'
+          Anchors = [akRight, akBottom]
+          Caption = #44536#47353#54644#51228
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 8
+          OnClick = btnUnGroupClick
         end
       end
       object grpIENOptions: TGroupBox
