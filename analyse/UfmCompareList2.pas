@@ -147,7 +147,6 @@ type
     ActionList1: TActionList;
     ImageEnViewLayersMatchWidth1: TImageEnViewLayersMatchWidth;
     ImageEnViewLayersMatchHeight1: TImageEnViewLayersMatchHeight;
-    btnTrim: TcxButton;
     btnCloseCompare: TBitBtn;
     btnArrow: TSpeedButton;
     btnLine: TSpeedButton;
@@ -157,7 +156,6 @@ type
     btnShape: TSpeedButton;
     btnText: TSpeedButton;
     BitBtn2: TBitBtn;
-    btnLineAngle: TSpeedButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure frmImageMultiView1ImageEnMView1DblClick(Sender: TObject);
     procedure btnFindMemberClick(Sender: TObject);
@@ -238,7 +236,6 @@ type
     procedure btnHelpClick(Sender: TObject);
     procedure btnMatchWidthClick(Sender: TObject);
     procedure btnMatchHeightClick(Sender: TObject);
-    procedure btnTrimClick(Sender: TObject);
     procedure btnCloseCompareClick(Sender: TObject);
     procedure btnArrowClick(Sender: TObject);
     procedure btnLineClick(Sender: TObject);
@@ -406,79 +403,70 @@ end;
 // Apply our control values to the current layer
 procedure TfmCompareList2.AssignControlValues();
 begin
-  if fUpdating then
-    exit;
-  with LayerWindow do begin
-    // SHARED STYLE PROPERTIES
-    CurrentLayer.BorderColor := clRed;
-    CurrentLayer.BorderWidth := speLineThick.Value;
-    CurrentLayer.FillColor   := clYellow;
-    // LINE PROPERTIES
-    if CurrentLayer is TIELineLayer then
-      with TIELineLayer( CurrentLayer ) do begin
-        if Name = 'LineAngle' then begin
-          BorderColor := ColorBox.ColorValue;
-          BorderWidth := speLineThick.Value;
-          LabelFont.Size := FontDialog1.Font.Size;
-          LabelFont.Color := ColorBox.ColorValue;
-          LabelText := Measure_angle(LayerRect);
-          LabelPosition := TIELineLabelPos(ielpBelow); //hide
-          StartShape := TIELineEndShape(0); //none
-          EndShape := TIELineEndShape(0);   //none
-          ShapeSize := 20;
-        end else begin
+  try
+    if fUpdating then
+      exit;
+    with LayerWindow do begin
+      // SHARED STYLE PROPERTIES
+      CurrentLayer.BorderColor := clRed;
+      CurrentLayer.BorderWidth := speLineThick.Value;
+      CurrentLayer.FillColor   := clYellow;
+      // LINE PROPERTIES
+      if CurrentLayer is TIELineLayer then
+        with TIELineLayer( CurrentLayer ) do begin
           BorderColor := ColorBox.ColorValue;
           BorderWidth := speLineThick.Value;
           StartShape := TIELineEndShape(0); //none
           EndShape := TIELineEndShape(0);   //none
           ShapeSize := 20;
         end;
-      end;
-    // POLYLINE PROPERTIES
-    if CurrentLayer is TIEPolylineLayer then
-      with TIEPolylineLayer( CurrentLayer ) do begin
-        // Don't close polyline until we finish creating it
-        // PolylineClosed := chkPolylineClosed.checked;
-      end;
-    // ANGLE PROPERTIES
-    if CurrentLayer is TIEAngleLayer then
-      with TIEAngleLayer( CurrentLayer ) do begin
-        AngleMode := TIEAngleMode(0); //normal mode
-        LabelFont.Size := FontDialog1.Font.Size;
-        BorderColor := ColorBox.ColorValue;
-        BorderWidth := speLineThick.Value;
-      end;
-    if CurrentLayer is TIEImageLayer then
-      with TIEImageLayer( CurrentLayer ) do begin
-        BorderColor := clNone;
-        BorderWidth := 0;
-      end;
-    if CurrentLayer is TIETextLayer then
-      with TIETextLayer( CurrentLayer ) do begin
-        Text := DateToStr(gridCheckP_DATE.EditValue);
-        Font.Size := FontDialog1.Font.Size;
-        Font.Style := FontDialog1.Font.Style;
-        Font.Color := FontDialog1.Font.Color;
-        Font.Name := FontDialog1.Font.Name;
-        BorderColor := clBlack;
-        BorderWidth := 2;
-        FillColor := clYellow;
-        Alignment := iejCenter;
-        Layout := ielCenter;
-        AutoSize := True;
-      end;
-    if CurrentLayer is TIEShapeLayer then
-      with TIEShapeLayer(CurrentLayer) do begin
-        Shape := iesEllipse;
-        FillColor := clYellow;
-        BorderColor := ColorBox.ColorValue;
-        BorderWidth := 2;
-        VisibleBox := True;
-        Selectable := True;
-      end;
+      // POLYLINE PROPERTIES
+      if CurrentLayer is TIEPolylineLayer then
+        with TIEPolylineLayer( CurrentLayer ) do begin
+          // Don't close polyline until we finish creating it
+          // PolylineClosed := chkPolylineClosed.checked;
+        end;
+      // ANGLE PROPERTIES
+      if CurrentLayer is TIEAngleLayer then
+        with TIEAngleLayer( CurrentLayer ) do begin
+          AngleMode := TIEAngleMode(0); //normal mode
+          LabelFont.Size := FontDialog1.Font.Size;
+          BorderColor := ColorBox.ColorValue;
+          BorderWidth := speLineThick.Value;
+        end;
+      if CurrentLayer is TIEImageLayer then
+        with TIEImageLayer( CurrentLayer ) do begin
+          BorderColor := clNone;
+          BorderWidth := 0;
+        end;
+      if CurrentLayer is TIETextLayer then
+        with TIETextLayer( CurrentLayer ) do begin
+          Text := DateToStr(gridCheckP_DATE.EditValue);
+          Font.Size := FontDialog1.Font.Size;
+          Font.Style := FontDialog1.Font.Style;
+          Font.Color := FontDialog1.Font.Color;
+          Font.Name := FontDialog1.Font.Name;
+          BorderColor := clBlack;
+          BorderWidth := 2;
+          FillColor := clYellow;
+          Alignment := iejCenter;
+          Layout := ielCenter;
+          AutoSize := True;
+        end;
+      if CurrentLayer is TIEShapeLayer then
+        with TIEShapeLayer(CurrentLayer) do begin
+          Shape := iesEllipse;
+          FillColor := clYellow;
+          BorderColor := ColorBox.ColorValue;
+          BorderWidth := 2;
+          VisibleBox := True;
+          Selectable := True;
+        end;
+    end;
+    LayerWindow.Update();
+    fUpdating := False;
+  except on E: Exception do
   end;
-  LayerWindow.Update();
-  fUpdating := False;
 end;
 
 procedure TfmCompareList2.BitBtn1Click(Sender: TObject);
@@ -1055,8 +1043,6 @@ procedure TfmCompareList2.btnLineClick(Sender: TObject);
 begin
   if btnLine.Down then
     LayerWindow.MouseInteractLayers := [mlCreateLineLayers];
-  if btnLineAngle.Down then
-    LayerWindow.MouseInteractLayers := [mlCreateLineLayers];
   if btnMultiLine.Down then
     LayerWindow.MouseInteractLayers := [mlClickCreatePolylineLayers];
   if btnFreeLine.Down then
@@ -1175,48 +1161,19 @@ procedure TfmCompareList2.btnStaticCheckClick(Sender: TObject);
 var
   i, cnt : Integer;
 begin
-  fmStaticCheck := TfmStaticCheck.Create(Self);
-  fmStaticCheck.PICTURE_DATE := gridCheckP_DATE.EditValue;
-  fmStaticCheck.ImageEnMView1.Assign(ImageEnMView1);
-  cnt := ImageEnMView1.ImageCount;
-  for i := 0 to cnt - 1 do begin
-    fmStaticCheck.ImageEnMView1.ImageTag[i] := ImageEnMView1.ImageTag[i];
-    fmStaticCheck.ImageEnMView1.ImageTopText[i] := ImageEnMView1.ImageTopText[i];
-  end;
-  fmStaticCheck.ImageEnMView1.Update;
-  fmStaticCheck.Show;
-end;
-
-procedure TfmCompareList2.btnTrimClick(Sender: TObject);
-var
-  mStream, dStream : TMemoryStream;
-begin
-  if ImageEnMView1.ImageCount > 0 then begin
-    fmPictureZoom := TfmPictureZoom.Create(Self);
-    try
-      fmPictureZoom.Height := ClientHeight;
-      mStream := TMemoryStream.Create;
-      dmDBCommon.IMAGES_SEL.Locate('ID', CustomerImages.ImageID, []);
-      fmPictureZoom.ImageEnView1.IEBitmap.Assign(ImageEnMView1.GetTIEBitmap(IMAGE_IDX));
-      fmPictureZoom.ImageEnView1.Update;
-      fmPictureZoom.ShowModal;
-      if fmPictureZoom.ModalResult = mrOk then begin
-        ImageEnMView1.SetIEBitmap(IMAGE_IDX, fmPictureZoom.ImageEnView1.IEBitmap);
-        ImageEnMView1.Update;
-        dStream := TMemoryStream.Create;
-        fmPictureZoom.ImageEnView1.IO.SaveToStreamJpeg(dStream);
-        dStream.Position := 0;
-        dmDBCommon.IMAGES_UPD.ParamByName('ID').Value := CustomerImages.ImageID;
-        dmDBCommon.IMAGES_UPD.ParamByName('IMAGE_DATA').LoadFromStream(dStream, ftBlob);
-        dmDBCommon.IMAGES_UPD.ParamByName('DRAW_DATA').Clear;
-        dmDBCommon.IMAGES_UPD.ExecProc;
-        dmDBCommon.ds_IMAGES_SEL.DataSet.Refresh;
-      end;
-    finally
-      mStream.Free;
-      dStream.Free;
-      fmPictureZoom.Free;
+  if CustomerImages.CustID <> '' then begin
+    fmStaticCheck := TfmStaticCheck.Create(Self);
+    fmStaticCheck.PICTURE_DATE := gridCheckP_DATE.EditValue;
+    fmStaticCheck.ImageEnMView1.Assign(ImageEnMView1);
+    cnt := ImageEnMView1.ImageCount;
+    for i := 0 to cnt - 1 do begin
+      fmStaticCheck.ImageEnMView1.ImageTag[i] := ImageEnMView1.ImageTag[i];
+      fmStaticCheck.ImageEnMView1.ImageTopText[i] := ImageEnMView1.ImageTopText[i];
     end;
+    fmStaticCheck.ImageEnMView1.Update;
+    fmStaticCheck.Show;
+  end else begin
+    ShowMessage('회원을 선택하세요.');
   end;
 end;
 
@@ -1756,9 +1713,7 @@ procedure TfmCompareList2.LayerWindowNewLayer(Sender: TObject;
 var
   strList : TStringList;
 begin
-  if btnLineAngle.Down then
-    LayerWindow.Layers[LayerIdx].Name := 'LineAngle';
-  AssignControlValues();
+  AssignControlValues;
 end;
 
 initialization RegisterClasses([TfmCompareList2]);

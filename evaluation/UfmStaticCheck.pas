@@ -28,7 +28,7 @@ uses
   imageen, cxSplitter, ieanimation, dxBarBuiltInMenu, cxPC, ComCtrls, dxtree,
   dxdbtree, dxmdaset, cxCheckBox, cxRadioGroup, hyieutils, iexBitmaps, hyiedefs, iesettings, iexLayers,
   iexRulers, iexToolbars, UfrmMemberSelect, UfrmImageMultiView, cxCalendar,
-  cxMaskEdit, cxSpinEdit, cxDropDownEdit, cxColorComboBox, Math;
+  cxMaskEdit, cxSpinEdit, cxDropDownEdit, cxColorComboBox, Math, cxImage;
 
 type
   TfmStaticCheck = class(TForm)
@@ -48,15 +48,6 @@ type
     q_result_valueCOMPANY_ID: TStringField;
     q_result_valueCHECK_BODY_ID: TStringField;
     q_result_valuePRACTICE_ID: TStringField;
-    PopupThumb: TPopupMenu;
-    N1: TMenuItem;
-    N2: TMenuItem;
-    N4: TMenuItem;
-    ActionThumbnail: TActionList;
-    actThumbWindowMax: TAction;
-    actThumbWindowMin: TAction;
-    actThumbDelete: TAction;
-    actThumbSaveAs: TAction;
     ImageListThumbnail: TImageList;
     SaveImageEnDialog1: TSaveImageEnDialog;
     ActionResult: TActionList;
@@ -83,7 +74,6 @@ type
     gridResults: TcxGridDBTableView;
     cxGrid2Level1: TcxGridLevel;
     cxGrid2: TcxGrid;
-    Panel7: TPanel;
     cxGrid3: TcxGrid;
     gridCheck: TcxGridDBTableView;
     cxL2: TcxGridLevel;
@@ -97,7 +87,6 @@ type
     gridResultsITEM_MAIN: TcxGridDBColumn;
     gridResultsRESULT_VALUE: TcxGridDBColumn;
     gridResultsPRACTICE_ID: TcxGridDBColumn;
-    ItemTreeView: TdxDBTreeView;
     cxImageList1: TcxImageList;
     CHECK_ITEM_TREE_BODY_SEL: TUniStoredProc;
     CHECK_ITEM_TREE_RESULT_SEL: TUniStoredProc;
@@ -107,7 +96,6 @@ type
     CHECK_ITEM_TREE_BODY_SELITEM_NAME: TStringField;
     CHECK_ITEM_TREE_RESULT_SELID: TIntegerField;
     CHECK_ITEM_TREE_RESULT_SELITEM_NAME: TStringField;
-    btnViewPos: TBitBtn;
     Panel8: TPanel;
     Panel9: TPanel;
     cxGrid4: TcxGrid;
@@ -137,11 +125,7 @@ type
     NSTATIC_CHECK_RESULTIMG_SELRESULT_IMG: TBlobField;
     q_check_picture: TUniQuery;
     q_check_pictureID: TIntegerField;
-    btnComments: TcxButton;
     NSTATIC_CHECK_DATA_UPD: TUniStoredProc;
-    btnResultSelect: TcxButton;
-    cxButton1: TcxButton;
-    cxButton2: TcxButton;
     btnLeft: TcxButton;
     btnRight: TcxButton;
     btnBoth: TcxButton;
@@ -171,7 +155,6 @@ type
     lbl1: TLabel;
     q_update_result: TUniQuery;
     btnChangeLevel: TcxButton;
-    btnDelResult: TcxButton;
     btnChangeDate: TcxButton;
     Panel13: TPanel;
     pnlMember: TPanel;
@@ -230,20 +213,52 @@ type
     IMAGE_RESULTS_SELRESULT_SUB: TIntegerField;
     IMAGE_RESULTS_SELRESULT_LEVEL: TIntegerField;
     IMAGE_RESULTS_SELRESULT_IMAGE: TBlobField;
-    btnLineAngle: TSpeedButton;
     btnHorzLine: TSpeedButton;
     btnVertLine: TSpeedButton;
     speFontSize: TcxSpinEdit;
     FontColor: TcxColorComboBox;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
-    cxButton3: TcxButton;
+    q_check_item_sub: TUniQuery;
+    q_check_item_subID: TIntegerField;
+    q_check_item_subPARENT_ID: TIntegerField;
+    q_check_item_subIMAGE_ID: TIntegerField;
+    q_check_item_subITEM_NAME: TStringField;
+    q_check_item_subBODY_ID: TIntegerField;
+    q_check_item_subRESULT_ID: TIntegerField;
+    q_check_item_subHOWTO_IMAGE: TSmallintField;
+    q_check_item_subVIDEO_ID: TStringField;
+    d_check_item_sub: TDataSource;
+    q_check_item_sub2: TUniQuery;
+    q_check_item_sub2ID: TIntegerField;
+    q_check_item_sub2PARENT_ID: TIntegerField;
+    q_check_item_sub2IMAGE_ID: TIntegerField;
+    q_check_item_sub2ITEM_NAME: TStringField;
+    q_check_item_sub2BODY_ID: TIntegerField;
+    q_check_item_sub2RESULT_ID: TIntegerField;
+    q_check_item_sub2HOWTO_IMAGE: TSmallintField;
+    q_check_item_sub2VIDEO_ID: TStringField;
+    d_check_item_sub2: TDataSource;
+    GroupBox3: TGroupBox;
+    cxImage1: TcxImage;
+    cxButton6: TcxButton;
+    cxButton5: TcxButton;
+    cxButton4: TcxButton;
+    cxButton7: TcxButton;
+    cxButton8: TcxButton;
+    btnCheckBody: TcxButton;
+    Label2: TLabel;
+    btnDelete: TcxButton;
+    q_delete_result: TUniQuery;
+    q_check_same_data: TUniQuery;
+    d_check_same_data: TDataSource;
+    q_check_same_dataID: TIntegerField;
+    btnViewPos: TBitBtn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ShowProcessMsg(msg, cnt_str: string; onoff: integer);
     procedure gridResultColumn1GetDisplayText(Sender: TcxCustomGridTableItem;
       ARecord: TcxCustomGridRecord; var AText: string);
     procedure btnAddDataClick(Sender: TObject);
-    procedure actThumbSaveAsExecute(Sender: TObject);
     procedure ActNormalExecute(Sender: TObject);
     procedure ActSmallExecute(Sender: TObject);
     procedure ActMiddleExecute(Sender: TObject);
@@ -256,7 +271,6 @@ type
       AShift: TShiftState; var AHandled: Boolean);
     procedure btnSubResultClick(Sender: TObject);
     procedure btnViewPosClick(Sender: TObject);
-    procedure btnResultSelectClick(Sender: TObject);
     procedure btnPlayVideoClick(Sender: TObject);
     procedure gridPracticeCellDblClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
@@ -271,7 +285,6 @@ type
     procedure gridPracticeFocusedRecordChanged(Sender: TcxCustomGridTableView;
       APrevFocusedRecord, AFocusedRecord: TcxCustomGridRecord;
       ANewItemRecordFocusingChanged: Boolean);
-    procedure btnCommentsClick(Sender: TObject);
     procedure gridCheckFocusedRecordChanged(Sender: TcxCustomGridTableView;
       APrevFocusedRecord, AFocusedRecord: TcxCustomGridRecord;
       ANewItemRecordFocusingChanged: Boolean);
@@ -316,7 +329,11 @@ type
     procedure btnArrowClick(Sender: TObject);
     procedure ImageEnView1LayerNotifyEx(Sender: TObject; layer: Integer;
       event: TIELayerEvent);
-    procedure cxButton3Click(Sender: TObject);
+    procedure gridMainFocusedRecordChanged(Sender: TcxCustomGridTableView;
+      APrevFocusedRecord, AFocusedRecord: TcxCustomGridRecord;
+      ANewItemRecordFocusingChanged: Boolean);
+    procedure btnCheckBodyClick(Sender: TObject);
+    procedure btnDeleteClick(Sender: TObject);
   private
     function GetImageFilename(image_id: integer): string;
     procedure RetrieveSubitem(tno : Integer);
@@ -348,6 +365,7 @@ type
     PICTURE_DATE : TDate;
     PAGE_IDX : Integer;
     fUpdating : Boolean;
+    procedure SaveResultData;
   end;
 
 var
@@ -615,25 +633,6 @@ begin
     q_result_value.Next;
 end;
 
-procedure TfmStaticCheck.actThumbSaveAsExecute(Sender: TObject);
-var
-  fname, img_id : string;
-  i : integer;
-  memStream : TMemoryStream;
-begin
-//  if SaveImageEnDialog1.Execute then begin
-//    fname := SaveImageEnDialog1.FileName;
-//    i := ImageEnMView.SelectedImage;
-//    img_id := ImageEnMView.ImageFileName[i];
-//    dmDBCommon.dsCUSTOMER_IMAGE3_SEL.DataSet.Locate('id', img_id, []);
-//    memStream := TMemoryStream.Create;
-//    TBlobField(dmDBCommon.dsCUSTOMER_IMAGE3_SEL.DataSet.FieldByName('IMAGE_DATA')).SaveToStream(memStream);
-//    memStream.Position := 0;
-//    memStream.SaveToFile(fname);
-//    memStream.Free;
-//  end;
-end;
-
 procedure TfmStaticCheck.btnAddDataClick(Sender: TObject);
 var
   last_idx, id : Integer;
@@ -695,8 +694,6 @@ begin
   lHeight := ImageEnView1.IEBitmap.Height;
   lWidth := ImageEnView1.IEBitmap.Width;
   if btnLine.Down then
-    ImageEnView1.MouseInteractLayers := [mlCreateLineLayers];
-  if btnLineAngle.Down then
     ImageEnView1.MouseInteractLayers := [mlCreateLineLayers];
   if btnMultiLine.Down then
     ImageEnView1.MouseInteractLayers := [mlClickCreatePolylineLayers];
@@ -875,28 +872,6 @@ begin
   InsertPracticeData;
 end;
 
-procedure TfmStaticCheck.btnCommentsClick(Sender: TObject);
-var
-  comm : string;
-begin
-  fmCheckCommennts := TfmCheckCommennts.Create(Self);
-  try
-    comm := dmDBCommon.q_NSTATIC_CHECK_DATAC_COMMENTS.Value;
-    fmCheckCommennts.mmo1.Text := comm;
-    fmCheckCommennts.ShowModal;
-    if fmCheckCommennts.ModalResult = mrOk then begin
-      gridCheck.DataController.SaveBookmark;
-      NSTATIC_CHECK_DATA_UPD.ParamByName('ID').Value := gridCheckID.EditValue;
-      NSTATIC_CHECK_DATA_UPD.ParamByName('C_COMMENTS').Value := fmCheckCommennts.mmo1.Text;
-      NSTATIC_CHECK_DATA_UPD.ExecProc;
-      dmDBCommon.d_NSTATIC_CHECK_DATA.DataSet.Refresh;
-      gridCheck.DataController.GotoBookmark;
-    end;
-  finally
-    fmCheckCommennts.Free;
-  end;
-end;
-
 procedure TfmStaticCheck.btnCustInfoClick(Sender: TObject);
 begin
   if CustomerImages.CustID = '' then begin
@@ -908,6 +883,18 @@ begin
     fmMemberEditView.ShowModal;
   finally
     fmMemberEditView.Free;
+  end;
+end;
+
+procedure TfmStaticCheck.btnDeleteClick(Sender: TObject);
+begin
+  if Application.MessageBox('선택한 자료를 삭제합니다. ' + #13#10 + '삭제한 후에는 되돌릴 수 없습니다.' +
+    #13#10 + '정말 삭제할까요?', 'Application.Title', MB_YESNO + MB_ICONWARNING) =
+    IDYES then
+  begin
+    q_delete_result.ParamByName('c_id').Value := gridResultsID.EditValue;
+    q_delete_result.Execute;
+    dmDBCommon.d_NSTATIC_CHECK_RESULT.DataSet.Refresh;
   end;
 end;
 
@@ -943,80 +930,75 @@ end;
 
 procedure TfmStaticCheck.AssignControlValues();
 begin
-  if fUpdating then
-    exit;
-  with ImageEnView1 do begin
-    CurrentLayer.BorderColor := clRed;
-    CurrentLayer.BorderWidth := speLineThick.Value;
-    CurrentLayer.FillColor   := clYellow;
-    if CurrentLayer is TIELineLayer then
-      with TIELineLayer( CurrentLayer ) do begin
-        BorderColor := ColorBox.ColorValue;
-        BorderWidth := speLineThick.Value;
-        if Name = 'LineAngle' then begin
-          LabelFont.Size := FontDialog1.Font.Size;
-          LabelFont.Color := ColorBox.ColorValue;
-          LabelText := Measure_angle(LayerRect);
-          LabelPosition := TIELineLabelPos(ielpBelow); //hide
-          StartShape := TIELineEndShape(0); //none
-          EndShape := TIELineEndShape(0);   //none
-          ShapeSize := 20;
-        end else if Name = 'HorizLine' then begin
-          PosX := 0;
-          Width := ImageEnView1.IEBitmap.Width;
-        end else if Name = 'VertLine' then begin
-          PosY := 0;
-          Height := ImageEnView1.IEBitmap.Height;
-        end else begin
-          StartShape := TIELineEndShape(0); //none
-          EndShape := TIELineEndShape(0);   //none
-          ShapeSize := 20;
+  try
+    if fUpdating then
+      exit;
+    with ImageEnView1 do begin
+      CurrentLayer.BorderColor := clRed;
+      CurrentLayer.BorderWidth := speLineThick.Value;
+      CurrentLayer.FillColor   := clYellow;
+      if CurrentLayer is TIELineLayer then
+        with TIELineLayer( CurrentLayer ) do begin
+          BorderColor := ColorBox.ColorValue;
+          BorderWidth := speLineThick.Value;
+          if Name = 'HorizLine' then begin
+            PosX := 0;
+            Width := ImageEnView1.IEBitmap.Width;
+          end else if Name = 'VertLine' then begin
+            PosY := 0;
+            Height := ImageEnView1.IEBitmap.Height;
+          end else begin
+            StartShape := TIELineEndShape(0); //none
+            EndShape := TIELineEndShape(0);   //none
+            ShapeSize := 20;
+          end;
         end;
-      end;
-    if CurrentLayer is TIEPolylineLayer then
-      with TIEPolylineLayer( CurrentLayer ) do begin
-        // Don't close polyline until we finish creating it
-        // PolylineClosed := chkPolylineClosed.checked;
-        BorderColor := ColorBox.ColorValue;
-        BorderWidth := speLineThick.Value;
-      end;
-    if CurrentLayer is TIEAngleLayer then
-      with TIEAngleLayer( CurrentLayer ) do begin
-        AngleMode := TIEAngleMode(0); //normal mode
-        LabelFont.Size := FontDialog1.Font.Size;
-        BorderColor := ColorBox.ColorValue;
-        BorderWidth := speLineThick.Value;
-      end;
-    if CurrentLayer is TIEImageLayer then
-      with TIEImageLayer( CurrentLayer ) do begin
-        BorderColor := clNone;
-        BorderWidth := 0;
-      end;
-    if CurrentLayer is TIETextLayer then
-      with TIETextLayer( CurrentLayer ) do begin
-        Text := '여기에 내용입력...';
-        Font.Size := FontDialog1.Font.Size;
-        Font.Style := FontDialog1.Font.Style;
-        Font.Color := FontDialog1.Font.Color;
-        Font.Name := FontDialog1.Font.Name;
-        BorderColor := clBlack;
-        BorderWidth := 2;
-        FillColor := clYellow;
-        Alignment := iejCenter;
-        Layout := ielCenter;
-        AutoSize := True;
-      end;
-    if CurrentLayer is TIEShapeLayer then
-      with TIEShapeLayer(CurrentLayer) do begin
-        Shape := iesEllipse;
-        FillColor := clYellow;
-        BorderColor := ColorBox.ColorValue;
-        BorderWidth := speLineThick.Value;
-        VisibleBox := True;
-        Selectable := True;
-      end;
+      if CurrentLayer is TIEPolylineLayer then
+        with TIEPolylineLayer( CurrentLayer ) do begin
+          // Don't close polyline until we finish creating it
+          // PolylineClosed := chkPolylineClosed.checked;
+          BorderColor := ColorBox.ColorValue;
+          BorderWidth := speLineThick.Value;
+        end;
+      if CurrentLayer is TIEAngleLayer then
+        with TIEAngleLayer( CurrentLayer ) do begin
+          AngleMode := TIEAngleMode(0); //normal mode
+          LabelFont.Size := FontDialog1.Font.Size;
+          BorderColor := ColorBox.ColorValue;
+          BorderWidth := speLineThick.Value;
+        end;
+      if CurrentLayer is TIEImageLayer then
+        with TIEImageLayer( CurrentLayer ) do begin
+          BorderColor := clNone;
+          BorderWidth := 0;
+        end;
+      if CurrentLayer is TIETextLayer then
+        with TIETextLayer( CurrentLayer ) do begin
+          Text := '여기에 내용입력...';
+          Font.Size := FontDialog1.Font.Size;
+          Font.Style := FontDialog1.Font.Style;
+          Font.Color := FontDialog1.Font.Color;
+          Font.Name := FontDialog1.Font.Name;
+          BorderColor := clBlack;
+          BorderWidth := 2;
+          FillColor := clYellow;
+          Alignment := iejCenter;
+          Layout := ielCenter;
+          AutoSize := True;
+        end;
+      if CurrentLayer is TIEShapeLayer then
+        with TIEShapeLayer(CurrentLayer) do begin
+          Shape := iesEllipse;
+          FillColor := clYellow;
+          BorderColor := ColorBox.ColorValue;
+          BorderWidth := speLineThick.Value;
+          VisibleBox := True;
+          Selectable := True;
+        end;
+    end;
+    ImageEnView1.Update();
+  except on E: Exception do
   end;
-  ImageEnView1.Update();
 end;
 
 procedure TfmStaticCheck.btnPlayVideoClick(Sender: TObject);
@@ -1059,43 +1041,6 @@ begin
   end;
 end;
 
-procedure TfmStaticCheck.btnResultSelectClick(Sender: TObject);
-var
-  n_level, tagno, i, cnt : Integer;
-  tr, pnode : TTreeNode;
-  id, pid : Integer;
-  p_text, c_text, i_text, video_list : string;
-  result_id, body_id : Integer;
-begin
-  if gridCheck.DataController.RecordCount < 1 then begin
-    ShowMessage('측정데이터가 없습니다. 측정데이터를 먼저 만드세요.');
-    Exit;
-  end;
-  tagno := (Sender as TcxButton).Tag;
-  id := q_CHECK_ITEM_TREEID.Value;
-  body_id := q_CHECK_ITEM_TREEBODY_ID.Value;
-  tr := ItemTreeView.DBTreeNodes.GetTreeNode(id);
-  if tr <> Nil then begin
-    if tr.HasChildren = False then begin
-      if id > 0 then begin
-        dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('DATA_ID').Value := dmDBCommon.q_NSTATIC_CHECK_DATAID.Value;
-        dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('ITEM_MAIN').Value := body_id;
-        dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('ITEM_SUBITEM').Value := 0;
-        dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('RESULT_VALUE').Value := id;
-        dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('PRACTICE_ID').Value := '';
-        dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('RESULT_LEVEL').Value := tagno;
-        dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('DIRECTION_KIND').Value := 0;
-        dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('IMAGE_ID').Value := IMAGE_IDX[ImageEnMView1.SelectedImage];
-        dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('R_GUID').Value := GetUniqInt64;
-        dmDBCommon.NSTATIC_CHECK_RESULT_INS.ExecProc;
-        dmDBCommon.d_NSTATIC_CHECK_RESULT.DataSet.Refresh;
-        dmDBCommon.d_NSTATIC_CHECK_RESULT.DataSet.Last;
-        InsertPracticeData;
-      end;
-    end;
-  end;
-end;
-
 procedure TfmStaticCheck.ImageEnMView1ImageSelect(Sender: TObject;
   idx: Integer);
 var
@@ -1129,17 +1074,20 @@ end;
 procedure TfmStaticCheck.ImageEnView1LayerMoveSize(Sender: TObject;
   layer: Integer; event: TIELayerEvent; var PosX, PosY, Width, Height: Double);
 begin
-  if ImageEnView1.Layers[layer].Name = 'HorizLine' then begin
-    PosX := 0;
-    Width := ImageEnView1.IEBitmap.Width;
-    Height := 0;
-  end else
-  if ImageEnView1.Layers[layer].Name = 'VertLine' then begin
-    PosY := 0;
-    Height := ImageEnView1.IEBitmap.Height;
-    Width := 0;
+  try
+    if ImageEnView1.Layers[layer].Name = 'HorizLine' then begin
+      PosX := 0;
+      Width := ImageEnView1.IEBitmap.Width;
+      Height := 0;
+    end else
+    if ImageEnView1.Layers[layer].Name = 'VertLine' then begin
+      PosY := 0;
+      Height := ImageEnView1.IEBitmap.Height;
+      Width := 0;
+    end;
+    AssignControlValues;
+  except on E: Exception do
   end;
-  AssignControlValues;
 end;
 
 procedure TfmStaticCheck.ImageEnView1LayerNotify(Sender: TObject;
@@ -1162,8 +1110,6 @@ end;
 procedure TfmStaticCheck.ImageEnView1NewLayer(Sender: TObject;
   LayerIdx: Integer; LayerKind: TIELayerKind);
 begin
-  if btnLineAngle.Down then
-    ImageEnView1.Layers[LayerIdx].Name := 'LineAngle';
   AssignControlValues();
 end;
 
@@ -1429,13 +1375,17 @@ procedure TfmStaticCheck.gridCheckFocusedRecordChanged(
   Sender: TcxCustomGridTableView; APrevFocusedRecord,
   AFocusedRecord: TcxCustomGridRecord; ANewItemRecordFocusingChanged: Boolean);
 begin
-  if gridCheck.DataController.RecordCount > 0 then begin
-    btnComments.Enabled := True;
-    if LIST_LOADED then
-      RetrieveResultImage;
-  end else begin
-    btnComments.Enabled := False;
-  end;
+  if LIST_LOADED then
+    RetrieveResultImage;
+end;
+
+procedure TfmStaticCheck.gridMainFocusedRecordChanged(
+  Sender: TcxCustomGridTableView; APrevFocusedRecord,
+  AFocusedRecord: TcxCustomGridRecord; ANewItemRecordFocusingChanged: Boolean);
+begin
+  q_check_item_sub.ParamByName('p_id').Value := q_check_item_treeID.Value;
+  q_check_item_sub.Open;
+  d_check_item_sub.DataSet.Refresh;
 end;
 
 procedure TfmStaticCheck.gridPracticeCellDblClick(
@@ -1548,13 +1498,50 @@ begin
 //  RetrieveResultitem;
 end;
 
-procedure TfmStaticCheck.cxButton3Click(Sender: TObject);
+procedure TfmStaticCheck.btnCheckBodyClick(Sender: TObject);
+const
+  wTitle = '정적평가';
 begin
   fmCheckStaticItem := TfmCheckStaticItem.Create(Self);
   try
+    fmCheckStaticItem.BODY_ID := (Sender as TcxButton).Tag;
+    fmCheckStaticItem.Caption := wTitle + ' - [' + (Sender as TcxButton).Caption + ']';
     fmCheckStaticItem.ShowModal;
   finally
     fmCheckStaticItem.Free;
+  end;
+end;
+
+procedure TfmStaticCheck.SaveResultData;
+const
+  msg = '에러!, 중복데이터입니다.';
+var
+  cid : Integer;
+begin
+  q_check_same_data.ParamByName('d_id').Value := dmDBCommon.q_NSTATIC_CHECK_DATAID.Value;
+  q_check_same_data.ParamByName('m_id').Value := fmCheckStaticItem.ITEM_ID;
+  q_check_same_data.ParamByName('r_id').Value := fmCheckStaticItem.RESULT_ID;
+  q_check_same_data.Open;
+  d_check_same_data.DataSet.Refresh;
+  cid := q_check_same_dataID.Value;
+  if cid > 0 then begin
+    ShowMessage(IntToStr(cid) + ' => ' + msg);
+    Exit;
+  end else begin
+    dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('DATA_ID').Value := dmDBCommon.q_NSTATIC_CHECK_DATAID.Value;
+    dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('ITEM_MAIN').Value := fmCheckStaticItem.ITEM_ID;
+    dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('ITEM_SUBITEM').Value := 0;
+    dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('RESULT_VALUE').Value := fmCheckStaticItem.RESULT_ID;
+    dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('PRACTICE_ID').Value := '';
+    dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('RESULT_LEVEL').Value := fmCheckStaticItem.RESULT_LEVEL;
+    dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('DIRECTION_KIND').Value := 0;
+    dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('IMAGE_ID').Value := IMAGE_IDX[ImageEnMView1.SelectedImage];
+    dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('R_GUID').Value := GetUniqInt64;
+    dmDBCommon.NSTATIC_CHECK_RESULT_INS.ExecProc;
+    dmDBCommon.d_NSTATIC_CHECK_RESULT.DataSet.Refresh;
+    dmDBCommon.d_NSTATIC_CHECK_RESULT.DataSet.Last;
+    InsertPracticeData;
+    ShowMessage('자료가 저장되었습니다.');
   end;
 end;
 
