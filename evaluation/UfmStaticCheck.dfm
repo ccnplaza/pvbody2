@@ -587,6 +587,34 @@ object fmStaticCheck: TfmStaticCheck
             ParentFont = False
             OnClick = btnResultSelectClick
           end
+          object cxButton3: TcxButton
+            Tag = 1
+            AlignWithMargins = True
+            Left = 66
+            Top = 1
+            Width = 38
+            Height = 25
+            Hint = #51088#47308#52628#44032
+            Margins.Left = 1
+            Margins.Top = 1
+            Margins.Right = 1
+            Margins.Bottom = 1
+            Align = alRight
+            Caption = #54217#44032
+            Colors.Default = clYellow
+            LookAndFeel.SkinName = ''
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 4
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = #45208#45588#44256#46357
+            Font.Style = [fsBold]
+            ParentFont = False
+            OnClick = cxButton3Click
+            ExplicitLeft = 106
+          end
         end
         object ItemTreeView: TdxDBTreeView
           Left = 3
@@ -1498,6 +1526,9 @@ object fmStaticCheck: TfmStaticCheck
         MouseInteractLayers = [mlMoveLayers, mlResizeLayers, mlRotateLayers]
         AutoStretch = True
         AutoShrink = True
+        OnLayerNotify = ImageEnView1LayerNotify
+        OnLayerNotifyEx = ImageEnView1LayerNotifyEx
+        OnLayerMoveSize = ImageEnView1LayerMoveSize
         OnNewLayer = ImageEnView1NewLayer
         Align = alClient
         TabOrder = 0
@@ -1550,35 +1581,10 @@ object fmStaticCheck: TfmStaticCheck
           Spacing = 1
           OnClick = btnArrowClick
         end
-        object btnDeleteLayerAll: TBitBtn
+        object btnLine: TSpeedButton
           AlignWithMargins = True
           Left = 30
           Top = 2
-          Width = 26
-          Height = 25
-          Hint = #51204#52404#49325#51228
-          Margins.Left = 1
-          Margins.Top = 1
-          Margins.Right = 1
-          Margins.Bottom = 1
-          Align = alTop
-          Glyph.Data = {
-            F6000000424DF600000000000000760000002800000010000000100000000100
-            04000000000080000000120B0000120B00001000000010000000000000000000
-            8000008000000080800080000000800080008080000080808000C0C0C0000000
-            FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
-            DADAADADADADADADA0ADDAD0DADADADADADAAD000DADADAD0DADDA000ADADAD0
-            DADAADA000ADAD00ADADDADA000AD00ADADAADADA00000ADADADDADADA000ADA
-            DADAADADA00000ADADADDADA000AD0DADADAAD0000ADAD00ADADD0000ADADAD0
-            0ADAA00DADADADAD00ADDADADADADADADADAADADADADADADADAD}
-          ParentShowHint = False
-          ShowHint = True
-          TabOrder = 1
-        end
-        object btnLine: TSpeedButton
-          AlignWithMargins = True
-          Left = 2
-          Top = 29
           Width = 26
           Height = 25
           Hint = #46972#51064
@@ -1602,11 +1608,40 @@ object fmStaticCheck: TfmStaticCheck
           ParentShowHint = False
           ShowHint = True
           Spacing = 1
-          OnClick = btnArrowClick
+          OnClick = btnLineClick
+        end
+        object btnLineAngle: TSpeedButton
+          AlignWithMargins = True
+          Left = 2
+          Top = 29
+          Width = 25
+          Height = 25
+          Hint = #46972#51064
+          Margins.Left = 1
+          Margins.Top = 1
+          Margins.Right = 1
+          Margins.Bottom = 1
+          Align = alLeft
+          AllowAllUp = True
+          GroupIndex = 1
+          Glyph.Data = {
+            F6000000424DF600000000000000760000002800000010000000100000000100
+            04000000000080000000120B0000120B00001000000000000000000000000000
+            8000008000000080800080000000800080008080000080808000C0C0C0000000
+            FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00888888888888
+            00008888888008880FF08888880880880FF08300780880880000878817800884
+            8888888837888848888888881788848888888100688848888888858888848888
+            8888858888488888888881004488888888888888488888888888000088888888
+            88880FF08888888888880FF08888888888880000888888888888}
+          Margin = 0
+          ParentShowHint = False
+          ShowHint = True
+          Spacing = 1
+          OnClick = btnLineClick
         end
         object btnAngle: TSpeedButton
           AlignWithMargins = True
-          Left = 30
+          Left = 29
           Top = 29
           Width = 26
           Height = 25
@@ -1631,7 +1666,7 @@ object fmStaticCheck: TfmStaticCheck
           ParentShowHint = False
           ShowHint = True
           Spacing = 1
-          OnClick = btnArrowClick
+          OnClick = btnLineClick
         end
         object btnMultiLine: TSpeedButton
           AlignWithMargins = True
@@ -1660,7 +1695,7 @@ object fmStaticCheck: TfmStaticCheck
           ParentShowHint = False
           ShowHint = True
           Spacing = 1
-          OnClick = btnArrowClick
+          OnClick = btnLineClick
         end
         object btnShape: TSpeedButton
           AlignWithMargins = True
@@ -1689,7 +1724,7 @@ object fmStaticCheck: TfmStaticCheck
           ParentShowHint = False
           ShowHint = True
           Spacing = 1
-          OnClick = btnArrowClick
+          OnClick = btnLineClick
         end
         object btnFreeLine: TSpeedButton
           AlignWithMargins = True
@@ -1718,7 +1753,7 @@ object fmStaticCheck: TfmStaticCheck
           ParentShowHint = False
           ShowHint = True
           Spacing = 1
-          OnClick = btnArrowClick
+          OnClick = btnLineClick
         end
         object btnText: TSpeedButton
           AlignWithMargins = True
@@ -1747,12 +1782,70 @@ object fmStaticCheck: TfmStaticCheck
           ParentShowHint = False
           ShowHint = True
           Spacing = 1
-          OnClick = btnArrowClick
+          OnClick = btnLineClick
+        end
+        object btnHorzLine: TSpeedButton
+          AlignWithMargins = True
+          Left = 2
+          Top = 110
+          Width = 26
+          Height = 25
+          Hint = #54217#54665#49440
+          Margins.Left = 1
+          Margins.Top = 1
+          Margins.Right = 1
+          Margins.Bottom = 1
+          Align = alTop
+          AllowAllUp = True
+          GroupIndex = 1
+          Glyph.Data = {
+            F6000000424DF600000000000000760000002800000010000000100000000100
+            04000000000080000000120B0000120B00001000000000000000000000000000
+            8000008000000080800080000000800080008080000080808000C0C0C0000000
+            FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+            DADAAD7D7D7D7D7D7D7DDADADADADADADADAAD7DADAD7DADAD7DDADADADADADA
+            DADAAD7DADAD7DADAD7DDADADADADADADADAAD0000000000000DDADADADADADA
+            DADAAD7DADAD7DADAD7DDADADADADADADADAAD7DADAD7DADAD7DDADADADADADA
+            DADAAD7D7D7D7D7D7D7DDADADADADADADADAADADADADADADADAD}
+          Margin = 0
+          ParentShowHint = False
+          ShowHint = True
+          Spacing = 1
+          OnClick = btnLineClick
+        end
+        object btnVertLine: TSpeedButton
+          AlignWithMargins = True
+          Left = 30
+          Top = 110
+          Width = 26
+          Height = 25
+          Hint = #49688#51649#49440
+          Margins.Left = 1
+          Margins.Top = 1
+          Margins.Right = 1
+          Margins.Bottom = 1
+          Align = alTop
+          AllowAllUp = True
+          GroupIndex = 1
+          Glyph.Data = {
+            F6000000424DF600000000000000760000002800000010000000100000000100
+            04000000000080000000120B0000120B00001000000000000000000000000000
+            8000008000000080800080000000800080008080000080808000C0C0C0000000
+            FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+            DADAAD7D7D7D0D7D7D7DDADADADA0ADADADAAD7DADAD0DADAD7DDADADADA0ADA
+            DADAAD7DADAD0DADAD7DDADADADA0ADADADAAD7D7D7D0D7D7D7DDADADADA0ADA
+            DADAAD7DADAD0DADAD7DDADADADA0ADADADAAD7DADAD0DADAD7DDADADADA0ADA
+            DADAAD7D7D7D0D7D7D7DDADADADADADADADAADADADADADADADAD}
+          Margin = 0
+          ParentShowHint = False
+          ShowHint = True
+          Spacing = 1
+          OnClick = btnLineClick
         end
         object btnForward: TBitBtn
           AlignWithMargins = True
           Left = 2
-          Top = 110
+          Top = 137
           Width = 26
           Height = 25
           Hint = #50526#51004#47196#51060#46041
@@ -1772,13 +1865,13 @@ object fmStaticCheck: TfmStaticCheck
             DADAA0BFBFBFBFB0ADADD00000000000DADAADADADADADADADAD}
           ParentShowHint = False
           ShowHint = True
-          TabOrder = 3
+          TabOrder = 2
           OnClick = btnForwardClick
         end
         object btnBackward: TBitBtn
           AlignWithMargins = True
           Left = 30
-          Top = 110
+          Top = 137
           Width = 26
           Height = 25
           Hint = #46244#47196#51060#46041
@@ -1804,7 +1897,7 @@ object fmStaticCheck: TfmStaticCheck
         object btnFont: TBitBtn
           AlignWithMargins = True
           Left = 2
-          Top = 137
+          Top = 164
           Width = 26
           Height = 25
           Hint = #54256#53944
@@ -1824,13 +1917,13 @@ object fmStaticCheck: TfmStaticCheck
             DADAAD707DADADADADADDAD0DADADADADADAADADADADADADADAD}
           ParentShowHint = False
           ShowHint = True
-          TabOrder = 2
+          TabOrder = 1
           OnClick = btnFontClick
         end
         object btnSaveLayers: TBitBtn
           AlignWithMargins = True
           Left = 30
-          Top = 137
+          Top = 164
           Width = 26
           Height = 25
           Hint = #51060#48120#51648#51200#51109
@@ -1868,13 +1961,13 @@ object fmStaticCheck: TfmStaticCheck
             78787878787878787878787878787B7B7BFF00FFFF00FFFF00FF}
           ParentShowHint = False
           ShowHint = True
-          TabOrder = 4
+          TabOrder = 3
           OnClick = btnSaveLayersClick
         end
         object btnSelRect: TBitBtn
           AlignWithMargins = True
           Left = 2
-          Top = 164
+          Top = 191
           Width = 26
           Height = 25
           Hint = #50689#50669#49440#53469
@@ -1894,13 +1987,13 @@ object fmStaticCheck: TfmStaticCheck
             DADA000DADADA4ADA0000004444444DAD000000DADADADADA000}
           ParentShowHint = False
           ShowHint = True
-          TabOrder = 6
+          TabOrder = 5
           OnClick = btnSelRectClick
         end
         object btnSelCopy: TBitBtn
           AlignWithMargins = True
           Left = 30
-          Top = 164
+          Top = 191
           Width = 26
           Height = 25
           Hint = #44208#44284#51060#48120#51648#51200#51109
@@ -1920,56 +2013,13 @@ object fmStaticCheck: TfmStaticCheck
             88880BFBFBF707F088880FBFBFBFBFB088880040000000008888}
           ParentShowHint = False
           ShowHint = True
-          TabOrder = 5
+          TabOrder = 4
           OnClick = btnSelCopyClick
-        end
-        object ColorBox: TcxColorComboBox
-          AlignWithMargins = True
-          Left = 2
-          Top = 191
-          Hint = #46972#51064#49353#49345
-          Margins.Left = 1
-          Margins.Top = 1
-          Margins.Right = 1
-          Margins.Bottom = 1
-          Align = alTop
-          ParentShowHint = False
-          Properties.ColorDialogType = cxcdtAdvanced
-          Properties.CustomColors = <>
-          Properties.DefaultColor = clRed
-          Properties.DropDownAutoWidth = False
-          Properties.ImmediatePost = True
-          Properties.ShowDescriptions = False
-          Properties.OnChange = ColorBoxPropertiesChange
-          ShowHint = True
-          Style.LookAndFeel.SkinName = 'VS2010'
-          StyleDisabled.LookAndFeel.SkinName = 'VS2010'
-          StyleFocused.LookAndFeel.SkinName = 'VS2010'
-          StyleHot.LookAndFeel.SkinName = 'VS2010'
-          TabOrder = 7
-          Width = 56
-        end
-        object speLineThick: TcxSpinEdit
-          AlignWithMargins = True
-          Left = 2
-          Top = 216
-          Hint = #46972#51064#46160#44760
-          Margins.Left = 1
-          Margins.Top = 1
-          Margins.Right = 1
-          Margins.Bottom = 1
-          Align = alTop
-          ParentShowHint = False
-          Properties.OnChange = speLineThickPropertiesChange
-          ShowHint = True
-          TabOrder = 8
-          Value = 5
-          Width = 56
         end
         object btnCapture: TcxButton
           AlignWithMargins = True
           Left = 2
-          Top = 241
+          Top = 218
           Width = 26
           Height = 25
           Hint = #44208#44284#53468#44536#51077#47141
@@ -2016,13 +2066,13 @@ object fmStaticCheck: TfmStaticCheck
             0000000000000000000000000000000000000000000000000000}
           ParentShowHint = False
           ShowHint = True
-          TabOrder = 9
+          TabOrder = 6
           OnClick = btnCaptureClick
         end
         object btnSaveResultImage: TcxButton
           AlignWithMargins = True
           Left = 30
-          Top = 241
+          Top = 218
           Width = 26
           Height = 25
           Hint = #44208#44284#51060#51648#48120#51200#51109
@@ -2069,12 +2119,116 @@ object fmStaticCheck: TfmStaticCheck
             0005000000050000000500000006000000060000000400000001}
           ParentShowHint = False
           ShowHint = True
-          TabOrder = 10
+          TabOrder = 7
           OnClick = btnSaveResultImageClick
+        end
+        object GroupBox2: TGroupBox
+          Left = 1
+          Top = 244
+          Width = 56
+          Height = 71
+          Align = alTop
+          Caption = #46972#51064
+          TabOrder = 10
+          object speLineThick: TcxSpinEdit
+            AlignWithMargins = True
+            Left = 3
+            Top = 18
+            Hint = #46972#51064#46160#44760
+            Margins.Left = 1
+            Margins.Top = 1
+            Margins.Right = 1
+            Margins.Bottom = 1
+            Align = alTop
+            ParentShowHint = False
+            Properties.OnChange = speLineThickPropertiesChange
+            ShowHint = True
+            TabOrder = 0
+            Value = 5
+            Width = 50
+          end
+          object ColorBox: TcxColorComboBox
+            AlignWithMargins = True
+            Left = 3
+            Top = 43
+            Hint = #46972#51064#49353#49345
+            Margins.Left = 1
+            Margins.Top = 1
+            Margins.Right = 1
+            Margins.Bottom = 1
+            Align = alTop
+            ParentShowHint = False
+            Properties.ColorDialogType = cxcdtAdvanced
+            Properties.CustomColors = <>
+            Properties.DefaultColor = clRed
+            Properties.DropDownAutoWidth = False
+            Properties.ImmediatePost = True
+            Properties.ShowDescriptions = False
+            Properties.OnChange = ColorBoxPropertiesChange
+            ShowHint = True
+            Style.LookAndFeel.SkinName = 'VS2010'
+            StyleDisabled.LookAndFeel.SkinName = 'VS2010'
+            StyleFocused.LookAndFeel.SkinName = 'VS2010'
+            StyleHot.LookAndFeel.SkinName = 'VS2010'
+            TabOrder = 1
+            Width = 50
+          end
+        end
+        object GroupBox1: TGroupBox
+          Left = 1
+          Top = 315
+          Width = 56
+          Height = 71
+          Align = alTop
+          Caption = #54256#53944
+          TabOrder = 9
+          object speFontSize: TcxSpinEdit
+            AlignWithMargins = True
+            Left = 3
+            Top = 18
+            Hint = #54256#53944#53356#44592
+            Margins.Left = 1
+            Margins.Top = 1
+            Margins.Right = 1
+            Margins.Bottom = 1
+            Align = alTop
+            ParentShowHint = False
+            Properties.OnChange = speLineThickPropertiesChange
+            ShowHint = True
+            TabOrder = 0
+            Value = 30
+            Width = 50
+          end
+          object FontColor: TcxColorComboBox
+            AlignWithMargins = True
+            Left = 3
+            Top = 43
+            Hint = #54256#53944#49353#49345
+            Margins.Left = 1
+            Margins.Top = 1
+            Margins.Right = 1
+            Margins.Bottom = 1
+            Align = alTop
+            ParentShowHint = False
+            Properties.ColorDialogType = cxcdtAdvanced
+            Properties.CustomColors = <>
+            Properties.DefaultColor = clRed
+            Properties.DropDownAutoWidth = False
+            Properties.ImmediatePost = True
+            Properties.ShowDescriptions = False
+            Properties.OnChange = ColorBoxPropertiesChange
+            ShowHint = True
+            Style.LookAndFeel.SkinName = 'VS2010'
+            StyleDisabled.LookAndFeel.SkinName = 'VS2010'
+            StyleFocused.LookAndFeel.SkinName = 'VS2010'
+            StyleHot.LookAndFeel.SkinName = 'VS2010'
+            TabOrder = 1
+            Width = 50
+          end
         end
         object btnMuscle: TBitBtn
           Left = 1
-          Top = 267
+          Top = 386
           Width = 57
           Height = 31
           Align = alTop
@@ -2085,7 +2239,7 @@ object fmStaticCheck: TfmStaticCheck
           Font.Name = #45208#45588#44256#46357
           Font.Style = [fsBold]
           ParentFont = False
-          TabOrder = 11
+          TabOrder = 8
           OnClick = btnMuscleClick
         end
       end

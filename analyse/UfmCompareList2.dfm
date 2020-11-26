@@ -14,6 +14,7 @@ object fmCompareList2: TfmCompareList2
   FormStyle = fsMDIChild
   OldCreateOrder = False
   Visible = True
+  OnActivate = FormActivate
   OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
@@ -534,7 +535,7 @@ object fmCompareList2: TfmCompareList2
               ParentShowHint = False
               ShowHint = True
               Spacing = 1
-              OnClick = btnArrowClick
+              OnClick = btnLineClick
             end
             object btnMultiLine: TSpeedButton
               AlignWithMargins = True
@@ -563,7 +564,7 @@ object fmCompareList2: TfmCompareList2
               ParentShowHint = False
               ShowHint = True
               Spacing = 1
-              OnClick = btnArrowClick
+              OnClick = btnLineClick
             end
             object btnFreeLine: TSpeedButton
               AlignWithMargins = True
@@ -592,11 +593,11 @@ object fmCompareList2: TfmCompareList2
               ParentShowHint = False
               ShowHint = True
               Spacing = 1
-              OnClick = btnArrowClick
+              OnClick = btnLineClick
             end
             object btnAngle: TSpeedButton
               AlignWithMargins = True
-              Left = 269
+              Left = 296
               Top = 1
               Width = 25
               Height = 25
@@ -621,11 +622,12 @@ object fmCompareList2: TfmCompareList2
               ParentShowHint = False
               ShowHint = True
               Spacing = 1
-              OnClick = btnArrowClick
+              OnClick = btnLineClick
+              ExplicitLeft = 269
             end
             object btnShape: TSpeedButton
               AlignWithMargins = True
-              Left = 296
+              Left = 323
               Top = 1
               Width = 25
               Height = 25
@@ -650,11 +652,12 @@ object fmCompareList2: TfmCompareList2
               ParentShowHint = False
               ShowHint = True
               Spacing = 1
-              OnClick = btnArrowClick
+              OnClick = btnLineClick
+              ExplicitLeft = 296
             end
             object btnText: TSpeedButton
               AlignWithMargins = True
-              Left = 323
+              Left = 350
               Top = 1
               Width = 25
               Height = 25
@@ -679,7 +682,38 @@ object fmCompareList2: TfmCompareList2
               ParentShowHint = False
               ShowHint = True
               Spacing = 1
-              OnClick = btnArrowClick
+              OnClick = btnLineClick
+              ExplicitLeft = 323
+            end
+            object btnLineAngle: TSpeedButton
+              AlignWithMargins = True
+              Left = 269
+              Top = 1
+              Width = 25
+              Height = 25
+              Hint = #46972#51064
+              Margins.Left = 1
+              Margins.Top = 1
+              Margins.Right = 1
+              Margins.Bottom = 1
+              Align = alLeft
+              AllowAllUp = True
+              GroupIndex = 1
+              Glyph.Data = {
+                F6000000424DF600000000000000760000002800000010000000100000000100
+                04000000000080000000120B0000120B00001000000000000000000000000000
+                8000008000000080800080000000800080008080000080808000C0C0C0000000
+                FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00888888888888
+                00008888888008880FF08888880880880FF08300780880880000878817800884
+                8888888837888848888888881788848888888100688848888888858888848888
+                8888858888488888888881004488888888888888488888888888000088888888
+                88880FF08888888888880FF08888888888880000888888888888}
+              Margin = 0
+              ParentShowHint = False
+              ShowHint = True
+              Spacing = 1
+              OnClick = btnLineClick
+              ExplicitLeft = 284
             end
             object btnDeleteLayerAll: TBitBtn
               AlignWithMargins = True
@@ -886,7 +920,7 @@ object fmCompareList2: TfmCompareList2
             end
             object btnSelRect: TBitBtn
               AlignWithMargins = True
-              Left = 349
+              Left = 376
               Top = 1
               Width = 30
               Height = 25
@@ -912,7 +946,7 @@ object fmCompareList2: TfmCompareList2
             end
             object btnSelCopy: TBitBtn
               AlignWithMargins = True
-              Left = 379
+              Left = 406
               Top = 1
               Width = 30
               Height = 25
@@ -938,7 +972,7 @@ object fmCompareList2: TfmCompareList2
             end
             object btnBackward: TBitBtn
               AlignWithMargins = True
-              Left = 439
+              Left = 466
               Top = 1
               Width = 30
               Height = 25
@@ -964,7 +998,7 @@ object fmCompareList2: TfmCompareList2
             end
             object btnForward: TBitBtn
               AlignWithMargins = True
-              Left = 409
+              Left = 436
               Top = 1
               Width = 30
               Height = 25
@@ -990,7 +1024,7 @@ object fmCompareList2: TfmCompareList2
             end
             object ColorBox: TcxColorComboBox
               AlignWithMargins = True
-              Left = 530
+              Left = 557
               Top = 1
               Hint = #46972#51064#49353#49345
               Margins.Left = 1
@@ -1016,7 +1050,7 @@ object fmCompareList2: TfmCompareList2
             end
             object speLineThick: TcxSpinEdit
               AlignWithMargins = True
-              Left = 582
+              Left = 609
               Top = 1
               Hint = #46972#51064#46160#44760
               Margins.Left = 1
@@ -1033,7 +1067,7 @@ object fmCompareList2: TfmCompareList2
             end
             object btnFont: TBitBtn
               AlignWithMargins = True
-              Left = 627
+              Left = 654
               Top = 1
               Width = 30
               Height = 25
@@ -1085,7 +1119,7 @@ object fmCompareList2: TfmCompareList2
             end
             object btnMatchWidth: TBitBtn
               AlignWithMargins = True
-              Left = 469
+              Left = 496
               Top = 1
               Width = 30
               Height = 25
@@ -1111,7 +1145,7 @@ object fmCompareList2: TfmCompareList2
             end
             object btnMatchHeight: TBitBtn
               AlignWithMargins = True
-              Left = 499
+              Left = 526
               Top = 1
               Width = 30
               Height = 25
@@ -1200,6 +1234,8 @@ object fmCompareList2: TfmCompareList2
             Center = False
             AutoStretch = True
             AutoShrink = True
+            OnLayerNotify = LayerWindowLayerNotify
+            OnLayerMoveSize = LayerWindowLayerMoveSize
             OnNewLayer = LayerWindowNewLayer
             AsyncLoading = True
             Align = alClient
@@ -2193,7 +2229,7 @@ object fmCompareList2: TfmCompareList2
         Background = clWindowFrame
         GridWidth = -1
         StoreType = ietNormal
-        ThumbWidth = 250
+        ThumbWidth = 200
         ThumbHeight = 400
         TextMargin = 0
         ThumbnailOptionsEx = [ietxShowIconWhileLoading, ietxEnableInternalIcons, ietxStretchSmallImages, ietxAutoPadThumbnailColumns, ietxCenterSingleFrame]

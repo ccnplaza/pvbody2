@@ -106,7 +106,6 @@ object fmPictureZoom: TfmPictureZoom
       ParentShowHint = False
       ShowHint = True
       TabOrder = 0
-      ExplicitLeft = 306
     end
     object btnCut: TcxButton
       AlignWithMargins = True
@@ -159,7 +158,6 @@ object fmPictureZoom: TfmPictureZoom
       ShowHint = True
       TabOrder = 1
       OnClick = btnCutClick
-      ExplicitLeft = 254
     end
     object chkAutoSave: TcxCheckBox
       AlignWithMargins = True
@@ -170,9 +168,6 @@ object fmPictureZoom: TfmPictureZoom
       Caption = #51088#46041#51200#51109
       State = cbsChecked
       TabOrder = 2
-      ExplicitLeft = 391
-      ExplicitTop = 1
-      ExplicitHeight = 28
       Width = 96
     end
   end

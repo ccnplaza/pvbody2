@@ -58,7 +58,9 @@ begin
   ImageEnView1.AutoFit := True;
   ImageEnView1.AutoStretch := True;
   ImageEnView1.AutoShrink := True;
-  ImageEnView1.CropTool.Options := ImageEnView1.CropTool.Options + [ iecoLimitToBounds ];
+  ImageEnView1.CropTool.LockAspectRatio := 6 / 16;
+  ImageEnView1.CropTool.Options := ImageEnView1.CropTool.Options - [ iecoAllowRotating ];
+  ImageEnView1.CropTool.Options := ImageEnView1.CropTool.Options + [ iecoLimitToBounds ] + [iecoSideGripsRespectLocks];
   ImageEnView1.Update;
 end;
 

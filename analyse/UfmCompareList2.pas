@@ -31,7 +31,7 @@ uses
   iexBitmaps, iesettings, iexLayers, iexRulers, iexToolbars, cxDropDownEdit,
   cxSplitter, dxBarBuiltInMenu, cxPC, cxDBLookupComboBox, cxCheckBox,
   cxRadioGroup, dxtree, dxdbtree, uShapeProps, uLineProps, uTextProps,
-  cxColorComboBox, cxFontNameComboBox, iexActionsLayers, iexActions;
+  cxColorComboBox, cxFontNameComboBox, iexActionsLayers, iexActions, Math;
 
 type
   TfmCompareList2 = class(TForm)
@@ -157,6 +157,7 @@ type
     btnShape: TSpeedButton;
     btnText: TSpeedButton;
     BitBtn2: TBitBtn;
+    btnLineAngle: TSpeedButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure frmImageMultiView1ImageEnMView1DblClick(Sender: TObject);
     procedure btnFindMemberClick(Sender: TObject);
@@ -240,6 +241,12 @@ type
     procedure btnTrimClick(Sender: TObject);
     procedure btnCloseCompareClick(Sender: TObject);
     procedure btnArrowClick(Sender: TObject);
+    procedure btnLineClick(Sender: TObject);
+    procedure LayerWindowLayerNotify(Sender: TObject; layer: Integer;
+      event: TIELayerEvent);
+    procedure LayerWindowLayerMoveSize(Sender: TObject; layer: Integer;
+      event: TIELayerEvent; var PosX, PosY, Width, Height: Double);
+    procedure FormActivate(Sender: TObject);
   private
     fShapeProps: TShapeProps;
     fLineProps : TLineProps;
@@ -254,6 +261,7 @@ type
     procedure RetrieveCompareImage(image_id: string; ImageEnVect: TImageEnVect);
     procedure AssignControlValues;
     procedure RefreshControls;
+    function Measure_angle(rect : TRect): string;
     { Private declarations }
   public
     { Public declarations }
@@ -265,19 +273,23 @@ type
     CheckDataID : Integer;
     PICTURE_LOADED : Boolean;
     LIST_LOADED : Boolean;
-    fDBMultiBitmap : TIEDBMultiBitmap;
     IMAGE_DATE1, IMAGE_DATE2, IMAGE_DATE3, IMAGE_DATE4 : string;
     IMAGE_NAME1, IMAGE_NAME2, IMAGE_NAME3, IMAGE_NAME4 : string;
     IMAGE_ID1, IMAGE_ID2, IMAGE_ID3, IMAGE_ID4 : Integer;
     ImageEnVect : array[0..3] of TImageEnVect;
     COMPARE_LAYER_ID : Integer;
     LayersCurrent : Integer;
+    fDBBitmap : TIEDBBitmap;
+    fDBMultiBitmap : TIEDBMultiBitmap;
+    CURRENT_CUST_ID : string;
 
     procedure RetrieveCompareLayers;
 end;
 
 var
   fmCompareList2: TfmCompareList2;
+const
+  RADIANS=57.29577951;
 
 implementation
 
@@ -356,6 +368,41 @@ begin
   fUpdating := False;
 end;
 
+// if angle is outside of 0-360 then put it within 0-360
+function fix_angle(angle:double):double;
+begin
+ while angle>= 360.0 do
+  angle := angle - 360.0;
+ while angle < 0 do
+  angle := angle + 360.0;
+ result:=angle;
+end;
+
+function AngleOfLine(const P1, P2: TPoint): Double;
+begin
+  Result := RadToDeg(ArcTan2((P2.Y - P1.Y),(P2.X - P1.X)));
+  if Result < 0 then
+    Result := Result + 360;
+end;
+
+function TfmCompareList2.Measure_angle(rect:TRect):string;
+var
+  part1, part2, x1, x2, y1, y2:double;
+  angle, angle2 :double;
+  P1, P2: TPoint;
+begin
+  //angle := AngleOfLine(rect.TopLeft, rect.BottomRight);
+  P1 := rect.TopLeft;
+  P2 := rect.BottomRight;
+  angle := RadToDeg(ArcTan2((P2.Y - P1.Y),(P2.X - P1.X)));
+//  fix_angle(angle);
+  if angle < 0 then
+    angle := angle + 360;
+  if angle > 45 then
+    angle := 90 - angle;
+  Result := FormatFloat('  0.0¡Æ', angle);
+end;
+
 // Apply our control values to the current layer
 procedure TfmCompareList2.AssignControlValues();
 begin
@@ -369,12 +416,23 @@ begin
     // LINE PROPERTIES
     if CurrentLayer is TIELineLayer then
       with TIELineLayer( CurrentLayer ) do begin
-        BorderColor := ColorBox.ColorValue;
-        BorderWidth := speLineThick.Value;
-        LabelPosition := TIELineLabelPos(0); //hide
-        StartShape := TIELineEndShape(0); //none
-        EndShape := TIELineEndShape(0);   //none
-        ShapeSize := 20;
+        if Name = 'LineAngle' then begin
+          BorderColor := ColorBox.ColorValue;
+          BorderWidth := speLineThick.Value;
+          LabelFont.Size := FontDialog1.Font.Size;
+          LabelFont.Color := ColorBox.ColorValue;
+          LabelText := Measure_angle(LayerRect);
+          LabelPosition := TIELineLabelPos(ielpBelow); //hide
+          StartShape := TIELineEndShape(0); //none
+          EndShape := TIELineEndShape(0);   //none
+          ShapeSize := 20;
+        end else begin
+          BorderColor := ColorBox.ColorValue;
+          BorderWidth := speLineThick.Value;
+          StartShape := TIELineEndShape(0); //none
+          EndShape := TIELineEndShape(0);   //none
+          ShapeSize := 20;
+        end;
       end;
     // POLYLINE PROPERTIES
     if CurrentLayer is TIEPolylineLayer then
@@ -420,6 +478,7 @@ begin
       end;
   end;
   LayerWindow.Update();
+  fUpdating := False;
 end;
 
 procedure TfmCompareList2.BitBtn1Click(Sender: TObject);
@@ -666,6 +725,7 @@ var
   mStream, dStream, newIStream, newDStream : TMemoryStream;
   idx : Integer;
 begin
+{
   if ImageEnMView1.ImageCount > 0 then begin
     fmLayerEditor := TfmLayerEditor.Create(Self);
     try
@@ -695,7 +755,8 @@ begin
     finally
       fmLayerEditor.Free;
     end;
-{
+  end;
+}
     fmPostureEditor2 := TfmPostureEditor2.Create(Self);
     mStream := TMemoryStream.Create;
     dStream := TMemoryStream.Create;
@@ -718,8 +779,6 @@ begin
     finally
       fmPostureEditor2.Free;
     end;
-}
-  end;
 end;
 
 procedure TfmCompareList2.btnFavoriteClick(Sender: TObject);
@@ -735,6 +794,7 @@ begin
     fmMemberFavorite.Left := pt.X;
     fmMemberFavorite.ShowModal;
     if fmMemberFavorite.ModalResult = mrOk then begin
+      CURRENT_CUST_ID := CustomerImages.CustID;
       RetrieveMemberInfo;
       if gridCheck.DataController.RecordCount > 0 then LIST_LOADED := True;
     end;
@@ -776,6 +836,7 @@ begin
       CustomerImages.CustName := dmDBCommon.CUSTOMER_SEARCHCNAME.Value;
       CustomerImages.CustTel := dmDBCommon.CUSTOMER_SEARCHCTEL.Value;
       CustomerImages.CustSex := StrToInt(dmDBCommon.CUSTOMER_SEARCHSEX.Value);
+      CURRENT_CUST_ID := CustomerImages.CustID;
       RetrieveMemberInfo;
       if gridCheck.DataController.RecordCount > 0 then
         LIST_LOADED := True;
@@ -795,6 +856,7 @@ begin
           CustomerImages.CustName := dmDBCommon.CUSTOMER_SEARCHCNAME.Value;
           CustomerImages.CustTel := dmDBCommon.CUSTOMER_SEARCHCTEL.Value;
           CustomerImages.CustSex := StrToInt(dmDBCommon.CUSTOMER_SEARCHSEX.Value);
+          CURRENT_CUST_ID := CustomerImages.CustID;
           RetrieveMemberInfo;
           if gridCheck.DataController.RecordCount > 0 then LIST_LOADED := True;
         end;
@@ -884,6 +946,7 @@ var
   img_name, drw_name : string;
   mStream, dStream : TMemoryStream;
 begin
+
   ImageEnMView1.LockPaint;
   ImageEnMView1.Clear;
   ImageEnMView1.TextTruncSide := iemtsLeft;
@@ -908,29 +971,12 @@ begin
   ImageEnMView1.Sort(iesbFilename);
   ImageEnMView1.UnlockPaint;
   ImageEnMView1.SelectedImage := 0;
+
 end;
 
 procedure TfmCompareList2.btnArrowClick(Sender: TObject);
 begin
   LayerWindow.MouseInteractLayers := [mlMoveLayers, mlResizeLayers, mlRotateLayers, mlEditLayerPoints];
-  if btnLine.Down then
-    LayerWindow.MouseInteractLayers := [mlClickCreateLineLayers];
-  if btnMultiLine.Down then
-    LayerWindow.MouseInteractLayers := [mlClickCreatePolylineLayers];
-  if btnFreeLine.Down then
-    LayerWindow.MouseInteractLayers := [mlDrawCreatePolylineLayers];
-  if btnAngle.Down then
-    LayerWindow.MouseInteractLayers := [mlClickCreateAngleLayers];
-  if btnShape.down then begin
-    LayerWindow.LayersAdd(ielkShape);
-    btnArrow.Down := True;
-    btnArrow.Click;
-  end;
-  if btnText.Down then begin
-    LayerWindow.LayersAdd( ielkText );
-    btnArrow.Down := True;
-    btnArrow.Click;
-  end;
 end;
 
 procedure TfmCompareList2.speLineThickPropertiesChange(Sender: TObject);
@@ -956,6 +1002,7 @@ begin
       CustomerImages.CustName := dmDBCommon.LATEST_CUSTOMER_SELCUST_NAME.Value;
       CustomerImages.CustTel := dmDBCommon.LATEST_CUSTOMER_SELCUST_TEL.Value;
       CustomerImages.CustSex := dmDBCommon.LATEST_CUSTOMER_SELCUST_SEX.Value;
+      CURRENT_CUST_ID := CustomerImages.CustID;
       RetrieveMemberInfo;
       if gridCheck.DataController.RecordCount > 0 then LIST_LOADED := True;
     end;
@@ -982,6 +1029,7 @@ begin
       CustomerImages.CustName := dmDBCommon.CUSTOMER_SEL_RECENT_REGCNAME.Value;
       CustomerImages.CustTel := dmDBCommon.CUSTOMER_SEL_RECENT_REGCTEL.Value;
       CustomerImages.CustSex := StrToIntDef(dmDBCommon.CUSTOMER_SEL_RECENT_REGSEX.Value, 0);
+      CURRENT_CUST_ID := CustomerImages.CustID;
       RetrieveMemberInfo;
     end;
   finally
@@ -1001,6 +1049,25 @@ begin
   finally
     fmCompareLayerList.Free;
   end;
+end;
+
+procedure TfmCompareList2.btnLineClick(Sender: TObject);
+begin
+  if btnLine.Down then
+    LayerWindow.MouseInteractLayers := [mlCreateLineLayers];
+  if btnLineAngle.Down then
+    LayerWindow.MouseInteractLayers := [mlCreateLineLayers];
+  if btnMultiLine.Down then
+    LayerWindow.MouseInteractLayers := [mlClickCreatePolylineLayers];
+  if btnFreeLine.Down then
+    LayerWindow.MouseInteractLayers := [mlDrawCreatePolylineLayers];
+  if btnAngle.Down then
+    LayerWindow.MouseInteractLayers := [mlClickCreateAngleLayers];
+  if btnShape.down then
+    LayerWindow.MouseInteractLayers := [mlCreateShapeLayers];
+  if btnText.Down then
+    LayerWindow.MouseInteractLayers := [mlCreateTextLayers];
+    //LayerWindow.LayersAdd( ielkText );
 end;
 
 procedure TfmCompareList2.btnMatchHeightClick(Sender: TObject);
@@ -1024,7 +1091,7 @@ end;
 
 procedure TfmCompareList2.btnMatchWidthClick(Sender: TObject);
 begin
-  LayerWindow.LayersAlign(ilaMatchWidth, -1);
+  //LayerWindow.LayersAlign(ilaMatchWidth, -1);
   LayerWindow.LayersAlign(ilaMatchHeight, -1);
 end;
 
@@ -1299,6 +1366,17 @@ begin
   ImageEnMView1.Zoom := edtTrackBar.Value;
 end;
 
+procedure TfmCompareList2.FormActivate(Sender: TObject);
+begin
+  if Length(CustomerImages.CustID) > 10 then begin
+    if CURRENT_CUST_ID <> CustomerImages.CustID then begin
+      CURRENT_CUST_ID := CustomerImages.CustID;
+      RetrieveMemberInfo;
+      LIST_LOADED := True;
+    end;
+  end;
+end;
+
 procedure TfmCompareList2.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := caFree;
@@ -1353,6 +1431,13 @@ begin
   cxPageControl1.Properties.HideTabs := True;
   cxPageControl1.ActivePageIndex := 0;
   PanelRight.Width := 1;
+{
+  fDBMultiBitmap := TIEDBMultiBitmap.create();
+  fDBMultiBitmap.DataSource := dmDBCommon.ds_IMAGES_SEL;
+  fDBMultiBitmap.ImageBlobField := 'IMAGE_DATA';
+  ImageEnMView1.SetExternalMBitmap( fDBMultiBitmap );
+  fDBMultiBitmap.FollowDBCursor := True;
+}
 end;
 
 procedure TfmCompareList2.FormDestroy(Sender: TObject);
@@ -1408,7 +1493,9 @@ procedure TfmCompareList2.gridCheckFocusedRecordChanged(
   AFocusedRecord: TcxCustomGridRecord; ANewItemRecordFocusingChanged: Boolean);
 begin
   if LIST_LOADED then begin
+    Screen.Cursor := crHourGlass;
     dmDBCommon.RetrievePictureByDate;
+    Screen.Cursor := crArrow;
     RetrieveThumbnailList;
     //BMDThread1.Start;
   end;
@@ -1614,8 +1701,14 @@ begin
       bmp := ImageEnMView1.GetTIEBitmap( idx );
       LayerWindow.LayersAdd( bmp );
       LayerWindow.CurrentLayer.AspectRatioLocked := true;
-      LayerWindow.CurrentLayer.PosX := LayerWindow.XScr2Bmp( X );
-      LayerWindow.CurrentLayer.PosY := LayerWindow.YScr2Bmp( Y );
+      LayerWindow.CurrentLayer.PosY := 0; //LayerWindow.YScr2Bmp( Y );
+      l_cnt := LayerWindow.LayersCount;
+      if l_cnt > 2 then begin
+        l_rect := LayerWindow.Layers[LayerWindow.CurrentLayer.LayerIndex - 1].LayerRect;
+        LayerWindow.CurrentLayer.PosX := l_rect.BottomRight.X;
+      end else begin
+        LayerWindow.CurrentLayer.PosX := 0;
+      end;
       TImageEnMView( Source ).ReleaseBitmap( idx, False );
     end;
     LayerWindow.MouseInteractLayers := [mlMoveLayers, mlResizeLayers, mlRotateLayers];
@@ -1631,11 +1724,40 @@ begin
     Accept := True;
 end;
 
+procedure TfmCompareList2.LayerWindowLayerMoveSize(Sender: TObject;
+  layer: Integer; event: TIELayerEvent; var PosX, PosY, Width, Height: Double);
+var
+  i, lcnt : Integer;
+  l_rect : TRect;
+begin
+  lcnt := LayerWindow.LayersCount;
+  for i := 1 to lcnt - 1 do begin
+    if LayerWindow.Layers[i] is TIEImageLayer then begin
+      if i > 1 then begin
+        l_rect := LayerWindow.Layers[i - 1].LayerRect;
+        LayerWindow.Layers[i].PosX := l_rect.BottomRight.X;
+      end;
+    end;
+  end;
+  AssignControlValues;
+end;
+
+procedure TfmCompareList2.LayerWindowLayerNotify(Sender: TObject;
+  layer: Integer; event: TIELayerEvent);
+begin
+  if event = ielCreated then begin
+    btnArrow.Down := True;
+    btnArrow.Click;
+  end;
+end;
+
 procedure TfmCompareList2.LayerWindowNewLayer(Sender: TObject;
   LayerIdx: Integer; LayerKind: TIELayerKind);
 var
   strList : TStringList;
 begin
+  if btnLineAngle.Down then
+    LayerWindow.Layers[LayerIdx].Name := 'LineAngle';
   AssignControlValues();
 end;
 

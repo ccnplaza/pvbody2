@@ -568,7 +568,7 @@ object fmCompareList3: TfmCompareList3
         Background = clWindowFrame
         GridWidth = -1
         StoreType = ietFastThumb
-        ThumbWidth = 250
+        ThumbWidth = 200
         ThumbHeight = 400
         TextMargin = 0
         ThumbnailOptionsEx = [ietxShowIconForUnknownFormat, ietxShowIconWhileLoading, ietxEnableInternalIcons, ietxStretchSmallImages, ietxAutoPadThumbnailColumns, ietxCenterSingleFrame]

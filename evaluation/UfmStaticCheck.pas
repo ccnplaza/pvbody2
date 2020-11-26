@@ -28,7 +28,7 @@ uses
   imageen, cxSplitter, ieanimation, dxBarBuiltInMenu, cxPC, ComCtrls, dxtree,
   dxdbtree, dxmdaset, cxCheckBox, cxRadioGroup, hyieutils, iexBitmaps, hyiedefs, iesettings, iexLayers,
   iexRulers, iexToolbars, UfrmMemberSelect, UfrmImageMultiView, cxCalendar,
-  cxMaskEdit, cxSpinEdit, cxDropDownEdit, cxColorComboBox;
+  cxMaskEdit, cxSpinEdit, cxDropDownEdit, cxColorComboBox, Math;
 
 type
   TfmStaticCheck = class(TForm)
@@ -205,7 +205,6 @@ type
     btnAngle: TSpeedButton;
     btnArrow: TSpeedButton;
     btnBackward: TBitBtn;
-    btnDeleteLayerAll: TBitBtn;
     btnFont: TBitBtn;
     btnForward: TBitBtn;
     btnFreeLine: TSpeedButton;
@@ -231,6 +230,14 @@ type
     IMAGE_RESULTS_SELRESULT_SUB: TIntegerField;
     IMAGE_RESULTS_SELRESULT_LEVEL: TIntegerField;
     IMAGE_RESULTS_SELRESULT_IMAGE: TBlobField;
+    btnLineAngle: TSpeedButton;
+    btnHorzLine: TSpeedButton;
+    btnVertLine: TSpeedButton;
+    speFontSize: TcxSpinEdit;
+    FontColor: TcxColorComboBox;
+    GroupBox1: TGroupBox;
+    GroupBox2: TGroupBox;
+    cxButton3: TcxButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ShowProcessMsg(msg, cnt_str: string; onoff: integer);
     procedure gridResultColumn1GetDisplayText(Sender: TcxCustomGridTableItem;
@@ -291,7 +298,6 @@ type
     procedure ImageEnMView1Resize(Sender: TObject);
     procedure chkSizePropertiesEditValueChanged(Sender: TObject);
     procedure btnSaveLayersClick(Sender: TObject);
-    procedure btnArrowClick(Sender: TObject);
     procedure btnSelCopyClick(Sender: TObject);
     procedure btnForwardClick(Sender: TObject);
     procedure btnBackwardClick(Sender: TObject);
@@ -302,6 +308,15 @@ type
     procedure btnFontClick(Sender: TObject);
     procedure btnSelRectClick(Sender: TObject);
     procedure btnShowImageClick(Sender: TObject);
+    procedure btnLineClick(Sender: TObject);
+    procedure ImageEnView1LayerMoveSize(Sender: TObject; layer: Integer;
+      event: TIELayerEvent; var PosX, PosY, Width, Height: Double);
+    procedure ImageEnView1LayerNotify(Sender: TObject; layer: Integer;
+      event: TIELayerEvent);
+    procedure btnArrowClick(Sender: TObject);
+    procedure ImageEnView1LayerNotifyEx(Sender: TObject; layer: Integer;
+      event: TIELayerEvent);
+    procedure cxButton3Click(Sender: TObject);
   private
     function GetImageFilename(image_id: integer): string;
     procedure RetrieveSubitem(tno : Integer);
@@ -314,6 +329,8 @@ type
     procedure RetrievePicture;
     procedure RetrieveResultImage;
     procedure AssignControlValues;
+    function Measure_angle(rect:TRect):string;
+    procedure RefreshControls;
     { Private declarations }
   public
     { Public declarations }
@@ -343,9 +360,73 @@ uses GlobalVar, uCommonLogic, ufmStaticResultView, uViewPractice,
   UfmStaticResultReport, UfmHowToSingle, UPlayer,
   UfmPracticeMethodSingle, UfmCheckImageViewer, UfmCheckCommennts,
   UfmMemberPicture, UfmDateSelector, UfmMemberLastSelect, uMemberEditView,
-  uMemberFavorite, uMemberSelect, UfmCustomerHistory, ufmLayerEditor, UfmMuscleView;
+  uMemberFavorite, uMemberSelect, UfmCustomerHistory, ufmLayerEditor, UfmMuscleView, UfmCheckStaticItem;
 
 {$R *.dfm}
+
+// refresh controls with the layer content
+procedure TfmStaticCheck.RefreshControls();
+var
+  borderAvail, fillAvail: Boolean;
+  isLineLayer, isPolylineLayer, isAngleLayer: Boolean;
+
+  procedure _EnableGroup(Ctrl: TWinControl; Enable: Boolean);
+  var
+    I: Integer;
+  begin
+    Ctrl.Enabled := Enable;
+    for I := 0 to Ctrl.ControlCount - 1 do
+      Ctrl.Controls[ i ].Enabled := Enable;
+  end;
+
+begin
+  fUpdating := True;
+  with ImageEnView1 do begin
+    isLineLayer     := CurrentLayer is TIELineLayer ;
+    isPolylineLayer := CurrentLayer is TIEPolylineLayer ;
+    isAngleLayer    := CurrentLayer is TIEAngleLayer ;
+    // SHARED STYLE PROPERTIES
+    borderAvail := ( CurrentLayer.Kind <> ielkImage ) and CurrentLayer.SupportsFeature( ielfBorder );   // In this case the "border" is the line
+    //btnBorderColor.Enabled := borderAvail;
+    //lblBorder.Enabled := borderAvail;
+    //lblBorderWidth.Enabled := borderAvail;
+    //edtBorderWidth.Enabled := borderAvail;
+    //updBorderWidth.Enabled := borderAvail;
+    //if borderAvail then begin
+    //  btnBorderColor.SelectedColor := CurrentLayer.BorderColor;
+    //  updBorderWidth.Position := CurrentLayer.BorderWidth;
+    //end else begin
+    //  btnBorderColor.SelectedColor := clBlack;
+    //  updBorderWidth.Position := 3;
+    //end;
+    fillAvail  := CurrentLayer.SupportsFeature( ielfFill );
+    //if fillAvail then
+    //  btnFillColor.SelectedColor := CurrentLayer.FillColor;
+    //btnFillColor.Enabled := fillAvail;
+    //lblFill.Enabled := fillAvail;
+    // LINE PROPERTIES
+    if isLineLayer then
+      with TIELineLayer( CurrentLayer ) do begin
+        ColorBox.ColorValue := BorderColor;
+        speLineThick.Value := LineWidth;
+      end;
+    // POLYLINE PROPERTIES
+    //if isPolylineLayer then
+    //  with TIEPolylineLayer( CurrentLayer ) do begin
+    //    chkPolylineClosed.checked := PolylineClosed;
+    //  end;
+    // ANGLE PROPERTIES
+    //if isAngleLayer then
+    //  with TIEAngleLayer( CurrentLayer ) do begin
+    //    cmbAngleMode.ItemIndex := ord( AngleMode );
+    //  end;
+    //_EnableGroup( grpLine    , isLineLayer );
+    //_EnableGroup( grpPolyline, isPolylineLayer );
+    //_EnableGroup( grpAngle   , isAngleLayer );
+  end;
+  //ImageEnView1.CurrentLayer.GetProperties( memProps.Lines );
+  fUpdating := False;
+end;
 
 procedure TfmStaticCheck.SetAnimationProperties(ienMview : TImageEnMView);
 var
@@ -402,6 +483,8 @@ begin
   LIST_LOADED := True;
   ImageEnMView1.SelectedImage := 0;
   ImageEnMView1ImageSelect(Sender, 0);
+  speFontSize.Value := FontDialog1.Font.Size;
+  FontColor.ColorValue := FontDialog1.Font.Color;
 end;
 
 procedure TfmStaticCheck.RetrievePicture;
@@ -584,24 +667,6 @@ end;
 procedure TfmStaticCheck.btnArrowClick(Sender: TObject);
 begin
   ImageEnView1.MouseInteractLayers := [mlMoveLayers, mlResizeLayers, mlRotateLayers, mlEditLayerPoints];
-  if btnLine.Down then
-    ImageEnView1.MouseInteractLayers := [mlClickCreateLineLayers];
-  if btnMultiLine.Down then
-    ImageEnView1.MouseInteractLayers := [mlClickCreatePolylineLayers];
-  if btnFreeLine.Down then
-    ImageEnView1.MouseInteractLayers := [mlDrawCreatePolylineLayers];
-  if btnAngle.Down then
-    ImageEnView1.MouseInteractLayers := [mlClickCreateAngleLayers];
-  if btnShape.down then begin
-    ImageEnView1.LayersAdd(ielkShape);
-    btnArrow.Down := True;
-    btnArrow.Click;
-  end;
-  if btnText.Down then begin
-    ImageEnView1.LayersAdd( ielkText );
-    btnArrow.Down := True;
-    btnArrow.Click;
-  end;
 end;
 
 procedure TfmStaticCheck.btnLeftClick(Sender: TObject);
@@ -621,6 +686,41 @@ begin
   dmDBCommon.d_NSTATIC_CHECK_RESULT.DataSet.Refresh;
   dmDBCommon.d_NSTATIC_CHECK_RESULT.DataSet.Locate('id', id, []);
   InsertPracticeData;
+end;
+
+procedure TfmStaticCheck.btnLineClick(Sender: TObject);
+var
+  lHeight, lWidth : Integer;
+begin
+  lHeight := ImageEnView1.IEBitmap.Height;
+  lWidth := ImageEnView1.IEBitmap.Width;
+  if btnLine.Down then
+    ImageEnView1.MouseInteractLayers := [mlCreateLineLayers];
+  if btnLineAngle.Down then
+    ImageEnView1.MouseInteractLayers := [mlCreateLineLayers];
+  if btnMultiLine.Down then
+    ImageEnView1.MouseInteractLayers := [mlClickCreatePolylineLayers];
+  if btnFreeLine.Down then
+    ImageEnView1.MouseInteractLayers := [mlDrawCreatePolylineLayers];
+  if btnAngle.Down then
+    ImageEnView1.MouseInteractLayers := [mlClickCreateAngleLayers];
+  if btnShape.down then
+    ImageEnView1.MouseInteractLayers := [mlCreateShapeLayers];
+  if btnText.Down then
+    ImageEnView1.MouseInteractLayers := [mlCreateTextLayers];
+  if btnHorzLine.Down then begin
+    ImageEnView1.LayersAdd( ielkLine );
+    TIELineLayer(ImageEnView1.CurrentLayer).Name := 'HorizLine';
+    TIELineLayer(ImageEnView1.CurrentLayer).SetPoints(0, lHeight div 2, lHeight div 2, lWidth);
+    TIELineLayer(ImageEnView1.CurrentLayer).Height := 0;
+  end;
+  if btnVertLine.Down then begin
+    ImageEnView1.LayersAdd( ielkLine );
+    TIELineLayer(ImageEnView1.CurrentLayer).Name := 'VertLine';
+    //TIELineLayer(ImageEnView1.CurrentLayer).VisibleBox := False;
+    TIELineLayer(ImageEnView1.CurrentLayer).SetPoints(lWidth div 2, 0, lWidth div 2, lHeight);
+    TIELineLayer(ImageEnView1.CurrentLayer).Width := 0;
+  end;
 end;
 
 procedure TfmStaticCheck.btnMuscleClick(Sender: TObject);
@@ -823,6 +923,24 @@ begin
     ImageEnView1.CurrentLayer.LayerIndex := ImageEnView1.CurrentLayer.LayerIndex + 1;
 end;
 
+function TfmStaticCheck.Measure_angle(rect:TRect):string;
+var
+  part1, part2, x1, x2, y1, y2:double;
+  angle, angle2 :double;
+  P1, P2: TPoint;
+begin
+  //angle := AngleOfLine(rect.TopLeft, rect.BottomRight);
+  P1 := rect.TopLeft;
+  P2 := rect.BottomRight;
+  angle := RadToDeg(ArcTan2((P2.Y - P1.Y),(P2.X - P1.X)));
+//  fix_angle(angle);
+  if angle < 0 then
+    angle := angle + 360;
+  if angle > 45 then
+    angle := 90 - angle;
+  Result := FormatFloat('  0.0¡Æ', angle);
+end;
+
 procedure TfmStaticCheck.AssignControlValues();
 begin
   if fUpdating then
@@ -835,10 +953,25 @@ begin
       with TIELineLayer( CurrentLayer ) do begin
         BorderColor := ColorBox.ColorValue;
         BorderWidth := speLineThick.Value;
-        LabelPosition := TIELineLabelPos(0); //hide
-        StartShape := TIELineEndShape(0); //none
-        EndShape := TIELineEndShape(0);   //none
-        ShapeSize := 20;
+        if Name = 'LineAngle' then begin
+          LabelFont.Size := FontDialog1.Font.Size;
+          LabelFont.Color := ColorBox.ColorValue;
+          LabelText := Measure_angle(LayerRect);
+          LabelPosition := TIELineLabelPos(ielpBelow); //hide
+          StartShape := TIELineEndShape(0); //none
+          EndShape := TIELineEndShape(0);   //none
+          ShapeSize := 20;
+        end else if Name = 'HorizLine' then begin
+          PosX := 0;
+          Width := ImageEnView1.IEBitmap.Width;
+        end else if Name = 'VertLine' then begin
+          PosY := 0;
+          Height := ImageEnView1.IEBitmap.Height;
+        end else begin
+          StartShape := TIELineEndShape(0); //none
+          EndShape := TIELineEndShape(0);   //none
+          ShapeSize := 20;
+        end;
       end;
     if CurrentLayer is TIEPolylineLayer then
       with TIEPolylineLayer( CurrentLayer ) do begin
@@ -878,7 +1011,7 @@ begin
         Shape := iesEllipse;
         FillColor := clYellow;
         BorderColor := ColorBox.ColorValue;
-        BorderWidth := 2;
+        BorderWidth := speLineThick.Value;
         VisibleBox := True;
         Selectable := True;
       end;
@@ -993,9 +1126,44 @@ begin
     ImageEnMView1.SetThumbnailSize((w div 2) - 6, MulDiv(w div 2, 16,9))
 end;
 
+procedure TfmStaticCheck.ImageEnView1LayerMoveSize(Sender: TObject;
+  layer: Integer; event: TIELayerEvent; var PosX, PosY, Width, Height: Double);
+begin
+  if ImageEnView1.Layers[layer].Name = 'HorizLine' then begin
+    PosX := 0;
+    Width := ImageEnView1.IEBitmap.Width;
+    Height := 0;
+  end else
+  if ImageEnView1.Layers[layer].Name = 'VertLine' then begin
+    PosY := 0;
+    Height := ImageEnView1.IEBitmap.Height;
+    Width := 0;
+  end;
+  AssignControlValues;
+end;
+
+procedure TfmStaticCheck.ImageEnView1LayerNotify(Sender: TObject;
+  layer: Integer; event: TIELayerEvent);
+begin
+  if event = ielCreated then begin
+    btnArrow.Down := True;
+    btnArrow.Click;
+  end;
+end;
+
+procedure TfmStaticCheck.ImageEnView1LayerNotifyEx(Sender: TObject;
+  layer: Integer; event: TIELayerEvent);
+begin
+  if event in [ ielSelected, ielDeselected, ielMoved, ielResized, ielRotated, ielCreated, ielAction, ielEdited, ielRemoved, ielArranged ] then
+    RefreshControls();
+
+end;
+
 procedure TfmStaticCheck.ImageEnView1NewLayer(Sender: TObject;
   LayerIdx: Integer; LayerKind: TIELayerKind);
 begin
+  if btnLineAngle.Down then
+    ImageEnView1.Layers[LayerIdx].Name := 'LineAngle';
   AssignControlValues();
 end;
 
@@ -1378,6 +1546,16 @@ begin
 //  SelectedMainItem := tno;
 //  RetrieveSubitem(tno);
 //  RetrieveResultitem;
+end;
+
+procedure TfmStaticCheck.cxButton3Click(Sender: TObject);
+begin
+  fmCheckStaticItem := TfmCheckStaticItem.Create(Self);
+  try
+    fmCheckStaticItem.ShowModal;
+  finally
+    fmCheckStaticItem.Free;
+  end;
 end;
 
 procedure TfmStaticCheck.btnShowImageClick(Sender: TObject);

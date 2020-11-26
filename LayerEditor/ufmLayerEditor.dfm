@@ -380,6 +380,10 @@ object fmLayerEditor: TfmLayerEditor
       end
       object tabShape: TTabSheet
         Caption = #46020#54805
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object lblShape: TLabel
           Left = 10
           Top = 14
@@ -427,6 +431,10 @@ object fmLayerEditor: TfmLayerEditor
       end
       object tabLine: TTabSheet
         Caption = #46972#51064
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object lblLabelPosition: TLabel
           Left = 10
           Top = 14
@@ -562,6 +570,10 @@ object fmLayerEditor: TfmLayerEditor
       object tabPolyline: TTabSheet
         Caption = #54260#47532
         ImageIndex = 3
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object chkPolylineClosed: TCheckBox
           Left = 10
           Top = 10
@@ -620,6 +632,10 @@ object fmLayerEditor: TfmLayerEditor
       object tabAngle: TTabSheet
         Caption = #44033#46020
         ImageIndex = 6
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object lblStartAngle: TLabel
           Left = 11
           Top = 14
@@ -687,6 +703,10 @@ object fmLayerEditor: TfmLayerEditor
       object tabText: TTabSheet
         Caption = #47928#51088
         ImageIndex = 4
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object lblText: TLabel
           Left = 10
           Top = 14
@@ -838,6 +858,10 @@ object fmLayerEditor: TfmLayerEditor
         BorderWidth = 4
         Caption = #51204#52404
         ImageIndex = 5
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         DesignSize = (
           246
           237)

@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs, Menus, iemview, ieview, imageenview,
   ExtCtrls, StdCtrls, ComCtrls, hyiedefs, hyieutils, imageenproc, ieopensavedlg, imageenio, Buttons, iexBitmaps,
-  iesettings, iexLayers, iexRulers, iexColorButton, iexLayerMView, iexToolbars;
+  iesettings, iexLayers, iexRulers, iexColorButton, iexLayerMView, iexToolbars, iexDBBitmaps;
 
 type
   TfmLayerEditor = class(TForm)
@@ -222,22 +222,18 @@ implementation
 {$R ImageEnManifest.res}
 
 uses
-  iegdiplus, iexCanvasUtils, Math, iexWindowsFunctions;
+  iegdiplus, iexCanvasUtils, Math, iexWindowsFunctions, UdmDBCommon;
 
 
 procedure TfmLayerEditor.FormCreate(Sender: TObject);
 begin
   fUpdating := True;
   IEInitializeComboBox( cmbShape );
-
   // Enable dragging of thumbnails to rearrange layers and remove layers
   IELayerMView1.LayerOptions := IELayerMView1.LayerOptions + [ lvDragOrdering, lvDragDelete ];
-
   // Show layer descriptions on hover
   IELayerMView1.ShowThumbnailHint := True;
-
   IELayerMView1.ReadOnly := False;
-
   ImageEnView1.Proc.UndoLimit := 30;
   ImageEnView1.LayerOptions := ImageEnView1.LayerOptions + [loAutoUndoChangesByuser, loAutoUndoChangesByCode];
 end;
@@ -268,7 +264,7 @@ begin
   for shape := Low( TIEShape ) to High( TIEShape ) do
   begin
     // Add index of shape
-    cmbShape.Items.Add( IntToStr( ord( shape )));        
+    cmbShape.Items.Add( IntToStr( ord( shape )));
     cmbTextShape.Items.Add( IntToStr( ord( shape )));
   end;
   cmbShape.ItemIndex := 0;
@@ -294,7 +290,6 @@ begin
   ImageEnView1.IO.LoadFromStream(IMAGE_STREAM);
   if Assigned(DRAW_STREAM) then
     ImageEnView1.IO.LoadFromStream(DRAW_STREAM);
-//  ImageEnView1.IO.LoadFromFileIEN(IMAGE_FILE);
   MouseActionCtrlClick(nil);
   RefreshControls();
   fLastLayerKind := TIELayerKind( -1 );

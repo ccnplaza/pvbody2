@@ -420,6 +420,9 @@
 			<DCCReference Include="..\analyse\UfmTextObjectEdit.pas">
 				<Form>fmTextObjectEdit</Form>
 			</DCCReference>
+			<DCCReference Include="..\evaluation\UfmCheckStaticItem.pas">
+				<Form>fmCheckStaticItem</Form>
+			</DCCReference>
 			<None Include="PVBody2.todo"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>

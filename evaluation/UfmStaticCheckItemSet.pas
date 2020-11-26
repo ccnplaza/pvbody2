@@ -52,8 +52,7 @@ type
     pnl2: TPanel;
     btnViewPos: TBitBtn;
     btnAdd: TBitBtn;
-    btnDeltree: TBitBtn;
-    ItemTreeView: TdxDBTreeView;
+    btnDel: TBitBtn;
     q_check_item_tree: TUniQuery;
     q_check_item_treeID: TIntegerField;
     q_check_item_treePARENT_ID: TIntegerField;
@@ -87,20 +86,77 @@ type
     gPracticeAssignDIRECTION_KIND: TcxGridDBColumn;
     il2: TImageList;
     pnl3: TPanel;
-    btn4: TBitBtn;
+    btnEdit: TBitBtn;
     NPRACTICE_DEL: TUniStoredProc;
     NPRACTICE_INS: TUniStoredProc;
     NPRACTICE_UPD: TUniStoredProc;
     gPracticeFOR_PAIN: TcxGridDBColumn;
     gPracticeFOR_BODY: TcxGridDBColumn;
+    gRoot: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
+    gRootID: TcxGridDBColumn;
+    gRootPARENT_ID: TcxGridDBColumn;
+    gRootIMAGE_ID: TcxGridDBColumn;
+    gRootITEM_NAME: TcxGridDBColumn;
+    gRootBODY_ID: TcxGridDBColumn;
+    gRootRESULT_ID: TcxGridDBColumn;
+    gRootHOWTO_IMAGE: TcxGridDBColumn;
+    gRootVIDEO_ID: TcxGridDBColumn;
+    cxGrid2: TcxGrid;
+    gSub2: TcxGridDBTableView;
+    cxGridLevel1: TcxGridLevel;
+    cxGrid4: TcxGrid;
+    gSub: TcxGridDBTableView;
+    cxGridLevel3: TcxGridLevel;
+    q_check_item_sub: TUniQuery;
+    d_check_item_sub: TDataSource;
+    q_check_item_sub2: TUniQuery;
+    d_check_item_sub2: TDataSource;
+    q_check_item_subID: TIntegerField;
+    q_check_item_subPARENT_ID: TIntegerField;
+    q_check_item_subIMAGE_ID: TIntegerField;
+    q_check_item_subITEM_NAME: TStringField;
+    q_check_item_subBODY_ID: TIntegerField;
+    q_check_item_subRESULT_ID: TIntegerField;
+    q_check_item_subHOWTO_IMAGE: TSmallintField;
+    q_check_item_subVIDEO_ID: TStringField;
+    q_check_item_sub2ID: TIntegerField;
+    q_check_item_sub2PARENT_ID: TIntegerField;
+    q_check_item_sub2IMAGE_ID: TIntegerField;
+    q_check_item_sub2ITEM_NAME: TStringField;
+    q_check_item_sub2BODY_ID: TIntegerField;
+    q_check_item_sub2RESULT_ID: TIntegerField;
+    q_check_item_sub2HOWTO_IMAGE: TSmallintField;
+    q_check_item_sub2VIDEO_ID: TStringField;
+    btnAdd2: TBitBtn;
+    btnEdit2: TBitBtn;
+    btnDel2: TBitBtn;
+    btnDel3: TBitBtn;
+    btnEdit3: TBitBtn;
+    btnAdd3: TBitBtn;
+    gSubID: TcxGridDBColumn;
+    gSubPARENT_ID: TcxGridDBColumn;
+    gSubIMAGE_ID: TcxGridDBColumn;
+    gSubITEM_NAME: TcxGridDBColumn;
+    gSubBODY_ID: TcxGridDBColumn;
+    gSubRESULT_ID: TcxGridDBColumn;
+    gSubHOWTO_IMAGE: TcxGridDBColumn;
+    gSubVIDEO_ID: TcxGridDBColumn;
+    gSub2ID: TcxGridDBColumn;
+    gSub2PARENT_ID: TcxGridDBColumn;
+    gSub2IMAGE_ID: TcxGridDBColumn;
+    gSub2ITEM_NAME: TcxGridDBColumn;
+    gSub2BODY_ID: TcxGridDBColumn;
+    gSub2RESULT_ID: TcxGridDBColumn;
+    gSub2HOWTO_IMAGE: TcxGridDBColumn;
+    gSub2VIDEO_ID: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BitBtn3Click(Sender: TObject);
     procedure btnPracticeAddClick(Sender: TObject);
     procedure btnPracticeEditClick(Sender: TObject);
     procedure btnAddPracticeClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure btnAddClick(Sender: TObject);
-    procedure btnDeltreeClick(Sender: TObject);
     procedure BitBtn9Click(Sender: TObject);
     procedure ItemTreeViewChange(Sender: TObject; Node: TTreeNode);
     procedure btn1Click(Sender: TObject);
@@ -113,6 +169,24 @@ type
       State: TDragState; var Accept: Boolean);
     procedure gPracticeAssignDragDrop(Sender, Source: TObject; X, Y: Integer);
     procedure ItemTreeViewDblClick(Sender: TObject);
+    procedure gRootFocusedRecordChanged(Sender: TcxCustomGridTableView;
+      APrevFocusedRecord, AFocusedRecord: TcxCustomGridRecord;
+      ANewItemRecordFocusingChanged: Boolean);
+    procedure gSubFocusedRecordChanged(Sender: TcxCustomGridTableView;
+      APrevFocusedRecord, AFocusedRecord: TcxCustomGridRecord;
+      ANewItemRecordFocusingChanged: Boolean);
+    procedure btnAddClick(Sender: TObject);
+    procedure btnEditClick(Sender: TObject);
+    procedure btnDelClick(Sender: TObject);
+    procedure btnAdd2Click(Sender: TObject);
+    procedure btnEdit2Click(Sender: TObject);
+    procedure btnDel2Click(Sender: TObject);
+    procedure btnAdd3Click(Sender: TObject);
+    procedure btnEdit3Click(Sender: TObject);
+    procedure btnDel3Click(Sender: TObject);
+    procedure gSub2FocusedRecordChanged(Sender: TcxCustomGridTableView;
+      APrevFocusedRecord, AFocusedRecord: TcxCustomGridRecord;
+      ANewItemRecordFocusingChanged: Boolean);
   private
     procedure RetrieveAssignedItem;
     procedure ShowPracticeMethode(p_id: Integer; p_name: string);
@@ -158,6 +232,43 @@ begin
   Accept := (Source is TcxDragControlObject);
 end;
 
+procedure TfmStaticCheckItemSet.gRootFocusedRecordChanged(
+  Sender: TcxCustomGridTableView; APrevFocusedRecord,
+  AFocusedRecord: TcxCustomGridRecord; ANewItemRecordFocusingChanged: Boolean);
+begin
+  q_check_item_sub.ParamByName('p_id').Value := q_check_item_treeID.Value;
+  q_check_item_sub.Open;
+  d_check_item_sub.DataSet.Refresh
+end;
+
+procedure TfmStaticCheckItemSet.gSub2FocusedRecordChanged(
+  Sender: TcxCustomGridTableView; APrevFocusedRecord,
+  AFocusedRecord: TcxCustomGridRecord; ANewItemRecordFocusingChanged: Boolean);
+begin
+  if gSub2.DataController.RecordCount > 0 then begin
+    q_npractice_assign.ParamByName('result_id').AsInteger := q_check_item_sub2ID.Value;
+    q_npractice_assign.Open;
+  end else begin
+    q_npractice_assign.ParamByName('result_id').AsInteger := -1;
+    q_npractice_assign.Open;
+  end;
+  d_npractice_assign.DataSet.Refresh;
+end;
+
+procedure TfmStaticCheckItemSet.gSubFocusedRecordChanged(
+  Sender: TcxCustomGridTableView; APrevFocusedRecord,
+  AFocusedRecord: TcxCustomGridRecord; ANewItemRecordFocusingChanged: Boolean);
+begin
+  if gSub.DataController.RecordCount > 0 then begin
+    q_check_item_sub2.ParamByName('p_id').Value := q_check_item_subID.Value;
+    q_check_item_sub2.Open;
+  end else begin
+    q_check_item_sub2.ParamByName('p_id').Value := -1;
+    q_check_item_sub2.Open;
+  end;
+  d_check_item_sub2.DataSet.Refresh
+end;
+
 procedure TfmStaticCheckItemSet.ItemTreeViewChange(Sender: TObject;
   Node: TTreeNode);
 begin
@@ -179,9 +290,8 @@ procedure TfmStaticCheckItemSet.RetrieveAssignedItem;
 var
   checkitem_id : Integer;
 begin
-  checkitem_id := q_check_item_treeID.AsInteger;
+  checkitem_id := q_check_item_sub2ID.AsInteger;
   q_npractice_assign.ParamByName('result_id').AsInteger := checkitem_id;
-  q_npractice_assign.ParamByName('dir_kind').AsInteger := rgDirection.ItemIndex;
   q_npractice_assign.Active := True;
   d_npractice_assign.DataSet.Refresh;
 end;
@@ -354,10 +464,55 @@ begin
   end;
 end;
 
-procedure TfmStaticCheckItemSet.btnAddClick(Sender: TObject);
+procedure TfmStaticCheckItemSet.btnAdd2Click(Sender: TObject);
+var
+  itemStr : string;
+const
+  title = '측정부위';
+  quest = '측정부위 입력';
 begin
-  if (ItemTreeView.Selected <> Nil) then
-    ItemTreeView.Items.AddChild(ItemTreeView.Selected,'하위노드 ' + ItemTreeView.Selected.Text);
+  if InputQuery(title, quest, itemStr) then begin
+    q_check_item_sub.Append;
+    q_check_item_subPARENT_ID.Value := q_check_item_treeID.Value;
+    q_check_item_subITEM_NAME.Value := itemStr;
+    q_check_item_sub.Post;
+    d_check_item_sub.DataSet.Refresh;
+    d_check_item_sub.DataSet.Last;
+  end;
+end;
+
+procedure TfmStaticCheckItemSet.btnAdd3Click(Sender: TObject);
+var
+  itemStr : string;
+const
+  title = '측정항목';
+  quest = '측정항목 입력';
+begin
+  if InputQuery(title, quest, itemStr) then begin
+    q_check_item_sub2.Append;
+    q_check_item_sub2PARENT_ID.Value := q_check_item_subID.Value;
+    q_check_item_sub2ITEM_NAME.Value := itemStr;
+    q_check_item_sub2.Post;
+    d_check_item_sub2.DataSet.Refresh;
+    d_check_item_sub2.DataSet.Last;
+  end;
+end;
+
+procedure TfmStaticCheckItemSet.btnAddClick(Sender: TObject);
+var
+  itemStr : string;
+const
+  title = '측정항목';
+  quest = '측정항목 입력';
+begin
+  if InputQuery(title, quest, itemStr) then begin
+    q_check_item_tree.Append;
+    q_check_item_treePARENT_ID.Value := 0;
+    q_check_item_treeITEM_NAME.Value := itemStr;
+    q_check_item_tree.Post;
+    d_check_item_tree.DataSet.Refresh;
+    d_check_item_tree.DataSet.Last;
+  end;
 end;
 
 procedure TfmStaticCheckItemSet.btnAddPracticeClick(Sender: TObject);
@@ -370,7 +525,7 @@ begin
       row := Controller.SelectedRecords[i].Index;
       practice_id := DataController.GetValue(row, GetColumnByFieldName('ID').Index);
       d_npractice_assign.DataSet.Append;
-      d_npractice_assign.DataSet.FieldByName('result_id').Value := d_check_item_tree.DataSet.FieldByName('id').Value;
+      d_npractice_assign.DataSet.FieldByName('result_id').Value := d_check_item_sub2.DataSet.FieldByName('id').Value;
       d_npractice_assign.DataSet.FieldByName('direction_kind').Value := rgDirection.ItemIndex;
       d_npractice_assign.DataSet.FieldByName('practice_id').Value := practice_id;
       d_npractice_assign.DataSet.Post;
@@ -379,10 +534,85 @@ begin
   d_npractice_assign.DataSet.Refresh;
 end;
 
-procedure TfmStaticCheckItemSet.btnDeltreeClick(Sender: TObject);
+procedure TfmStaticCheckItemSet.btnDel2Click(Sender: TObject);
 begin
-  if (ItemTreeView.Selected <> Nil) then
-    ItemTreeView.Selected.Delete;
+  if Application.MessageBox('선택한 자료를 삭제합니다. ' + #13#10 + '삭제한 후에는 되돌릴 수 없습니다.'
+    + #13#10 + '정말 삭제할까요?', 'Application.Title', MB_YESNO + MB_ICONWARNING) =
+    IDYES then
+  begin
+    q_check_item_sub.Delete;
+    d_check_item_sub.DataSet.Refresh;
+  end;
+end;
+
+procedure TfmStaticCheckItemSet.btnDel3Click(Sender: TObject);
+begin
+  if Application.MessageBox('선택한 자료를 삭제합니다. ' + #13#10 + '삭제한 후에는 되돌릴 수 없습니다.'
+    + #13#10 + '정말 삭제할까요?', 'Application.Title', MB_YESNO + MB_ICONWARNING) =
+    IDYES then
+  begin
+    q_check_item_sub2.Delete;
+    d_check_item_sub2.DataSet.Refresh;
+  end;
+end;
+
+procedure TfmStaticCheckItemSet.btnDelClick(Sender: TObject);
+begin
+  if Application.MessageBox('선택한 자료를 삭제합니다. ' + #13#10 + '삭제한 후에는 되돌릴 수 없습니다.'
+    + #13#10 + '정말 삭제할까요?', 'Application.Title', MB_YESNO + MB_ICONWARNING) =
+    IDYES then
+  begin
+    q_check_item_tree.Delete;
+    d_check_item_tree.DataSet.Refresh;
+  end;
+end;
+
+procedure TfmStaticCheckItemSet.btnEdit2Click(Sender: TObject);
+var
+  itemStr : string;
+const
+  title = '측정부위';
+  quest = '측정부위 입력';
+begin
+  itemStr := gSubITEM_NAME.EditValue;
+  if InputQuery(title, quest, itemStr) then begin
+    q_check_item_sub.Edit;
+    q_check_item_subITEM_NAME.Value := itemStr;
+    q_check_item_sub.Post;
+    d_check_item_sub.DataSet.Refresh;
+  end;
+end;
+
+procedure TfmStaticCheckItemSet.btnEdit3Click(Sender: TObject);
+var
+  itemStr : string;
+const
+  title = '측정항목';
+  quest = '측정항목 입력';
+begin
+  itemStr := gSub2ITEM_NAME.EditValue;
+  if InputQuery(title, quest, itemStr) then begin
+    q_check_item_sub2.Edit;
+    q_check_item_sub2ITEM_NAME.Value := itemStr;
+    q_check_item_sub2.Post;
+    d_check_item_sub2.DataSet.Refresh;
+  end;
+end;
+
+procedure TfmStaticCheckItemSet.btnEditClick(Sender: TObject);
+var
+  itemStr : string;
+const
+  title = '측정항목';
+  quest = '측정항목 입력';
+begin
+  itemStr := gRootITEM_NAME.EditValue;
+  if InputQuery(title, quest, itemStr) then begin
+    q_check_item_tree.Edit;
+    q_check_item_treeITEM_NAME.Value := itemStr;
+    q_check_item_tree.Post;
+    d_check_item_tree.DataSet.Refresh;
+  end;
 end;
 
 initialization RegisterClasses([TfmStaticCheckItemSet]);

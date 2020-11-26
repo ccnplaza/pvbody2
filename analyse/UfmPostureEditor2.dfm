@@ -31,24 +31,27 @@ object fmPostureEditor2: TfmPostureEditor2
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitLeft = 24
-    ExplicitTop = -88
+    ExplicitWidth = 1348
+    ExplicitHeight = 723
     inherited pnl1: TPanel
       Width = 1348
       Height = 723
+      ExplicitWidth = 1348
+      ExplicitHeight = 723
       inherited pnlTools: TPanel
         Left = 1166
         Height = 723
+        ExplicitLeft = 1166
+        ExplicitHeight = 723
         inherited cxPageControl1: TcxPageControl
           Height = 723
+          ExplicitHeight = 723
           ClientRectBottom = 718
           inherited cxTabSheet1: TcxTabSheet
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
+            ExplicitHeight = 691
             inherited pnl2: TPanel
               Height = 691
+              ExplicitHeight = 691
               inherited cxGroupBox1: TcxGroupBox
                 inherited colorLine: TdxColorEdit
                   Style.IsFontAssigned = True
@@ -68,7 +71,7 @@ object fmPostureEditor2: TfmPostureEditor2
               end
             end
           end
-          inherited cxTabSheet3: TcxTabSheet
+          inherited cxTabSheet2: TcxTabSheet
             ExplicitLeft = 0
             ExplicitTop = 0
             ExplicitWidth = 0
@@ -79,8 +82,11 @@ object fmPostureEditor2: TfmPostureEditor2
       inherited pnl5: TPanel
         Width = 1166
         Height = 723
+        ExplicitWidth = 1166
+        ExplicitHeight = 723
         inherited pnl6: TPanel
           Width = 1166
+          ExplicitWidth = 1166
           inherited btnSaveDraw: TBitBtn
             OnClick = frmImageEditor21btnSaveDrawClick
           end
@@ -88,85 +94,68 @@ object fmPostureEditor2: TfmPostureEditor2
         inherited Panel1: TPanel
           Width = 1166
           Height = 697
+          ExplicitWidth = 1166
+          ExplicitHeight = 697
           inherited ImageEnVect1: TImageEnVect
             Width = 564
             Height = 695
+            ExplicitWidth = 564
+            ExplicitHeight = 695
           end
           inherited cxPageControl2: TcxPageControl
             Height = 695
             LookAndFeel.SkinName = ''
+            ExplicitHeight = 695
             ClientRectBottom = 695
             inherited cxTabSheet4: TcxTabSheet
-              inherited ImageEnView1_1: TImageEnView
+              ExplicitHeight = 673
+              inherited Image1: TImage
                 Height = 673
-                ExplicitLeft = 0
-                ExplicitTop = 0
-                ExplicitWidth = 300
-                ExplicitHeight = 761
               end
             end
             inherited cxTabSheet5: TcxTabSheet
-              inherited ImageEnView1_2: TImageEnView
-                ExplicitLeft = 0
-                ExplicitTop = 0
-                ExplicitWidth = 300
-                ExplicitHeight = 761
-              end
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
             end
             inherited cxTabSheet6: TcxTabSheet
-              inherited ImageEnView1_3: TImageEnView
-                ExplicitLeft = 0
-                ExplicitTop = 0
-                ExplicitWidth = 300
-                ExplicitHeight = 761
-              end
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
             end
             inherited cxTabSheet7: TcxTabSheet
-              inherited ImageEnView1_4: TImageEnView
-                ExplicitLeft = 0
-                ExplicitTop = 0
-                ExplicitWidth = 300
-                ExplicitHeight = 761
-              end
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
             end
           end
           inherited cxPageControl3: TcxPageControl
             Left = 865
             Height = 695
             LookAndFeel.SkinName = ''
+            ExplicitLeft = 865
+            ExplicitHeight = 695
             ClientRectBottom = 695
             inherited cxTabSheet8: TcxTabSheet
-              inherited ImageEnView2_1: TImageEnView
+              ExplicitHeight = 673
+              inherited Image5: TImage
                 Height = 673
-                ExplicitLeft = 0
-                ExplicitTop = 0
-                ExplicitWidth = 300
-                ExplicitHeight = 761
               end
             end
             inherited cxTabSheet9: TcxTabSheet
-              inherited ImageEnView2_2: TImageEnView
-                ExplicitLeft = 0
-                ExplicitTop = 0
-                ExplicitWidth = 300
-                ExplicitHeight = 761
-              end
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
             end
             inherited cxTabSheet10: TcxTabSheet
-              inherited ImageEnView2_3: TImageEnView
-                ExplicitLeft = 0
-                ExplicitTop = 0
-                ExplicitWidth = 300
-                ExplicitHeight = 761
-              end
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
             end
             inherited cxTabSheet11: TcxTabSheet
-              inherited ImageEnView2_4: TImageEnView
-                ExplicitLeft = 0
-                ExplicitTop = 0
-                ExplicitWidth = 300
-                ExplicitHeight = 761
-              end
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
             end
           end
         end

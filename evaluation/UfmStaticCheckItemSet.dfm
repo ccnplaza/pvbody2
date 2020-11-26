@@ -18,7 +18,7 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
   PixelsPerInch = 96
   TextHeight = 15
   object Panel7: TPanel
-    Left = 280
+    Left = 529
     Top = 0
     Width = 364
     Height = 716
@@ -26,6 +26,7 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
     BevelOuter = bvNone
     Caption = 'Panel7'
     TabOrder = 0
+    ExplicitLeft = 280
     object Panel9: TPanel
       Left = 0
       Top = 0
@@ -268,16 +269,18 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
     end
   end
   object Panel19: TPanel
-    Left = 644
+    Left = 893
     Top = 0
-    Width = 684
+    Width = 435
     Height = 716
     Align = alClient
     TabOrder = 1
+    ExplicitLeft = 644
+    ExplicitWidth = 684
     object Panel21: TPanel
       Left = 1
       Top = 1
-      Width = 682
+      Width = 433
       Height = 25
       Align = alTop
       BevelOuter = bvNone
@@ -291,15 +294,17 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
       ParentBackground = False
       ParentFont = False
       TabOrder = 0
+      ExplicitWidth = 682
     end
     object Panel22: TPanel
       Left = 1
       Top = 26
-      Width = 682
+      Width = 433
       Height = 31
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 1
+      ExplicitWidth = 682
       object btnAddPractice: TBitBtn
         Left = 103
         Top = 3
@@ -425,11 +430,12 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
     object cxGrid5: TcxGrid
       Left = 1
       Top = 57
-      Width = 682
+      Width = 433
       Height = 658
       Align = alClient
       TabOrder = 2
       LookAndFeel.SkinName = 'DevExpressStyle'
+      ExplicitWidth = 682
       object gPractice: TcxGridDBTableView
         DragMode = dmAutomatic
         Navigator.Buttons.CustomButtons = <>
@@ -486,14 +492,14 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
   object pnl1: TPanel
     Left = 0
     Top = 0
-    Width = 280
+    Width = 529
     Height = 716
     Align = alLeft
     TabOrder = 2
     object pnl2: TPanel
       Left = 1
       Top = 26
-      Width = 278
+      Width = 527
       Height = 26
       Align = alTop
       Alignment = taLeftJustify
@@ -507,6 +513,7 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
       ParentColor = True
       ParentFont = False
       TabOrder = 0
+      ExplicitWidth = 278
       object btnViewPos: TBitBtn
         Left = 5
         Top = 0
@@ -526,7 +533,7 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
         OnClick = btnViewPosClick
       end
       object btnAdd: TBitBtn
-        Left = 63
+        Left = 43
         Top = 0
         Width = 34
         Height = 26
@@ -541,11 +548,10 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
           DADAADA000030000ADADDADADA030ADADADAADADAD030DADADADDADADA000ADA
           DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
         TabOrder = 1
-        Visible = False
         OnClick = btnAddClick
       end
-      object btnDeltree: TBitBtn
-        Left = 129
+      object btnDel: TBitBtn
+        Left = 109
         Top = 0
         Width = 34
         Height = 26
@@ -560,11 +566,10 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
           DADAADA000000000ADADDADADADADADADADAADADADADADADADADDADADADADADA
           DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
         TabOrder = 2
-        Visible = False
-        OnClick = btnDeltreeClick
+        OnClick = btnDelClick
       end
-      object btn4: TBitBtn
-        Left = 96
+      object btnEdit: TBitBtn
+        Left = 76
         Top = 0
         Width = 34
         Height = 26
@@ -579,53 +584,121 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
           BF07A0FBFBF0BB0BFB07D0BFBFB0BB0FBF07A00000000BB0000DDADADADA0BB0
           DADAADADADADA0000DADDADADADAD0110ADAADADADADAD00ADAD}
         TabOrder = 3
-        Visible = False
+        OnClick = btnEditClick
       end
-    end
-    object ItemTreeView: TdxDBTreeView
-      Left = 1
-      Top = 52
-      Width = 278
-      Height = 663
-      Cursor = crHandPoint
-      ImeName = 'Microsoft IME 2010'
-      ShowNodeHint = True
-      DeletingConfirmationMessage = '"%s"'#51012' '#49325#51228#54624#44620#50836'?'
-      HotTrack = True
-      RowSelect = True
-      DataSource = d_check_item_tree
-      DisplayField = 'ITEM_NAME'
-      ImageIndexField = 'IMAGE_ID'
-      KeyField = 'ID'
-      ListField = 'ITEM_NAME'
-      ParentField = 'PARENT_ID'
-      RootValue = Null
-      SeparatedSt = ' - '
-      RaiseOnError = True
-      ReadOnly = True
-      DragMode = dmAutomatic
-      Indent = 22
-      OnChange = ItemTreeViewChange
-      Align = alClient
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = #45208#45588#44256#46357
-      Font.Style = [fsBold]
-      Color = 16776176
-      ParentColor = False
-      Options = [trCanDBNavigate, trSmartRecordCopy, trCheckHasChildren]
-      SelectedIndex = -1
-      TabOrder = 1
-      OnDblClick = ItemTreeViewDblClick
-      ParentFont = False
-      Images = cxImageList1
-      IsConfirmationAssigned = True
+      object btnAdd2: TBitBtn
+        Left = 182
+        Top = 0
+        Width = 34
+        Height = 26
+        Hint = #52769#51221#48169#48277
+        Glyph.Data = {
+          F6000000424DF600000000000000760000002800000010000000100000000100
+          04000000000080000000120B0000120B00001000000000000000000000000000
+          8000008000000080800080000000800080008080000080808000C0C0C0000000
+          FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+          DADAADADADADADADADADDADADADADADADADAADADADADADADADADDADADA000ADA
+          DADAADADAD030DADADADDADADA030ADADADAADA000030000ADADDAD033333330
+          DADAADA000030000ADADDADADA030ADADADAADADAD030DADADADDADADA000ADA
+          DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
+        TabOrder = 4
+        OnClick = btnAdd2Click
+      end
+      object btnEdit2: TBitBtn
+        Left = 215
+        Top = 0
+        Width = 34
+        Height = 26
+        Hint = #52769#51221#48169#48277
+        Glyph.Data = {
+          F6000000424DF600000000000000760000002800000010000000100000000100
+          04000000000080000000120B0000120B00001000000000000000000000000000
+          8000008000000080800080000000800080008080000080808000C0C0C0000000
+          FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+          DADAAD77777777777777D000000000000007A0FBFBFBFB00FB07D0BFBFBFBF08
+          0F07A0F0F0F0FB0B8007D0BFBFB00F000007A0FBFBF0B0FBFB07D0BFBFB0B0BF
+          BF07A0FBFBF0BB0BFB07D0BFBFB0BB0FBF07A00000000BB0000DDADADADA0BB0
+          DADAADADADADA0000DADDADADADAD0110ADAADADADADAD00ADAD}
+        TabOrder = 5
+        OnClick = btnEdit2Click
+      end
+      object btnDel2: TBitBtn
+        Left = 248
+        Top = 0
+        Width = 34
+        Height = 26
+        Hint = #52769#51221#48169#48277
+        Glyph.Data = {
+          F6000000424DF600000000000000760000002800000010000000100000000100
+          04000000000080000000120B0000120B00001000000000000000000000000000
+          8000008000000080800080000000800080008080000080808000C0C0C0000000
+          FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+          DADAADADADADADADADADDADADADADADADADAADADADADADADADADDADADADADADA
+          DADAADADADADADADADADDADADADADADADADAADA000000000ADADDAD033333330
+          DADAADA000000000ADADDADADADADADADADAADADADADADADADADDADADADADADA
+          DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
+        TabOrder = 6
+        OnClick = btnDel2Click
+      end
+      object btnDel3: TBitBtn
+        Left = 427
+        Top = 0
+        Width = 34
+        Height = 26
+        Hint = #52769#51221#48169#48277
+        Glyph.Data = {
+          F6000000424DF600000000000000760000002800000010000000100000000100
+          04000000000080000000120B0000120B00001000000000000000000000000000
+          8000008000000080800080000000800080008080000080808000C0C0C0000000
+          FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+          DADAADADADADADADADADDADADADADADADADAADADADADADADADADDADADADADADA
+          DADAADADADADADADADADDADADADADADADADAADA000000000ADADDAD033333330
+          DADAADA000000000ADADDADADADADADADADAADADADADADADADADDADADADADADA
+          DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
+        TabOrder = 7
+        OnClick = btnDel3Click
+      end
+      object btnEdit3: TBitBtn
+        Left = 394
+        Top = 0
+        Width = 34
+        Height = 26
+        Hint = #52769#51221#48169#48277
+        Glyph.Data = {
+          F6000000424DF600000000000000760000002800000010000000100000000100
+          04000000000080000000120B0000120B00001000000000000000000000000000
+          8000008000000080800080000000800080008080000080808000C0C0C0000000
+          FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+          DADAAD77777777777777D000000000000007A0FBFBFBFB00FB07D0BFBFBFBF08
+          0F07A0F0F0F0FB0B8007D0BFBFB00F000007A0FBFBF0B0FBFB07D0BFBFB0B0BF
+          BF07A0FBFBF0BB0BFB07D0BFBFB0BB0FBF07A00000000BB0000DDADADADA0BB0
+          DADAADADADADA0000DADDADADADAD0110ADAADADADADAD00ADAD}
+        TabOrder = 8
+        OnClick = btnEdit3Click
+      end
+      object btnAdd3: TBitBtn
+        Left = 361
+        Top = 0
+        Width = 34
+        Height = 26
+        Hint = #52769#51221#48169#48277
+        Glyph.Data = {
+          F6000000424DF600000000000000760000002800000010000000100000000100
+          04000000000080000000120B0000120B00001000000000000000000000000000
+          8000008000000080800080000000800080008080000080808000C0C0C0000000
+          FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+          DADAADADADADADADADADDADADADADADADADAADADADADADADADADDADADA000ADA
+          DADAADADAD030DADADADDADADA030ADADADAADA000030000ADADDAD033333330
+          DADAADA000030000ADADDADADA030ADADADAADADAD030DADADADDADADA000ADA
+          DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
+        TabOrder = 9
+        OnClick = btnAdd3Click
+      end
     end
     object pnl3: TPanel
       Left = 1
       Top = 1
-      Width = 278
+      Width = 527
       Height = 25
       Align = alTop
       BevelOuter = bvNone
@@ -638,7 +711,240 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
       Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
+      TabOrder = 1
+      ExplicitWidth = 278
+    end
+    object cxGrid1: TcxGrid
+      Left = 1
+      Top = 52
+      Width = 160
+      Height = 663
+      Align = alLeft
       TabOrder = 2
+      LookAndFeel.SkinName = 'Black'
+      object gRoot: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        Navigator.Buttons.First.Visible = False
+        Navigator.Buttons.PriorPage.Visible = False
+        Navigator.Buttons.Prior.Visible = False
+        Navigator.Buttons.Next.Visible = False
+        Navigator.Buttons.NextPage.Visible = False
+        Navigator.Buttons.Last.Visible = False
+        Navigator.Buttons.Insert.Visible = False
+        Navigator.Buttons.Append.Visible = False
+        Navigator.Buttons.Delete.Visible = False
+        Navigator.Buttons.Edit.Visible = False
+        Navigator.Buttons.Post.Visible = False
+        Navigator.Buttons.Cancel.Visible = False
+        Navigator.Buttons.Refresh.Visible = False
+        Navigator.Buttons.SaveBookmark.Visible = False
+        Navigator.Buttons.GotoBookmark.Visible = False
+        Navigator.Buttons.Filter.Visible = False
+        OnFocusedRecordChanged = gRootFocusedRecordChanged
+        DataController.DataSource = d_check_item_tree
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsSelection.CellSelect = False
+        OptionsSelection.HideFocusRectOnExit = False
+        OptionsView.ColumnAutoWidth = True
+        OptionsView.GroupByBox = False
+        OptionsView.Indicator = True
+        object gRootID: TcxGridDBColumn
+          DataBinding.FieldName = 'ID'
+          HeaderAlignmentHorz = taCenter
+          Width = 31
+        end
+        object gRootPARENT_ID: TcxGridDBColumn
+          DataBinding.FieldName = 'PARENT_ID'
+          Visible = False
+        end
+        object gRootIMAGE_ID: TcxGridDBColumn
+          DataBinding.FieldName = 'IMAGE_ID'
+          Visible = False
+        end
+        object gRootITEM_NAME: TcxGridDBColumn
+          Caption = #52769#51221#54637#47785
+          DataBinding.FieldName = 'ITEM_NAME'
+          Width = 99
+        end
+        object gRootBODY_ID: TcxGridDBColumn
+          DataBinding.FieldName = 'BODY_ID'
+          Visible = False
+        end
+        object gRootRESULT_ID: TcxGridDBColumn
+          DataBinding.FieldName = 'RESULT_ID'
+          Visible = False
+        end
+        object gRootHOWTO_IMAGE: TcxGridDBColumn
+          DataBinding.FieldName = 'HOWTO_IMAGE'
+          Visible = False
+        end
+        object gRootVIDEO_ID: TcxGridDBColumn
+          DataBinding.FieldName = 'VIDEO_ID'
+          Visible = False
+        end
+      end
+      object cxGrid1Level1: TcxGridLevel
+        GridView = gRoot
+      end
+    end
+    object cxGrid2: TcxGrid
+      Left = 337
+      Top = 52
+      Width = 191
+      Height = 663
+      Align = alClient
+      TabOrder = 3
+      LookAndFeel.SkinName = 'Black'
+      ExplicitLeft = 233
+      ExplicitTop = 58
+      ExplicitWidth = 123
+      object gSub2: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        Navigator.Buttons.First.Visible = False
+        Navigator.Buttons.PriorPage.Visible = False
+        Navigator.Buttons.Prior.Visible = False
+        Navigator.Buttons.Next.Visible = False
+        Navigator.Buttons.NextPage.Visible = False
+        Navigator.Buttons.Last.Visible = False
+        Navigator.Buttons.Insert.Visible = False
+        Navigator.Buttons.Append.Visible = False
+        Navigator.Buttons.Delete.Visible = False
+        Navigator.Buttons.Edit.Visible = False
+        Navigator.Buttons.Post.Visible = False
+        Navigator.Buttons.Cancel.Visible = False
+        Navigator.Buttons.Refresh.Visible = False
+        Navigator.Buttons.SaveBookmark.Visible = False
+        Navigator.Buttons.GotoBookmark.Visible = False
+        Navigator.Buttons.Filter.Visible = False
+        OnFocusedRecordChanged = gSub2FocusedRecordChanged
+        DataController.DataSource = d_check_item_sub2
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsSelection.CellSelect = False
+        OptionsSelection.HideFocusRectOnExit = False
+        OptionsView.ColumnAutoWidth = True
+        OptionsView.GroupByBox = False
+        OptionsView.Indicator = True
+        object gSub2ID: TcxGridDBColumn
+          DataBinding.FieldName = 'ID'
+          HeaderAlignmentHorz = taCenter
+          Width = 36
+        end
+        object gSub2PARENT_ID: TcxGridDBColumn
+          DataBinding.FieldName = 'PARENT_ID'
+          Visible = False
+        end
+        object gSub2IMAGE_ID: TcxGridDBColumn
+          DataBinding.FieldName = 'IMAGE_ID'
+          Visible = False
+        end
+        object gSub2ITEM_NAME: TcxGridDBColumn
+          Caption = #52769#51221#44208#44284
+          DataBinding.FieldName = 'ITEM_NAME'
+          Width = 133
+        end
+        object gSub2BODY_ID: TcxGridDBColumn
+          DataBinding.FieldName = 'BODY_ID'
+          Visible = False
+        end
+        object gSub2RESULT_ID: TcxGridDBColumn
+          DataBinding.FieldName = 'RESULT_ID'
+          Visible = False
+        end
+        object gSub2HOWTO_IMAGE: TcxGridDBColumn
+          DataBinding.FieldName = 'HOWTO_IMAGE'
+          Visible = False
+        end
+        object gSub2VIDEO_ID: TcxGridDBColumn
+          DataBinding.FieldName = 'VIDEO_ID'
+          Visible = False
+        end
+      end
+      object cxGridLevel1: TcxGridLevel
+        GridView = gSub2
+      end
+    end
+    object cxGrid4: TcxGrid
+      Left = 161
+      Top = 52
+      Width = 176
+      Height = 663
+      Align = alLeft
+      TabOrder = 4
+      LookAndFeel.SkinName = 'Black'
+      ExplicitLeft = 145
+      object gSub: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        Navigator.Buttons.First.Visible = False
+        Navigator.Buttons.PriorPage.Visible = False
+        Navigator.Buttons.Prior.Visible = False
+        Navigator.Buttons.Next.Visible = False
+        Navigator.Buttons.NextPage.Visible = False
+        Navigator.Buttons.Last.Visible = False
+        Navigator.Buttons.Insert.Visible = False
+        Navigator.Buttons.Append.Visible = False
+        Navigator.Buttons.Delete.Visible = False
+        Navigator.Buttons.Edit.Visible = False
+        Navigator.Buttons.Post.Visible = False
+        Navigator.Buttons.Cancel.Visible = False
+        Navigator.Buttons.Refresh.Visible = False
+        Navigator.Buttons.SaveBookmark.Visible = False
+        Navigator.Buttons.GotoBookmark.Visible = False
+        Navigator.Buttons.Filter.Visible = False
+        OnFocusedRecordChanged = gSubFocusedRecordChanged
+        DataController.DataSource = d_check_item_sub
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsSelection.CellSelect = False
+        OptionsSelection.HideFocusRectOnExit = False
+        OptionsView.ColumnAutoWidth = True
+        OptionsView.GroupByBox = False
+        OptionsView.Indicator = True
+        object gSubID: TcxGridDBColumn
+          DataBinding.FieldName = 'ID'
+          HeaderAlignmentHorz = taCenter
+          Width = 33
+        end
+        object gSubPARENT_ID: TcxGridDBColumn
+          DataBinding.FieldName = 'PARENT_ID'
+          Visible = False
+        end
+        object gSubIMAGE_ID: TcxGridDBColumn
+          DataBinding.FieldName = 'IMAGE_ID'
+          Visible = False
+        end
+        object gSubITEM_NAME: TcxGridDBColumn
+          Caption = #52769#51221#48512#50948
+          DataBinding.FieldName = 'ITEM_NAME'
+          Width = 129
+        end
+        object gSubBODY_ID: TcxGridDBColumn
+          DataBinding.FieldName = 'BODY_ID'
+          Visible = False
+        end
+        object gSubRESULT_ID: TcxGridDBColumn
+          DataBinding.FieldName = 'RESULT_ID'
+          Visible = False
+        end
+        object gSubHOWTO_IMAGE: TcxGridDBColumn
+          DataBinding.FieldName = 'HOWTO_IMAGE'
+          Visible = False
+        end
+        object gSubVIDEO_ID: TcxGridDBColumn
+          DataBinding.FieldName = 'VIDEO_ID'
+          Visible = False
+        end
+      end
+      object cxGridLevel3: TcxGridLevel
+        GridView = gSub
+      end
     end
   end
   object q_check_item_tree: TUniQuery
@@ -682,13 +988,14 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
       ') q')
     Connection = dmDBCommon.UniDBConnection
     SQL.Strings = (
-      'select * from check_item_tree'
-      'order by id')
-    Left = 104
-    Top = 232
+      'select * from check_item_tree where parent_id = 0'
+      'order by image_id')
+    Left = 64
+    Top = 192
     object q_check_item_treeID: TIntegerField
+      Alignment = taCenter
+      AutoGenerateValue = arAutoInc
       FieldName = 'ID'
-      Required = True
     end
     object q_check_item_treePARENT_ID: TIntegerField
       FieldName = 'PARENT_ID'
@@ -716,12 +1023,12 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
   end
   object d_check_item_tree: TDataSource
     DataSet = q_check_item_tree
-    Left = 104
-    Top = 280
+    Left = 64
+    Top = 240
   end
   object cxImageList1: TcxImageList
     FormatVersion = 1
-    DesignInfo = 22020200
+    DesignInfo = 7864384
     ImageInfo = <
       item
         Image.Data = {
@@ -1124,19 +1431,14 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
     Connection = dmDBCommon.UniDBConnection
     SQL.Strings = (
       'select * from npractice_assign'
-      'where result_id = :result_id and direction_kind = :dir_kind'
+      'where result_id = :result_id'
       'order by practice_id')
-    Left = 496
-    Top = 312
+    Left = 624
+    Top = 232
     ParamData = <
       item
         DataType = ftInteger
         Name = 'result_id'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'dir_kind'
         ParamType = ptInput
       end>
     object q_npractice_assignID: TIntegerField
@@ -1157,14 +1459,14 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
   end
   object d_npractice_assign: TDataSource
     DataSet = q_npractice_assign
-    Left = 496
-    Top = 360
+    Left = 624
+    Top = 280
   end
   object CHECK_ITEM_TREE_RESULT_SEL: TUniStoredProc
     StoredProcName = 'CHECK_ITEM_TREE_RESULT_SEL'
     Connection = dmDBCommon.UniDBConnection
-    Left = 360
-    Top = 240
+    Left = 640
+    Top = 448
     ParamData = <
       item
         DataType = ftInteger
@@ -1188,8 +1490,8 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
   end
   object ds_CHECK_ITEM_TREE_RESULT_SEL: TDataSource
     DataSet = CHECK_ITEM_TREE_RESULT_SEL
-    Left = 360
-    Top = 288
+    Left = 640
+    Top = 496
   end
   object il2: TImageList
     Left = 520
@@ -1804,5 +2106,175 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
         Size = 50
       end>
     CommandStoredProcName = 'NPRACTICE_UPD'
+  end
+  object q_check_item_sub: TUniQuery
+    SQLInsert.Strings = (
+      'INSERT INTO CHECK_ITEM_TREE'
+      
+        '  (ID, PARENT_ID, IMAGE_ID, ITEM_NAME, BODY_ID, RESULT_ID, HOWTO' +
+        '_IMAGE, VIDEO_ID)'
+      'VALUES'
+      
+        '  (:ID, :PARENT_ID, :IMAGE_ID, :ITEM_NAME, :BODY_ID, :RESULT_ID,' +
+        ' :HOWTO_IMAGE, :VIDEO_ID)')
+    SQLDelete.Strings = (
+      'DELETE FROM CHECK_ITEM_TREE'
+      'WHERE'
+      '  ID = :Old_ID')
+    SQLUpdate.Strings = (
+      'UPDATE CHECK_ITEM_TREE'
+      'SET'
+      
+        '  ID = :ID, PARENT_ID = :PARENT_ID, IMAGE_ID = :IMAGE_ID, ITEM_N' +
+        'AME = :ITEM_NAME, BODY_ID = :BODY_ID, RESULT_ID = :RESULT_ID, HO' +
+        'WTO_IMAGE = :HOWTO_IMAGE, VIDEO_ID = :VIDEO_ID'
+      'WHERE'
+      '  ID = :Old_ID')
+    SQLLock.Strings = (
+      'SELECT NULL FROM CHECK_ITEM_TREE'
+      'WHERE'
+      'ID = :Old_ID'
+      'FOR UPDATE WITH LOCK')
+    SQLRefresh.Strings = (
+      
+        'SELECT ID, PARENT_ID, IMAGE_ID, ITEM_NAME, BODY_ID, RESULT_ID, H' +
+        'OWTO_IMAGE, VIDEO_ID FROM CHECK_ITEM_TREE'
+      'WHERE'
+      '  ID = :ID')
+    SQLRecCount.Strings = (
+      'SELECT COUNT(*) FROM ('
+      'SELECT 1 AS C  FROM CHECK_ITEM_TREE'
+      ''
+      ') q')
+    Connection = dmDBCommon.UniDBConnection
+    SQL.Strings = (
+      'select * from check_item_tree where parent_id = :p_id'
+      'order by id')
+    Left = 208
+    Top = 192
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'p_id'
+        ParamType = ptInput
+      end>
+    object q_check_item_subID: TIntegerField
+      Alignment = taCenter
+      AutoGenerateValue = arAutoInc
+      FieldName = 'ID'
+    end
+    object q_check_item_subPARENT_ID: TIntegerField
+      FieldName = 'PARENT_ID'
+    end
+    object q_check_item_subIMAGE_ID: TIntegerField
+      FieldName = 'IMAGE_ID'
+    end
+    object q_check_item_subITEM_NAME: TStringField
+      FieldName = 'ITEM_NAME'
+      Size = 50
+    end
+    object q_check_item_subBODY_ID: TIntegerField
+      FieldName = 'BODY_ID'
+    end
+    object q_check_item_subRESULT_ID: TIntegerField
+      FieldName = 'RESULT_ID'
+    end
+    object q_check_item_subHOWTO_IMAGE: TSmallintField
+      FieldName = 'HOWTO_IMAGE'
+    end
+    object q_check_item_subVIDEO_ID: TStringField
+      FieldName = 'VIDEO_ID'
+      Size = 30
+    end
+  end
+  object d_check_item_sub: TDataSource
+    DataSet = q_check_item_sub
+    Left = 208
+    Top = 240
+  end
+  object q_check_item_sub2: TUniQuery
+    SQLInsert.Strings = (
+      'INSERT INTO CHECK_ITEM_TREE'
+      
+        '  (ID, PARENT_ID, IMAGE_ID, ITEM_NAME, BODY_ID, RESULT_ID, HOWTO' +
+        '_IMAGE, VIDEO_ID)'
+      'VALUES'
+      
+        '  (:ID, :PARENT_ID, :IMAGE_ID, :ITEM_NAME, :BODY_ID, :RESULT_ID,' +
+        ' :HOWTO_IMAGE, :VIDEO_ID)')
+    SQLDelete.Strings = (
+      'DELETE FROM CHECK_ITEM_TREE'
+      'WHERE'
+      '  ID = :Old_ID')
+    SQLUpdate.Strings = (
+      'UPDATE CHECK_ITEM_TREE'
+      'SET'
+      
+        '  ID = :ID, PARENT_ID = :PARENT_ID, IMAGE_ID = :IMAGE_ID, ITEM_N' +
+        'AME = :ITEM_NAME, BODY_ID = :BODY_ID, RESULT_ID = :RESULT_ID, HO' +
+        'WTO_IMAGE = :HOWTO_IMAGE, VIDEO_ID = :VIDEO_ID'
+      'WHERE'
+      '  ID = :Old_ID')
+    SQLLock.Strings = (
+      'SELECT NULL FROM CHECK_ITEM_TREE'
+      'WHERE'
+      'ID = :Old_ID'
+      'FOR UPDATE WITH LOCK')
+    SQLRefresh.Strings = (
+      
+        'SELECT ID, PARENT_ID, IMAGE_ID, ITEM_NAME, BODY_ID, RESULT_ID, H' +
+        'OWTO_IMAGE, VIDEO_ID FROM CHECK_ITEM_TREE'
+      'WHERE'
+      '  ID = :ID')
+    SQLRecCount.Strings = (
+      'SELECT COUNT(*) FROM ('
+      'SELECT 1 AS C  FROM CHECK_ITEM_TREE'
+      ''
+      ') q')
+    Connection = dmDBCommon.UniDBConnection
+    SQL.Strings = (
+      'select * from check_item_tree where parent_id = :p_id'
+      'order by id')
+    Left = 392
+    Top = 200
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'p_id'
+        ParamType = ptInput
+      end>
+    object q_check_item_sub2ID: TIntegerField
+      Alignment = taCenter
+      AutoGenerateValue = arAutoInc
+      FieldName = 'ID'
+    end
+    object q_check_item_sub2PARENT_ID: TIntegerField
+      FieldName = 'PARENT_ID'
+    end
+    object q_check_item_sub2IMAGE_ID: TIntegerField
+      FieldName = 'IMAGE_ID'
+    end
+    object q_check_item_sub2ITEM_NAME: TStringField
+      FieldName = 'ITEM_NAME'
+      Size = 50
+    end
+    object q_check_item_sub2BODY_ID: TIntegerField
+      FieldName = 'BODY_ID'
+    end
+    object q_check_item_sub2RESULT_ID: TIntegerField
+      FieldName = 'RESULT_ID'
+    end
+    object q_check_item_sub2HOWTO_IMAGE: TSmallintField
+      FieldName = 'HOWTO_IMAGE'
+    end
+    object q_check_item_sub2VIDEO_ID: TStringField
+      FieldName = 'VIDEO_ID'
+      Size = 30
+    end
+  end
+  object d_check_item_sub2: TDataSource
+    DataSet = q_check_item_sub2
+    Left = 392
+    Top = 248
   end
 end

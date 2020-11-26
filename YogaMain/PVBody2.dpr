@@ -131,7 +131,8 @@ uses
   UfmMuscleView in '..\analyse\UfmMuscleView.pas' {fmMuscleView},
   UfmCustomerRecent in '..\member\UfmCustomerRecent.pas' {fmCustomerRecent},
   UfmTextObjectManager in '..\analyse\UfmTextObjectManager.pas' {fmTextObjectManager},
-  UfmTextObjectEdit in '..\analyse\UfmTextObjectEdit.pas' {fmTextObjectEdit};
+  UfmTextObjectEdit in '..\analyse\UfmTextObjectEdit.pas' {fmTextObjectEdit},
+  UfmCheckStaticItem in '..\evaluation\UfmCheckStaticItem.pas' {fmCheckStaticItem};
 
 {$R *.res}
 

@@ -23,7 +23,7 @@ uses
   cxGroupBox, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
   dxSkinOffice2013LightGray, dxBarBuiltInMenu, ActnList, iexActions,
   ieopensavedlg, dxGDIPlusClasses, WebImage, iexBitmaps, iesettings, iexLayers,
-  iexRulers, iexToolbars, HotSpotImage;
+  iexRulers, iexToolbars, HotSpotImage, Menus, cxButtons;
 
 type
   TfrmImageEditor2 = class(TFrame)
@@ -154,17 +154,6 @@ type
     Panel1: TPanel;
     btnImportFile: TSpeedButton;
     chkGrid: TCheckBox;
-    cxGroupBox6: TcxGroupBox;
-    Label13: TLabel;
-    Label14: TLabel;
-    Label15: TLabel;
-    Label16: TLabel;
-    spY2: TcxSpinEdit;
-    spX2: TcxSpinEdit;
-    spY1: TcxSpinEdit;
-    spX1: TcxSpinEdit;
-    btnSelectCut: TSpeedButton;
-    btnCut: TSpeedButton;
     btnFit: TBitBtn;
     Label17: TLabel;
     lblSelSize: TLabel;
@@ -179,14 +168,14 @@ type
     cxTabSheet9: TcxTabSheet;
     cxTabSheet10: TcxTabSheet;
     cxTabSheet11: TcxTabSheet;
-    ImageEnView1_1: TImageEnView;
-    ImageEnView1_2: TImageEnView;
-    ImageEnView1_3: TImageEnView;
-    ImageEnView1_4: TImageEnView;
-    ImageEnView2_1: TImageEnView;
-    ImageEnView2_2: TImageEnView;
-    ImageEnView2_3: TImageEnView;
-    ImageEnView2_4: TImageEnView;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    Image4: TImage;
+    Image5: TImage;
+    Image6: TImage;
+    Image7: TImage;
+    Image8: TImage;
     procedure ImageEnVect1NewObject(Sender: TObject; hobj: Integer);
     procedure ImageEnVect1SelectObject(Sender: TObject);
     procedure cbbAngleChange(Sender: TObject);
@@ -253,9 +242,6 @@ type
     procedure ImageEnVect1Resize(Sender: TObject);
     procedure ImageEnVect1DrawBackBuffer(Sender: TObject);
     procedure chkGridClick(Sender: TObject);
-    procedure btnSelectCutClick(Sender: TObject);
-    procedure spX1PropertiesEditValueChanged(Sender: TObject);
-    procedure btnCutClick(Sender: TObject);
     procedure btnFitClick(Sender: TObject);
     procedure ImageEnVect1SelectionChanging(Sender: TObject);
     procedure chkGuidLineClick(Sender: TObject);
@@ -341,30 +327,30 @@ begin
   ImageEnVect1.Update;
   //btnLine.Click;
   dxMemThumbnail.Active := True;
-  SetThumbnail;
+  //SetThumbnail;
   btnSelect.Click;
-  SetMuscleImageInit;
+  //SetMuscleImageInit;
 end;
 
 procedure TfrmImageEditor2.SetMuscleImageInit;
 var
   i : integer;
 begin
-  ImageEnBody[0] := ImageEnView1_1;
-  ImageEnBody[1] := ImageEnView1_2;
-  ImageEnBody[2] := ImageEnView1_3;
-  ImageEnBody[3] := ImageEnView1_4;
-  ImageEnBone[0] := ImageEnView2_1;
-  ImageEnBone[1] := ImageEnView2_2;
-  ImageEnBone[2] := ImageEnView2_3;
-  ImageEnBone[3] := ImageEnView2_4;
-  for i := 0 to 3 do begin
-    ImageEnBody[i].AutoStretch := True;
-    ImageEnBody[i].AutoShrink := True;
-    ImageEnBody[i].AutoFit := True;
-    ImageEnBone[i].AutoStretch := True;
-    ImageEnBone[i].AutoShrink := True;
-    ImageEnBone[i].AutoFit := True;
+//  ImageEnBody[0] := ImageEnView1_1;
+//  ImageEnBody[1] := ImageEnView1_2;
+//  ImageEnBody[2] := ImageEnView1_3;
+//  ImageEnBody[3] := ImageEnView1_4;
+//  ImageEnBone[0] := ImageEnView2_1;
+//  ImageEnBone[1] := ImageEnView2_2;
+//  ImageEnBone[2] := ImageEnView2_3;
+//  ImageEnBone[3] := ImageEnView2_4;
+//  for i := 0 to 3 do begin
+//    ImageEnBody[i].AutoStretch := True;
+//    ImageEnBody[i].AutoShrink := True;
+//    ImageEnBody[i].AutoFit := True;
+//    ImageEnBone[i].AutoStretch := True;
+//    ImageEnBone[i].AutoShrink := True;
+//    ImageEnBone[i].AutoFit := True;
     //벡터 영역을 마우스로 올렸을 때 자동으로 선택하도록 하고 색상을 변경하는 루틴...
 //    ImageEnBody[i].MouseInteractVt:=[miObjectSelect];
 //    ImageEnBody[i].CenterNewObjects:=true;
@@ -374,19 +360,17 @@ begin
 //    ImageEnBone[i].CenterNewObjects:=true;
 //    ImageEnBone[i].ObjGripPen.Style := psClear;
 //    ImageEnBone[i].ObjGripBrush.Style := bsclear;
-  end;
+//  end;
   //RetrieveMuscleImage;
   cxPageControl2Change(nil);
 end;
 
 procedure TfrmImageEditor2.RetrieveMuscleImage;
 var
-  mStream1, mStream2, dStream1, dStream2 : TMemoryStream;
+  mStream1, mStream2 : TMemoryStream;
 begin
   mStream1 := TMemoryStream.Create;
-  dStream1 := TMemoryStream.Create;
   mStream2 := TMemoryStream.Create;
-  dStream2 := TMemoryStream.Create;
 
   dmDBCommon.MUSCLE_IMAGE_POINT_SEL.ParamByName('MAN_WOMEN').Value := man_women;
   dmDBCommon.MUSCLE_IMAGE_POINT_SEL.ParamByName('BODY_POSTURE').Value := body_posture + 1;
@@ -394,23 +378,15 @@ begin
   dmDBCommon.ds_MUSCLE_IMAGE_POINT_SEL.DataSet.Refresh;
 
   dmDBCommon.MUSCLE_IMAGE_POINT_SELMUSCLE_IMAGE.SaveToStream(mStream1);
-  dmDBCommon.MUSCLE_IMAGE_POINT_SELMUSCLE_POSITION.SaveToStream(dStream1);
   dmDBCommon.MUSCLE_IMAGE_POINT_SELBONE_IMAGE.SaveToStream(mStream2);
-  dmDBCommon.MUSCLE_IMAGE_POINT_SELBONE_POSITION.SaveToStream(dStream2);
   mStream1.Position := 0;
   mStream2.Position := 0;
-  dStream1.Position := 0;
-  dStream2.Position := 0;
   ImageEnBody[body_posture].IO.LoadFromStreamJpeg(mStream1);
-  ImageEnBody[body_posture].IO.LoadFromStreamIEN(dStream1);
   ImageEnBone[body_posture].IO.LoadFromStreamJpeg(mStream2);
-  ImageEnBone[body_posture].IO.LoadFromStreamIEN(mStream2);
   ImageEnBody[body_posture].Update;
   ImageEnBone[body_posture].Update;
   mStream1.Free;
   mStream2.Free;
-  dStream1.Free;
-  dStream2.Free;
 end;
 
 procedure TfrmImageEditor2.SetArrowSelection;
@@ -438,7 +414,7 @@ procedure TfrmImageEditor2.cxPageControl2Change(Sender: TObject);
 begin
   body_posture := cxPageControl2.ActivePageIndex;
   cxPageControl3.ActivePageIndex := cxPageControl2.ActivePageIndex;
-  RetrieveMuscleImage;
+//  RetrieveMuscleImage;
 end;
 
 procedure TfrmImageEditor2.cxPageControl3Change(Sender: TObject);
@@ -731,13 +707,6 @@ begin
 end;
 
 procedure TfrmImageEditor2.btnCropClick(Sender: TObject);
-begin
-  if (ImageEnVect1.Selected)
-    then ImageEnVect1.Proc.CropSel;
-  ImageEnVect1.DeSelect;
-end;
-
-procedure TfrmImageEditor2.btnCutClick(Sender: TObject);
 begin
   if (ImageEnVect1.Selected)
     then ImageEnVect1.Proc.CropSel;
@@ -1131,23 +1100,6 @@ begin
       and not (miSelectCircle in MouseInteract) then
       Deselect;
   end;
-end;
-
-procedure TfrmImageEditor2.btnSelectCutClick(Sender: TObject);
-var
-  X1, Y1, X2, Y2 : Integer;
-begin
-  ImageEnVect1.MouseInteract := [miSelect];
-  X1 := spX1.EditValue;
-  Y1 := spY1.EditValue;
-  X2 := ImageEnVect1.IEBitmap.Width - spX2.EditValue;
-  Y2 := ImageEnVect1.IEBitmap.Height - spY2.EditValue;
-  ImageEnVect1.Select(X1, Y1, X2, Y2, iespReplace);
-end;
-
-procedure TfrmImageEditor2.spX1PropertiesEditValueChanged(Sender: TObject);
-begin
-  btnSelectCut.Click;
 end;
 
 procedure TfrmImageEditor2.WriteObjectText(IEV : TImageEnVect; hobj : Integer);
