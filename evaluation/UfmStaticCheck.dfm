@@ -3,7 +3,7 @@ object fmStaticCheck: TfmStaticCheck
   Top = 0
   Caption = #51221#51201#54217#44032
   ClientHeight = 830
-  ClientWidth = 1283
+  ClientWidth = 1325
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -400,9 +400,9 @@ object fmStaticCheck: TfmStaticCheck
         Ctl3D = True
         ScrollBars = ssVertical
         OnResize = ImageEnMView1Resize
-        GridWidth = -1
+        GridWidth = 2
         StoreType = ietNormal
-        ThumbWidth = 75
+        ThumbWidth = -1
         ThumbHeight = 140
         TextMargin = 0
         ThumbnailOptionsEx = [ietxShowIconWhileLoading, ietxEnableInternalIcons, ietxStretchSmallImages, ietxAutoPadThumbnailColumns, ietxCenterSingleFrame]
@@ -429,7 +429,7 @@ object fmStaticCheck: TfmStaticCheck
   object Panel1: TPanel
     Left = 728
     Top = 0
-    Width = 555
+    Width = 597
     Height = 830
     Align = alRight
     BevelOuter = bvNone
@@ -470,8 +470,6 @@ object fmStaticCheck: TfmStaticCheck
           Align = alClient
           Caption = #54217#44032
           TabOrder = 0
-          ExplicitTop = 509
-          ExplicitHeight = 306
           object Label2: TLabel
             Left = 24
             Top = 24
@@ -4538,7 +4536,6 @@ object fmStaticCheck: TfmStaticCheck
             E672BCE4E52BCB7D7F25B58F1F158AAB8BABEDAAA8465CB18254E0A9C5462AC9
             28AFBDBDEEC28A28AD8E60A28A2800A28A2803FFD9}
           TabOrder = 1
-          ExplicitTop = 44
           Height = 462
           Width = 234
         end
@@ -4697,11 +4694,12 @@ object fmStaticCheck: TfmStaticCheck
     object Panel4: TPanel
       Left = 242
       Top = 0
-      Width = 313
+      Width = 355
       Height = 830
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 1
+      ExplicitWidth = 313
       object cxGroupBox4: TcxGroupBox
         AlignWithMargins = True
         Left = 1
@@ -4718,20 +4716,22 @@ object fmStaticCheck: TfmStaticCheck
         StyleFocused.LookAndFeel.SkinName = 'Black'
         StyleHot.LookAndFeel.SkinName = 'Black'
         TabOrder = 0
+        ExplicitWidth = 311
         Height = 828
-        Width = 311
+        Width = 353
         object Panel5: TPanel
           Left = 3
           Top = 17
-          Width = 305
+          Width = 347
           Height = 369
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
+          ExplicitWidth = 305
           object Panel6: TPanel
             Left = 0
             Top = 0
-            Width = 305
+            Width = 347
             Height = 27
             Align = alTop
             Alignment = taLeftJustify
@@ -4745,11 +4745,12 @@ object fmStaticCheck: TfmStaticCheck
             ParentColor = True
             ParentFont = False
             TabOrder = 0
+            ExplicitWidth = 305
             object btnSaveResult: TcxButton
               AlignWithMargins = True
-              Left = 127
+              Left = 31
               Top = 1
-              Width = 30
+              Width = 59
               Height = 25
               Hint = #54217#44032#44208#44284#51312#54924
               Margins.Left = 1
@@ -4757,6 +4758,7 @@ object fmStaticCheck: TfmStaticCheck
               Margins.Right = 1
               Margins.Bottom = 1
               Align = alLeft
+              Caption = #52636#47141
               LookAndFeel.SkinName = 'DevExpressStyle'
               OptionsImage.Glyph.Data = {
                 36040000424D3604000000000000360000002800000010000000100000000100
@@ -4796,112 +4798,27 @@ object fmStaticCheck: TfmStaticCheck
               ParentShowHint = False
               ShowHint = True
               TabOrder = 0
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = #45208#45588#44256#46357
+              Font.Style = []
+              ParentFont = False
               OnClick = btnSaveResultClick
-            end
-            object btnLeft: TcxButton
-              Tag = 1
-              AlignWithMargins = True
-              Left = 1
-              Top = 1
-              Width = 30
-              Height = 25
-              Hint = #51340#52769
-              Margins.Left = 1
-              Margins.Top = 1
-              Margins.Right = 1
-              Margins.Bottom = 1
-              Align = alLeft
-              Colors.Default = 16776176
-              Enabled = False
-              LookAndFeel.SkinName = 'DevExpressStyle'
-              OptionsImage.Glyph.Data = {
-                F6000000424DF600000000000000760000002800000010000000100000000100
-                0400000000008000000000000000000000001000000000000000000000000000
-                8000008000000080800080000000800080008080000080808000C0C0C0000000
-                FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00888888888888
-                8888888888888888888888888889888888888888889988888888888889998888
-                8888888899998888888888899999888888888899999988888888899999999999
-                9999889999998888888888899999888888888888999988888888888889998888
-                8888888888998888888888888889888888888888888888888888}
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 1
-              OnClick = btnLeftClick
-            end
-            object btnRight: TcxButton
-              Tag = 2
-              AlignWithMargins = True
-              Left = 33
-              Top = 1
-              Width = 30
-              Height = 25
-              Hint = #50864#52769
-              Margins.Left = 1
-              Margins.Top = 1
-              Margins.Right = 1
-              Margins.Bottom = 1
-              Align = alLeft
-              Colors.Default = 16776176
-              Colors.DefaultText = clBlack
-              Enabled = False
-              LookAndFeel.SkinName = 'DevExpressStyle'
-              OptionsImage.Glyph.Data = {
-                F6000000424DF600000000000000760000002800000010000000100000000100
-                0400000000008000000000000000000000001000000000000000000000000000
-                8000008000000080800080000000800080008080000080808000C0C0C0000000
-                FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00888888888888
-                8888888888889888888888888888998888888888888899988888888888889999
-                8888888888889999988888888888999999889999999999999998888888889999
-                9988888888889999988888888888999988888888888899988888888888889988
-                8888888888889888888888888888888888888888888888888888}
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 2
-              OnClick = btnRightClick
-            end
-            object btnBoth: TcxButton
-              Tag = 3
-              AlignWithMargins = True
-              Left = 65
-              Top = 1
-              Width = 30
-              Height = 25
-              Hint = #50577#52769
-              Margins.Left = 1
-              Margins.Top = 1
-              Margins.Right = 1
-              Margins.Bottom = 1
-              Align = alLeft
-              Colors.Default = 16776176
-              Colors.DefaultText = clBlack
-              Enabled = False
-              LookAndFeel.SkinName = 'DevExpressStyle'
-              OptionsImage.Glyph.Data = {
-                F6000000424DF600000000000000760000002800000010000000100000000100
-                0400000000008000000000000000000000001000000000000000000000000000
-                8000008000000080800080000000800080008080000080808000C0C0C0000000
-                FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00888888888888
-                8888888888988988888888888998899888888888999889998888888999988999
-                9888889999988999998889999998899999989999999999999999899999988999
-                9998889999988999998888899998899998888888999889998888888889988998
-                8888888888988988888888888888888888888888888888888888}
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 3
-              OnClick = btnBothClick
             end
             object btnChangeLevel: TcxButton
               AlignWithMargins = True
-              Left = 159
+              Left = 92
               Top = 1
-              Width = 30
+              Width = 61
               Height = 25
-              Hint = #44396#48516#48320#44221
+              Hint = #47112#48296#48320#44221
               Margins.Left = 1
               Margins.Top = 1
               Margins.Right = 1
               Margins.Bottom = 1
               Align = alLeft
+              Caption = #47112#48296
               LookAndFeel.SkinName = 'DevExpressStyle'
               OptionsImage.Glyph.Data = {
                 36040000424D3604000000000000360000002800000010000000100000000100
@@ -4940,22 +4857,63 @@ object fmStaticCheck: TfmStaticCheck
                 56B70816102B0000000500000001000000000000000000000000}
               ParentShowHint = False
               ShowHint = True
-              TabOrder = 4
+              TabOrder = 1
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = #45208#45588#44256#46357
+              Font.Style = []
+              ParentFont = False
               OnClick = btnChangeLevelClick
             end
             object btnShowImage: TcxButton
               AlignWithMargins = True
-              Left = 191
+              Left = 155
               Top = 1
-              Width = 65
+              Width = 54
               Height = 25
               Margins.Left = 1
               Margins.Top = 1
               Margins.Right = 1
               Margins.Bottom = 1
               Align = alLeft
-              Caption = #44208#44284#49324#51652
-              TabOrder = 5
+              Caption = #49324#51652
+              OptionsImage.Glyph.Data = {
+                36040000424D3604000000000000360000002800000010000000100000000100
+                2000000000000004000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                000000000000000000040000000A000000100000001300000015000000140000
+                00110000000C0000000500000001000000000000000000000000000000000000
+                00030000000C070404263F271F836E4235CA7A4839DE915644FF774436DE693C
+                30CE3A2019870704032B00000010000000040000000000000000000000030000
+                0011442C2486976253F5BE998EFFD9C5BEFFE0CFCAFFEFE6E3FFDDCAC4FFD3BC
+                B5FFB48B7FFF895140F540231B92000000180000000500000001010204145536
+                2D9CC5A398FFF2E9E7FFF5EFEDFFBCAEA8FF71574CFF593A2DFF755B4EFFBEAE
+                A7FFEBE2DEFFE5D8D3FFB79085FF4E2A21A90101021A000000032F23246BB58D
+                80FFF9F5F4FFF7F3F2FFC1B3ADFF826555FFB19A85FFC2AC97FFB09783FF7F62
+                51FFC0B0A9FFECE3DFFFECE2DFFFA37467FF28191A750000000A5E4F60E1BCB1
+                ACFFF6F3F3FFF8F4F3FF7A5E50FFBEA995FF857162FF3F2A22FF746053FFB8A3
+                8FFF806658FFEEE5E2FFECE2DFFFB1A29CFF503F50E40000000D182C4D885C63
+                72FFB2B0B0FFF1EEEDFF725242FFDDD1B9FF806D5EFF493229FF493228FFCFC0
+                A9FF745545FFEBE3E1FFABA6A3FF505566FF142A55AA0000000A05080F21395F
+                9DFA697F9AFF626160FF55443CFFB2A894FFE4E0C1FF584135FF847466FFA498
+                87FF58483FFF5F5C5CFF4E6586FF2F5191FF050B173C00000004000000031221
+                3B685A7FB7FFA6C5E3FF7990ABFF444D59FF3E4248FF2B2A25FF3C4148FF3E48
+                56FF627D9EFF789DC9FF3C609FFD0B172E630000000600000000000000000000
+                00030F1B3159315593ED6F91C1FF9BB9DCFFB0CDE9FFCBE8FCFFA7C7E6FF87AA
+                D3FF5A7EB3FF284B8BF10A152958000000060000000100000000000000000000
+                0000000000020204071112223E6F1C3765B0213F76D0274C91FC1E3C74D01933
+                62B40F1F3D750204081700000003000000000000000000000000000000000000
+                0000000000000000000000000002000000030000000400000005000000050000
+                0004000000020000000100000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000}
+              TabOrder = 2
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
               Font.Height = -13
@@ -4966,7 +4924,7 @@ object fmStaticCheck: TfmStaticCheck
             end
             object btnDelete: TcxButton
               AlignWithMargins = True
-              Left = 97
+              Left = 1
               Top = 1
               Width = 28
               Height = 25
@@ -5014,16 +4972,16 @@ object fmStaticCheck: TfmStaticCheck
                 B5D040437D951212223000000004000000010000000000000000}
               ParentShowHint = False
               ShowHint = True
-              TabOrder = 6
+              TabOrder = 3
               OnClick = btnDeleteClick
             end
             object btnViewPos: TBitBtn
-              Left = 257
+              Left = 285
               Top = 0
               Width = 62
               Height = 27
               Hint = #52769#51221#48169#48277
-              Align = alLeft
+              Align = alRight
               Caption = #46020#50880
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
@@ -5040,22 +4998,22 @@ object fmStaticCheck: TfmStaticCheck
                 FF0A007FF78708888F0D0F07E770FFFFFF0A0F8000088888FF0D0FFFF0FFFFFF
                 FF0A444444444444444D444444444444444A444444444444444D}
               ParentFont = False
-              TabOrder = 7
+              TabOrder = 4
               Visible = False
               OnClick = btnViewPosClick
-              ExplicitLeft = 272
-              ExplicitTop = 1
+              ExplicitLeft = 243
             end
           end
           object cxGrid2: TcxGrid
             Left = 0
             Top = 27
-            Width = 305
+            Width = 347
             Height = 342
             Align = alClient
             BevelKind = bkFlat
             TabOrder = 1
             LookAndFeel.SkinName = 'DevExpressStyle'
+            ExplicitWidth = 305
             object gridResults: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               Navigator.Buttons.First.Visible = False
@@ -5108,7 +5066,7 @@ object fmStaticCheck: TfmStaticCheck
                     FieldName = 'ITEM_NAME'
                   end>
                 Properties.ListSource = d_CHECK_ITEM_TREE_BODY_SEL
-                Width = 92
+                Width = 110
               end
               object gridResultsDIRECTION_KIND: TcxGridDBColumn
                 Caption = #51340'/'#50864
@@ -5136,7 +5094,7 @@ object fmStaticCheck: TfmStaticCheck
                   end>
                 Properties.ShowDescriptions = False
                 HeaderAlignmentHorz = taCenter
-                Width = 37
+                Width = 44
               end
               object gridResultsRESULT_VALUE: TcxGridDBColumn
                 Caption = #52769#51221#44208#44284
@@ -5148,7 +5106,7 @@ object fmStaticCheck: TfmStaticCheck
                     FieldName = 'ITEM_NAME'
                   end>
                 Properties.ListSource = d_CHECK_ITEM_TREE_RESULT_SEL
-                Width = 126
+                Width = 91
               end
               object gridResultsPRACTICE_ID: TcxGridDBColumn
                 Caption = #50868#46041#52376#48169
@@ -5157,7 +5115,7 @@ object fmStaticCheck: TfmStaticCheck
                 Width = 152
               end
               object gridResultsRESULT_LEVEL: TcxGridDBColumn
-                Caption = #44396#48516
+                Caption = #47112#48296
                 DataBinding.FieldName = 'RESULT_LEVEL'
                 PropertiesClassName = 'TcxImageComboBoxProperties'
                 Properties.Items = <
@@ -5176,7 +5134,7 @@ object fmStaticCheck: TfmStaticCheck
                   end>
                 OnCustomDrawCell = gridResultsRESULT_LEVELCustomDrawCell
                 HeaderAlignmentHorz = taCenter
-                Width = 44
+                Width = 42
               end
             end
             object cxGrid2Level1: TcxGridLevel
@@ -5187,15 +5145,16 @@ object fmStaticCheck: TfmStaticCheck
         object Panel8: TPanel
           Left = 3
           Top = 386
-          Width = 305
+          Width = 347
           Height = 432
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 1
+          ExplicitWidth = 305
           object Panel9: TPanel
             Left = 0
             Top = 0
-            Width = 305
+            Width = 347
             Height = 26
             Align = alTop
             Alignment = taLeftJustify
@@ -5209,6 +5168,7 @@ object fmStaticCheck: TfmStaticCheck
             ParentColor = True
             ParentFont = False
             TabOrder = 0
+            ExplicitWidth = 305
             object lbl1: TLabel
               Left = 43
               Top = 6
@@ -5414,12 +5374,13 @@ object fmStaticCheck: TfmStaticCheck
           object cxGrid4: TcxGrid
             Left = 0
             Top = 26
-            Width = 305
+            Width = 347
             Height = 406
             Align = alClient
             BevelKind = bkFlat
             TabOrder = 1
             LookAndFeel.SkinName = 'DevExpressStyle'
+            ExplicitWidth = 305
             object gridPractice: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               Navigator.Buttons.First.Visible = False

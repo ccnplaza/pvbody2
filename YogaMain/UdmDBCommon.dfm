@@ -59,7 +59,8 @@ object dmDBCommon: TdmDBCommon
     Connection = UniDBConnection
     SQL.Strings = (
       'select * from NSTATIC_CHECK_DATA'
-      'where customer_uid = :customer_uid')
+      'where customer_uid = :customer_uid'
+      'order by c_date, c_idx')
     Left = 800
     Top = 264
     ParamData = <

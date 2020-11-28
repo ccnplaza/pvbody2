@@ -516,6 +516,7 @@ type
     procedure RetrieveMemberInfo;
     procedure UpdateImageDraw(id: Integer; dStream: TMemoryStream);
     procedure SelectCustomerByID(cust_id : string);
+    procedure LoadCheckInitData;
 
   end;
 
@@ -604,6 +605,30 @@ begin
     d_NPRACTICE_look.DataSet.Refresh;
   except on E: Exception do
     ShowMessage('서버에 연결할 수 없습니다.');
+  end;
+end;
+
+procedure TdmDBCommon.LoadCheckInitData;
+begin
+  if NPRACTICE_SEL.Active = False then begin
+    NPRACTICE_SEL.Active := True;
+    d_NPRACTICE.DataSet.Refresh;
+  end;
+  if t_NPRACTICE_look.Active = False then begin
+    t_NPRACTICE_look.Active := True;
+    d_NPRACTICE_look.DataSet.Refresh;
+  end;
+  if CHECK_ITEM_TREE_BODY_SEL.Active = False then begin
+    CHECK_ITEM_TREE_BODY_SEL.Active := True;
+    d_CHECK_ITEM_TREE_BODY_SEL.DataSet.Refresh;
+  end;
+  if CHECK_ITEM_TREE_RESULT_SEL.Active = False then begin
+    CHECK_ITEM_TREE_RESULT_SEL.Active := True;
+    d_CHECK_ITEM_TREE_RESULT_SEL.DataSet.Refresh;
+  end;
+  if q_CHECK_ITEM_TREE.Active then begin
+    q_CHECK_ITEM_TREE.Active := True;
+    d_CHECK_ITEM_TREE.DataSet.Refresh;
   end;
 end;
 

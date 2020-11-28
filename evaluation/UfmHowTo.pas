@@ -113,7 +113,7 @@ procedure TfmHowTo.gridImageFocusedRecordChanged(Sender: TcxCustomGridTableView;
   APrevFocusedRecord, AFocusedRecord: TcxCustomGridRecord;
   ANewItemRecordFocusingChanged: Boolean);
 begin
-  wb1.Navigate('http://210.122.36.244/yoga/imageplayer.php?id=' + IntToStr(gridImageID.EditValue));
+  wb1.Navigate('http://bodycheck.co.kr/yogabody/imageplayer.php?id=' + IntToStr(gridImageID.EditValue));
 
 //  CHECK_HOWTO_SEL_IMAGE.ParamByName('ID').Value := gridImageID.EditValue;
 //  CHECK_HOWTO_SEL_IMAGE.Active := True;

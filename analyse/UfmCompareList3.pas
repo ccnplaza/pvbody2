@@ -401,10 +401,24 @@ begin
 end;
 
 procedure TfmCompareList3.btnStaticCheckClick(Sender: TObject);
+var
+  i, cnt : Integer;
 begin
-  fmStaticCheck := TfmStaticCheck.Create(Self);
-  fmStaticCheck.PICTURE_DATE := gridCustomerP_DATE.EditValue;
-  fmStaticCheck.Show;
+  if CustomerImages.CustID <> '' then begin
+    dmDBCommon.LoadCheckInitData;
+    fmStaticCheck := TfmStaticCheck.Create(Self);
+    fmStaticCheck.PICTURE_DATE := gridCustomerP_DATE.EditValue;
+    fmStaticCheck.ImageEnMView1.Assign(ImageEnMView1);
+    cnt := ImageEnMView1.ImageCount;
+    for i := 0 to cnt - 1 do begin
+      fmStaticCheck.ImageEnMView1.ImageTag[i] := ImageEnMView1.ImageTag[i];
+      fmStaticCheck.ImageEnMView1.ImageTopText[i] := ImageEnMView1.ImageTopText[i];
+    end;
+    fmStaticCheck.ImageEnMView1.Update;
+    fmStaticCheck.Show;
+  end else begin
+    ShowMessage('회원을 선택하세요.');
+  end;
 end;
 
 procedure TfmCompareList3.btnViewClick(Sender: TObject);

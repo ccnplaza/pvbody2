@@ -50,7 +50,6 @@ type
     BitBtn9: TBitBtn;
     pnl1: TPanel;
     pnl2: TPanel;
-    btnViewPos: TBitBtn;
     btnAdd: TBitBtn;
     btnDel: TBitBtn;
     q_check_item_tree: TUniQuery;
@@ -58,10 +57,6 @@ type
     q_check_item_treePARENT_ID: TIntegerField;
     q_check_item_treeIMAGE_ID: TIntegerField;
     q_check_item_treeITEM_NAME: TStringField;
-    q_check_item_treeBODY_ID: TIntegerField;
-    q_check_item_treeRESULT_ID: TIntegerField;
-    q_check_item_treeHOWTO_IMAGE: TSmallintField;
-    q_check_item_treeVIDEO_ID: TStringField;
     d_check_item_tree: TDataSource;
     cxImageList1: TcxImageList;
     il1: TImageList;
@@ -117,18 +112,10 @@ type
     q_check_item_subPARENT_ID: TIntegerField;
     q_check_item_subIMAGE_ID: TIntegerField;
     q_check_item_subITEM_NAME: TStringField;
-    q_check_item_subBODY_ID: TIntegerField;
-    q_check_item_subRESULT_ID: TIntegerField;
-    q_check_item_subHOWTO_IMAGE: TSmallintField;
-    q_check_item_subVIDEO_ID: TStringField;
     q_check_item_sub2ID: TIntegerField;
     q_check_item_sub2PARENT_ID: TIntegerField;
     q_check_item_sub2IMAGE_ID: TIntegerField;
     q_check_item_sub2ITEM_NAME: TStringField;
-    q_check_item_sub2BODY_ID: TIntegerField;
-    q_check_item_sub2RESULT_ID: TIntegerField;
-    q_check_item_sub2HOWTO_IMAGE: TSmallintField;
-    q_check_item_sub2VIDEO_ID: TStringField;
     btnAdd2: TBitBtn;
     btnEdit2: TBitBtn;
     btnDel2: TBitBtn;
@@ -151,6 +138,8 @@ type
     gSub2RESULT_ID: TcxGridDBColumn;
     gSub2HOWTO_IMAGE: TcxGridDBColumn;
     gSub2VIDEO_ID: TcxGridDBColumn;
+    q_check_item_sub2HOWTO_IMAGE: TSmallintField;
+    q_check_item_sub2VIDEO_ID: TStringField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BitBtn3Click(Sender: TObject);
     procedure btnPracticeAddClick(Sender: TObject);
@@ -161,14 +150,12 @@ type
     procedure ItemTreeViewChange(Sender: TObject; Node: TTreeNode);
     procedure btn1Click(Sender: TObject);
     procedure btnPlayVideoClick(Sender: TObject);
-    procedure btnViewPosClick(Sender: TObject);
     procedure btn2Click(Sender: TObject);
     procedure btn3Click(Sender: TObject);
     procedure rgDirectionPropertiesEditValueChanged(Sender: TObject);
     procedure gPracticeAssignDragOver(Sender, Source: TObject; X, Y: Integer;
       State: TDragState; var Accept: Boolean);
     procedure gPracticeAssignDragDrop(Sender, Source: TObject; X, Y: Integer);
-    procedure ItemTreeViewDblClick(Sender: TObject);
     procedure gRootFocusedRecordChanged(Sender: TcxCustomGridTableView;
       APrevFocusedRecord, AFocusedRecord: TcxCustomGridRecord;
       ANewItemRecordFocusingChanged: Boolean);
@@ -273,11 +260,6 @@ procedure TfmStaticCheckItemSet.ItemTreeViewChange(Sender: TObject;
   Node: TTreeNode);
 begin
   RetrieveAssignedItem;
-end;
-
-procedure TfmStaticCheckItemSet.ItemTreeViewDblClick(Sender: TObject);
-begin
-  btnViewPos.Click;
 end;
 
 procedure TfmStaticCheckItemSet.rgDirectionPropertiesEditValueChanged(
@@ -387,25 +369,6 @@ begin
     end;
   finally
     fmPracticeEdit.Free;
-  end;
-end;
-
-procedure TfmStaticCheckItemSet.btnViewPosClick(Sender: TObject);
-var
-  citem : string;
-  c_id : Integer;
-begin
-  citem := q_CHECK_ITEM_TREEITEM_NAME.Value;
-  c_id := q_check_item_treeHOWTO_IMAGE.Value;
-  if c_id > 0 then begin
-    fmHowTo := TfmHowTo.Create(Self);
-    try
-      fmHowTo.Caption := '측정방법 - ' + citem;
-      fmHowTo.ds_CHECK_HOWTO_SEL.DataSet.Locate('id', c_id, []);
-      fmHowTo.ShowModal;
-    finally
-      fmHowTo.Free;
-    end;
   end;
 end;
 

@@ -151,6 +151,7 @@ object fmHowTo: TfmHowTo
   end
   object CHECK_HOWTO_INS: TUniStoredProc
     StoredProcName = 'CHECK_HOWTO_INS'
+    Connection = dmDBCommon.UniDBConnection
     Left = 448
     Top = 248
     ParamData = <
@@ -175,6 +176,7 @@ object fmHowTo: TfmHowTo
   end
   object CHECK_HOWTO_SEL: TUniStoredProc
     StoredProcName = 'CHECK_HOWTO_SEL'
+    Connection = dmDBCommon.UniDBConnection
     Left = 72
     Top = 312
     ParamData = <
@@ -206,6 +208,7 @@ object fmHowTo: TfmHowTo
   end
   object CHECK_HOWTO_SEL_IMAGE: TUniStoredProc
     StoredProcName = 'CHECK_HOWTO_SEL_IMAGE'
+    Connection = dmDBCommon.UniDBConnection
     Left = 440
     Top = 320
     ParamData = <
@@ -228,10 +231,11 @@ object fmHowTo: TfmHowTo
   object ds_CHECK_HOWTO_SEL_IMAGE: TDataSource
     DataSet = CHECK_HOWTO_SEL_IMAGE
     Left = 440
-    Top = 376
+    Top = 368
   end
   object CHECK_HOWTO_UPD_IMAGE: TUniStoredProc
     StoredProcName = 'CHECK_HOWTO_UPD_IMAGE'
+    Connection = dmDBCommon.UniDBConnection
     Left = 448
     Top = 192
     ParamData = <
@@ -250,6 +254,7 @@ object fmHowTo: TfmHowTo
   end
   object CHECK_HOWTO_UPD_TITLE: TUniStoredProc
     StoredProcName = 'CHECK_HOWTO_UPD_TITLE'
+    Connection = dmDBCommon.UniDBConnection
     Left = 448
     Top = 144
     ParamData = <

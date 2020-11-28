@@ -126,9 +126,6 @@ type
     q_check_picture: TUniQuery;
     q_check_pictureID: TIntegerField;
     NSTATIC_CHECK_DATA_UPD: TUniStoredProc;
-    btnLeft: TcxButton;
-    btnRight: TcxButton;
-    btnBoth: TcxButton;
     gridResultsDIRECTION_KIND: TcxGridDBColumn;
     NSTATIC_CHECK_RESULT_UPD: TUniStoredProc;
     btnSelect: TcxButton;
@@ -288,9 +285,6 @@ type
     procedure gridCheckFocusedRecordChanged(Sender: TcxCustomGridTableView;
       APrevFocusedRecord, AFocusedRecord: TcxCustomGridRecord;
       ANewItemRecordFocusingChanged: Boolean);
-    procedure btnLeftClick(Sender: TObject);
-    procedure btnRightClick(Sender: TObject);
-    procedure btnBothClick(Sender: TObject);
     procedure gridResultsFocusedRecordChanged(Sender: TcxCustomGridTableView;
       APrevFocusedRecord, AFocusedRecord: TcxCustomGridRecord;
       ANewItemRecordFocusingChanged: Boolean);
@@ -348,6 +342,7 @@ type
     procedure AssignControlValues;
     function Measure_angle(rect:TRect):string;
     procedure RefreshControls;
+    procedure ChangeDirection;
     { Private declarations }
   public
     { Public declarations }
@@ -668,25 +663,6 @@ begin
   ImageEnView1.MouseInteractLayers := [mlMoveLayers, mlResizeLayers, mlRotateLayers, mlEditLayerPoints];
 end;
 
-procedure TfmStaticCheck.btnLeftClick(Sender: TObject);
-var
-  t_no, d_no, id : Integer;
-begin
-  id := gridResultsID.EditValue;
-  d_no := gridResultsDIRECTION_KIND.EditValue;
-  if (d_no = 1) then
-    t_no := 0
-  else
-    t_no := 1;
-
-  NSTATIC_CHECK_RESULT_UPD.ParamByName('ID').Value := id;
-  NSTATIC_CHECK_RESULT_UPD.ParamByName('DIRECTION_KIND').Value := t_no;
-  NSTATIC_CHECK_RESULT_UPD.ExecProc;
-  dmDBCommon.d_NSTATIC_CHECK_RESULT.DataSet.Refresh;
-  dmDBCommon.d_NSTATIC_CHECK_RESULT.DataSet.Locate('id', id, []);
-  InsertPracticeData;
-end;
-
 procedure TfmStaticCheck.btnLineClick(Sender: TObject);
 var
   lHeight, lWidth : Integer;
@@ -730,16 +706,14 @@ begin
   end;
 end;
 
-procedure TfmStaticCheck.btnRightClick(Sender: TObject);
+procedure TfmStaticCheck.ChangeDirection;
 var
   t_no, d_no, id : Integer;
 begin
   id := gridResultsID.EditValue;
   d_no := gridResultsDIRECTION_KIND.EditValue;
-  if (d_no = 2) then
-    t_no := 0
-  else
-    t_no := 2;
+
+  if d_no < 3 then t_no := d_no + 1 else t_no := 0;
 
   NSTATIC_CHECK_RESULT_UPD.ParamByName('ID').Value := id;
   NSTATIC_CHECK_RESULT_UPD.ParamByName('DIRECTION_KIND').Value := t_no;
@@ -753,25 +727,6 @@ procedure TfmStaticCheck.btnBackwardClick(Sender: TObject);
 begin
   if ImageEnView1.CurrentLayer.LayerIndex > 1 then
     ImageEnView1.CurrentLayer.LayerIndex := ImageEnView1.CurrentLayer.LayerIndex - 1;
-end;
-
-procedure TfmStaticCheck.btnBothClick(Sender: TObject);
-var
-  t_no, d_no, id : Integer;
-begin
-  id := gridResultsID.EditValue;
-  d_no := gridResultsDIRECTION_KIND.EditValue;
-  if (d_no = 3) then
-    t_no := 0
-  else
-    t_no := 3;
-
-  NSTATIC_CHECK_RESULT_UPD.ParamByName('ID').Value := id;
-  NSTATIC_CHECK_RESULT_UPD.ParamByName('DIRECTION_KIND').Value := t_no;
-  NSTATIC_CHECK_RESULT_UPD.ExecProc;
-  dmDBCommon.d_NSTATIC_CHECK_RESULT.DataSet.Refresh;
-  dmDBCommon.d_NSTATIC_CHECK_RESULT.DataSet.Locate('id', id, []);
-  InsertPracticeData;
 end;
 
 procedure TfmStaticCheck.btnCaptureClick(Sender: TObject);
@@ -1426,6 +1381,8 @@ begin
   field_name := TcxGridDBColumn(ACellViewInfo.Item).DataBinding.FieldName;
   if field_name = UpperCase('RESULT_LEVEL') then begin
     btnChangeLevel.Click;
+  end else if field_name = UpperCase('DIRECTION_KIND') then begin
+    ChangeDirection;
   end else begin
     btnShowImage.Click;
   end;
@@ -1439,17 +1396,10 @@ begin
     NSTATIC_RESULT_PRACTICE_SEL.ParamByName('r_id').AsInteger := gridResultsID.EditValue;
     NSTATIC_RESULT_PRACTICE_SEL.Active := True;
     ds_NSTATIC_RESULT_PRACTICE_SEL.DataSet.Refresh;
-
-    btnLeft.Enabled := True;
-    btnRight.Enabled := True;
-    btnBoth.Enabled := True;
   end else begin
     NSTATIC_RESULT_PRACTICE_SEL.ParamByName('r_id').AsInteger := 0;
     NSTATIC_RESULT_PRACTICE_SEL.Active := True;
     ds_NSTATIC_RESULT_PRACTICE_SEL.DataSet.Refresh;
-    btnLeft.Enabled := False;
-    btnRight.Enabled := False;
-    btnBoth.Enabled := False;
   end;
 end;
 
@@ -1480,6 +1430,15 @@ end;
 
 procedure TfmStaticCheck.chkSizePropertiesEditValueChanged(Sender: TObject);
 begin
+  if chkSize.Checked then begin
+    ImageEnMView1.GridWidth := 1;
+    ImageEnMView1.ThumbHeight := -1;
+    ImageEnMView1.ThumbWidth := -1;
+  end else begin
+    ImageEnMView1.GridWidth := 2;
+    ImageEnMView1.ThumbHeight := 140;
+    ImageEnMView1.ThumbWidth := -1;
+  end;
   ImageEnMView1Resize(Sender);
 end;
 
@@ -1500,12 +1459,12 @@ end;
 
 procedure TfmStaticCheck.btnCheckBodyClick(Sender: TObject);
 const
-  wTitle = '정적평가';
+  wTitle = '측정부위';
 begin
   fmCheckStaticItem := TfmCheckStaticItem.Create(Self);
   try
     fmCheckStaticItem.BODY_ID := (Sender as TcxButton).Tag;
-    fmCheckStaticItem.Caption := wTitle + ' - [' + (Sender as TcxButton).Caption + ']';
+    fmCheckStaticItem.gbCheckItem.Caption := wTitle + ' - [' + (Sender as TcxButton).Caption + ']';
     fmCheckStaticItem.ShowModal;
   finally
     fmCheckStaticItem.Free;
@@ -1525,7 +1484,7 @@ begin
   d_check_same_data.DataSet.Refresh;
   cid := q_check_same_dataID.Value;
   if cid > 0 then begin
-    ShowMessage(IntToStr(cid) + ' => ' + msg);
+    ShowMessage(IntToStr(cid) + ' : ' + msg);
     Exit;
   end else begin
     dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('DATA_ID').Value := dmDBCommon.q_NSTATIC_CHECK_DATAID.Value;
@@ -1534,7 +1493,7 @@ begin
     dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('RESULT_VALUE').Value := fmCheckStaticItem.RESULT_ID;
     dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('PRACTICE_ID').Value := '';
     dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('RESULT_LEVEL').Value := fmCheckStaticItem.RESULT_LEVEL;
-    dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('DIRECTION_KIND').Value := 0;
+    dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('DIRECTION_KIND').Value := fmCheckStaticItem.DIRECTION;
     dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('IMAGE_ID').Value := IMAGE_IDX[ImageEnMView1.SelectedImage];
     dmDBCommon.NSTATIC_CHECK_RESULT_INS.ParamByName('R_GUID').Value := GetUniqInt64;
     dmDBCommon.NSTATIC_CHECK_RESULT_INS.ExecProc;

@@ -26,7 +26,6 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
     BevelOuter = bvNone
     Caption = 'Panel7'
     TabOrder = 0
-    ExplicitLeft = 280
     object Panel9: TPanel
       Left = 0
       Top = 0
@@ -275,8 +274,6 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
     Height = 716
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 644
-    ExplicitWidth = 684
     object Panel21: TPanel
       Left = 1
       Top = 1
@@ -294,7 +291,6 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
       ParentBackground = False
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 682
     end
     object Panel22: TPanel
       Left = 1
@@ -304,7 +300,6 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitWidth = 682
       object btnAddPractice: TBitBtn
         Left = 103
         Top = 3
@@ -435,7 +430,6 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
       Align = alClient
       TabOrder = 2
       LookAndFeel.SkinName = 'DevExpressStyle'
-      ExplicitWidth = 682
       object gPractice: TcxGridDBTableView
         DragMode = dmAutomatic
         Navigator.Buttons.CustomButtons = <>
@@ -513,25 +507,6 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
       ParentColor = True
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 278
-      object btnViewPos: TBitBtn
-        Left = 5
-        Top = 0
-        Width = 36
-        Height = 26
-        Hint = #52769#51221#48169#48277
-        Glyph.Data = {
-          F6000000424DF600000000000000760000002800000010000000100000000100
-          04000000000080000000120B0000120B00001000000000000000000000000000
-          8000008000000080800080000000800080008080000080808000C0C0C0000000
-          FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
-          DADAADADADADAD00ADAD000000000910000A0FFFF0FF9F10FF0D0FF00009F10F
-          FF0A0F0787701088FF0D0078E7F70FFFFF0A008E878F08888F0D00EFE7E80FFF
-          FF0A007FF78708888F0D0F07E770FFFFFF0A0F8000088888FF0D0FFFF0FFFFFF
-          FF0A444444444444444D444444444444444A444444444444444D}
-        TabOrder = 0
-        OnClick = btnViewPosClick
-      end
       object btnAdd: TBitBtn
         Left = 43
         Top = 0
@@ -547,7 +522,7 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
           DADAADADAD030DADADADDADADA030ADADADAADA000030000ADADDAD033333330
           DADAADA000030000ADADDADADA030ADADADAADADAD030DADADADDADADA000ADA
           DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
-        TabOrder = 1
+        TabOrder = 0
         OnClick = btnAddClick
       end
       object btnDel: TBitBtn
@@ -565,7 +540,7 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
           DADAADADADADADADADADDADADADADADADADAADA000000000ADADDAD033333330
           DADAADA000000000ADADDADADADADADADADAADADADADADADADADDADADADADADA
           DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
-        TabOrder = 2
+        TabOrder = 1
         OnClick = btnDelClick
       end
       object btnEdit: TBitBtn
@@ -583,7 +558,7 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
           0F07A0F0F0F0FB0B8007D0BFBFB00F000007A0FBFBF0B0FBFB07D0BFBFB0B0BF
           BF07A0FBFBF0BB0BFB07D0BFBFB0BB0FBF07A00000000BB0000DDADADADA0BB0
           DADAADADADADA0000DADDADADADAD0110ADAADADADADAD00ADAD}
-        TabOrder = 3
+        TabOrder = 2
         OnClick = btnEditClick
       end
       object btnAdd2: TBitBtn
@@ -601,7 +576,7 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
           DADAADADAD030DADADADDADADA030ADADADAADA000030000ADADDAD033333330
           DADAADA000030000ADADDADADA030ADADADAADADAD030DADADADDADADA000ADA
           DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
-        TabOrder = 4
+        TabOrder = 3
         OnClick = btnAdd2Click
       end
       object btnEdit2: TBitBtn
@@ -619,7 +594,7 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
           0F07A0F0F0F0FB0B8007D0BFBFB00F000007A0FBFBF0B0FBFB07D0BFBFB0B0BF
           BF07A0FBFBF0BB0BFB07D0BFBFB0BB0FBF07A00000000BB0000DDADADADA0BB0
           DADAADADADADA0000DADDADADADAD0110ADAADADADADAD00ADAD}
-        TabOrder = 5
+        TabOrder = 4
         OnClick = btnEdit2Click
       end
       object btnDel2: TBitBtn
@@ -637,7 +612,7 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
           DADAADADADADADADADADDADADADADADADADAADA000000000ADADDAD033333330
           DADAADA000000000ADADDADADADADADADADAADADADADADADADADDADADADADADA
           DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
-        TabOrder = 6
+        TabOrder = 5
         OnClick = btnDel2Click
       end
       object btnDel3: TBitBtn
@@ -655,7 +630,7 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
           DADAADADADADADADADADDADADADADADADADAADA000000000ADADDAD033333330
           DADAADA000000000ADADDADADADADADADADAADADADADADADADADDADADADADADA
           DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
-        TabOrder = 7
+        TabOrder = 6
         OnClick = btnDel3Click
       end
       object btnEdit3: TBitBtn
@@ -673,7 +648,7 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
           0F07A0F0F0F0FB0B8007D0BFBFB00F000007A0FBFBF0B0FBFB07D0BFBFB0B0BF
           BF07A0FBFBF0BB0BFB07D0BFBFB0BB0FBF07A00000000BB0000DDADADADA0BB0
           DADAADADADADA0000DADDADADADAD0110ADAADADADADAD00ADAD}
-        TabOrder = 8
+        TabOrder = 7
         OnClick = btnEdit3Click
       end
       object btnAdd3: TBitBtn
@@ -691,7 +666,7 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
           DADAADADAD030DADADADDADADA030ADADADAADA000030000ADADDAD033333330
           DADAADA000030000ADADDADADA030ADADADAADADAD030DADADADDADADA000ADA
           DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
-        TabOrder = 9
+        TabOrder = 8
         OnClick = btnAdd3Click
       end
     end
@@ -712,7 +687,6 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
       ParentBackground = False
       ParentFont = False
       TabOrder = 1
-      ExplicitWidth = 278
     end
     object cxGrid1: TcxGrid
       Left = 1
@@ -753,6 +727,7 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
         OptionsView.Indicator = True
         object gRootID: TcxGridDBColumn
           DataBinding.FieldName = 'ID'
+          Visible = False
           HeaderAlignmentHorz = taCenter
           Width = 31
         end
@@ -761,8 +736,10 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
           Visible = False
         end
         object gRootIMAGE_ID: TcxGridDBColumn
+          Caption = 'No'
           DataBinding.FieldName = 'IMAGE_ID'
-          Visible = False
+          HeaderAlignmentHorz = taCenter
+          Width = 30
         end
         object gRootITEM_NAME: TcxGridDBColumn
           Caption = #52769#51221#54637#47785
@@ -798,9 +775,6 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
       Align = alClient
       TabOrder = 3
       LookAndFeel.SkinName = 'Black'
-      ExplicitLeft = 233
-      ExplicitTop = 58
-      ExplicitWidth = 123
       object gSub2: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = False
@@ -832,6 +806,7 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
         OptionsView.Indicator = True
         object gSub2ID: TcxGridDBColumn
           DataBinding.FieldName = 'ID'
+          Visible = False
           HeaderAlignmentHorz = taCenter
           Width = 36
         end
@@ -840,13 +815,15 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
           Visible = False
         end
         object gSub2IMAGE_ID: TcxGridDBColumn
+          Caption = 'No'
           DataBinding.FieldName = 'IMAGE_ID'
-          Visible = False
+          HeaderAlignmentHorz = taCenter
+          Width = 30
         end
         object gSub2ITEM_NAME: TcxGridDBColumn
           Caption = #52769#51221#44208#44284
           DataBinding.FieldName = 'ITEM_NAME'
-          Width = 133
+          Width = 140
         end
         object gSub2BODY_ID: TcxGridDBColumn
           DataBinding.FieldName = 'BODY_ID'
@@ -877,7 +854,6 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
       Align = alLeft
       TabOrder = 4
       LookAndFeel.SkinName = 'Black'
-      ExplicitLeft = 145
       object gSub: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = False
@@ -909,6 +885,7 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
         OptionsView.Indicator = True
         object gSubID: TcxGridDBColumn
           DataBinding.FieldName = 'ID'
+          Visible = False
           HeaderAlignmentHorz = taCenter
           Width = 33
         end
@@ -917,13 +894,15 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
           Visible = False
         end
         object gSubIMAGE_ID: TcxGridDBColumn
+          Caption = 'No'
           DataBinding.FieldName = 'IMAGE_ID'
-          Visible = False
+          HeaderAlignmentHorz = taCenter
+          Width = 30
         end
         object gSubITEM_NAME: TcxGridDBColumn
           Caption = #52769#51221#48512#50948
           DataBinding.FieldName = 'ITEM_NAME'
-          Width = 129
+          Width = 121
         end
         object gSubBODY_ID: TcxGridDBColumn
           DataBinding.FieldName = 'BODY_ID'
@@ -988,7 +967,9 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
       ') q')
     Connection = dmDBCommon.UniDBConnection
     SQL.Strings = (
-      'select * from check_item_tree where parent_id = 0'
+      
+        'select id, parent_id, image_id, item_name from check_item_tree w' +
+        'here parent_id = 0'
       'order by image_id')
     Left = 64
     Top = 192
@@ -1001,24 +982,12 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
       FieldName = 'PARENT_ID'
     end
     object q_check_item_treeIMAGE_ID: TIntegerField
+      Alignment = taCenter
       FieldName = 'IMAGE_ID'
     end
     object q_check_item_treeITEM_NAME: TStringField
       FieldName = 'ITEM_NAME'
       Size = 50
-    end
-    object q_check_item_treeBODY_ID: TIntegerField
-      FieldName = 'BODY_ID'
-    end
-    object q_check_item_treeRESULT_ID: TIntegerField
-      FieldName = 'RESULT_ID'
-    end
-    object q_check_item_treeHOWTO_IMAGE: TSmallintField
-      FieldName = 'HOWTO_IMAGE'
-    end
-    object q_check_item_treeVIDEO_ID: TStringField
-      FieldName = 'VIDEO_ID'
-      Size = 30
     end
   end
   object d_check_item_tree: TDataSource
@@ -2148,8 +2117,10 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
       ') q')
     Connection = dmDBCommon.UniDBConnection
     SQL.Strings = (
-      'select * from check_item_tree where parent_id = :p_id'
-      'order by id')
+      
+        'select id, parent_id, image_id, item_name from check_item_tree w' +
+        'here parent_id = :p_id'
+      'order by image_id')
     Left = 208
     Top = 192
     ParamData = <
@@ -2167,24 +2138,12 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
       FieldName = 'PARENT_ID'
     end
     object q_check_item_subIMAGE_ID: TIntegerField
+      Alignment = taCenter
       FieldName = 'IMAGE_ID'
     end
     object q_check_item_subITEM_NAME: TStringField
       FieldName = 'ITEM_NAME'
       Size = 50
-    end
-    object q_check_item_subBODY_ID: TIntegerField
-      FieldName = 'BODY_ID'
-    end
-    object q_check_item_subRESULT_ID: TIntegerField
-      FieldName = 'RESULT_ID'
-    end
-    object q_check_item_subHOWTO_IMAGE: TSmallintField
-      FieldName = 'HOWTO_IMAGE'
-    end
-    object q_check_item_subVIDEO_ID: TStringField
-      FieldName = 'VIDEO_ID'
-      Size = 30
     end
   end
   object d_check_item_sub: TDataSource
@@ -2233,8 +2192,10 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
       ') q')
     Connection = dmDBCommon.UniDBConnection
     SQL.Strings = (
-      'select * from check_item_tree where parent_id = :p_id'
-      'order by id')
+      
+        'select id, parent_id, image_id, item_name, howto_image, video_id' +
+        ' from check_item_tree where parent_id = :p_id'
+      'order by image_id')
     Left = 392
     Top = 200
     ParamData = <
@@ -2252,17 +2213,12 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
       FieldName = 'PARENT_ID'
     end
     object q_check_item_sub2IMAGE_ID: TIntegerField
+      Alignment = taCenter
       FieldName = 'IMAGE_ID'
     end
     object q_check_item_sub2ITEM_NAME: TStringField
       FieldName = 'ITEM_NAME'
       Size = 50
-    end
-    object q_check_item_sub2BODY_ID: TIntegerField
-      FieldName = 'BODY_ID'
-    end
-    object q_check_item_sub2RESULT_ID: TIntegerField
-      FieldName = 'RESULT_ID'
     end
     object q_check_item_sub2HOWTO_IMAGE: TSmallintField
       FieldName = 'HOWTO_IMAGE'

@@ -16,7 +16,7 @@ object fmCheckStaticItem: TfmCheckStaticItem
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 15
-  object cxGroupBox2: TcxGroupBox
+  object gbCheckItem: TcxGroupBox
     Left = 0
     Top = 0
     Align = alLeft
@@ -67,7 +67,7 @@ object fmCheckStaticItem: TfmCheckStaticItem
     Left = 200
     Top = 0
     Align = alLeft
-    Caption = #52769#51221#54637#47785
+    Caption = #52769#51221#54637#47785'('#45908#48660#53364#47533'='#49345#49464#52285')'
     Style.LookAndFeel.SkinName = 'Black'
     StyleDisabled.LookAndFeel.SkinName = 'Black'
     StyleFocused.LookAndFeel.SkinName = 'Black'
@@ -121,22 +121,21 @@ object fmCheckStaticItem: TfmCheckStaticItem
     StyleFocused.LookAndFeel.SkinName = 'Black'
     StyleHot.LookAndFeel.SkinName = 'Black'
     TabOrder = 2
-    ExplicitWidth = 407
     Height = 638
     Width = 425
     object Label1: TLabel
-      Left = 64
-      Top = 112
+      Left = 73
+      Top = 144
       Width = 264
       Height = 15
       Caption = #44221#48120', '#51473#46321', '#49900#44033' '#51473' '#54644#45817#54616#45716' '#44208#44284#47484' '#49440#53469#54616#49464#50836'.'
     end
     object btnResultSel: TcxButton
       Tag = 1
-      Left = 21
-      Top = 33
+      Left = 40
+      Top = 87
       Width = 107
-      Height = 56
+      Height = 51
       Caption = #44221#48120
       Colors.Normal = clYellow
       LookAndFeel.SkinName = ''
@@ -151,10 +150,10 @@ object fmCheckStaticItem: TfmCheckStaticItem
     end
     object cxButton8: TcxButton
       Tag = 2
-      Left = 139
-      Top = 33
+      Left = 158
+      Top = 87
       Width = 107
-      Height = 56
+      Height = 51
       Caption = #51473#46321
       Colors.Normal = clBlue
       Colors.NormalText = clWhite
@@ -170,10 +169,10 @@ object fmCheckStaticItem: TfmCheckStaticItem
     end
     object cxButton9: TcxButton
       Tag = 3
-      Left = 257
-      Top = 33
+      Left = 276
+      Top = 87
       Width = 107
-      Height = 56
+      Height = 51
       Caption = #49900#44033
       Colors.Normal = clRed
       Colors.NormalText = clWhite
@@ -189,21 +188,21 @@ object fmCheckStaticItem: TfmCheckStaticItem
     end
     object GroupBox1: TGroupBox
       Left = 6
-      Top = 152
+      Top = 176
       Width = 411
-      Height = 475
+      Height = 451
       Caption = #52769#51221#46020#50880#47568
       TabOrder = 3
       object edtComment: TIERichEdit
         AlignWithMargins = True
         Left = 5
-        Top = 86
+        Top = 50
         Width = 401
-        Height = 355
+        Height = 367
         TabStop = False
         RTFText = 
           '{\rtf1\ansi\deff0{\fonttbl{\f0\fnil\fcharset129 \'#39'b3\'#39'aa\'#39'b4\'#39'ae' +
-          '\'#39'b0\'#39'ed\'#39'b5\'#39'f1;}}'#13#10'\viewkind4\uc1\pard\lang1042\f0\fs20\par'#13#10'}' +
+          '\'#39'b0\'#39'ed\'#39'b5\'#39'f1;}}'#13#10'\viewkind4\uc1\pard\lang1042\f0\fs22\par'#13#10'}' +
           #13#10#0
         WordSelection = False
         Align = alClient
@@ -211,7 +210,7 @@ object fmCheckStaticItem: TfmCheckStaticItem
         Color = clInactiveBorder
         Font.Charset = HANGEUL_CHARSET
         Font.Color = clWindowText
-        Font.Height = -13
+        Font.Height = -15
         Font.Name = #45208#45588#44256#46357
         Font.Style = []
         HideSelection = False
@@ -220,15 +219,12 @@ object fmCheckStaticItem: TfmCheckStaticItem
         ScrollBars = ssVertical
         TabOrder = 0
         WantTabs = True
-        ExplicitTop = 20
-        ExplicitWidth = 377
-        ExplicitHeight = 450
       end
       object IERichEditToolbar1: TIERichEditToolbar
         Left = 2
         Top = 17
         Width = 407
-        Height = 66
+        Height = 30
         AutoSize = True
         ButtonHeight = 30
         ButtonWidth = 31
@@ -240,12 +236,12 @@ object fmCheckStaticItem: TfmCheckStaticItem
         ShowHint = True
         TabOrder = 1
         AlwaysSetRedraw = True
+        Buttons = [irbRichEditFont, irbRichEditFontStyle, irbRichEditAlignment, irbRichEditBullets]
         AttachedRichEdit = edtComment
-        ExplicitWidth = 359
       end
       object Panel1: TPanel
         Left = 2
-        Top = 444
+        Top = 420
         Width = 407
         Height = 29
         Align = alBottom
@@ -262,7 +258,7 @@ object fmCheckStaticItem: TfmCheckStaticItem
           Margins.Right = 1
           Margins.Bottom = 1
           Align = alLeft
-          Caption = #51200#51109
+          Caption = #51200#51109'&s'
           OptionsImage.Glyph.Data = {
             36040000424D3604000000000000360000002800000010000000100000000100
             2000000000000004000000000000000000000000000000000000000000040000
@@ -300,59 +296,38 @@ object fmCheckStaticItem: TfmCheckStaticItem
             0005000000050000000500000006000000060000000400000001}
           TabOrder = 0
           OnClick = cxButton1Click
-          ExplicitLeft = 13
-          ExplicitHeight = 25
-        end
-        object PanelPassword: TPanel
-          Left = 86
-          Top = 0
-          Width = 321
-          Height = 29
-          Align = alClient
-          BevelOuter = bvNone
-          TabOrder = 1
-          Visible = False
-          ExplicitLeft = 176
-          ExplicitTop = 3
-          ExplicitWidth = 185
-          ExplicitHeight = 41
-          object Label2: TLabel
-            AlignWithMargins = True
-            Left = 3
-            Top = 3
-            Width = 52
-            Height = 23
-            Align = alLeft
-            Caption = #48708#48128#48264#54840':'
-            Layout = tlCenter
-            ExplicitHeight = 15
-          end
-          object edtPassword: TEdit
-            AlignWithMargins = True
-            Left = 61
-            Top = 3
-            Width = 108
-            Height = 23
-            Align = alLeft
-            TabOrder = 0
-          end
-          object cxButton2: TcxButton
-            AlignWithMargins = True
-            Left = 173
-            Top = 1
-            Width = 52
-            Height = 27
-            Margins.Left = 1
-            Margins.Top = 1
-            Margins.Right = 1
-            Margins.Bottom = 1
-            Align = alLeft
-            Caption = #54869#51064
-            TabOrder = 1
-            OnClick = cxButton2Click
-          end
         end
       end
+    end
+    object rgDirection: TcxRadioGroup
+      Left = 18
+      Top = 17
+      Caption = #48169#54693#49440#53469
+      ParentFont = False
+      Properties.Columns = 4
+      Properties.Items = <
+        item
+          Caption = #54644#45817#50630#51020
+        end
+        item
+          Caption = #51340#52769
+        end
+        item
+          Caption = #50864#52769
+        end
+        item
+          Caption = #50577#52769
+        end>
+      ItemIndex = 0
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -16
+      Style.Font.Name = #45208#45588#44256#46357
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
+      TabOrder = 4
+      Height = 64
+      Width = 391
     end
   end
   object d_CHECK_ITEM_TREE_SEL: TDataSource

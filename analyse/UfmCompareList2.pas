@@ -1162,6 +1162,7 @@ var
   i, cnt : Integer;
 begin
   if CustomerImages.CustID <> '' then begin
+    dmDBCommon.LoadCheckInitData;
     fmStaticCheck := TfmStaticCheck.Create(Self);
     fmStaticCheck.PICTURE_DATE := gridCheckP_DATE.EditValue;
     fmStaticCheck.ImageEnMView1.Assign(ImageEnMView1);
@@ -1371,30 +1372,10 @@ begin
   fLineProps    := nil;
   fTextProps    := nil;
   fCurrentImage := nil;
-  if dmDBCommon.NPRACTICE_SEL.Active = False then
-    dmDBCommon.NPRACTICE_SEL.Active := True;
-
-  if dmDBCommon.t_NPRACTICE_look.Active = False then
-    dmDBCommon.t_NPRACTICE_look.Active := True;
-
-  dmDBCommon.CHECK_ITEM_TREE_BODY_SEL.Active := True;
-  dmDBCommon.d_CHECK_ITEM_TREE_BODY_SEL.DataSet.Refresh;
-  dmDBCommon.CHECK_ITEM_TREE_RESULT_SEL.Active := True;
-  dmDBCommon.d_CHECK_ITEM_TREE_RESULT_SEL.DataSet.Refresh;
-
-  dmDBCommon.q_CHECK_ITEM_TREE.Active := True;
-  dmDBCommon.d_CHECK_ITEM_TREE.DataSet.Refresh;
 
   cxPageControl1.Properties.HideTabs := True;
   cxPageControl1.ActivePageIndex := 0;
   PanelRight.Width := 1;
-{
-  fDBMultiBitmap := TIEDBMultiBitmap.create();
-  fDBMultiBitmap.DataSource := dmDBCommon.ds_IMAGES_SEL;
-  fDBMultiBitmap.ImageBlobField := 'IMAGE_DATA';
-  ImageEnMView1.SetExternalMBitmap( fDBMultiBitmap );
-  fDBMultiBitmap.FollowDBCursor := True;
-}
 end;
 
 procedure TfmCompareList2.FormDestroy(Sender: TObject);

@@ -21,13 +21,13 @@ uses
   hyieutils, iexBitmaps, hyiedefs, iesettings, iexLayers, iexRulers,
   iexToolbars, ieview, iemview, StdCtrls, cxButtons, dxGDIPlusClasses, cxImage,
   DB, MemDS, DBAccess, Uni, cxGroupBox, iexDBBitmaps, ComCtrls, iexRichEdit,
-  cxCheckBox, ToolWin;
+  cxCheckBox, ToolWin, cxRadioGroup, imageenview;
 
 type
   TfmCheckStaticItem = class(TForm)
     ImageEnMView1: TImageEnMView;
     ImageEnMView2: TImageEnMView;
-    cxGroupBox2: TcxGroupBox;
+    gbCheckItem: TcxGroupBox;
     cxGroupBox3: TcxGroupBox;
     cxGroupBox4: TcxGroupBox;
     btnResultSel: TcxButton;
@@ -63,24 +63,20 @@ type
     q_update_comment: TUniQuery;
     Panel1: TPanel;
     cxButton1: TcxButton;
-    PanelPassword: TPanel;
-    Label2: TLabel;
-    edtPassword: TEdit;
-    cxButton2: TcxButton;
+    rgDirection: TcxRadioGroup;
     procedure FormShow(Sender: TObject);
     procedure ImageEnMView1ImageSelect(Sender: TObject; idx: Integer);
     procedure ImageEnMView2ImageSelect(Sender: TObject; idx: Integer);
     procedure btnResultSelClick(Sender: TObject);
     procedure ImageEnMView2DblClick(Sender: TObject);
     procedure cxButton1Click(Sender: TObject);
-    procedure cxButton2Click(Sender: TObject);
   private
     { Private declarations }
     fDBMultiBitmap : TIEDBMultiBitmap;
     procedure RetrieveComment(id: Integer);
   public
     { Public declarations }
-    RESULT_ID, ITEM_ID, BODY_ID : Integer;
+    RESULT_ID, ITEM_ID, BODY_ID, DIRECTION : Integer;
     RESULT_LEVEL : Integer;
     procedure RetrieveSubItems(id : Integer);
     procedure RetrieveSubResult(id : Integer);
@@ -91,7 +87,7 @@ var
 
 implementation
 uses
-  GlobalVar, UdmDBCommon, UfmStaticCheck, UfmHowToSingle;
+  GlobalVar, UdmDBCommon, UfmStaticCheck, UfmHowToSingle, ufmLayerEditor;
 {$R *.dfm}
 
 { TfmCheckStaticItem }
@@ -105,32 +101,24 @@ begin
   r_id := ImageEnMView2.SelectedImage;
   ITEM_ID := ImageEnMView1.ImageTag[i_id];
   RESULT_ID := ImageEnMView2.ImageTag[r_id];
+  DIRECTION := rgDirection.ItemIndex;
   fmStaticCheck.SaveResultData;
 end;
 
 procedure TfmCheckStaticItem.cxButton1Click(Sender: TObject);
-begin
-  PanelPassword.Visible := True;
-end;
-
-procedure TfmCheckStaticItem.cxButton2Click(Sender: TObject);
 var
   idx : Integer;
 begin
-  if edtPassword.Text = '6729' then begin
-    idx := ImageEnMView2.SelectedImage;
-    q_update_comment.ParamByName('id').Value := ImageEnMView2.ImageTag[idx];
-    q_update_comment.ParamByName('new_comment').Value := edtComment.RTFText;
-    q_update_comment.Execute;
-    PanelPassword.Visible := False;
-  end else begin
-    ShowMessage('비밀번호가 틀립니다.');
-    PanelPassword.Visible := False;
-  end;
+  idx := ImageEnMView2.SelectedImage;
+  q_update_comment.ParamByName('id').Value := ImageEnMView2.ImageTag[idx];
+  q_update_comment.ParamByName('new_comment').Value := edtComment.RTFText;
+  q_update_comment.Execute;
 end;
 
 procedure TfmCheckStaticItem.FormShow(Sender: TObject);
 begin
+  ImageEnMView1.AnnotationsVisible := True;
+  ImageEnMView2.AnnotationsVisible := True;
   RetrieveSubItems(BODY_ID);
 end;
 
