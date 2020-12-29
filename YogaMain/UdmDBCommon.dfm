@@ -5487,4 +5487,73 @@ object dmDBCommon: TdmDBCommon
       end>
     CommandStoredProcName = 'MUSCLE_IMAGE_POINT_UPD'
   end
+  object NPRACTICE2_SEL: TUniStoredProc
+    StoredProcName = 'NPRACTICE2_SEL'
+    Connection = UniDBConnection
+    Left = 960
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'ID'
+        ParamType = ptOutput
+      end
+      item
+        DataType = ftString
+        Name = 'P_NAME'
+        ParamType = ptOutput
+        Size = 50
+      end
+      item
+        DataType = ftString
+        Name = 'P_DESC'
+        ParamType = ptOutput
+        Size = 50
+      end
+      item
+        DataType = ftInteger
+        Name = 'IS_SELECT'
+        ParamType = ptOutput
+      end
+      item
+        DataType = ftString
+        Name = 'FOR_PAIN'
+        ParamType = ptOutput
+        Size = 100
+      end
+      item
+        DataType = ftString
+        Name = 'FOR_BODY'
+        ParamType = ptOutput
+        Size = 100
+      end>
+    CommandStoredProcName = 'NPRACTICE2_SEL'
+    object NPRACTICE2_SELID: TIntegerField
+      Alignment = taCenter
+      FieldName = 'ID'
+    end
+    object NPRACTICE2_SELP_NAME: TStringField
+      FieldName = 'P_NAME'
+      Size = 50
+    end
+    object NPRACTICE2_SELP_DESC: TStringField
+      FieldName = 'P_DESC'
+      Size = 50
+    end
+    object NPRACTICE2_SELIS_SELECT: TIntegerField
+      FieldName = 'IS_SELECT'
+    end
+    object NPRACTICE2_SELFOR_PAIN: TStringField
+      FieldName = 'FOR_PAIN'
+      Size = 100
+    end
+    object NPRACTICE2_SELFOR_BODY: TStringField
+      FieldName = 'FOR_BODY'
+      Size = 100
+    end
+  end
+  object d_NPRACTICE2: TDataSource
+    DataSet = NPRACTICE2_SEL
+    Left = 960
+    Top = 48
+  end
 end

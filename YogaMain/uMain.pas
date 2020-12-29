@@ -74,7 +74,6 @@ type
     actCheckUpdate: TAction;
     mnuCheckUpdate: TMenuItem;
     actStaticCheckItems: TAction;
-    N_item_setting: TMenuItem;
     actPracticeItems: TAction;
     actMemberDetail: TAction;
     actStaticCheckCompare: TAction;

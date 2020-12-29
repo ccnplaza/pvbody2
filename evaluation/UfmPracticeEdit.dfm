@@ -32,42 +32,49 @@ object fmPracticeEdit: TfmPracticeEdit
     TabOrder = 0
     object Label1: TLabel
       Left = 64
-      Top = 40
+      Top = 67
       Width = 40
       Height = 15
       Caption = #50868#46041#47749':'
     end
     object Label2: TLabel
       Left = 25
-      Top = 67
+      Top = 94
       Width = 76
       Height = 15
       Caption = #51201#50857#49888#52404#48512#50948':'
     end
     object Label3: TLabel
       Left = 51
-      Top = 114
+      Top = 141
       Width = 52
       Height = 15
       Caption = #44288#47144#53685#51613':'
     end
+    object Label4: TLabel
+      Left = 73
+      Top = 41
+      Width = 28
+      Height = 15
+      Caption = #48264#54840':'
+    end
     object edtPName: TEdit
       Left = 113
-      Top = 37
+      Top = 64
       Width = 224
       Height = 23
       TabOrder = 0
     end
     object edtBody: TMemo
       Left = 113
-      Top = 64
+      Top = 91
       Width = 224
       Height = 41
       TabOrder = 1
     end
     object edtPain: TMemo
       Left = 113
-      Top = 111
+      Top = 138
       Width = 224
       Height = 41
       TabOrder = 2
@@ -89,6 +96,12 @@ object fmPracticeEdit: TfmPracticeEdit
       Caption = #52712#49548
       Kind = bkCancel
       TabOrder = 4
+    end
+    object speNo: TcxSpinEdit
+      Left = 112
+      Top = 38
+      TabOrder = 5
+      Width = 65
     end
   end
 end

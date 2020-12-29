@@ -491,6 +491,14 @@ type
     MUSCLE_IMAGE_POINT_SELMUSCLE_POSITION: TBlobField;
     MUSCLE_IMAGE_POINT_SELBONE_IMAGE: TBlobField;
     MUSCLE_IMAGE_POINT_SELBONE_POSITION: TBlobField;
+    NPRACTICE2_SEL: TUniStoredProc;
+    d_NPRACTICE2: TDataSource;
+    NPRACTICE2_SELID: TIntegerField;
+    NPRACTICE2_SELP_NAME: TStringField;
+    NPRACTICE2_SELP_DESC: TStringField;
+    NPRACTICE2_SELIS_SELECT: TIntegerField;
+    NPRACTICE2_SELFOR_PAIN: TStringField;
+    NPRACTICE2_SELFOR_BODY: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     procedure DownloadImage(imgName: string);
@@ -594,6 +602,7 @@ begin
     IMAGE_DESCRIPT_LIST.Active := True;
     dsIMAGE_DESCRIPT_LIST.DataSet.Refresh;
     NPRACTICE_SEL.Open;
+    NPRACTICE2_SEL.Open;
     REGISTED_CENTER_LOOK.ParamByName('COMP_ID').Value := LoginUserCompID;
     REGISTED_CENTER_LOOK.Open;
     ds_REGISTED_CENTER_LOOK.DataSet.Refresh;

@@ -17,479 +17,13 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 15
-  object Panel7: TPanel
-    Left = 529
-    Top = 0
-    Width = 364
-    Height = 716
-    Align = alLeft
-    BevelOuter = bvNone
-    Caption = 'Panel7'
-    TabOrder = 0
-    object Panel9: TPanel
-      Left = 0
-      Top = 0
-      Width = 364
-      Height = 716
-      Align = alClient
-      BevelOuter = bvNone
-      TabOrder = 0
-      object Panel8: TPanel
-        Left = 0
-        Top = 0
-        Width = 364
-        Height = 716
-        Align = alClient
-        Caption = 'Panel8'
-        TabOrder = 0
-        object Panel10: TPanel
-          Left = 1
-          Top = 1
-          Width = 362
-          Height = 25
-          Align = alTop
-          BevelOuter = bvNone
-          Caption = #52376#48169#50868#46041
-          Color = clSkyBlue
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = #44404#47548
-          Font.Style = [fsBold]
-          ParentBackground = False
-          ParentFont = False
-          TabOrder = 0
-        end
-        object Panel11: TPanel
-          Left = 1
-          Top = 26
-          Width = 362
-          Height = 95
-          Align = alTop
-          BevelOuter = bvNone
-          TabOrder = 1
-          object BitBtn3: TBitBtn
-            Left = 36
-            Top = 3
-            Width = 129
-            Height = 25
-            Hint = #49325#51228
-            Caption = #49440#53469#50868#46041#49325#51228
-            Glyph.Data = {
-              F6000000424DF600000000000000760000002800000010000000100000000100
-              04000000000080000000120B0000120B00001000000010000000000000000000
-              8000008000000080800080000000800080008080000080808000C0C0C0000000
-              FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
-              DADAADADADADADADADADDADADADADADADADAADADADADADADADADDADADADADADA
-              DADAADADADADADADADADDADADADADADADADAADA000000000ADADDAD033333330
-              DADAADA000000000ADADDADADADADADADADAADADADADADADADADDADADADADADA
-              DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 0
-            OnClick = BitBtn3Click
-          end
-          object btn2: TBitBtn
-            Left = 221
-            Top = 3
-            Width = 41
-            Height = 25
-            Hint = #50868#46041#48277#48372#44592
-            Glyph.Data = {
-              F6000000424DF600000000000000760000002800000010000000100000000100
-              04000000000080000000120B0000120B00001000000000000000000000000000
-              8000008000000080800080000000800080008080000080808000C0C0C0000000
-              FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
-              DADAADADADAD00CDADADDADADAD00CDADADAAD000070CDADADADD0DADA0BDADA
-              DADA0DAFFFF0000000000AF7F770FFFFFFF00DFFFFF0FFFFFFF00AF77F70F7FF
-              FFF0A0FFFF0FFFFFFFF0DA00007F77FFFFF0AD0FFFFFFFFFFFF0DA0F7777F77F
-              FFF0AD0FFFFFFFFFFFF0DA00000000000000ADADADADADADADAD}
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 1
-            OnClick = btn2Click
-          end
-          object btn3: TBitBtn
-            Left = 262
-            Top = 3
-            Width = 39
-            Height = 25
-            Hint = #50689#49345#48372#44592
-            Glyph.Data = {
-              F6000000424DF600000000000000760000002800000010000000100000000100
-              04000000000080000000120B0000120B00001000000000000000000000000000
-              8000008000000080800080000000800080008080000080808000C0C0C0000000
-              FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00888888899888
-              8888888888899988888888000009999088888077777999990880807777099999
-              9800807770899999000080777089999700708070070999770000807007799777
-              0800807777797777088088000000000088880888800888888888000000088888
-              8888000000888888888808888888888888888888888888888888}
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 2
-            OnClick = btn3Click
-          end
-          object rgDirection: TcxRadioGroup
-            Left = 13
-            Top = 32
-            Caption = #51340'/'#50864' '#48169#54693#49440#53469
-            Properties.Columns = 4
-            Properties.DefaultValue = 0
-            Properties.ImmediatePost = True
-            Properties.Items = <
-              item
-                Caption = #50630#51020
-                Value = 0
-              end
-              item
-                Caption = #51340#52769
-                Value = 1
-              end
-              item
-                Caption = #50864#52769
-                Value = 2
-              end
-              item
-                Caption = #50577#52769
-                Value = 3
-              end>
-            Properties.OnEditValueChanged = rgDirectionPropertiesEditValueChanged
-            ItemIndex = 0
-            Style.LookAndFeel.SkinName = 'DevExpressStyle'
-            StyleDisabled.LookAndFeel.SkinName = 'DevExpressStyle'
-            StyleFocused.LookAndFeel.SkinName = 'DevExpressStyle'
-            StyleHot.LookAndFeel.SkinName = 'DevExpressStyle'
-            TabOrder = 3
-            Height = 54
-            Width = 336
-          end
-        end
-        object cxGrid3: TcxGrid
-          Left = 1
-          Top = 121
-          Width = 362
-          Height = 594
-          Align = alClient
-          TabOrder = 2
-          LookAndFeel.SkinName = 'DevExpressStyle'
-          object gPracticeAssign: TcxGridDBTableView
-            OnDragDrop = gPracticeAssignDragDrop
-            OnDragOver = gPracticeAssignDragOver
-            Navigator.Buttons.CustomButtons = <>
-            Navigator.Buttons.First.Visible = True
-            Navigator.Buttons.PriorPage.Visible = True
-            Navigator.Buttons.Prior.Visible = True
-            Navigator.Buttons.Next.Visible = True
-            Navigator.Buttons.NextPage.Visible = True
-            Navigator.Buttons.Last.Visible = True
-            Navigator.Buttons.Insert.Visible = True
-            Navigator.Buttons.Append.Visible = False
-            Navigator.Buttons.Delete.Visible = True
-            Navigator.Buttons.Edit.Visible = True
-            Navigator.Buttons.Post.Visible = True
-            Navigator.Buttons.Cancel.Visible = True
-            Navigator.Buttons.Refresh.Visible = True
-            Navigator.Buttons.SaveBookmark.Visible = True
-            Navigator.Buttons.GotoBookmark.Visible = True
-            Navigator.Buttons.Filter.Visible = True
-            DataController.DataSource = d_npractice_assign
-            DataController.Summary.DefaultGroupSummaryItems = <>
-            DataController.Summary.FooterSummaryItems = <>
-            DataController.Summary.SummaryGroups = <>
-            OptionsSelection.CellSelect = False
-            OptionsSelection.HideFocusRectOnExit = False
-            OptionsSelection.UnselectFocusedRecordOnExit = False
-            OptionsView.ColumnAutoWidth = True
-            OptionsView.GroupByBox = False
-            OptionsView.Indicator = True
-            object gPracticeAssignID: TcxGridDBColumn
-              DataBinding.FieldName = 'ID'
-              Visible = False
-              Width = 48
-            end
-            object gPracticeAssignRESULT_ID: TcxGridDBColumn
-              Caption = #54637#47785'ID'
-              DataBinding.FieldName = 'RESULT_ID'
-              PropertiesClassName = 'TcxLookupComboBoxProperties'
-              Properties.KeyFieldNames = 'ID'
-              Properties.ListColumns = <
-                item
-                  FieldName = 'ITEM_NAME'
-                end>
-              Properties.ListSource = ds_CHECK_ITEM_TREE_RESULT_SEL
-              Width = 92
-            end
-            object gPracticeAssignDIRECTION_KIND: TcxGridDBColumn
-              DataBinding.FieldName = 'DIRECTION_KIND'
-              PropertiesClassName = 'TcxImageComboBoxProperties'
-              Properties.Images = il2
-              Properties.Items = <
-                item
-                  Description = #50630#51020
-                  Value = 0
-                end
-                item
-                  Description = #51340#52769
-                  ImageIndex = 10
-                  Value = 1
-                end
-                item
-                  Description = #50864#52769
-                  ImageIndex = 11
-                  Value = 2
-                end
-                item
-                  Description = #50577#52769
-                  ImageIndex = 12
-                  Value = 3
-                end>
-              Properties.ShowDescriptions = False
-              HeaderAlignmentHorz = taCenter
-              Width = 49
-            end
-            object gPracticeAssignPRACTICE_ID: TcxGridDBColumn
-              Caption = #50868#46041#47749
-              DataBinding.FieldName = 'PRACTICE_ID'
-              PropertiesClassName = 'TcxLookupComboBoxProperties'
-              Properties.KeyFieldNames = 'ID'
-              Properties.ListColumns = <
-                item
-                  FieldName = 'P_NAME'
-                end>
-              Properties.ListSource = dmDBCommon.d_NPRACTICE_look
-              Width = 207
-            end
-          end
-          object cxGridLevel2: TcxGridLevel
-            GridView = gPracticeAssign
-          end
-        end
-      end
-    end
-  end
-  object Panel19: TPanel
-    Left = 893
-    Top = 0
-    Width = 435
-    Height = 716
-    Align = alClient
-    TabOrder = 1
-    object Panel21: TPanel
-      Left = 1
-      Top = 1
-      Width = 433
-      Height = 25
-      Align = alTop
-      BevelOuter = bvNone
-      Caption = #52376#48169#50868#46041' '#47532#49828#53944
-      Color = clSkyBlue
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = #44404#47548
-      Font.Style = [fsBold]
-      ParentBackground = False
-      ParentFont = False
-      TabOrder = 0
-    end
-    object Panel22: TPanel
-      Left = 1
-      Top = 26
-      Width = 433
-      Height = 31
-      Align = alTop
-      BevelOuter = bvNone
-      TabOrder = 1
-      object btnAddPractice: TBitBtn
-        Left = 103
-        Top = 3
-        Width = 117
-        Height = 25
-        Hint = #52628#44032
-        Caption = #52376#48169#50868#46041#51201#50857
-        Glyph.Data = {
-          F6000000424DF600000000000000760000002800000010000000100000000100
-          04000000000080000000120B0000120B00001000000010000000000000000000
-          8000008000000080800080000000800080008080000080808000C0C0C0000000
-          FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
-          DADAADADADADADADADADDADADADADADADADAADADADADADADADADDADADA000ADA
-          DADAADADAD030DADADADDADADA030ADADADAADA000030000ADADDAD033333330
-          DADAADA000030000ADADDADADA030ADADADAADADAD030DADADADDADADA000ADA
-          DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 0
-        OnClick = btnAddPracticeClick
-      end
-      object btnPracticeAdd: TBitBtn
-        Left = 8
-        Top = 3
-        Width = 31
-        Height = 25
-        Hint = #52628#44032
-        Glyph.Data = {
-          F6000000424DF600000000000000760000002800000010000000100000000100
-          04000000000080000000120B0000120B00001000000010000000000000000000
-          8000008000000080800080000000800080008080000080808000C0C0C0000000
-          FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
-          DADAADADADADADADADADDADADADADADADADAADADADADADADADADDADADA000ADA
-          DADAADADAD030DADADADDADADA030ADADADAADA000030000ADADDAD033333330
-          DADAADA000030000ADADDADADA030ADADADAADADAD030DADADADDADADA000ADA
-          DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 1
-        OnClick = btnPracticeAddClick
-      end
-      object btnPracticeEdit: TBitBtn
-        Left = 40
-        Top = 3
-        Width = 31
-        Height = 25
-        Hint = #49688#51221
-        Glyph.Data = {
-          F6000000424DF600000000000000760000002800000010000000100000000100
-          04000000000080000000120B0000120B00001000000010000000000000000000
-          8000008000000080800080000000800080008080000080808000C0C0C0000000
-          FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
-          DADAAD77777777777777D000000000000007A0FBFBFBFB00FB07D0BFBFBFBF08
-          0F07A0F0F0F0FB0B8007D0BFBFB00F000007A0FBFBF0B0FBFB07D0BFBFB0B0BF
-          BF07A0FBFBF0BB0BFB07D0BFBFB0BB0FBF07A00000000BB0000DDADADADA0BB0
-          DADAADADADADA0000DADDADADADAD0110ADAADADADADAD00ADAD}
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 2
-        OnClick = btnPracticeEditClick
-      end
-      object BitBtn9: TBitBtn
-        Left = 72
-        Top = 3
-        Width = 30
-        Height = 25
-        Hint = #49325#51228
-        Glyph.Data = {
-          F6000000424DF600000000000000760000002800000010000000100000000100
-          04000000000080000000120B0000120B00001000000010000000000000000000
-          8000008000000080800080000000800080008080000080808000C0C0C0000000
-          FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
-          DADAADADADADADADADADDADADADADADADADAADADADADADADADADDADADADADADA
-          DADAADADADADADADADADDADADADADADADADAADA000000000ADADDAD033333330
-          DADAADA000000000ADADDADADADADADADADAADADADADADADADADDADADADADADA
-          DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 3
-        OnClick = BitBtn9Click
-      end
-      object btn1: TBitBtn
-        Left = 221
-        Top = 3
-        Width = 41
-        Height = 25
-        Hint = #50868#46041#48277#48372#44592
-        Glyph.Data = {
-          F6000000424DF600000000000000760000002800000010000000100000000100
-          04000000000080000000120B0000120B00001000000000000000000000000000
-          8000008000000080800080000000800080008080000080808000C0C0C0000000
-          FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
-          DADAADADADAD00CDADADDADADAD00CDADADAAD000070CDADADADD0DADA0BDADA
-          DADA0DAFFFF0000000000AF7F770FFFFFFF00DFFFFF0FFFFFFF00AF77F70F7FF
-          FFF0A0FFFF0FFFFFFFF0DA00007F77FFFFF0AD0FFFFFFFFFFFF0DA0F7777F77F
-          FFF0AD0FFFFFFFFFFFF0DA00000000000000ADADADADADADADAD}
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 4
-        OnClick = btn1Click
-      end
-      object btnPlayVideo: TBitBtn
-        Left = 262
-        Top = 3
-        Width = 39
-        Height = 25
-        Hint = #50689#49345#48372#44592
-        Glyph.Data = {
-          F6000000424DF600000000000000760000002800000010000000100000000100
-          04000000000080000000120B0000120B00001000000000000000000000000000
-          8000008000000080800080000000800080008080000080808000C0C0C0000000
-          FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00888888899888
-          8888888888899988888888000009999088888077777999990880807777099999
-          9800807770899999000080777089999700708070070999770000807007799777
-          0800807777797777088088000000000088880888800888888888000000088888
-          8888000000888888888808888888888888888888888888888888}
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 5
-        OnClick = btnPlayVideoClick
-      end
-    end
-    object cxGrid5: TcxGrid
-      Left = 1
-      Top = 57
-      Width = 433
-      Height = 658
-      Align = alClient
-      TabOrder = 2
-      LookAndFeel.SkinName = 'DevExpressStyle'
-      object gPractice: TcxGridDBTableView
-        DragMode = dmAutomatic
-        Navigator.Buttons.CustomButtons = <>
-        Navigator.Buttons.First.Visible = True
-        Navigator.Buttons.PriorPage.Visible = True
-        Navigator.Buttons.Prior.Visible = True
-        Navigator.Buttons.Next.Visible = True
-        Navigator.Buttons.NextPage.Visible = True
-        Navigator.Buttons.Last.Visible = True
-        Navigator.Buttons.Insert.Visible = True
-        Navigator.Buttons.Append.Visible = False
-        Navigator.Buttons.Delete.Visible = True
-        Navigator.Buttons.Edit.Visible = True
-        Navigator.Buttons.Post.Visible = True
-        Navigator.Buttons.Cancel.Visible = True
-        Navigator.Buttons.Refresh.Visible = True
-        Navigator.Buttons.SaveBookmark.Visible = True
-        Navigator.Buttons.GotoBookmark.Visible = True
-        Navigator.Buttons.Filter.Visible = True
-        DataController.DataSource = dmDBCommon.d_NPRACTICE
-        DataController.Summary.DefaultGroupSummaryItems = <>
-        DataController.Summary.FooterSummaryItems = <>
-        DataController.Summary.SummaryGroups = <>
-        OptionsSelection.CellSelect = False
-        OptionsSelection.HideFocusRectOnExit = False
-        OptionsSelection.MultiSelect = True
-        OptionsSelection.UnselectFocusedRecordOnExit = False
-        OptionsView.ColumnAutoWidth = True
-        OptionsView.GroupByBox = False
-        OptionsView.Indicator = True
-        object gPracticeID: TcxGridDBColumn
-          Caption = #50868#46041'ID'
-          DataBinding.FieldName = 'ID'
-          HeaderAlignmentHorz = taCenter
-        end
-        object gPracticeP_NAME: TcxGridDBColumn
-          Caption = #50868#46041#47749
-          DataBinding.FieldName = 'P_NAME'
-        end
-        object gPracticeFOR_BODY: TcxGridDBColumn
-          Caption = #51201#50857' '#49888#52404#48512#50948'/'#44540#50977
-          DataBinding.FieldName = 'FOR_BODY'
-        end
-        object gPracticeFOR_PAIN: TcxGridDBColumn
-          Caption = #44288#47144' '#53685#51613
-          DataBinding.FieldName = 'FOR_PAIN'
-        end
-      end
-      object cxGrid5Level1: TcxGridLevel
-        GridView = gPractice
-      end
-    end
-  end
   object pnl1: TPanel
     Left = 0
     Top = 0
     Width = 529
     Height = 716
     Align = alLeft
-    TabOrder = 2
+    TabOrder = 0
     object pnl2: TPanel
       Left = 1
       Top = 26
@@ -923,6 +457,952 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
       end
       object cxGridLevel3: TcxGridLevel
         GridView = gSub
+      end
+    end
+  end
+  object cxPageControl1: TcxPageControl
+    Left = 529
+    Top = 0
+    Width = 799
+    Height = 716
+    Align = alClient
+    TabOrder = 1
+    Properties.ActivePage = cxTabSheet2
+    Properties.CustomButtons.Buttons = <>
+    Properties.Style = 9
+    LookAndFeel.SkinName = ''
+    OnChange = cxPageControl1Change
+    ClientRectBottom = 716
+    ClientRectRight = 799
+    ClientRectTop = 22
+    object cxTabSheet1: TcxTabSheet
+      Caption = #51068#48152#50868#46041
+      ImageIndex = 0
+      object Panel7: TPanel
+        Left = 0
+        Top = 0
+        Width = 364
+        Height = 694
+        Align = alLeft
+        BevelOuter = bvNone
+        Caption = 'Panel7'
+        TabOrder = 0
+        object Panel9: TPanel
+          Left = 0
+          Top = 0
+          Width = 364
+          Height = 694
+          Align = alClient
+          BevelOuter = bvNone
+          TabOrder = 0
+          object Panel8: TPanel
+            Left = 0
+            Top = 0
+            Width = 364
+            Height = 694
+            Align = alClient
+            Caption = 'Panel8'
+            TabOrder = 0
+            object Panel10: TPanel
+              Left = 1
+              Top = 1
+              Width = 362
+              Height = 25
+              Align = alTop
+              BevelOuter = bvNone
+              Caption = #50868#46041#54624#45817
+              Color = clSkyBlue
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = #44404#47548
+              Font.Style = [fsBold]
+              ParentBackground = False
+              ParentFont = False
+              TabOrder = 0
+            end
+            object Panel11: TPanel
+              Left = 1
+              Top = 26
+              Width = 362
+              Height = 95
+              Align = alTop
+              BevelOuter = bvNone
+              TabOrder = 1
+              object BitBtn3: TBitBtn
+                Left = 36
+                Top = 3
+                Width = 129
+                Height = 25
+                Hint = #49325#51228
+                Caption = #49440#53469#50868#46041#49325#51228
+                Glyph.Data = {
+                  F6000000424DF600000000000000760000002800000010000000100000000100
+                  04000000000080000000120B0000120B00001000000010000000000000000000
+                  8000008000000080800080000000800080008080000080808000C0C0C0000000
+                  FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+                  DADAADADADADADADADADDADADADADADADADAADADADADADADADADDADADADADADA
+                  DADAADADADADADADADADDADADADADADADADAADA000000000ADADDAD033333330
+                  DADAADA000000000ADADDADADADADADADADAADADADADADADADADDADADADADADA
+                  DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 0
+                OnClick = BitBtn3Click
+              end
+              object btn2: TBitBtn
+                Left = 221
+                Top = 3
+                Width = 41
+                Height = 25
+                Hint = #50868#46041#48277#48372#44592
+                Glyph.Data = {
+                  F6000000424DF600000000000000760000002800000010000000100000000100
+                  04000000000080000000120B0000120B00001000000000000000000000000000
+                  8000008000000080800080000000800080008080000080808000C0C0C0000000
+                  FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+                  DADAADADADAD00CDADADDADADAD00CDADADAAD000070CDADADADD0DADA0BDADA
+                  DADA0DAFFFF0000000000AF7F770FFFFFFF00DFFFFF0FFFFFFF00AF77F70F7FF
+                  FFF0A0FFFF0FFFFFFFF0DA00007F77FFFFF0AD0FFFFFFFFFFFF0DA0F7777F77F
+                  FFF0AD0FFFFFFFFFFFF0DA00000000000000ADADADADADADADAD}
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 1
+                OnClick = btn2Click
+              end
+              object btn3: TBitBtn
+                Left = 262
+                Top = 3
+                Width = 39
+                Height = 25
+                Hint = #50689#49345#48372#44592
+                Glyph.Data = {
+                  F6000000424DF600000000000000760000002800000010000000100000000100
+                  04000000000080000000120B0000120B00001000000000000000000000000000
+                  8000008000000080800080000000800080008080000080808000C0C0C0000000
+                  FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00888888899888
+                  8888888888899988888888000009999088888077777999990880807777099999
+                  9800807770899999000080777089999700708070070999770000807007799777
+                  0800807777797777088088000000000088880888800888888888000000088888
+                  8888000000888888888808888888888888888888888888888888}
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 2
+                OnClick = btn3Click
+              end
+              object rgDirection: TcxRadioGroup
+                Left = 13
+                Top = 32
+                Caption = #51340'/'#50864' '#48169#54693#49440#53469
+                Properties.Columns = 4
+                Properties.DefaultValue = 0
+                Properties.ImmediatePost = True
+                Properties.Items = <
+                  item
+                    Caption = #50630#51020
+                    Value = 0
+                  end
+                  item
+                    Caption = #51340#52769
+                    Value = 1
+                  end
+                  item
+                    Caption = #50864#52769
+                    Value = 2
+                  end
+                  item
+                    Caption = #50577#52769
+                    Value = 3
+                  end>
+                Properties.OnEditValueChanged = rgDirectionPropertiesEditValueChanged
+                ItemIndex = 0
+                Style.LookAndFeel.SkinName = 'DevExpressStyle'
+                StyleDisabled.LookAndFeel.SkinName = 'DevExpressStyle'
+                StyleFocused.LookAndFeel.SkinName = 'DevExpressStyle'
+                StyleHot.LookAndFeel.SkinName = 'DevExpressStyle'
+                TabOrder = 3
+                Height = 54
+                Width = 336
+              end
+            end
+            object cxGrid3: TcxGrid
+              Left = 1
+              Top = 121
+              Width = 362
+              Height = 572
+              Align = alClient
+              TabOrder = 2
+              LookAndFeel.SkinName = 'Black'
+              object gPracticeAssign: TcxGridDBTableView
+                OnDragDrop = gPracticeAssignDragDrop
+                OnDragOver = gPracticeAssignDragOver
+                Navigator.Buttons.CustomButtons = <>
+                Navigator.Buttons.First.Visible = True
+                Navigator.Buttons.PriorPage.Visible = True
+                Navigator.Buttons.Prior.Visible = True
+                Navigator.Buttons.Next.Visible = True
+                Navigator.Buttons.NextPage.Visible = True
+                Navigator.Buttons.Last.Visible = True
+                Navigator.Buttons.Insert.Visible = True
+                Navigator.Buttons.Append.Visible = False
+                Navigator.Buttons.Delete.Visible = True
+                Navigator.Buttons.Edit.Visible = True
+                Navigator.Buttons.Post.Visible = True
+                Navigator.Buttons.Cancel.Visible = True
+                Navigator.Buttons.Refresh.Visible = True
+                Navigator.Buttons.SaveBookmark.Visible = True
+                Navigator.Buttons.GotoBookmark.Visible = True
+                Navigator.Buttons.Filter.Visible = True
+                DataController.DataSource = d_npractice_assign
+                DataController.Summary.DefaultGroupSummaryItems = <>
+                DataController.Summary.FooterSummaryItems = <>
+                DataController.Summary.SummaryGroups = <>
+                OptionsSelection.CellSelect = False
+                OptionsSelection.HideFocusRectOnExit = False
+                OptionsSelection.UnselectFocusedRecordOnExit = False
+                OptionsView.ColumnAutoWidth = True
+                OptionsView.GroupByBox = False
+                OptionsView.Indicator = True
+                object gPracticeAssignID: TcxGridDBColumn
+                  DataBinding.FieldName = 'ID'
+                  Visible = False
+                  Width = 48
+                end
+                object gPracticeAssignRESULT_ID: TcxGridDBColumn
+                  Caption = #54637#47785'ID'
+                  DataBinding.FieldName = 'RESULT_ID'
+                  PropertiesClassName = 'TcxLookupComboBoxProperties'
+                  Properties.KeyFieldNames = 'ID'
+                  Properties.ListColumns = <
+                    item
+                      FieldName = 'ITEM_NAME'
+                    end>
+                  Properties.ListSource = ds_CHECK_ITEM_TREE_RESULT_SEL
+                  Width = 92
+                end
+                object gPracticeAssignDIRECTION_KIND: TcxGridDBColumn
+                  DataBinding.FieldName = 'DIRECTION_KIND'
+                  PropertiesClassName = 'TcxImageComboBoxProperties'
+                  Properties.Images = il2
+                  Properties.Items = <
+                    item
+                      Description = #50630#51020
+                      Value = 0
+                    end
+                    item
+                      Description = #51340#52769
+                      ImageIndex = 10
+                      Value = 1
+                    end
+                    item
+                      Description = #50864#52769
+                      ImageIndex = 11
+                      Value = 2
+                    end
+                    item
+                      Description = #50577#52769
+                      ImageIndex = 12
+                      Value = 3
+                    end>
+                  Properties.ShowDescriptions = False
+                  HeaderAlignmentHorz = taCenter
+                  Width = 49
+                end
+                object gPracticeAssignPRACTICE_ID: TcxGridDBColumn
+                  Caption = #50868#46041#47749
+                  DataBinding.FieldName = 'PRACTICE_ID'
+                  PropertiesClassName = 'TcxLookupComboBoxProperties'
+                  Properties.KeyFieldNames = 'ID'
+                  Properties.ListColumns = <
+                    item
+                      FieldName = 'P_NAME'
+                    end>
+                  Properties.ListSource = dmDBCommon.d_NPRACTICE_look
+                  Width = 207
+                end
+              end
+              object cxGridLevel2: TcxGridLevel
+                GridView = gPracticeAssign
+              end
+            end
+          end
+        end
+      end
+      object Panel19: TPanel
+        Left = 364
+        Top = 0
+        Width = 435
+        Height = 694
+        Align = alClient
+        TabOrder = 1
+        object Panel21: TPanel
+          Left = 1
+          Top = 1
+          Width = 433
+          Height = 25
+          Align = alTop
+          BevelOuter = bvNone
+          Caption = #50868#46041' '#47532#49828#53944
+          Color = clSkyBlue
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = #44404#47548
+          Font.Style = [fsBold]
+          ParentBackground = False
+          ParentFont = False
+          TabOrder = 0
+        end
+        object Panel22: TPanel
+          Left = 1
+          Top = 26
+          Width = 433
+          Height = 31
+          Align = alTop
+          BevelOuter = bvNone
+          TabOrder = 1
+          object btnAddPractice: TBitBtn
+            Left = 103
+            Top = 3
+            Width = 117
+            Height = 25
+            Hint = #52628#44032
+            Caption = #52376#48169#50868#46041#51201#50857
+            Glyph.Data = {
+              F6000000424DF600000000000000760000002800000010000000100000000100
+              04000000000080000000120B0000120B00001000000010000000000000000000
+              8000008000000080800080000000800080008080000080808000C0C0C0000000
+              FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+              DADAADADADADADADADADDADADADADADADADAADADADADADADADADDADADA000ADA
+              DADAADADAD030DADADADDADADA030ADADADAADA000030000ADADDAD033333330
+              DADAADA000030000ADADDADADA030ADADADAADADAD030DADADADDADADA000ADA
+              DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+            OnClick = btnAddPracticeClick
+          end
+          object btnPracticeAdd: TBitBtn
+            Left = 8
+            Top = 3
+            Width = 31
+            Height = 25
+            Hint = #52628#44032
+            Glyph.Data = {
+              F6000000424DF600000000000000760000002800000010000000100000000100
+              04000000000080000000120B0000120B00001000000010000000000000000000
+              8000008000000080800080000000800080008080000080808000C0C0C0000000
+              FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+              DADAADADADADADADADADDADADADADADADADAADADADADADADADADDADADA000ADA
+              DADAADADAD030DADADADDADADA030ADADADAADA000030000ADADDAD033333330
+              DADAADA000030000ADADDADADA030ADADADAADADAD030DADADADDADADA000ADA
+              DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 1
+            OnClick = btnPracticeAddClick
+          end
+          object btnPracticeEdit: TBitBtn
+            Left = 40
+            Top = 3
+            Width = 31
+            Height = 25
+            Hint = #49688#51221
+            Glyph.Data = {
+              F6000000424DF600000000000000760000002800000010000000100000000100
+              04000000000080000000120B0000120B00001000000010000000000000000000
+              8000008000000080800080000000800080008080000080808000C0C0C0000000
+              FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+              DADAAD77777777777777D000000000000007A0FBFBFBFB00FB07D0BFBFBFBF08
+              0F07A0F0F0F0FB0B8007D0BFBFB00F000007A0FBFBF0B0FBFB07D0BFBFB0B0BF
+              BF07A0FBFBF0BB0BFB07D0BFBFB0BB0FBF07A00000000BB0000DDADADADA0BB0
+              DADAADADADADA0000DADDADADADAD0110ADAADADADADAD00ADAD}
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 2
+            OnClick = btnPracticeEditClick
+          end
+          object BitBtn9: TBitBtn
+            Left = 72
+            Top = 3
+            Width = 30
+            Height = 25
+            Hint = #49325#51228
+            Glyph.Data = {
+              F6000000424DF600000000000000760000002800000010000000100000000100
+              04000000000080000000120B0000120B00001000000010000000000000000000
+              8000008000000080800080000000800080008080000080808000C0C0C0000000
+              FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+              DADAADADADADADADADADDADADADADADADADAADADADADADADADADDADADADADADA
+              DADAADADADADADADADADDADADADADADADADAADA000000000ADADDAD033333330
+              DADAADA000000000ADADDADADADADADADADAADADADADADADADADDADADADADADA
+              DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 3
+            OnClick = BitBtn9Click
+          end
+          object btn1: TBitBtn
+            Left = 221
+            Top = 3
+            Width = 41
+            Height = 25
+            Hint = #50868#46041#48277#48372#44592
+            Glyph.Data = {
+              F6000000424DF600000000000000760000002800000010000000100000000100
+              04000000000080000000120B0000120B00001000000000000000000000000000
+              8000008000000080800080000000800080008080000080808000C0C0C0000000
+              FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+              DADAADADADAD00CDADADDADADAD00CDADADAAD000070CDADADADD0DADA0BDADA
+              DADA0DAFFFF0000000000AF7F770FFFFFFF00DFFFFF0FFFFFFF00AF77F70F7FF
+              FFF0A0FFFF0FFFFFFFF0DA00007F77FFFFF0AD0FFFFFFFFFFFF0DA0F7777F77F
+              FFF0AD0FFFFFFFFFFFF0DA00000000000000ADADADADADADADAD}
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 4
+            OnClick = btn1Click
+          end
+          object btnPlayVideo: TBitBtn
+            Left = 262
+            Top = 3
+            Width = 39
+            Height = 25
+            Hint = #50689#49345#48372#44592
+            Glyph.Data = {
+              F6000000424DF600000000000000760000002800000010000000100000000100
+              04000000000080000000120B0000120B00001000000000000000000000000000
+              8000008000000080800080000000800080008080000080808000C0C0C0000000
+              FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00888888899888
+              8888888888899988888888000009999088888077777999990880807777099999
+              9800807770899999000080777089999700708070070999770000807007799777
+              0800807777797777088088000000000088880888800888888888000000088888
+              8888000000888888888808888888888888888888888888888888}
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 5
+            OnClick = btnPlayVideoClick
+          end
+        end
+        object cxGrid5: TcxGrid
+          Left = 1
+          Top = 57
+          Width = 433
+          Height = 636
+          Align = alClient
+          TabOrder = 2
+          LookAndFeel.SkinName = 'Black'
+          object gPractice: TcxGridDBTableView
+            DragMode = dmAutomatic
+            Navigator.Buttons.CustomButtons = <>
+            Navigator.Buttons.First.Visible = True
+            Navigator.Buttons.PriorPage.Visible = True
+            Navigator.Buttons.Prior.Visible = True
+            Navigator.Buttons.Next.Visible = True
+            Navigator.Buttons.NextPage.Visible = True
+            Navigator.Buttons.Last.Visible = True
+            Navigator.Buttons.Insert.Visible = True
+            Navigator.Buttons.Append.Visible = False
+            Navigator.Buttons.Delete.Visible = True
+            Navigator.Buttons.Edit.Visible = True
+            Navigator.Buttons.Post.Visible = True
+            Navigator.Buttons.Cancel.Visible = True
+            Navigator.Buttons.Refresh.Visible = True
+            Navigator.Buttons.SaveBookmark.Visible = True
+            Navigator.Buttons.GotoBookmark.Visible = True
+            Navigator.Buttons.Filter.Visible = True
+            DataController.DataSource = dmDBCommon.d_NPRACTICE
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            OptionsSelection.CellSelect = False
+            OptionsSelection.HideFocusRectOnExit = False
+            OptionsSelection.MultiSelect = True
+            OptionsSelection.UnselectFocusedRecordOnExit = False
+            OptionsView.ColumnAutoWidth = True
+            OptionsView.GroupByBox = False
+            OptionsView.Indicator = True
+            object gPracticeID: TcxGridDBColumn
+              Caption = #50868#46041'ID'
+              DataBinding.FieldName = 'ID'
+              HeaderAlignmentHorz = taCenter
+              Width = 48
+            end
+            object gPracticeP_NAME: TcxGridDBColumn
+              Caption = #50868#46041#47749
+              DataBinding.FieldName = 'P_NAME'
+              Width = 75
+            end
+            object gPracticeFOR_BODY: TcxGridDBColumn
+              Caption = #51201#50857' '#49888#52404#48512#50948'/'#44540#50977
+              DataBinding.FieldName = 'FOR_BODY'
+              Width = 148
+            end
+            object gPracticeFOR_PAIN: TcxGridDBColumn
+              Caption = #44288#47144' '#53685#51613
+              DataBinding.FieldName = 'FOR_PAIN'
+              Width = 148
+            end
+          end
+          object cxGrid5Level1: TcxGridLevel
+            GridView = gPractice
+          end
+        end
+      end
+    end
+    object cxTabSheet2: TcxTabSheet
+      Caption = 'Wall '#50868#46041
+      ImageIndex = 1
+      object Panel1: TPanel
+        Left = 0
+        Top = 0
+        Width = 369
+        Height = 694
+        Align = alLeft
+        Caption = 'Panel8'
+        TabOrder = 0
+        object Panel2: TPanel
+          Left = 1
+          Top = 1
+          Width = 367
+          Height = 25
+          Align = alTop
+          BevelOuter = bvNone
+          Caption = #50868#46041#54624#45817
+          Color = clSkyBlue
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = #44404#47548
+          Font.Style = [fsBold]
+          ParentBackground = False
+          ParentFont = False
+          TabOrder = 0
+        end
+        object Panel3: TPanel
+          Left = 1
+          Top = 26
+          Width = 367
+          Height = 95
+          Align = alTop
+          BevelOuter = bvNone
+          TabOrder = 1
+          object BitBtn1: TBitBtn
+            Left = 36
+            Top = 3
+            Width = 129
+            Height = 25
+            Hint = #49325#51228
+            Caption = #49440#53469#50868#46041#49325#51228
+            Glyph.Data = {
+              F6000000424DF600000000000000760000002800000010000000100000000100
+              04000000000080000000120B0000120B00001000000010000000000000000000
+              8000008000000080800080000000800080008080000080808000C0C0C0000000
+              FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+              DADAADADADADADADADADDADADADADADADADAADADADADADADADADDADADADADADA
+              DADAADADADADADADADADDADADADADADADADAADA000000000ADADDAD033333330
+              DADAADA000000000ADADDADADADADADADADAADADADADADADADADDADADADADADA
+              DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+            OnClick = BitBtn3Click
+          end
+          object BitBtn2: TBitBtn
+            Left = 221
+            Top = 3
+            Width = 41
+            Height = 25
+            Hint = #50868#46041#48277#48372#44592
+            Glyph.Data = {
+              F6000000424DF600000000000000760000002800000010000000100000000100
+              04000000000080000000120B0000120B00001000000000000000000000000000
+              8000008000000080800080000000800080008080000080808000C0C0C0000000
+              FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+              DADAADADADAD00CDADADDADADAD00CDADADAAD000070CDADADADD0DADA0BDADA
+              DADA0DAFFFF0000000000AF7F770FFFFFFF00DFFFFF0FFFFFFF00AF77F70F7FF
+              FFF0A0FFFF0FFFFFFFF0DA00007F77FFFFF0AD0FFFFFFFFFFFF0DA0F7777F77F
+              FFF0AD0FFFFFFFFFFFF0DA00000000000000ADADADADADADADAD}
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 1
+            OnClick = btn2Click
+          end
+          object BitBtn4: TBitBtn
+            Left = 262
+            Top = 3
+            Width = 39
+            Height = 25
+            Hint = #50689#49345#48372#44592
+            Glyph.Data = {
+              F6000000424DF600000000000000760000002800000010000000100000000100
+              04000000000080000000120B0000120B00001000000000000000000000000000
+              8000008000000080800080000000800080008080000080808000C0C0C0000000
+              FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00888888899888
+              8888888888899988888888000009999088888077777999990880807777099999
+              9800807770899999000080777089999700708070070999770000807007799777
+              0800807777797777088088000000000088880888800888888888000000088888
+              8888000000888888888808888888888888888888888888888888}
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 2
+            OnClick = btn3Click
+          end
+          object cxRadioGroup1: TcxRadioGroup
+            Left = 13
+            Top = 32
+            Caption = #51340'/'#50864' '#48169#54693#49440#53469
+            Properties.Columns = 4
+            Properties.DefaultValue = 0
+            Properties.ImmediatePost = True
+            Properties.Items = <
+              item
+                Caption = #50630#51020
+                Value = 0
+              end
+              item
+                Caption = #51340#52769
+                Value = 1
+              end
+              item
+                Caption = #50864#52769
+                Value = 2
+              end
+              item
+                Caption = #50577#52769
+                Value = 3
+              end>
+            Properties.OnEditValueChanged = rgDirectionPropertiesEditValueChanged
+            ItemIndex = 0
+            Style.LookAndFeel.SkinName = 'DevExpressStyle'
+            StyleDisabled.LookAndFeel.SkinName = 'DevExpressStyle'
+            StyleFocused.LookAndFeel.SkinName = 'DevExpressStyle'
+            StyleHot.LookAndFeel.SkinName = 'DevExpressStyle'
+            TabOrder = 3
+            Height = 54
+            Width = 336
+          end
+        end
+        object cxGrid6: TcxGrid
+          Left = 1
+          Top = 121
+          Width = 367
+          Height = 572
+          Align = alClient
+          TabOrder = 2
+          LookAndFeel.SkinName = 'Black'
+          object gPracticeAssign2: TcxGridDBTableView
+            OnDragDrop = gPracticeAssignDragDrop
+            OnDragOver = gPracticeAssignDragOver
+            Navigator.Buttons.CustomButtons = <>
+            Navigator.Buttons.First.Visible = True
+            Navigator.Buttons.PriorPage.Visible = True
+            Navigator.Buttons.Prior.Visible = True
+            Navigator.Buttons.Next.Visible = True
+            Navigator.Buttons.NextPage.Visible = True
+            Navigator.Buttons.Last.Visible = True
+            Navigator.Buttons.Insert.Visible = True
+            Navigator.Buttons.Append.Visible = False
+            Navigator.Buttons.Delete.Visible = True
+            Navigator.Buttons.Edit.Visible = True
+            Navigator.Buttons.Post.Visible = True
+            Navigator.Buttons.Cancel.Visible = True
+            Navigator.Buttons.Refresh.Visible = True
+            Navigator.Buttons.SaveBookmark.Visible = True
+            Navigator.Buttons.GotoBookmark.Visible = True
+            Navigator.Buttons.Filter.Visible = True
+            DataController.DataSource = d_npractice_assign2
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            OptionsSelection.CellSelect = False
+            OptionsSelection.HideFocusRectOnExit = False
+            OptionsSelection.UnselectFocusedRecordOnExit = False
+            OptionsView.ColumnAutoWidth = True
+            OptionsView.GroupByBox = False
+            OptionsView.Indicator = True
+            object gPracticeAssign2ID: TcxGridDBColumn
+              DataBinding.FieldName = 'ID'
+              Visible = False
+              Width = 48
+            end
+            object gPracticeAssign2RESULT_ID: TcxGridDBColumn
+              Caption = #54637#47785'ID'
+              DataBinding.FieldName = 'RESULT_ID'
+              PropertiesClassName = 'TcxLookupComboBoxProperties'
+              Properties.KeyFieldNames = 'ID'
+              Properties.ListColumns = <
+                item
+                  FieldName = 'ITEM_NAME'
+                end>
+              Properties.ListSource = ds_CHECK_ITEM_TREE_RESULT_SEL
+              Width = 92
+            end
+            object gPracticeAssign2DIRECTION_KIND: TcxGridDBColumn
+              DataBinding.FieldName = 'DIRECTION_KIND'
+              PropertiesClassName = 'TcxImageComboBoxProperties'
+              Properties.Images = il2
+              Properties.Items = <
+                item
+                  Description = #50630#51020
+                  Value = 0
+                end
+                item
+                  Description = #51340#52769
+                  ImageIndex = 10
+                  Value = 1
+                end
+                item
+                  Description = #50864#52769
+                  ImageIndex = 11
+                  Value = 2
+                end
+                item
+                  Description = #50577#52769
+                  ImageIndex = 12
+                  Value = 3
+                end>
+              Properties.ShowDescriptions = False
+              HeaderAlignmentHorz = taCenter
+              Width = 49
+            end
+            object gPracticeAssign2PRACTICE_ID: TcxGridDBColumn
+              Caption = #50868#46041#47749
+              DataBinding.FieldName = 'PRACTICE_ID'
+              PropertiesClassName = 'TcxLookupComboBoxProperties'
+              Properties.KeyFieldNames = 'ID'
+              Properties.ListColumns = <
+                item
+                  FieldName = 'P_NAME'
+                end>
+              Properties.ListSource = dmDBCommon.d_NPRACTICE_look
+              Width = 207
+            end
+          end
+          object cxGridLevel4: TcxGridLevel
+            GridView = gPracticeAssign2
+          end
+        end
+      end
+      object Panel4: TPanel
+        Left = 369
+        Top = 0
+        Width = 430
+        Height = 694
+        Align = alClient
+        TabOrder = 1
+        object Panel5: TPanel
+          Left = 1
+          Top = 1
+          Width = 428
+          Height = 25
+          Align = alTop
+          BevelOuter = bvNone
+          Caption = #50868#46041' '#47532#49828#53944
+          Color = clSkyBlue
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = #44404#47548
+          Font.Style = [fsBold]
+          ParentBackground = False
+          ParentFont = False
+          TabOrder = 0
+        end
+        object Panel6: TPanel
+          Left = 1
+          Top = 26
+          Width = 428
+          Height = 31
+          Align = alTop
+          BevelOuter = bvNone
+          TabOrder = 1
+          object BitBtn5: TBitBtn
+            Left = 103
+            Top = 3
+            Width = 117
+            Height = 25
+            Hint = #52628#44032
+            Caption = #52376#48169#50868#46041#51201#50857
+            Glyph.Data = {
+              F6000000424DF600000000000000760000002800000010000000100000000100
+              04000000000080000000120B0000120B00001000000010000000000000000000
+              8000008000000080800080000000800080008080000080808000C0C0C0000000
+              FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+              DADAADADADADADADADADDADADADADADADADAADADADADADADADADDADADA000ADA
+              DADAADADAD030DADADADDADADA030ADADADAADA000030000ADADDAD033333330
+              DADAADA000030000ADADDADADA030ADADADAADADAD030DADADADDADADA000ADA
+              DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+            OnClick = btnAddPracticeClick
+          end
+          object BitBtn6: TBitBtn
+            Left = 8
+            Top = 3
+            Width = 31
+            Height = 25
+            Hint = #52628#44032
+            Glyph.Data = {
+              F6000000424DF600000000000000760000002800000010000000100000000100
+              04000000000080000000120B0000120B00001000000010000000000000000000
+              8000008000000080800080000000800080008080000080808000C0C0C0000000
+              FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+              DADAADADADADADADADADDADADADADADADADAADADADADADADADADDADADA000ADA
+              DADAADADAD030DADADADDADADA030ADADADAADA000030000ADADDAD033333330
+              DADAADA000030000ADADDADADA030ADADADAADADAD030DADADADDADADA000ADA
+              DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 1
+            OnClick = btnPracticeAddClick
+          end
+          object BitBtn7: TBitBtn
+            Left = 40
+            Top = 3
+            Width = 31
+            Height = 25
+            Hint = #49688#51221
+            Glyph.Data = {
+              F6000000424DF600000000000000760000002800000010000000100000000100
+              04000000000080000000120B0000120B00001000000010000000000000000000
+              8000008000000080800080000000800080008080000080808000C0C0C0000000
+              FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+              DADAAD77777777777777D000000000000007A0FBFBFBFB00FB07D0BFBFBFBF08
+              0F07A0F0F0F0FB0B8007D0BFBFB00F000007A0FBFBF0B0FBFB07D0BFBFB0B0BF
+              BF07A0FBFBF0BB0BFB07D0BFBFB0BB0FBF07A00000000BB0000DDADADADA0BB0
+              DADAADADADADA0000DADDADADADAD0110ADAADADADADAD00ADAD}
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 2
+            OnClick = btnPracticeEditClick
+          end
+          object BitBtn8: TBitBtn
+            Left = 72
+            Top = 3
+            Width = 30
+            Height = 25
+            Hint = #49325#51228
+            Glyph.Data = {
+              F6000000424DF600000000000000760000002800000010000000100000000100
+              04000000000080000000120B0000120B00001000000010000000000000000000
+              8000008000000080800080000000800080008080000080808000C0C0C0000000
+              FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+              DADAADADADADADADADADDADADADADADADADAADADADADADADADADDADADADADADA
+              DADAADADADADADADADADDADADADADADADADAADA000000000ADADDAD033333330
+              DADAADA000000000ADADDADADADADADADADAADADADADADADADADDADADADADADA
+              DADAADADADADADADADADDADADADADADADADAADADADADADADADAD}
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 3
+            OnClick = BitBtn9Click
+          end
+          object BitBtn10: TBitBtn
+            Left = 221
+            Top = 3
+            Width = 41
+            Height = 25
+            Hint = #50868#46041#48277#48372#44592
+            Glyph.Data = {
+              F6000000424DF600000000000000760000002800000010000000100000000100
+              04000000000080000000120B0000120B00001000000000000000000000000000
+              8000008000000080800080000000800080008080000080808000C0C0C0000000
+              FF00C0C0C00000FFFF00FF000000C0C0C000FFFF0000FFFFFF00DADADADADADA
+              DADAADADADAD00CDADADDADADAD00CDADADAAD000070CDADADADD0DADA0BDADA
+              DADA0DAFFFF0000000000AF7F770FFFFFFF00DFFFFF0FFFFFFF00AF77F70F7FF
+              FFF0A0FFFF0FFFFFFFF0DA00007F77FFFFF0AD0FFFFFFFFFFFF0DA0F7777F77F
+              FFF0AD0FFFFFFFFFFFF0DA00000000000000ADADADADADADADAD}
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 4
+            OnClick = btn1Click
+          end
+          object BitBtn11: TBitBtn
+            Left = 262
+            Top = 3
+            Width = 39
+            Height = 25
+            Hint = #50689#49345#48372#44592
+            Glyph.Data = {
+              F6000000424DF600000000000000760000002800000010000000100000000100
+              04000000000080000000120B0000120B00001000000000000000000000000000
+              8000008000000080800080000000800080008080000080808000C0C0C0000000
+              FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00888888899888
+              8888888888899988888888000009999088888077777999990880807777099999
+              9800807770899999000080777089999700708070070999770000807007799777
+              0800807777797777088088000000000088880888800888888888000000088888
+              8888000000888888888808888888888888888888888888888888}
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 5
+            OnClick = btnPlayVideoClick
+          end
+        end
+        object cxGrid7: TcxGrid
+          Left = 1
+          Top = 57
+          Width = 428
+          Height = 636
+          Align = alClient
+          TabOrder = 2
+          LookAndFeel.SkinName = 'Black'
+          object gPractice2: TcxGridDBTableView
+            DragMode = dmAutomatic
+            Navigator.Buttons.CustomButtons = <>
+            Navigator.Buttons.First.Visible = True
+            Navigator.Buttons.PriorPage.Visible = True
+            Navigator.Buttons.Prior.Visible = True
+            Navigator.Buttons.Next.Visible = True
+            Navigator.Buttons.NextPage.Visible = True
+            Navigator.Buttons.Last.Visible = True
+            Navigator.Buttons.Insert.Visible = True
+            Navigator.Buttons.Append.Visible = False
+            Navigator.Buttons.Delete.Visible = True
+            Navigator.Buttons.Edit.Visible = True
+            Navigator.Buttons.Post.Visible = True
+            Navigator.Buttons.Cancel.Visible = True
+            Navigator.Buttons.Refresh.Visible = True
+            Navigator.Buttons.SaveBookmark.Visible = True
+            Navigator.Buttons.GotoBookmark.Visible = True
+            Navigator.Buttons.Filter.Visible = True
+            OnCellDblClick = gPractice2CellDblClick
+            DataController.DataSource = dmDBCommon.d_NPRACTICE2
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            OptionsSelection.CellSelect = False
+            OptionsSelection.HideFocusRectOnExit = False
+            OptionsSelection.MultiSelect = True
+            OptionsSelection.UnselectFocusedRecordOnExit = False
+            OptionsView.ColumnAutoWidth = True
+            OptionsView.GroupByBox = False
+            OptionsView.Indicator = True
+            object gPractice2ID: TcxGridDBColumn
+              Caption = #50868#46041'ID'
+              DataBinding.FieldName = 'ID'
+              HeaderAlignmentHorz = taCenter
+              Width = 46
+            end
+            object gPractice2P_NAME: TcxGridDBColumn
+              Caption = #50868#46041#47749
+              DataBinding.FieldName = 'P_NAME'
+              Width = 74
+            end
+            object gPractice2FOR_BODY: TcxGridDBColumn
+              Caption = #51201#50857' '#49888#52404#48512#50948'/'#44540#50977
+              DataBinding.FieldName = 'FOR_BODY'
+              Width = 147
+            end
+            object gPractice2FOR_PAIN: TcxGridDBColumn
+              Caption = #44288#47144' '#53685#51613
+              DataBinding.FieldName = 'FOR_PAIN'
+              Width = 147
+            end
+          end
+          object cxGridLevel5: TcxGridLevel
+            GridView = gPractice2
+          end
+        end
       end
     end
   end
@@ -2232,5 +2712,147 @@ object fmStaticCheckItemSet: TfmStaticCheckItemSet
     DataSet = q_check_item_sub2
     Left = 392
     Top = 248
+  end
+  object q_npractice_assign2: TUniQuery
+    SQLInsert.Strings = (
+      'INSERT INTO NPRACTICE_ASSIGN'
+      '  (ID, RESULT_ID, PRACTICE_ID, DIRECTION_KIND)'
+      'VALUES'
+      '  (:ID, :RESULT_ID, :PRACTICE_ID, :DIRECTION_KIND)')
+    SQLRecCount.Strings = (
+      'SELECT COUNT(*) FROM ('
+      'SELECT 1 AS C  FROM NPRACTICE_ASSIGN'
+      ''
+      ') q')
+    Connection = dmDBCommon.UniDBConnection
+    SQL.Strings = (
+      'select * from npractice2_assign'
+      'where result_id = :result_id'
+      'order by practice_id')
+    Left = 624
+    Top = 336
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'result_id'
+        ParamType = ptInput
+      end>
+    object IntegerField1: TIntegerField
+      AutoGenerateValue = arAutoInc
+      FieldName = 'ID'
+    end
+    object IntegerField2: TIntegerField
+      FieldName = 'RESULT_ID'
+    end
+    object IntegerField3: TIntegerField
+      FieldName = 'PRACTICE_ID'
+    end
+    object SmallintField1: TSmallintField
+      Alignment = taCenter
+      DisplayLabel = #48169#54693
+      FieldName = 'DIRECTION_KIND'
+    end
+  end
+  object d_npractice_assign2: TDataSource
+    DataSet = q_npractice_assign2
+    Left = 624
+    Top = 384
+  end
+  object NPRACTICE2_INS: TUniStoredProc
+    StoredProcName = 'NPRACTICE2_INS'
+    Connection = dmDBCommon.UniDBConnection
+    Left = 944
+    Top = 176
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'ID'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'P_NAME'
+        ParamType = ptInput
+        Size = 50
+      end
+      item
+        DataType = ftString
+        Name = 'P_DESC'
+        ParamType = ptInput
+        Size = 50
+      end
+      item
+        DataType = ftInteger
+        Name = 'IS_SELECT'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'FOR_PAIN'
+        ParamType = ptInput
+        Size = 100
+      end
+      item
+        DataType = ftString
+        Name = 'FOR_BODY'
+        ParamType = ptInput
+        Size = 100
+      end>
+    CommandStoredProcName = 'NPRACTICE2_INS'
+  end
+  object NPRACTICE2_UPD: TUniStoredProc
+    StoredProcName = 'NPRACTICE2_UPD'
+    Connection = dmDBCommon.UniDBConnection
+    Left = 944
+    Top = 224
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'ID'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'P_NAME'
+        ParamType = ptInput
+        Size = 50
+      end
+      item
+        DataType = ftString
+        Name = 'P_DESC'
+        ParamType = ptInput
+        Size = 50
+      end
+      item
+        DataType = ftInteger
+        Name = 'IS_SELECT'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'FOR_PAIN'
+        ParamType = ptInput
+        Size = 100
+      end
+      item
+        DataType = ftString
+        Name = 'FOR_BODY'
+        ParamType = ptInput
+        Size = 100
+      end>
+    CommandStoredProcName = 'NPRACTICE2_UPD'
+  end
+  object NPRACTICE2_DEL: TUniStoredProc
+    StoredProcName = 'NPRACTICE2_DEL'
+    Connection = dmDBCommon.UniDBConnection
+    Left = 944
+    Top = 272
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'ID'
+        ParamType = ptInput
+      end>
+    CommandStoredProcName = 'NPRACTICE2_DEL'
   end
 end

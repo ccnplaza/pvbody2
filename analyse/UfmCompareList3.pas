@@ -285,6 +285,8 @@ var
   img_name, drw_name : string;
   mStream, dStream : TMemoryStream;
 begin
+  if not (dmDBCommon.IMAGES_SEL.RecordCount > 0) then
+    Exit;
   ImageEnMView1.LockPaint;
   ImageEnMView1.Clear;
   ImageEnMView1.TextTruncSide := iemtsLeft;

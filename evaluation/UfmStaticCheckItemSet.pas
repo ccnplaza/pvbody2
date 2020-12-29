@@ -23,7 +23,7 @@ uses
   cxGrid, StdCtrls, Buttons, ExtCtrls, cxDBLookupComboBox, dxSkinMetropolis,
   dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
   dxSkinOffice2013White, ImgList, ComCtrls, dxtree, dxdbtree, cxImageComboBox,
-  cxContainer, cxGroupBox, cxRadioGroup;
+  cxContainer, cxGroupBox, cxRadioGroup, dxBarBuiltInMenu, cxPC;
 
 type
   TfmStaticCheckItemSet = class(TForm)
@@ -140,6 +140,48 @@ type
     gSub2VIDEO_ID: TcxGridDBColumn;
     q_check_item_sub2HOWTO_IMAGE: TSmallintField;
     q_check_item_sub2VIDEO_ID: TStringField;
+    cxPageControl1: TcxPageControl;
+    cxTabSheet1: TcxTabSheet;
+    cxTabSheet2: TcxTabSheet;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
+    BitBtn4: TBitBtn;
+    cxRadioGroup1: TcxRadioGroup;
+    cxGrid6: TcxGrid;
+    gPracticeAssign2: TcxGridDBTableView;
+    gPracticeAssign2ID: TcxGridDBColumn;
+    gPracticeAssign2RESULT_ID: TcxGridDBColumn;
+    gPracticeAssign2DIRECTION_KIND: TcxGridDBColumn;
+    gPracticeAssign2PRACTICE_ID: TcxGridDBColumn;
+    cxGridLevel4: TcxGridLevel;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    BitBtn5: TBitBtn;
+    BitBtn6: TBitBtn;
+    BitBtn7: TBitBtn;
+    BitBtn8: TBitBtn;
+    BitBtn10: TBitBtn;
+    BitBtn11: TBitBtn;
+    cxGrid7: TcxGrid;
+    gPractice2: TcxGridDBTableView;
+    gPractice2ID: TcxGridDBColumn;
+    gPractice2P_NAME: TcxGridDBColumn;
+    gPractice2FOR_BODY: TcxGridDBColumn;
+    gPractice2FOR_PAIN: TcxGridDBColumn;
+    cxGridLevel5: TcxGridLevel;
+    q_npractice_assign2: TUniQuery;
+    IntegerField1: TIntegerField;
+    IntegerField2: TIntegerField;
+    IntegerField3: TIntegerField;
+    SmallintField1: TSmallintField;
+    d_npractice_assign2: TDataSource;
+    NPRACTICE2_INS: TUniStoredProc;
+    NPRACTICE2_UPD: TUniStoredProc;
+    NPRACTICE2_DEL: TUniStoredProc;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BitBtn3Click(Sender: TObject);
     procedure btnPracticeAddClick(Sender: TObject);
@@ -174,12 +216,17 @@ type
     procedure gSub2FocusedRecordChanged(Sender: TcxCustomGridTableView;
       APrevFocusedRecord, AFocusedRecord: TcxCustomGridRecord;
       ANewItemRecordFocusingChanged: Boolean);
+    procedure cxPageControl1Change(Sender: TObject);
+    procedure gPractice2CellDblClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
   private
     procedure RetrieveAssignedItem;
     procedure ShowPracticeMethode(p_id: Integer; p_name: string);
     { Private declarations }
   public
     { Public declarations }
+    PRACTICE_KIND : Integer;
   end;
 
 var
@@ -200,11 +247,21 @@ end;
 
 procedure TfmStaticCheckItemSet.FormShow(Sender: TObject);
 begin
+  cxPageControl1.ActivePageIndex := 0;
+  PRACTICE_KIND := cxPageControl1.ActivePageIndex;
   q_CHECK_ITEM_TREE.Active := True;
   d_CHECK_ITEM_TREE.DataSet.Refresh;
   dmDBCommon.d_NPRACTICE.DataSet.Refresh;
+  dmDBCommon.d_NPRACTICE2.DataSet.Refresh;
   CHECK_ITEM_TREE_RESULT_SEL.Active := True;
   ds_CHECK_ITEM_TREE_RESULT_SEL.DataSet.Refresh;
+end;
+
+procedure TfmStaticCheckItemSet.gPractice2CellDblClick(
+  Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
+  AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+begin
+  btnPracticeEditClick(Sender);
 end;
 
 procedure TfmStaticCheckItemSet.gPracticeAssignDragDrop(Sender, Source: TObject;
@@ -235,11 +292,16 @@ begin
   if gSub2.DataController.RecordCount > 0 then begin
     q_npractice_assign.ParamByName('result_id').AsInteger := q_check_item_sub2ID.Value;
     q_npractice_assign.Open;
+    q_npractice_assign2.ParamByName('result_id').AsInteger := q_check_item_sub2ID.Value;
+    q_npractice_assign2.Open;
   end else begin
     q_npractice_assign.ParamByName('result_id').AsInteger := -1;
     q_npractice_assign.Open;
+    q_npractice_assign2.ParamByName('result_id').AsInteger := -1;
+    q_npractice_assign2.Open;
   end;
   d_npractice_assign.DataSet.Refresh;
+  d_npractice_assign2.DataSet.Refresh;
 end;
 
 procedure TfmStaticCheckItemSet.gSubFocusedRecordChanged(
@@ -325,21 +387,40 @@ var
   sValue : string;
   lastID : Integer;
 begin
-  gPractice.DataController.GotoLast;
-  lastID := gPracticeID.EditValue;
   fmPracticeEdit := TfmPracticeEdit.Create(Self);
   try
-    fmPracticeEdit.ShowModal;
-    if fmPracticeEdit.ModalResult = mrOk then begin
-      gPractice.DataController.SaveBookmark;
-      NPRACTICE_INS.ParamByName('ID').Value := lastID + 1;
-      NPRACTICE_INS.ParamByName('P_NAME').Value := fmPracticeEdit.edtPName.Text;
-      NPRACTICE_INS.ParamByName('FOR_PAIN').Value := fmPracticeEdit.edtPain.Text;
-      NPRACTICE_INS.ParamByName('FOR_BODY').Value := fmPracticeEdit.edtBody.Text;
-      NPRACTICE_INS.ExecProc;
-      dmDBCommon.d_NPRACTICE.DataSet.Refresh;
-      gPractice.DataController.GotoBookmark;
-      gPractice.DataController.DataSet.Locate('ID', lastID + 1, []);
+    if PRACTICE_KIND = 0 then begin
+      gPractice.DataController.GotoLast;
+      lastID := gPracticeID.EditValue;
+      fmPracticeEdit.speNo.EditValue := lastID + 1;
+      fmPracticeEdit.ShowModal;
+      if fmPracticeEdit.ModalResult = mrOk then begin
+        gPractice.DataController.SaveBookmark;
+        NPRACTICE_INS.ParamByName('ID').Value := fmPracticeEdit.speNo.EditValue;
+        NPRACTICE_INS.ParamByName('P_NAME').Value := fmPracticeEdit.edtPName.Text;
+        NPRACTICE_INS.ParamByName('FOR_PAIN').Value := fmPracticeEdit.edtPain.Text;
+        NPRACTICE_INS.ParamByName('FOR_BODY').Value := fmPracticeEdit.edtBody.Text;
+        NPRACTICE_INS.ExecProc;
+        dmDBCommon.d_NPRACTICE.DataSet.Refresh;
+        gPractice.DataController.GotoBookmark;
+        gPractice.DataController.DataSet.Locate('ID', lastID + 1, []);
+      end;
+    end else begin
+      gPractice2.DataController.GotoLast;
+      lastID := gPractice2ID.EditValue;
+      fmPracticeEdit.speNo.EditValue := lastID + 1;
+      fmPracticeEdit.ShowModal;
+      if fmPracticeEdit.ModalResult = mrOk then begin
+        gPractice2.DataController.SaveBookmark;
+        NPRACTICE2_INS.ParamByName('ID').Value := fmPracticeEdit.speNo.EditValue;
+        NPRACTICE2_INS.ParamByName('P_NAME').Value := fmPracticeEdit.edtPName.Text;
+        NPRACTICE2_INS.ParamByName('FOR_PAIN').Value := fmPracticeEdit.edtPain.Text;
+        NPRACTICE2_INS.ParamByName('FOR_BODY').Value := fmPracticeEdit.edtBody.Text;
+        NPRACTICE2_INS.ExecProc;
+        dmDBCommon.d_NPRACTICE2.DataSet.Refresh;
+        gPractice2.DataController.GotoBookmark;
+        gPractice2.DataController.DataSet.Locate('ID', lastID + 1, []);
+      end;
     end;
   finally
     fmPracticeEdit.Free;
@@ -349,27 +430,55 @@ end;
 procedure TfmStaticCheckItemSet.btnPracticeEditClick(Sender: TObject);
 var
   sValue : string;
-  cnt : Integer;
+  cnt, row : Integer;
 begin
   fmPracticeEdit := TfmPracticeEdit.Create(Self);
   try
-    fmPracticeEdit.edtPName.Text := gPracticeP_NAME.EditValue;
-    fmPracticeEdit.edtPain.Text  := VarToStrDef(gPracticeFOR_PAIN.EditValue, '');
-    fmPracticeEdit.edtBody.Text  := VarToStrDef(gPracticeFOR_BODY.EditValue, '');
-    fmPracticeEdit.ShowModal;
-    if fmPracticeEdit.ModalResult = mrOk then begin
-      gPractice.DataController.SaveBookmark;
-      NPRACTICE_UPD.ParamByName('ID').Value := gPracticeID.EditValue;
-      NPRACTICE_UPD.ParamByName('P_NAME').Value := fmPracticeEdit.edtPName.Text;
-      NPRACTICE_UPD.ParamByName('FOR_PAIN').Value := fmPracticeEdit.edtPain.Text;
-      NPRACTICE_UPD.ParamByName('FOR_BODY').Value := fmPracticeEdit.edtBody.Text;
-      NPRACTICE_UPD.ExecProc;
-      dmDBCommon.d_NPRACTICE.DataSet.Refresh;
-      gPractice.DataController.GotoBookmark;
+    if PRACTICE_KIND = 0 then begin
+      fmPracticeEdit.speNo.EditValue := gPracticeID.EditValue;
+      fmPracticeEdit.edtPName.Text := gPracticeP_NAME.EditValue;
+      fmPracticeEdit.edtPain.Text  := VarToStrDef(gPracticeFOR_PAIN.EditValue, '');
+      fmPracticeEdit.edtBody.Text  := VarToStrDef(gPracticeFOR_BODY.EditValue, '');
+      fmPracticeEdit.ShowModal;
+      if fmPracticeEdit.ModalResult = mrOk then begin
+        gPractice.DataController.SaveBookmark;
+        NPRACTICE_UPD.ParamByName('ID').Value := fmPracticeEdit.speNo.EditValue;
+        NPRACTICE_UPD.ParamByName('P_NAME').Value := fmPracticeEdit.edtPName.Text;
+        NPRACTICE_UPD.ParamByName('FOR_PAIN').Value := fmPracticeEdit.edtPain.Text;
+        NPRACTICE_UPD.ParamByName('FOR_BODY').Value := fmPracticeEdit.edtBody.Text;
+        NPRACTICE_UPD.ExecProc;
+        row := gPractice.Controller.TopRowIndex;
+        dmDBCommon.d_NPRACTICE.DataSet.Refresh;
+        gPractice.DataController.GotoBookmark;
+        gPractice.Controller.TopRowIndex := row;
+      end;
+    end else begin
+      fmPracticeEdit.speNo.EditValue := gPractice2ID.EditValue;
+      fmPracticeEdit.edtPName.Text := gPractice2P_NAME.EditValue;
+      fmPracticeEdit.edtPain.Text  := VarToStrDef(gPractice2FOR_PAIN.EditValue, '');
+      fmPracticeEdit.edtBody.Text  := VarToStrDef(gPractice2FOR_BODY.EditValue, '');
+      fmPracticeEdit.ShowModal;
+      if fmPracticeEdit.ModalResult = mrOk then begin
+        gPractice2.DataController.SaveBookmark;
+        NPRACTICE2_UPD.ParamByName('ID').Value := fmPracticeEdit.speNo.EditValue;
+        NPRACTICE2_UPD.ParamByName('P_NAME').Value := fmPracticeEdit.edtPName.Text;
+        NPRACTICE2_UPD.ParamByName('FOR_PAIN').Value := fmPracticeEdit.edtPain.Text;
+        NPRACTICE2_UPD.ParamByName('FOR_BODY').Value := fmPracticeEdit.edtBody.Text;
+        NPRACTICE2_UPD.ExecProc;
+        row := gPractice2.Controller.TopRowIndex;
+        dmDBCommon.d_NPRACTICE2.DataSet.Refresh;
+        gPractice2.DataController.GotoBookmark;
+        gPractice2.Controller.TopRowIndex := row;
+      end;
     end;
   finally
     fmPracticeEdit.Free;
   end;
+end;
+
+procedure TfmStaticCheckItemSet.cxPageControl1Change(Sender: TObject);
+begin
+  PRACTICE_KIND := cxPageControl1.ActivePageIndex;
 end;
 
 procedure TfmStaticCheckItemSet.btn1Click(Sender: TObject);

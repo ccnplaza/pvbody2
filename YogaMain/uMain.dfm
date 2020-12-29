@@ -4440,9 +4440,6 @@ object fmMain: TfmMain
       Caption = #52769#51221#54217#44032
       Hint = #46041#51201#48516#49437
       ImageIndex = 27
-      object N_item_setting: TMenuItem
-        Action = actStaticCheckItems
-      end
       object NStaticCheckItemSet: TMenuItem
         Action = ActStaticCheckItemSet
       end

@@ -156,6 +156,7 @@ type
     btnShape: TSpeedButton;
     btnText: TSpeedButton;
     BitBtn2: TBitBtn;
+    btnCut: TcxButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure frmImageMultiView1ImageEnMView1DblClick(Sender: TObject);
     procedure btnFindMemberClick(Sender: TObject);
@@ -244,6 +245,7 @@ type
     procedure LayerWindowLayerMoveSize(Sender: TObject; layer: Integer;
       event: TIELayerEvent; var PosX, PosY, Width, Height: Double);
     procedure FormActivate(Sender: TObject);
+    procedure btnCutClick(Sender: TObject);
   private
     fShapeProps: TShapeProps;
     fLineProps : TLineProps;
@@ -611,6 +613,8 @@ begin
   if CustomerImages.CustID <> '' then begin
     fmCapture := TfmCapture.Create(Self);
     fmCapture.Show;
+  end else begin
+    ShowMessage('회원을 선택하세요.');
   end;
 end;
 
@@ -651,6 +655,43 @@ begin
     fmMemberEditView.ShowModal;
   finally
     fmMemberEditView.Free;
+  end;
+end;
+
+procedure TfmCompareList2.btnCutClick(Sender: TObject);
+var
+  mStream, newStream : TMemoryStream;
+  idx, image_id : Integer;
+begin
+  if not (ImageEnMView1.ImageCount > 0) then begin
+    ShowMessage('선택한 이미지가 없습니다.');
+    Exit;
+  end;
+  fmPictureZoom := TfmPictureZoom.Create(Self);
+  try
+    fmPictureZoom.Height := ClientHeight;
+    mStream := TMemoryStream.Create;
+    idx := ImageEnMView1.SelectedImage;
+    image_id := ImageEnMView1.ImageTag[idx];
+    fmPictureZoom.ImageEnView1.IEBitmap.Assign(ImageEnMView1.GetTIEBitmap(idx));
+    fmPictureZoom.ImageEnView1.Update;
+    fmPictureZoom.ShowModal;
+    if fmPictureZoom.ModalResult = mrOk then begin
+      newStream := TMemoryStream.Create;
+      fmPictureZoom.ImageEnView1.IO.SaveToStreamJpeg(newStream);
+      newStream.Position := 0;
+      ImageEnMView1.SetImageFromStream(idx, newStream);
+      ImageEnMView1.Update;
+      dmDBCommon.IMAGES_UPD.ParamByName('ID').Value := image_id;
+      dmDBCommon.IMAGES_UPD.ParamByName('IMAGE_DATA').LoadFromStream(newStream, ftBlob);
+      dmDBCommon.IMAGES_UPD.ParamByName('DRAW_DATA').Clear;
+      dmDBCommon.IMAGES_UPD.ExecProc;
+      dmDBCommon.ds_IMAGES_SEL.DataSet.Refresh;
+      newStream.Free;
+    end;
+  finally
+    mStream.Free;
+    fmPictureZoom.Free;
   end;
 end;
 
@@ -713,6 +754,11 @@ var
   mStream, dStream, newIStream, newDStream : TMemoryStream;
   idx : Integer;
 begin
+  if not (ImageEnMView1.ImageCount > 0) then begin
+    ShowMessage('선택한 이미지가 없습니다.');
+    Exit;
+  end;
+
 {
   if ImageEnMView1.ImageCount > 0 then begin
     fmLayerEditor := TfmLayerEditor.Create(Self);

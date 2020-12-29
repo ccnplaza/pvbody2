@@ -26,34 +26,6 @@ object fmCapture: TfmCapture
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    object ImageEnVect2: TImageEnVect
-      Left = 0
-      Top = 0
-      Width = 606
-      Height = 691
-      Background = clBackground
-      Ctl3D = True
-      AutoStretch = True
-      AutoShrink = True
-      OnDShowNewFrame = ImageEnVect2DShowNewFrame
-      AsyncLoading = True
-      Align = alClient
-      PopupMenu = PopupCamera
-      TabOrder = 0
-      OnMouseDown = ImageEnVect2MouseDown
-      OnMouseUp = ImageEnVect2MouseUp
-      object ImageEnVect3: TImageEnVect
-        Left = 5
-        Top = 304
-        Width = 169
-        Height = 114
-        Background = clBtnFace
-        SelectionBase = iesbBitmap
-        EnableAlphaChannel = False
-        Visible = False
-        TabOrder = 0
-      end
-    end
     object Panel1: TPanel
       Left = 606
       Top = 0
@@ -61,7 +33,7 @@ object fmCapture: TfmCapture
       Height = 691
       Align = alRight
       BevelOuter = bvNone
-      TabOrder = 1
+      TabOrder = 0
       object cxGroupBox3: TcxGroupBox
         AlignWithMargins = True
         Left = 3
@@ -486,8 +458,6 @@ object fmCapture: TfmCapture
           ParentFont = False
           TabOrder = 6
           OnClick = btnMakePictureClick
-          ExplicitTop = 15
-          ExplicitHeight = 75
         end
       end
       object cxGroupBox6: TcxGroupBox
@@ -518,7 +488,7 @@ object fmCapture: TfmCapture
           Height = 15
           Caption = '0'
         end
-        object btnActClearScreen: TBitBtn
+        object btnRotate: TBitBtn
           Left = 133
           Top = 51
           Width = 116
@@ -534,7 +504,7 @@ object fmCapture: TfmCapture
             0ADAADAD080DA050ADADDADA080AD050DADAADADA00DA00DADADDADAD00AD00A
             DADAADADAD0DA0ADADADDADADADADADADADAADADADADADADADAD}
           TabOrder = 0
-          OnClick = btnActClearScreenClick
+          OnClick = btnRotateClick
         end
         object btnCaptureFace: TBitBtn
           Left = 15
@@ -648,6 +618,28 @@ object fmCapture: TfmCapture
           TabOrder = 0
           Width = 136
         end
+      end
+    end
+    object ImageEnView1: TImageEnView
+      Left = 0
+      Top = 0
+      Width = 606
+      Height = 691
+      Background = clBlack
+      MouseInteractGeneral = [miSelect]
+      OnDShowNewFrame = ImageEnView1DShowNewFrame
+      Align = alClient
+      TabOrder = 1
+      object ImageEnView2: TImageEnView
+        Left = 40
+        Top = 360
+        Width = 105
+        Height = 105
+        Background = clBtnFace
+        AutoStretch = True
+        AutoShrink = True
+        Visible = False
+        TabOrder = 0
       end
     end
   end
